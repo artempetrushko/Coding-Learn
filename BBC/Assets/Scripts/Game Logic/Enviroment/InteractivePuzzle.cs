@@ -23,28 +23,25 @@ public class InteractivePuzzle : MonoBehaviour
     {
         if (!HasCodingPuzzle)
             StartCoroutine(FinishPuzzleByAnimation_COR());
-        else
-        {
-            StartCodingPuzzle();
-        }
+        else StartCodingPuzzle();
     }
 
     public void FinishPuzzle()
     {
         if (!isPadActive)
-            uiManager.Canvas.GetComponentInChildren<InventoryBehaviour>().HideInventory_SolvePuzzle();
+            uiManager.InventoryBehaviour.HideInventory_SolvePuzzle();
         else isPadActive = false;
         ReturnToDefaultSceneState();
         GetComponent<SphereCollider>().enabled = true;
         GetComponent<InteractiveItemMarker>().enabled = true;
-        uiManager.Canvas.GetComponentInChildren<InventoryBehaviour>().InventoryStatement = InventoryStatement.Normal;
+        uiManager.InventoryBehaviour.InventoryStatement = InventoryStatement.Normal;
     }
 
     private void StartCodingPuzzle()
     {
         isCodingPuzzleStarted = true;
         isPadActive = true;
-        uiManager.Canvas.GetComponentInChildren<InventoryBehaviour>().InventoryStatement = InventoryStatement.PuzzleSolving;
+        uiManager.InventoryBehaviour.InventoryStatement = InventoryStatement.PuzzleSolving;
         gameManager.CurrentTaskNumber = CodingPuzzleNumber;
         uiManager.TaskPanelBehaviour.ShowNewTaskGeneralInfo();
         uiManager.ExtendedTaskPanelBehaviour.IsTaskMessage = true;
@@ -61,7 +58,7 @@ public class InteractivePuzzle : MonoBehaviour
             yield return new WaitForSeconds((float)usageAnimation.playableAsset.duration + 1);
         }
         ReturnToDefaultSceneState();
-        uiManager.Canvas.GetComponentInChildren<InventoryBehaviour>().InventoryStatement = InventoryStatement.Normal;
+        uiManager.InventoryBehaviour.InventoryStatement = InventoryStatement.Normal;
         OnPuzzleSolved.Invoke();
         gameObject.SetActive(false);
     }
@@ -73,10 +70,10 @@ public class InteractivePuzzle : MonoBehaviour
         GetComponent<SphereCollider>().enabled = false;
         GetComponent<InteractiveItemMarker>().enabled = false;
         gameManager.Player.GetComponent<PlayerBehaviour>().FreezePlayer();
-        gameManager.CurrentInteractiveObject = gameObject;
+        gameManager.CurrentInteractivePuzzle = this;
         GetComponentInChildren<Camera>().enabled = true;
         if (!isCodingPuzzleStarted && RequiredItemName != "")  
-            uiManager.Canvas.GetComponentInChildren<InventoryBehaviour>().ShowInventory_SolvePuzzle();
+            uiManager.InventoryBehaviour.ShowInventory_SolvePuzzle();
         else StartCodingPuzzle();
     }  
 
@@ -108,12 +105,13 @@ public class InteractivePuzzle : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isPlayerClose && !isPuzzleStarted)
-            StartPuzzle();
-        else if (Input.GetKeyDown(KeyCode.Escape) && isPuzzleStarted && !isCodingPuzzleStarted)
+        if (isPlayerClose)
         {
-            FinishPuzzle();
-        }
+            if (Input.GetKeyDown(KeyCode.E) && !isPuzzleStarted)
+                StartPuzzle();
+            else if (Input.GetKeyDown(KeyCode.Escape) && isPuzzleStarted && !isCodingPuzzleStarted)
+                FinishPuzzle();
+        }     
     }
 
     private void Start()

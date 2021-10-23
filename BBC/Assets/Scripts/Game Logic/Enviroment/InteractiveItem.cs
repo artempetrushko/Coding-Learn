@@ -78,7 +78,7 @@ public class InteractiveItem : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isPlayerClose)
+        if (isPlayerClose && Input.GetKeyDown(KeyCode.E))
             CheckItemType();
     }
 

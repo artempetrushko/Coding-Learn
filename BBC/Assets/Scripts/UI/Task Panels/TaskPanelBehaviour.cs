@@ -67,7 +67,6 @@ public class TaskPanelBehaviour : MonoBehaviour
         uiManager.PadMenuBehaviour.PlayPadMoveAnimation("ShowPad", "ShowPad_DevMode");
         yield return new WaitForSeconds(0.7f);
         CloseTaskButton.transform.localScale = new Vector3(1, 1, 1);
-        yield break;
     }
 
     public IEnumerator HideTaskPanel_COR()
@@ -105,9 +104,9 @@ public class TaskPanelBehaviour : MonoBehaviour
     private IEnumerator CloseTask_COR()
     {     
         yield return StartCoroutine(HideTaskPanel_COR());
-        if (gameManager.CurrentInteractiveObject == null)
+        if (gameManager.CurrentInteractivePuzzle == null)
             yield return StartCoroutine(ReturnToScene_COR());
-        else gameManager.CurrentInteractiveObject.GetComponent<InteractivePuzzle>().FinishPuzzle();
+        else gameManager.CurrentInteractivePuzzle.FinishPuzzle();
     }
 
     private void Awake()

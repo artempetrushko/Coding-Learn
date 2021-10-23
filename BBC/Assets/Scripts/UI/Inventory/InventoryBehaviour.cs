@@ -23,7 +23,8 @@ public class InventoryBehaviour : MonoBehaviour
     [SerializeField] private GameObject notes;
     [SerializeField] private GameObject inventoryItemPrefab;
 
-    private GameManager gameManager;   
+    private GameManager gameManager;
+    private UIManager uiManager;
     private GameObject lastOpenedCategory;
 
     public void ShowInventory_SolvePuzzle()
@@ -52,6 +53,7 @@ public class InventoryBehaviour : MonoBehaviour
     {
         IsOpen = true;
         gameManager.Player.GetComponent<PlayerBehaviour>().FreezePlayer();
+        uiManager.isExitToMenuAvailable = false;
         UpdateInventory();
         otherInventoryItems.SetActive(false);
         notes.SetActive(false);
@@ -65,6 +67,7 @@ public class InventoryBehaviour : MonoBehaviour
         ClearInventory();
         Inventory.GetComponent<Animator>().Play("HideInventory");
         gameManager.Player.GetComponent<PlayerBehaviour>().UnfreezePlayer();
+        StartCoroutine(uiManager.MakeExitToMenuAvailable_COR());
     }
 
     private void UpdateInventory()
@@ -108,16 +111,22 @@ public class InventoryBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I) && InventoryStatement == InventoryStatement.Normal)
+        if (InventoryStatement == InventoryStatement.Normal)
         {
-            if (!IsOpen)
-                ShowInventory();
-            else HideInventory();
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                if (!IsOpen)
+                    ShowInventory();
+                else HideInventory();
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape) && IsOpen)
+                HideInventory();
         }
     }
 
     private void Start()
     {
         gameManager = GameManager.Instance;
+        uiManager = UIManager.Instance;
     }
 }

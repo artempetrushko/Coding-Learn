@@ -8,16 +8,16 @@ public class TaskCompletingActions : MonoBehaviour
 {
     public UnityEvent<string> OnTargetChanged;
 
-    private int sceneIndex;
     private TriggersBehaviour triggersBehaviour;
     private GameManager gameManager;
+    private UIManager uiManager;
 
     public void MakeActions()
     {
         var taskNumber = gameManager.CurrentTaskNumber;
         if (!gameManager.HasTasksCompleted[taskNumber - 1])
         {
-            StartCoroutine("MakeActions_Level_" + sceneIndex + "_Task_" + taskNumber);
+            StartCoroutine("MakeActions_Level_" + gameManager.SceneIndex + "_Task_" + taskNumber);
             gameManager.HasTasksCompleted[taskNumber - 1] = true;
         }
     }
@@ -25,19 +25,19 @@ public class TaskCompletingActions : MonoBehaviour
     private IEnumerator WaitAndHideTaskPanel_COR()
     {
         yield return new WaitForSeconds(1f);
-        yield return StartCoroutine(UIManager.Instance.TaskPanelBehaviour.HideTaskPanel_COR());
+        yield return StartCoroutine(uiManager.TaskPanelBehaviour.HideTaskPanel_COR());
     }
 
     private IEnumerator ReturnToScene_COR()
     {
-        yield return StartCoroutine(UIManager.Instance.ActionButtonBehaviour.DeleteActionButton_COR());
-        yield return StartCoroutine(UIManager.Instance.TaskPanelBehaviour.ReturnToScene_COR());
+        yield return StartCoroutine(uiManager.ActionButtonBehaviour.DeleteActionButton_COR());
+        yield return StartCoroutine(uiManager.TaskPanelBehaviour.ReturnToScene_COR());
     }
 
     private void Start()
     {
         gameManager = GameManager.Instance;
-        sceneIndex = gameManager.SceneIndex;
+        uiManager = UIManager.Instance;
         triggersBehaviour = gameManager.Player.GetComponentInChildren<TriggersBehaviour>();
     }
 
@@ -55,28 +55,30 @@ public class TaskCompletingActions : MonoBehaviour
         yield return new WaitForSeconds((float)playableDirector.playableAsset.duration + 0.5f);
     }
 
+    private IEnumerator FinishPuzzleByAnimation_COR()
+    {
+        yield return StartCoroutine(WaitAndHideTaskPanel_COR());
+        StartCoroutine(gameManager.CurrentInteractivePuzzle.FinishPuzzleByAnimation_COR());
+    }
+
     #region Действия для обучающего уровня
     private IEnumerator MakeActions_Level_0_Task_1()
     {
-        yield return StartCoroutine(WaitAndHideTaskPanel_COR());
-        StartCoroutine(gameManager.CurrentInteractiveObject.GetComponent<InteractivePuzzle>().FinishPuzzleByAnimation_COR());
+        yield return StartCoroutine(FinishPuzzleByAnimation_COR());
     }
-
+    
     private IEnumerator MakeActions_Level_0_Task_2()
     {
-        yield return StartCoroutine(WaitAndHideTaskPanel_COR());
-        StartCoroutine(gameManager.CurrentInteractiveObject.GetComponent<InteractivePuzzle>().FinishPuzzleByAnimation_COR());
+        yield return StartCoroutine(FinishPuzzleByAnimation_COR());
     }
 
     private IEnumerator MakeActions_Level_0_Task_3()
     {
-        yield return StartCoroutine(WaitAndHideTaskPanel_COR());
-        StartCoroutine(gameManager.CurrentInteractiveObject.GetComponent<InteractivePuzzle>().FinishPuzzleByAnimation_COR());
+        yield return StartCoroutine(FinishPuzzleByAnimation_COR());
     }
     private IEnumerator MakeActions_Level_0_Task_4()
     {
-        yield return StartCoroutine(WaitAndHideTaskPanel_COR());
-        StartCoroutine(gameManager.CurrentInteractiveObject.GetComponent<InteractivePuzzle>().FinishPuzzleByAnimation_COR());
+        yield return StartCoroutine(FinishPuzzleByAnimation_COR());
     }
     #endregion
 

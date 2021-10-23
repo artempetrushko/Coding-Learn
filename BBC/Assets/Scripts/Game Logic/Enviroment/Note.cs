@@ -65,22 +65,21 @@ public class Note : MonoBehaviour
                 GetComponent<InteractiveItemMarker>().enabled = false;
                 gameManager.Player.GetComponent<PlayerBehaviour>().FreezePlayer();
                 uiManager.isExitToMenuAvailable = false;
-                uiManager.noteReadingPanelBehaviour.Title.text = Title;
-                uiManager.noteReadingPanelBehaviour.Description.text = Description;
-                uiManager.noteReadingPanelBehaviour.GetComponent<Animator>().Play("ShowNote");
+                uiManager.NoteReadingPanelBehaviour.Title.text = Title;
+                uiManager.NoteReadingPanelBehaviour.Description.text = Description;
+                uiManager.NoteReadingPanelBehaviour.GetComponent<Animator>().Play("ShowNote");
             }
             else if (Input.GetKeyDown(KeyCode.Escape) && isShown)
             {
                 isShown = false;
                 gameManager.Player.GetComponent<PlayerBehaviour>().UnfreezePlayer();
                 StartCoroutine(uiManager.MakeExitToMenuAvailable_COR());
-                uiManager.noteReadingPanelBehaviour.GetComponent<Animator>().Play("HideNote");
+                uiManager.NoteReadingPanelBehaviour.GetComponent<Animator>().Play("HideNote");
                 GetComponent<InteractiveItemMarker>().enabled = true;
                 OnPlayerLookedAt.Invoke();
                 OnPlayerLookedAt.RemoveAllListeners();
                 if (canPickUp)
                     PutItemInInventory();
-
             }
         }
     }

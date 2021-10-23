@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class InteractiveEnvironment : MonoBehaviour
 {
-    public string openAnimationName;
-    public float openAnimationTime;
-    public string closeAnimationName;
-    public float closeAnimationTime;
+    [SerializeField] private string openAnimationName;
+    [SerializeField] private string closeAnimationName;
 
     private GameManager gameManager;
     private bool isPlayerClose;
     private bool isAnimationStarted = false;
     private bool isOpenAnimation = true;
 
-    private IEnumerator PlayAnimation_COR(string animationName, float latency)
+    private IEnumerator PlayAnimation_COR(string animationName)
     {
         isAnimationStarted = true;
-        GetComponentInParent<Animator>().Play(animationName);
-        yield return new WaitForSeconds(latency);
+        var animator = GetComponentInParent<Animator>();
+        animator.Play(animationName);
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
         isAnimationStarted = false;
     }
 
@@ -42,14 +41,13 @@ public class InteractiveEnvironment : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isPlayerClose && !isAnimationStarted)
+        if (isPlayerClose && Input.GetKeyDown(KeyCode.E) && !isAnimationStarted)
         {
             if (isOpenAnimation)
-                StartCoroutine(PlayAnimation_COR(openAnimationName, openAnimationTime));
-            else StartCoroutine(PlayAnimation_COR(closeAnimationName, closeAnimationTime));
+                StartCoroutine(PlayAnimation_COR(openAnimationName));
+            else StartCoroutine(PlayAnimation_COR(closeAnimationName));
             isOpenAnimation = !isOpenAnimation;
         }
-
     }
 
     private void Start()

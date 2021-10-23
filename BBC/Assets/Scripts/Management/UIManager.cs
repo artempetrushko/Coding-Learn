@@ -30,7 +30,8 @@ public class UIManager : MonoBehaviour
     public TargetPanelBehaviour TargetPanelBehaviour;
     public TaskPanelBehaviour TaskPanelBehaviour;
     public TrainingPanelBehaviour TrainingPanelBehaviour;
-    public NoteReadingPanelBehaviour noteReadingPanelBehaviour;
+    public NoteReadingPanelBehaviour NoteReadingPanelBehaviour;
+    public InventoryBehaviour InventoryBehaviour;
 
     [HideInInspector] public ActionButtonBehaviour ActionButtonBehaviour;
     [HideInInspector] public PadMode PadMode;
