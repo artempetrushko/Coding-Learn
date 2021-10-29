@@ -24,14 +24,6 @@ public class PuzzleCompletingActions : MonoBehaviour
     }
     #endregion
 
-    #region Для обучения
-/*    public void CheckPhotosAvailability()
-    {
-        if (gameManager.ScriptItems.Where(x => x.Name == "Семейное фото").Count() == 2)
-
-    }*/
-    #endregion
-
     private void Start()
     {
         gameManager = GameManager.Instance;

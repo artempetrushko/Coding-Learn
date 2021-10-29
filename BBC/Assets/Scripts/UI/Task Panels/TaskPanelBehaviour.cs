@@ -52,9 +52,7 @@ public class TaskPanelBehaviour : MonoBehaviour
             StartCoroutine(uiManager.ActionButtonBehaviour.ShowActionButton_COR());
         }
         playerBehaviour.UnfreezePlayer();
-        uiManager.Minimap.SetActive(true);
         uiManager.PadMenuBehaviour.ShowIDEButton.interactable = false;
-        uiManager.ChangeCallAvailability(true);
         uiManager.ActionButtonBehaviour.IsPressed = false;
         uiManager.PadMode = PadMode.Normal;
     }

@@ -53,12 +53,12 @@ public class TrainingPanelBehaviour : MonoBehaviour
     public void EnableTip_Level_1_Tip_11()
     {
         gameManager.Player.GetComponent<PlayerBehaviour>().FreezePlayer();
-        uiManager.TargetPanelBehaviour.IsCallAvailable = false;
+        
     }
 
     public void EnableTip_Level_1_Tip_14()
     {
-        uiManager.TargetPanelBehaviour.IsCallAvailable = true;
+        
     }
     #endregion
 

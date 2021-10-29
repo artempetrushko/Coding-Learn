@@ -66,12 +66,8 @@ public class ExtendedTaskPanelBehaviour : MonoBehaviour
             yield return StartCoroutine(uiManager.TaskPanelBehaviour.ShowTaskPanel_COR());
         else
         {
-            uiManager.Minimap.SetActive(true);
-            uiManager.ChangeCallAvailability(true);
             gameManager.Player.GetComponent<PlayerBehaviour>().UnfreezePlayer();
             IsTaskMessage = true;
-            if (gameManager.SceneIndex != 1)
-                uiManager.TargetPanelBehaviour.ShowTarget();
         }
     }
 
@@ -119,7 +115,6 @@ public class ExtendedTaskPanelBehaviour : MonoBehaviour
             var startMessage = gameManager.StartMessages[gameManager.SceneIndex - 1];
             ExtendedTaskTitle.text = startMessage.Title;
             ExtendedTaskDescription.text = startMessage.Description;
-            uiManager.Minimap.SetActive(false);
             gameManager.Player.GetComponent<PlayerBehaviour>().FreezePlayer();
             OpenTaskExtendedDescription_Special();
         }      

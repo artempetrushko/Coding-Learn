@@ -86,13 +86,11 @@ public class ActionButtonBehaviour : MonoBehaviour
 
     private IEnumerator MakeAction_COR()
     {
-        uiManager.HideUI();
         if (uiManager.PadMenuBehaviour.IsPadCalled)
         {
             uiManager.PadMenuBehaviour.Pad.GetComponent<Animator>().Play("MoveRight_Pad");
             yield return new WaitForSeconds(0.667f);
         }
-        uiManager.ChangeCallAvailability(false);
         ActivatedTrigger.GetComponent<TargetWaypoint>().Waypoint.gameObject.SetActive(false);
         switch (ActivatedTrigger.TriggerPurpose)
         {
@@ -158,7 +156,6 @@ public class ActionButtonBehaviour : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         buttonText.text = "Сохранить игру";
         uiManager.ActionButton.interactable = true;
-        uiManager.ChangeCallAvailability(true);
     }
 
     private IEnumerator TurnOnTaskCamera_COR(int currentTaskNumber, bool hasActivateButton)
@@ -178,14 +175,12 @@ public class ActionButtonBehaviour : MonoBehaviour
         uiManager.BlackScreen.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
         blackScreen.GetComponent<Animator>().Play("AppearBlackScreen");
         yield return new WaitForSeconds(2.5f);
-        uiManager.Minimap.SetActive(ActivatedTrigger.EnterToMiniScene_IsMinimapShouldActive);   
         gameManager.Player.transform.position = ActivatedTrigger.EnterToMiniScene_DestinationTrigger.transform.position;
         ActivatedTrigger.gameObject.SetActive(true);
         blackScreen.GetComponent<Animator>().Play("HideBlackScreen");
         yield return new WaitForSeconds(2f);
         uiManager.BlackScreen.transform.localScale = new Vector3(0, 0, 0);
         robotBehaviour.UnfreezePlayer();
-        uiManager.ChangeCallAvailability(true);
     }    
 
     private IEnumerator FinishLevel_COR()
@@ -219,7 +214,6 @@ public class ActionButtonBehaviour : MonoBehaviour
                 triggersBehaviour.ActivateTrigger_Finish();
                 break;
         }
-        uiManager.ChangeCallAvailability(true);
     } 
 
     private void Update()

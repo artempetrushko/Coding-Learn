@@ -23,17 +23,15 @@ public class UIManager : MonoBehaviour
     [Tooltip("Скрипты UI-элементов для взаимодействия между собой")]
     public PadMenuBehaviour PadMenuBehaviour;
     public ExtendedTaskPanelBehaviour ExtendedTaskPanelBehaviour;
-    public TargetPanelBehaviour TargetPanelBehaviour;
     public TaskPanelBehaviour TaskPanelBehaviour;
     public TrainingPanelBehaviour TrainingPanelBehaviour;
 
-    [HideInInspector] public GameObject Minimap;
     [HideInInspector] public InventoryBehaviour InventoryBehaviour;
     [HideInInspector] public ActionButtonBehaviour ActionButtonBehaviour;
     [HideInInspector] public PadMode PadMode;
     [HideInInspector] public bool isExitToMenuAvailable = true;
 
-    public void ChangeCallAvailability(bool isCallAvailable)
+    /*public void ChangeCallAvailability(bool isCallAvailable)
     {
         TargetPanelBehaviour.IsCallAvailable = isCallAvailable;
         PadMenuBehaviour.IsCallAvailable = isCallAvailable;
@@ -51,7 +49,7 @@ public class UIManager : MonoBehaviour
     {
         TargetPanelBehaviour.IsCallAvailable = true;
         Minimap.SetActive(true);
-    }
+    }*/
 
     public IEnumerator MakeExitToMenuAvailable_COR()
     {
@@ -69,6 +67,5 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         InitializeUiManager();
-        ChangeCallAvailability(false);
     }
 }

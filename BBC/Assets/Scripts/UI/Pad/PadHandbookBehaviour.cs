@@ -55,8 +55,6 @@ public class PadHandbookBehaviour : MonoBehaviour
 
     private IEnumerator SwitchToHandbookMode_COR()
     {
-        if (uiManager.PadMode == PadMode.Normal)
-            uiManager.HideUI();
         uiManager.TaskPanelBehaviour.CloseTaskButton.transform.localScale = new Vector3(0, 0, 0);
         PreviousHandbookPageButton.transform.parent.gameObject.SetActive(false);
         if (gameManager.IsTaskStarted)
@@ -95,7 +93,6 @@ public class PadHandbookBehaviour : MonoBehaviour
             yield return new WaitForSeconds(0.7f);
             uiManager.TaskPanelBehaviour.CloseTaskButton.transform.localScale = new Vector3(1, 1, 1);
         }
-        else uiManager.ShowUI();
         uiManager.PadMode = PadMode.Normal;
     }
 
