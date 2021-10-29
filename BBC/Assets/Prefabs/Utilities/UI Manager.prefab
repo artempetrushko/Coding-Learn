@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2615420410770014455}
   - component: {fileID: 2615420410770014454}
-  - component: {fileID: 3055346854323152476}
   m_Layer: 0
   m_Name: UI Manager
   m_TagString: Untagged
@@ -46,7 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Canvas: {fileID: 0}
   ActionButton: {fileID: 0}
-  Minimap: {fileID: 0}
   BlackScreen: {fileID: 0}
   LoadScreen: {fileID: 0}
   PadMenuBehaviour: {fileID: 0}
@@ -54,19 +52,8 @@ MonoBehaviour:
   TargetPanelBehaviour: {fileID: 0}
   TaskPanelBehaviour: {fileID: 0}
   TrainingPanelBehaviour: {fileID: 0}
+  Minimap: {fileID: 0}
+  InventoryBehaviour: {fileID: 0}
   ActionButtonBehaviour: {fileID: 0}
   PadMode: 0
---- !u!114 &3055346854323152476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2615420410770014453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93d97e44d3a222947ab4d6ce9459ecb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Waypoints: {fileID: 0}
-  InteractiveItemMarkers: {fileID: 0}
+  isExitToMenuAvailable: 1

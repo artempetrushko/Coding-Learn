@@ -114,12 +114,11 @@ public class GameManager : MonoBehaviour
     public List<InteractiveItem> OtherItems = new List<InteractiveItem>();
     public List<InteractiveItem> Notes = new List<InteractiveItem>();
     
-    [HideInInspector] public GameObject CurrentInteractiveObject;
+    [HideInInspector] public InteractivePuzzle CurrentInteractivePuzzle;
     [HideInInspector] public int SceneIndex;    
     [Tooltip("Кол-во предметов, необходимых для прохождения задания")]
     [HideInInspector] public int TaskItemsCount;
     [HideInInspector] public bool IsTaskStarted;
-    [HideInInspector] public bool IsTimerStopped;
     [HideInInspector] public List<bool> HasTasksCompleted;   
     [HideInInspector] public List<int> AvailableTipsCounts;  
 
