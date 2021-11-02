@@ -13,15 +13,11 @@ public class UIManager : MonoBehaviour
     [Header ("Кнопки")]
     [Tooltip ("Кнопка выполнения действия (активация задания, смена сцены и т.д.)")]
     public Button ActionButton;
-
-    [Header("Мини-карта")]
-    public GameObject Minimap;
+ 
     [Header("Чёрный экран (контейнер)")]
     public GameObject BlackScreen;
     [Header("Загрузочный экран")]
     public GameObject LoadScreen;
-    [Header("Описание осматриваемых объектов")]
-    public Text LookAtDescription;
 
     [Header("Скрипты UI-элементов")]
     [Tooltip("Скрипты UI-элементов для взаимодействия между собой")]
@@ -30,8 +26,9 @@ public class UIManager : MonoBehaviour
     public TargetPanelBehaviour TargetPanelBehaviour;
     public TaskPanelBehaviour TaskPanelBehaviour;
     public TrainingPanelBehaviour TrainingPanelBehaviour;
-    public NoteReadingPanelBehaviour noteReadingPanelBehaviour;
 
+    [HideInInspector] public GameObject Minimap;
+    [HideInInspector] public InventoryBehaviour InventoryBehaviour;
     [HideInInspector] public ActionButtonBehaviour ActionButtonBehaviour;
     [HideInInspector] public PadMode PadMode;
     [HideInInspector] public bool isExitToMenuAvailable = true;

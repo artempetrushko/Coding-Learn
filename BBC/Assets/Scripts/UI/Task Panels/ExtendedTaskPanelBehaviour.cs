@@ -78,7 +78,6 @@ public class ExtendedTaskPanelBehaviour : MonoBehaviour
     private IEnumerator GoToNextLevel_COR()
     {
         SaveManager.Save_NextLevel();
-        gameManager.IsTimerStopped = true;
         yield return StartCoroutine(HideExtendedTaskPanel_COR());
         uiManager.BlackScreen.transform.localScale = new Vector3(1, 1, 1);
         blackScreen.GetComponent<Animator>().Play("AppearBlackScreen");
