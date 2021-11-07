@@ -3,36 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainSound : MonoBehaviour
+namespace Scripts
 {
-    public Slider soundSlider, musicSlider;
-    public Text soundSliderText, musicSliderText;
-    public AudioSource musicSource, soundSource;
-
-    public void Start()
+    public class MainSound : MonoBehaviour
     {
-        if (!PlayerPrefs.HasKey("musicvolume"))
-            PlayerPrefs.SetInt("musicvolume", 5);
+        public Slider soundSlider, musicSlider;
+        public Text soundSliderText, musicSliderText;
+        public AudioSource musicSource, soundSource;
 
-        if (!PlayerPrefs.HasKey("soundvolume"))
-            PlayerPrefs.SetInt("soundvolume", 5);
+        public void Start()
+        {
+            if (!PlayerPrefs.HasKey("musicvolume"))
+                PlayerPrefs.SetInt("musicvolume", 5);
 
-        musicSlider.value = PlayerPrefs.GetInt("musicvolume");
-        soundSlider.value = PlayerPrefs.GetInt("soundvolume");
+            if (!PlayerPrefs.HasKey("soundvolume"))
+                PlayerPrefs.SetInt("soundvolume", 5);
 
-        musicSource.volume = (float)PlayerPrefs.GetInt("musicvolume") / 10;
-        soundSource.volume = (float)PlayerPrefs.GetInt("soundvolume") / 10;
-    }
+            musicSlider.value = PlayerPrefs.GetInt("musicvolume");
+            soundSlider.value = PlayerPrefs.GetInt("soundvolume");
 
-    public void Update()
-    {
-        PlayerPrefs.SetInt("musicvolume", (int)musicSlider.value);
-        PlayerPrefs.SetInt("soundvolume", (int)soundSlider.value);
+            musicSource.volume = (float)PlayerPrefs.GetInt("musicvolume") / 10;
+            soundSource.volume = (float)PlayerPrefs.GetInt("soundvolume") / 10;
+        }
 
-        soundSliderText.text = soundSlider.value.ToString();
-        musicSliderText.text = musicSlider.value.ToString();
+        public void Update()
+        {
+            PlayerPrefs.SetInt("musicvolume", (int)musicSlider.value);
+            PlayerPrefs.SetInt("soundvolume", (int)soundSlider.value);
 
-        musicSource.volume = (float)PlayerPrefs.GetInt("musicvolume") / 10;
-        soundSource.volume = (float)PlayerPrefs.GetInt("soundvolume") / 10;
+            soundSliderText.text = soundSlider.value.ToString();
+            musicSliderText.text = musicSlider.value.ToString();
+
+            musicSource.volume = (float)PlayerPrefs.GetInt("musicvolume") / 10;
+            soundSource.volume = (float)PlayerPrefs.GetInt("soundvolume") / 10;
+        }
     }
 }

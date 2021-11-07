@@ -3,29 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TipBehaviour : MonoBehaviour
+namespace Scripts
 {
-    public UnityEvent OnTipEnable;
-    public UnityEvent OnTipDisable;
-
-    public void ShowTip()
+    public class TipBehaviour : MonoBehaviour
     {
-        OnTipEnable.Invoke();
-        var animator = GetComponentInChildren<Animator>();
-        if (animator != null)
-            animator.Play("ShowAside");
-    }
+        public UnityEvent OnTipEnable;
+        public UnityEvent OnTipDisable;
 
-    public void ShowNextTip(GameObject nextTip)
-    {
-        nextTip.SetActive(true);
-        nextTip.GetComponent<TipBehaviour>().ShowTip();
-        CloseTip();
-    }
+        public void ShowTip()
+        {
+            OnTipEnable.Invoke();
+            var animator = GetComponentInChildren<Animator>();
+            if (animator != null)
+                animator.Play("ShowAside");
+        }
 
-    public void CloseTip()
-    {
-        OnTipDisable.Invoke();
-        gameObject.SetActive(false);
+        public void ShowNextTip(GameObject nextTip)
+        {
+            nextTip.SetActive(true);
+            nextTip.GetComponent<TipBehaviour>().ShowTip();
+            CloseTip();
+        }
+
+        public void CloseTip()
+        {
+            OnTipDisable.Invoke();
+            gameObject.SetActive(false);
+        }
     }
 }

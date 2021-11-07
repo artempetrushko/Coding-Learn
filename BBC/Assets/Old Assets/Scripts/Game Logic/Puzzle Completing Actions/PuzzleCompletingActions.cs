@@ -3,29 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class PuzzleCompletingActions : MonoBehaviour
+namespace Scripts
 {
-    private GameManager gameManager;
-
-    #region Общие действия
-    public void OpenDoor(GameObject door)
+    public class PuzzleCompletingActions : MonoBehaviour
     {
-        door.GetComponent<Rigidbody>().isKinematic = false;
-    }
+        private GameManager gameManager;
 
-    public void EnableObject(GameObject gameObject)
-    {
-        gameObject.SetActive(true);
-    }
+        #region Общие действия
+        public void OpenDoor(GameObject door)
+        {
+            door.GetComponent<Rigidbody>().isKinematic = false;
+        }
 
-    public void DisableObject(GameObject gameObject)
-    {
-        gameObject.SetActive(false);
-    }
-    #endregion
+        public void EnableObject(GameObject gameObject)
+        {
+            gameObject.SetActive(true);
+        }
 
-    private void Start()
-    {
-        gameManager = GameManager.Instance;
+        public void DisableObject(GameObject gameObject)
+        {
+            gameObject.SetActive(false);
+        }
+        #endregion
+
+        private void Start()
+        {
+            gameManager = GameManager.Instance;
+        }
     }
 }

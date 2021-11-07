@@ -4,24 +4,27 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LoadLevel : MonoBehaviour
+namespace Scripts
 {
-    public GameObject LoadScreen;
-
-    [SerializeField] private Image LoadBar;
-    [SerializeField] private Text LoadBarText;
-
-    public IEnumerator LoadLevelAsync_COR(int sceneIndex)
+    public class LoadLevel : MonoBehaviour
     {
-        LoadScreen.GetComponent<Animator>().Play("AppearLoadScreen");
-        yield return new WaitForSeconds(0.75f);
-        LoadScreen.transform.GetChild(0).gameObject.SetActive(true);
-        var operation = SceneManager.LoadSceneAsync(sceneIndex);
-        while (!operation.isDone)
+        public GameObject LoadScreen;
+
+        [SerializeField] private Image LoadBar;
+        [SerializeField] private Text LoadBarText;
+
+        public IEnumerator LoadLevelAsync_COR(int sceneIndex)
         {
-            LoadBar.fillAmount = operation.progress;
-            LoadBarText.text = "Загрузка... " + (Mathf.Round(operation.progress * 100)) + "%";
-            yield return null;
+            LoadScreen.GetComponent<Animator>().Play("AppearLoadScreen");
+            yield return new WaitForSeconds(0.75f);
+            LoadScreen.transform.GetChild(0).gameObject.SetActive(true);
+            var operation = SceneManager.LoadSceneAsync(sceneIndex);
+            while (!operation.isDone)
+            {
+                LoadBar.fillAmount = operation.progress;
+                LoadBarText.text = "Загрузка... " + (Mathf.Round(operation.progress * 100)) + "%";
+                yield return null;
+            }
         }
     }
 }

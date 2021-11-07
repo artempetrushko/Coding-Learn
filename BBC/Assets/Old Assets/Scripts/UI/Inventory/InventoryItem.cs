@@ -4,54 +4,57 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Playables;
 
-public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+namespace Scripts
 {
-    [HideInInspector] public InteractiveItem ItemReference;
-
-    private InventoryBehaviour inventoryBehaviour;
-    private GameManager gameManager;
-
-    public void ChooseAction()
+    public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        var inventoryStatement = inventoryBehaviour.InventoryStatement;
-        switch (inventoryStatement)
+        [HideInInspector] public InteractiveItem ItemReference;
+
+        private InventoryBehaviour inventoryBehaviour;
+        private GameManager gameManager;
+
+        public void ChooseAction()
         {
-            case InventoryStatement.PuzzleSolving:
-                StartCoroutine(TrySolvePuzzle());
-                break;
+            var inventoryStatement = inventoryBehaviour.InventoryStatement;
+            switch (inventoryStatement)
+            {
+                case InventoryStatement.PuzzleSolving:
+                    StartCoroutine(TrySolvePuzzle());
+                    break;
+            }
         }
-    }
 
-    private IEnumerator TrySolvePuzzle()
-    {
-        var currentInteractivePuzzle = gameManager.CurrentInteractivePuzzle;
-        if (ItemReference.Name == currentInteractivePuzzle.RequiredItemName)
+        private IEnumerator TrySolvePuzzle()
         {
-            var inventoryAnimator = inventoryBehaviour.GetComponent<Animator>();
-            inventoryAnimator.Play("HideInventory");
-            yield return new WaitForSeconds(inventoryAnimator.GetCurrentAnimatorStateInfo(0).length);
-            ItemReference.Count--;
-            inventoryBehaviour.IsOpen = false;
-            inventoryBehaviour.InventoryStatement = InventoryStatement.Normal;
-            currentInteractivePuzzle.GoToNextPuzzleStep();
+            var currentInteractivePuzzle = gameManager.CurrentInteractivePuzzle;
+            if (ItemReference.Name == currentInteractivePuzzle.RequiredItemName)
+            {
+                var inventoryAnimator = inventoryBehaviour.GetComponent<Animator>();
+                inventoryAnimator.Play("HideInventory");
+                yield return new WaitForSeconds(inventoryAnimator.GetCurrentAnimatorStateInfo(0).length);
+                ItemReference.Count--;
+                inventoryBehaviour.IsOpen = false;
+                inventoryBehaviour.InventoryStatement = InventoryStatement.Normal;
+                currentInteractivePuzzle.GoToNextPuzzleStep();
+            }
         }
-    }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        inventoryBehaviour.ItemName.text = ItemReference.Name;
-        inventoryBehaviour.ItemDescription.text = ItemReference.Description;
-    }
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            inventoryBehaviour.ItemName.text = ItemReference.Name;
+            inventoryBehaviour.ItemDescription.text = ItemReference.Description;
+        }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        inventoryBehaviour.ItemName.text = "";
-        inventoryBehaviour.ItemDescription.text = "";
-    }
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            inventoryBehaviour.ItemName.text = "";
+            inventoryBehaviour.ItemDescription.text = "";
+        }
 
-    private void OnEnable()
-    {
-        inventoryBehaviour = GetComponentInParent<InventoryBehaviour>();
-        gameManager = GameManager.Instance;
+        private void OnEnable()
+        {
+            inventoryBehaviour = GetComponentInParent<InventoryBehaviour>();
+            gameManager = GameManager.Instance;
+        }
     }
 }

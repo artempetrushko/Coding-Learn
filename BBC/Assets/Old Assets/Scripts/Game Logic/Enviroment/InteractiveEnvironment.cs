@@ -2,56 +2,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractiveEnvironment : MonoBehaviour
+namespace Scripts
 {
-    [SerializeField] private string openAnimationName;
-    [SerializeField] private string closeAnimationName;
-
-    private GameManager gameManager;
-    private bool isPlayerClose;
-    private bool isAnimationStarted = false;
-    private bool isOpenAnimation = true;
-
-    private IEnumerator PlayAnimation_COR(string animationName)
+    public class InteractiveEnvironment : MonoBehaviour
     {
-        isAnimationStarted = true;
-        var animator = GetComponentInParent<Animator>();
-        animator.Play(animationName);
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-        isAnimationStarted = false;
-    }
+        [SerializeField] private string openAnimationName;
+        [SerializeField] private string closeAnimationName;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject == gameManager.Player)
+        private GameManager gameManager;
+        private bool isPlayerClose;
+        private bool isAnimationStarted = false;
+        private bool isOpenAnimation = true;
+
+        private IEnumerator PlayAnimation_COR(string animationName)
         {
-            GetComponent<InteractiveItemMarker>().enabled = true;
-            isPlayerClose = true;
+            isAnimationStarted = true;
+            var animator = GetComponentInParent<Animator>();
+            animator.Play(animationName);
+            yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+            isAnimationStarted = false;
         }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject == gameManager.Player)
+        private void OnTriggerEnter(Collider other)
         {
-            GetComponent<InteractiveItemMarker>().enabled = false;
-            isPlayerClose = false;
+            if (other.gameObject == gameManager.Player)
+            {
+                GetComponent<InteractiveItemMarker>().enabled = true;
+                isPlayerClose = true;
+            }
         }
-    }
 
-    private void Update()
-    {
-        if (isPlayerClose && Input.GetKeyDown(KeyCode.E) && !isAnimationStarted)
+        private void OnTriggerExit(Collider other)
         {
-            if (isOpenAnimation)
-                StartCoroutine(PlayAnimation_COR(openAnimationName));
-            else StartCoroutine(PlayAnimation_COR(closeAnimationName));
-            isOpenAnimation = !isOpenAnimation;
+            if (other.gameObject == gameManager.Player)
+            {
+                GetComponent<InteractiveItemMarker>().enabled = false;
+                isPlayerClose = false;
+            }
         }
-    }
 
-    private void Start()
-    {
-        gameManager = GameManager.Instance;
+        private void Update()
+        {
+            if (isPlayerClose && Input.GetKeyDown(KeyCode.E) && !isAnimationStarted)
+            {
+                if (isOpenAnimation)
+                    StartCoroutine(PlayAnimation_COR(openAnimationName));
+                else StartCoroutine(PlayAnimation_COR(closeAnimationName));
+                isOpenAnimation = !isOpenAnimation;
+            }
+        }
+
+        private void Start()
+        {
+            gameManager = GameManager.Instance;
+        }
     }
 }
