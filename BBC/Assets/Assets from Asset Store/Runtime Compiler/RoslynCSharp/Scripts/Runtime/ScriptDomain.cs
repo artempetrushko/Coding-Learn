@@ -4,9 +4,9 @@ using System.Reflection;
 using UnityEngine;
 using System.Security;
 using System.Collections.Generic;
-
 using RoslynCSharp.Compiler;
 using Trivial.CodeSecurity;
+using System.Linq;
 
 namespace RoslynCSharp
 {
@@ -784,7 +784,6 @@ namespace RoslynCSharp
             // Check for no report
             if (compileResult == null)
                 return;
-            
             bool loggedHeader = false;
 
             // Simple function to only output the header when one or more errors, warnings or infos will be logged
@@ -797,6 +796,7 @@ namespace RoslynCSharp
                 }
             };
 
+            codeErrors = compileResult.Errors;
             // Process report
             foreach (CompilationError error in compileResult.Errors)
             {
@@ -819,6 +819,12 @@ namespace RoslynCSharp
                 }
             }
         }
+
+        #region Код для Coding Learn
+        private CompilationError[] codeErrors;
+
+        public List<CompilationError> GetErrors() => codeErrors.ToList();
+        #endregion
 
         private void CheckDisposed()
         {
