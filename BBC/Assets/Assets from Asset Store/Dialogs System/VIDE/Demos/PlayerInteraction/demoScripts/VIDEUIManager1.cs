@@ -255,8 +255,6 @@ public class VIDEUIManager1 : MonoBehaviour
     //Called automatically because we subscribed to the OnEnd event
     void EndDialogue(VD.NodeData data)
     {
-        UIManager.Instance.ChangeCallAvailability(true);
-        UIManager.Instance.Minimap.SetActive(true);
         CheckTasks();
         VD.OnActionNode -= ActionHandler;
         VD.OnNodeChange -= UpdateUI;

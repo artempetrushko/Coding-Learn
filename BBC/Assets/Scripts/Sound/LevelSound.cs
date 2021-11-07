@@ -2,19 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelSound : MonoBehaviour
+namespace Scripts
 {
-    public AudioSource [] sounds, musics;
-    public void Start()
+    public class LevelSound : MonoBehaviour
     {
-        for (int i = 0; i < sounds.Length; i++)
+        public AudioSource[] sounds, musics;
+        public void Start()
         {
-            sounds[i].volume = (float)PlayerPrefs.GetInt("soundvolume") / 10;
-        }
+            for (int i = 0; i < sounds.Length; i++)
+            {
+                sounds[i].volume = (float)PlayerPrefs.GetInt("soundvolume") / 10;
+            }
 
-        for (int i = 0; i < musics.Length; i++)
-        {
-            musics[i].volume = (float)PlayerPrefs.GetInt("musicvolume") / 10;
+            for (int i = 0; i < musics.Length; i++)
+            {
+                musics[i].volume = (float)PlayerPrefs.GetInt("musicvolume") / 10;
+            }
         }
     }
 }
