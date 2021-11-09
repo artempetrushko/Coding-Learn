@@ -1,0 +1,13 @@
+{
+  "Items": [
+    {
+      "Tip": "...\n{\n    var itemsCount = 7;\n    for (var i = 0; i < itemsCount; i++)\n    {\n        ...\n    }\n}"
+    },
+    {
+      "Tip": "...\n{\n    var itemsCount = 7;\n    for (var i = 0; i < itemsCount; i++)\n    {\n        if (IsAxe() || IsSaw())\n        {\n            ...\n        }\n    }\n}"
+    },
+    {
+      "Tip": "...\n{\n    var itemsCount = 7;\n    for (var i = 0; i < itemsCount; i++)\n    {\n        if (IsAxe() || IsSaw())\n        {\n            PickUp();\n            break;\n        }\n    }\n}"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "Items": [
+    {
+      "Tip": "...\n{\n    if (mushroomHeight > 6 || ...)\n        ...\n}"
+    },
+    {
+      "Tip": "...\n{\n    if (mushroomHeight > 6 || mushroomHeight < 4 && ...)\n        ...\n}"
+    },
+    {
+      "Tip": "...\n{\n    if (mushroomHeight > 6 || mushroomHeight < 4 && isMushroomSpotted && isMushroomRed)\n        ...\n}"
+    },
+    {
+      "Tip": "...\n{\n    if (mushroomHeight > 6 || mushroomHeight < 4 && isMushroomSpotted && isMushroomRed)\n        return --mushroomDifference;\n    ...\n}"
+    },
+    {
+      "Tip": "...\n{\n    if (mushroomHeight > 6 || mushroomHeight < 4 && isMushroomSpotted && isMushroomRed)\n        return --mushroomDifference;\n    return ++mushroomDifference;\n}"
+    }
+  ]
+}

@@ -40,10 +40,12 @@ namespace Scripts
             var taskText = gameManager.TaskTexts[gameManager.CurrentTaskNumber - 1];
             TaskTitle.text = taskText.Title;
             TaskDescription.text = taskText.Description;
-            CreateCodingTrainingPages();
-            onTaskStarted.Invoke();
+            CreateCodingTrainingPages();         
             OpenCodingTrainingPanel_Special();
+            onTaskStarted.Invoke();
         }
+
+        public void FinishTask() => StartCoroutine(FinishTask_COR());
 
         public void OpenCodingTrainingPanel() => StartCoroutine(OpenCodingTrainingPanel_COR());
 
@@ -79,8 +81,16 @@ namespace Scripts
             uiManager.PadMode = PadMode.Normal;
         }
 
+        private IEnumerator FinishTask_COR()
+        {
+            yield return StartCoroutine(HideTaskPanel_COR());
+            gameManager.CurrentScriptTrigger.MakeTransitionToNextTask();
+        }
+
         private void CreateCodingTrainingPages()
         {
+            for (var i = codingTrainingPages.transform.childCount; i > 0; i--)
+                Destroy(codingTrainingPages.transform.GetChild(i - 1).gameObject);
             var codingTrainingInfo = gameManager.CodingTrainingInfos[gameManager.CurrentTaskNumber];
             for (var i = 0; i < codingTrainingInfo.Length; i++)
             {
@@ -142,7 +152,7 @@ namespace Scripts
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.T))
+            if (Input.GetKeyDown(KeyCode.RightControl))
                 StartNewTask();
         }
 

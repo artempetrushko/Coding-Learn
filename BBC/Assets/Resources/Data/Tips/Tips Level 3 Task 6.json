@@ -1,0 +1,13 @@
+{
+  "Items": [
+    {
+      "Tip": "...\n{\n    for (var i = 0; i < 4; i++)\n    {\n        ...\n    }\n}"
+    },
+    {
+      "Tip": "...\n{\n    for (var i = 0; i < 4; i++)\n    {\n        ChooseNewPlace();\n        SearchKey();\n        ...\n    }\n}"
+    },
+    {
+      "Tip": "...\n{\n    for (var i = 0; i < 4; i++)\n    {\n        ChooseNewPlace();\n        SearchKey();\n        if (IsKeyFound())\n            break;\n    }\n}"
+    }
+  ]
+}
