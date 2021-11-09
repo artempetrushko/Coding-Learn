@@ -38,18 +38,22 @@ namespace Scripts
         public Button UnrollPadButton;
         [Tooltip("Панель ошибок")]
         public GameObject ErrorsPanel;
+        [Tooltip("Панель испытаний")]
+        public GameObject ChallengesPanel;
+        [Tooltip("Префаб испытания (UI)")]
+        public GameObject ChallengePrefab;
         [Tooltip("Шкала прогресса выполнения программы")]
         public GameObject ExecutingProgressBar;
 
         [Header("Подсветка кода")]
         [Tooltip("Подсветка ключевых слов")]
-        [SerializeField] private Color keywordsColor;
+        [SerializeField] private Color32 keywordsColor;
         [Tooltip("Подсветка имён классов")]
-        [SerializeField] private Color classNameColor;
+        [SerializeField] private Color32 classNameColor;
         [Tooltip("Подсветка имён методов")]
-        [SerializeField] private Color methodNameColor;
+        [SerializeField] private Color32 methodNameColor;
         [Tooltip("Подсветка имён локальных переменных")]
-        [SerializeField] private Color localVariablesColor;
+        [SerializeField] private Color32 localVariablesColor;
 
         [Space]
         [SerializeField] private UnityEvent onTaskCompleted;
@@ -61,13 +65,15 @@ namespace Scripts
         private Color successColor = new Color(0f, 1f, 0f, 0f);
         private Color errorColor = new Color(1f, 0f, 0f, 0f);
         private List<string> keywords = new List<string>() { "public", "private", "static", "var", "int", "double", "float", "void" };
-        private char[] wordSeparators = new[] { ' ', '.', ';', ':', '(', ')' };
         private bool isErrorPanelShown = false;
-        private bool isHighlightingCalled = false;
 
         public void RollPad() => StartCoroutine(RollPad_COR());
 
         public void UnrollPad() => StartCoroutine(UnrollPad_COR());
+
+        public void OpenChallengesPanel() => StartCoroutine(PlayAnimation_COR(ChallengesPanel, "ScaleUp"));
+
+        public void CloseChallengesPanel() => StartCoroutine(PlayAnimation_COR(ChallengesPanel, "ScaleDown"));
 
         public void ResetCode() => CodeField.text = StartCode;
 
@@ -83,6 +89,7 @@ namespace Scripts
             StartCode = taskText.StartCode;
             CodeField.text = taskText.StartCode;
             ErrorsButton.interactable = false;
+            LoadNewChallenges();
             RollPad();
         }
 
@@ -111,22 +118,31 @@ namespace Scripts
 
         public void HighlightKeywords()
         {
-            if (!isHighlightingCalled)
+            var textComponent = CodeField.textComponent;
+            var wordInfo = textComponent.textInfo.wordInfo;
+            for (var i = 0; i < textComponent.textInfo.wordCount; i++)
             {
-                isHighlightingCalled = true;
-                var code = CodeField.text;
-                var wordInfo = CodeField.textComponent.GetTextInfo(code).wordInfo;
-
-                var highlightedCode = string.Copy(code);
-                for (var i = 0; i < wordInfo.Length; i++)
+                if (keywords.Contains(wordInfo[i].GetWord()))
                 {
-                    var word = wordInfo[i].GetWord();
+                    for (var j = 0; j < wordInfo[i].characterCount; j++)
+                    {
+                        var charIndex = wordInfo[i].firstCharacterIndex + j;
+                        var meshIndex = textComponent.textInfo.characterInfo[charIndex].materialReferenceIndex;
+                        var vertexIndex = textComponent.textInfo.characterInfo[charIndex].vertexIndex;
 
-                    if (keywords.Contains(word))
-                        highlightedCode = code.Substring(0, wordInfo[i].firstCharacterIndex) + "<color=blue>" + word + "</color>" + code.Substring(wordInfo[i].lastCharacterIndex);
+                         /*CodeField.textComponent.textInfo.characterInfo[charIndex].vertex_BL.color = Color.blue;
+                         CodeField.textComponent.textInfo.characterInfo[charIndex].vertex_BR.color = Color.blue;
+                         CodeField.textComponent.textInfo.characterInfo[charIndex].vertex_TL.color = Color.blue;
+                         CodeField.textComponent.textInfo.characterInfo[charIndex].vertex_TR.color = Color.blue;*/
+
+                        Color32[] vertexColors = textComponent.textInfo.meshInfo[meshIndex].colors32;
+                        vertexColors[vertexIndex + 0] = Color.blue;
+                        vertexColors[vertexIndex + 1] = Color.blue;
+                        vertexColors[vertexIndex + 2] = Color.blue;
+                        vertexColors[vertexIndex + 3] = Color.blue;
+                    }
+                    textComponent.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
                 }
-                //CodeField.text = highlightedCode;
-                isHighlightingCalled = false;
             }
         }
 
@@ -152,6 +168,20 @@ namespace Scripts
             }
         }
 
+        private void LoadNewChallenges()
+        {
+            var challengesHolder = ChallengesPanel.GetComponentInChildren<VerticalLayoutGroup>().transform;
+            for (var i = challengesHolder.transform.childCount; i > 0; i--)
+                Destroy(challengesHolder.transform.GetChild(i - 1).gameObject);
+            var challengeTexts = gameManager.TaskChallenges[gameManager.CurrentTaskNumber];
+            var oneStarChallenge = Instantiate(ChallengePrefab, challengesHolder);
+            var twoStarsChallenge = Instantiate(ChallengePrefab, challengesHolder);
+            var threeStarsChallenge = Instantiate(ChallengePrefab, challengesHolder);
+            oneStarChallenge.GetComponentInChildren<TMP_Text>().text = challengeTexts.OneStarChallenge;
+            twoStarsChallenge.GetComponentInChildren<TMP_Text>().text = challengeTexts.TwoStarsChallenge;
+            threeStarsChallenge.GetComponentInChildren<TMP_Text>().text = challengeTexts.ThreeStarsChallenge;
+        }
+
         private IEnumerator ShowErrors_COR(List<CompilationError> errors)
         {
             yield return StartCoroutine(TurnTaskIndicatorOn_COR(errorColor));
@@ -169,10 +199,10 @@ namespace Scripts
 
         private IEnumerator ShowExecutingProcess(ScriptProxy proxy)
         {
-            Tuple<bool, string> result = (Tuple<bool, string>)proxy.Call("isTaskCompleted");
+            var isTaskCompleted = (bool)proxy.Call("isTaskCompleted");
             ExecutingProgressBar.SetActive(true);
             yield return StartCoroutine(PlayAnimation_COR(ExecutingProgressBar, "FillProgressBar"));
-            if (result.Item1)
+            if (isTaskCompleted)
             {
                 ExecutingProgressBar.GetComponent<Animator>().Play("ChangeProgressBarColor");
                 yield return StartCoroutine(TurnTaskIndicatorOn_COR(successColor));
@@ -248,11 +278,10 @@ public class RobotManagementClass : MonoBehaviour
 {"  
     + CodeField.text
     + extraCode + @"
-   public Tuple<bool, string> isTaskCompleted()
+   public bool isTaskCompleted()
    {" +
-           gameManager.GetTests().TestCode + @"
-       var output = totalResult ? ""корректный"" : ""неправильный"";
-       return Tuple.Create(totalResult, ""Выход: "" + output);
+       gameManager.GetTests().TestCode + @"
+       return totalResult;
    }
 }";
         }
