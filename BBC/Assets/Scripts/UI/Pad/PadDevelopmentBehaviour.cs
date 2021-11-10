@@ -13,6 +13,7 @@ namespace Scripts
 {
     public class PadDevelopmentBehaviour : MonoBehaviour
     {
+        #region UI-элементы
         [Header("Планшет")]
         public GameObject Pad;
         [Tooltip("Поле для ввода кода")]
@@ -44,12 +45,13 @@ namespace Scripts
         public GameObject ChallengePrefab;
         [Tooltip("Шкала прогресса выполнения программы")]
         public GameObject ExecutingProgressBar;
+        #endregion
 
         [Header("Подсветка кода")]
         [Tooltip("Подсветка ключевых слов")]
         [SerializeField] private Color32 keywordsColor;
         [Tooltip("Подсветка имён классов")]
-        [SerializeField] private Color32 classNameColor;
+        [SerializeField] private Color32 specifiersAndDataTypesColor;
         [Tooltip("Подсветка имён методов")]
         [SerializeField] private Color32 methodNameColor;
         [Tooltip("Подсветка имён локальных переменных")]
@@ -62,10 +64,17 @@ namespace Scripts
 
         private GameManager gameManager;
         private GameObject rowCountersHolder;
-        private Color successColor = new Color(0f, 1f, 0f, 0f);
-        private Color errorColor = new Color(1f, 0f, 0f, 0f);
-        private List<string> keywords = new List<string>() { "public", "private", "static", "var", "int", "double", "float", "void" };
+        private TMP_TextInfo codeInfo;
+        private Color32 successColor = Color.green;
+        private Color32 errorColor = Color.red;
         private bool isErrorPanelShown = false;
+
+        #region Слова для подсветки
+        private List<string> specifiers = new List<string>() { "public", "private", "static"};
+        private List<string> dataTypes = new List<string>() { "var", "int", "double", "float", "void", "bool", "true", "false", "char", "string", "long" };
+        private List<string> otherDarkBlueWords = new List<string>() { "new", "class", "enum" };
+        private List<string> keywords = new List<string>() { "if", "else", "for", "while", "switch", "case", "break", "continue", "yield", "try", "catch", "return" };
+        #endregion
 
         public void RollPad() => StartCoroutine(RollPad_COR());
 
@@ -100,7 +109,7 @@ namespace Scripts
             ScriptDomain domain = ScriptDomain.CreateDomain("MyDomain");
             try
             {
-                var robotManagementCode = GetRobotManagementClass(gameManager.GetTests().ExtraCode);               
+                var robotManagementCode = gameManager.GetTests().Replace("//<playerCode>", CodeField.text);               
                 ScriptType compiledCode = domain.CompileAndLoadMainSource(robotManagementCode);
                 ScriptProxy proxy = compiledCode.CreateInstance(gameObject);
                 StartCoroutine(ShowExecutingProcess(proxy));
@@ -118,37 +127,22 @@ namespace Scripts
 
         public void HighlightKeywords()
         {
-            var textComponent = CodeField.textComponent;
-            var wordInfo = textComponent.textInfo.wordInfo;
-            for (var i = 0; i < textComponent.textInfo.wordCount; i++)
+            var wordInfo = codeInfo.wordInfo;
+            for (var i = 0; i < codeInfo.wordCount; i++)
             {
-                if (keywords.Contains(wordInfo[i].GetWord()))
-                {
-                    for (var j = 0; j < wordInfo[i].characterCount; j++)
-                    {
-                        var charIndex = wordInfo[i].firstCharacterIndex + j;
-                        var meshIndex = textComponent.textInfo.characterInfo[charIndex].materialReferenceIndex;
-                        var vertexIndex = textComponent.textInfo.characterInfo[charIndex].vertexIndex;
-
-                         /*CodeField.textComponent.textInfo.characterInfo[charIndex].vertex_BL.color = Color.blue;
-                         CodeField.textComponent.textInfo.characterInfo[charIndex].vertex_BR.color = Color.blue;
-                         CodeField.textComponent.textInfo.characterInfo[charIndex].vertex_TL.color = Color.blue;
-                         CodeField.textComponent.textInfo.characterInfo[charIndex].vertex_TR.color = Color.blue;*/
-
-                        Color32[] vertexColors = textComponent.textInfo.meshInfo[meshIndex].colors32;
-                        vertexColors[vertexIndex + 0] = Color.blue;
-                        vertexColors[vertexIndex + 1] = Color.blue;
-                        vertexColors[vertexIndex + 2] = Color.blue;
-                        vertexColors[vertexIndex + 3] = Color.blue;
-                    }
-                    textComponent.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
-                }
+                var word = wordInfo[i].GetWord();
+                if (specifiers.Contains(word) || dataTypes.Contains(word) || otherDarkBlueWords.Contains(word))
+                    PaintWordBySelectedColor(wordInfo[i], specifiersAndDataTypesColor);
+                else if (keywords.Contains(word))
+                    PaintWordBySelectedColor(wordInfo[i], keywordsColor);
+                else if (codeInfo.characterInfo[wordInfo[i].lastCharacterIndex + 1].character == '(')
+                    PaintWordBySelectedColor(wordInfo[i], methodNameColor);
             }
-        }
+        }      
 
         public void ChangeRowCountersAmount()
         {
-            var rowsCount = CodeField.textComponent.GetTextInfo(CodeField.text).lineCount;
+            var rowsCount = codeInfo.lineCount;
             var rowCountersAmount = rowCountersHolder.transform.childCount;
             if (rowCountersAmount != rowsCount)
             {
@@ -166,6 +160,23 @@ namespace Scripts
                         Destroy(rowCountersHolder.transform.GetChild(i - 1).gameObject);
                 }
             }
+        }
+
+        private void PaintWordBySelectedColor(TMP_WordInfo wordInfo, Color32 selectedColor)
+        {
+            for (var j = 0; j < wordInfo.characterCount; j++)
+            {
+                var charIndex = wordInfo.firstCharacterIndex + j;
+                var meshIndex = codeInfo.characterInfo[charIndex].materialReferenceIndex;
+                var vertexIndex = codeInfo.characterInfo[charIndex].vertexIndex;
+
+                Color32[] vertexColors = codeInfo.meshInfo[meshIndex].colors32;
+                vertexColors[vertexIndex + 0] = selectedColor;
+                vertexColors[vertexIndex + 1] = selectedColor;
+                vertexColors[vertexIndex + 2] = selectedColor;
+                vertexColors[vertexIndex + 3] = selectedColor;
+            }
+            CodeField.textComponent.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
         }
 
         private void LoadNewChallenges()
@@ -189,9 +200,7 @@ namespace Scripts
             errorsTextField.text = "";
             foreach (var error in errors)
             {
-                var errorLine = error.SourceLine - 6;
-                var errorColumn = error.SourceColumn <= 6 ? 1 : error.SourceColumn - 6;
-                errorsTextField.text += string.Format("({0}, {1}) {2}: {3}\n", errorLine, errorColumn, error.Code, error.Message);
+                errorsTextField.text += string.Format("<color=red>Error</color>: {0}\n", error.Message);
             }              
             if (!isErrorPanelShown)
                 ToggleErrorPanelState();
@@ -266,30 +275,17 @@ public class LaunchClass : MonoBehaviour
             proxy.Call("LaunchCompiler");
         }
 
-        private string GetRobotManagementClass(string extraCode)
+        private void Update()
         {
-            return @"
-using UnityEngine;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-
-public class RobotManagementClass : MonoBehaviour
-{"  
-    + CodeField.text
-    + extraCode + @"
-   public bool isTaskCompleted()
-   {" +
-       gameManager.GetTests().TestCode + @"
-       return totalResult;
-   }
-}";
+            HighlightKeywords();
+            ChangeRowCountersAmount();
         }
 
         private void Start()
         {
             gameManager = GameManager.Instance;
             rowCountersHolder = RowCounters.transform.GetChild(0).GetChild(0).gameObject;
+            codeInfo = CodeField.textComponent.textInfo;
             LaunchCompiler();
         }
     }
