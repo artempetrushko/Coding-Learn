@@ -1,19 +1,18 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-
 public class RobotManagementClass
-{  
-   public int rotationCount = 0; 
-
-   public void RotateKey() => rotationCount++; 
-
-   public bool isTaskCompleted()
+{
+    public bool isTaskCompleted()
    {
-       Execute(); 
-       var totalResult = rotationCount == 1; 
-       return totalResult;
+       Execute();
+       return Computer.Text=="Hello World!";
    }
 
    //<playerCode>
+}
+public class Computer
+{
+    public static string Text { get; private set; }
+    public static void WriteLine(string text)
+    {
+        Text = text;
+    }
 }
