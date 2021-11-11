@@ -1,0 +1,13 @@
+public class RobotManagementClass
+{  
+    public bool IsMoved=false;
+
+    private void MoveCube()=>IsMoved=true;
+
+    public bool isTaskCompleted()
+    {
+        Execute(); 
+        return IsMoved;
+    }
+    //<playerCode>
+}
