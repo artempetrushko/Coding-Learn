@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,7 +19,6 @@ namespace Scripts
         public class TaskText : Letter
         {
             public int ID;
-            public string ExtendedDescription;
             public string StartCode;
         }
 
