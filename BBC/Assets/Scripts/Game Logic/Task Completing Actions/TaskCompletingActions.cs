@@ -40,7 +40,7 @@ namespace Scripts
         {
             gameManager = GameManager.Instance;
             uiManager = UIManager.Instance;
-            triggersBehaviour = gameManager.Player.GetComponentInChildren<TriggersBehaviour>();
+            //triggersBehaviour = gameManager.Player.GetComponentInChildren<TriggersBehaviour>();
         }
 
         private void ActivateTrigger_Task(int triggerNumber) => triggersBehaviour.ActivateTrigger_Task(triggerNumber);
