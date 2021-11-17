@@ -4,15 +4,18 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PointerEnterToMarkerBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+namespace Scripts
 {
-    public void OnPointerEnter(PointerEventData eventData)
+    public class PointerEnterToMarkerBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        gameObject.transform.parent.GetChild(1).GetComponent<Animator>().Play("DrawLevelDescription");
-    }
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            gameObject.transform.parent.GetChild(1).GetComponent<Animator>().Play("DrawLevelDescription");
+        }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        gameObject.transform.parent.GetChild(1).GetComponent<Animator>().Play("EraseLevelDescription");
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            gameObject.transform.parent.GetChild(1).GetComponent<Animator>().Play("EraseLevelDescription");
+        }
     }
 }
