@@ -1,0 +1,44 @@
+using System;
+
+public class Level0Task5
+{
+    public bool isTaskCompleted()
+   {
+       var result =false;
+       result =result &&CountFishFeed(2, 1, 0.01, 0.02, 0.5)==11;
+       result =result &&CountFishFeed(2, 1, 0.01, 0.02, 0.04)==0;
+       result =result &&CountFishFeed(2, 1, 0.01, 0.02, 0)==0;
+       try
+       {
+           CountFishFeed(0, 0, 0.01, 0.02, 0.5);
+       }
+       catch (ArgumentException e)
+       {
+           try
+           {
+               CountFishFeed(0, 1, 0.01, 0, 0.5);
+           }
+           catch (ArgumentException c)
+           {
+               try
+               {
+                   CountFishFeed(2, 0, 0, 0.02, 0.5);
+               }
+               catch (ArgumentException d)
+               {
+                   try
+                   {
+                       CountFishFeed(2, 1, 0, 0, 0.5);
+                   }
+                   catch (ArgumentException k)
+                   {
+                       return result;
+                   }
+               }
+           }
+       }
+       return false;
+   }
+   
+   //<playerCode>
+}
