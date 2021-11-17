@@ -1,0 +1,15 @@
+public class Level0Task7
+{  
+   public int rotationCount = 0; 
+
+   public void RotateKey() => rotationCount++; 
+
+   public bool isTaskCompleted()
+   {
+       Execute(); 
+       var totalResult = rotationCount == 1; 
+       return totalResult;
+   }
+
+   //<playerCode>
+}

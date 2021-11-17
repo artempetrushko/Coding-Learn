@@ -1,0 +1,42 @@
+using System;
+public class Level0Task6
+{
+    private bool _task1Marker;
+    private bool _task2Marker;
+    private bool _task3Marker;
+    private bool _task4Marker;
+    public void Cook(float waterGlassCount, float flourGlassCount)
+    {
+        if(waterGlassCount==2f&&flourGlassCount==1f)
+            _task1Marker=true;
+        if(waterGlassCount==3f&&flourGlassCount==1f)
+            _task2Marker=true;
+        if(waterGlassCount==0f&&flourGlassCount==1f)
+            _task3Marker=true;
+        if(waterGlassCount==2f&&flourGlassCount==0f)
+            _task4Marker=true;
+    }
+   public bool isTaskCompleted()
+   {
+       CountGlassCount(500,250,250); 
+       CountGlassCount(550,220,250);
+       CountGlassCount(0,220,250);
+       CountGlassCount(500,0,250);
+       try
+       {
+           CountGlassCount(500, 250, 0);
+       }
+       catch (ArgumentException e)
+       {
+           return _task1Marker && _task2Marker && _task3Marker && _task4Marker;
+       }
+       return false;
+   }
+
+   private void CountGlassCount(float flourV,float waterV,int glassCount)
+   {
+       Cook(waterGlassCount,flourGlassCount);
+   }
+
+   //<playerCode>
+}
