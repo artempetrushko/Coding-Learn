@@ -13,6 +13,8 @@ namespace Scripts
 {
     public class PadDevelopmentBehaviour : MonoBehaviour
     {
+        [HideInInspector] public string StartCode;
+
         #region UI-элементы
         [Header("Планшет")]
         public GameObject Pad;
@@ -57,24 +59,23 @@ namespace Scripts
         [Tooltip("Подсветка имён локальных переменных")]
         [SerializeField] private Color32 localVariablesColor;
 
+        #region Слова для подсветки
+        [Header("Подсвечиваемые слова")]
+        [SerializeField] private List<string> specifiers = new List<string>() { "public", "private", "static" };
+        [SerializeField] private List<string> dataTypes = new List<string>() { "var", "int", "double", "float", "void", "bool", "true", "false", "char", "string", "long" };
+        [SerializeField] private List<string> otherDarkBlueWords = new List<string>() { "new", "class", "enum" };
+        [SerializeField] private List<string> keywords = new List<string>() { "if", "else", "for", "while", "switch", "case", "break", "continue", "yield", "try", "catch", "return" };
+        #endregion
+
         [Space]
         [SerializeField] private UnityEvent onTaskCompleted;
-
-        [HideInInspector] public string StartCode;
-
+    
         private GameManager gameManager;
         private GameObject rowCountersHolder;
         private TMP_TextInfo codeInfo;
         private Color32 successColor = Color.green;
         private Color32 errorColor = Color.red;
-        private bool isErrorPanelShown = false;
-
-        #region Слова для подсветки
-        private List<string> specifiers = new List<string>() { "public", "private", "static"};
-        private List<string> dataTypes = new List<string>() { "var", "int", "double", "float", "void", "bool", "true", "false", "char", "string", "long" };
-        private List<string> otherDarkBlueWords = new List<string>() { "new", "class", "enum" };
-        private List<string> keywords = new List<string>() { "if", "else", "for", "while", "switch", "case", "break", "continue", "yield", "try", "catch", "return" };
-        #endregion
+        private bool isErrorPanelShown = false;       
 
         public void RollPad() => StartCoroutine(RollPad_COR());
 
@@ -94,7 +95,7 @@ namespace Scripts
 
         public void ShowNewTaskCode()
         {
-            var taskText = gameManager.TaskTexts[gameManager.CurrentTaskNumber - 1];
+            var taskText = gameManager.GetCurrentTask();
             StartCode = taskText.StartCode;
             CodeField.text = taskText.StartCode;
             ErrorsButton.interactable = false;
