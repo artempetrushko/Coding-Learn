@@ -12,13 +12,9 @@ namespace Scripts
     public class TaskPanelBehaviour : MonoBehaviour
     {
         [Header("Панель задания")]
-        public GameObject TaskPanel;
-        public Text TaskTitle;
-        public Text TaskDescription;
-        public Scrollbar TaskDescriptionScrollbar;
-        [Tooltip("Кнопка для получения полной доп. информации о задании")]
-        public Button TaskInfoButton;
-
+        [SerializeField] private Text taskTitle;
+        [SerializeField] private Text taskDescription;
+        [SerializeField] private Scrollbar taskDescriptionScrollbar;
         [Header("Панель обучения программированию")]
         [SerializeField] private GameObject codingTrainingPanel;
         [SerializeField] private Text trainingTheme;
@@ -37,10 +33,10 @@ namespace Scripts
 
         public void StartNewTask()
         {
-            var taskText = gameManager.TaskTexts[gameManager.CurrentTaskNumber - 1];
-            TaskTitle.text = taskText.Title;
-            TaskDescription.text = taskText.Description;
-            CreateCodingTrainingPages();         
+            var taskText = gameManager.GetCurrentTask();
+            taskTitle.text = taskText.Title;
+            taskDescription.text = taskText.Description;
+            CreateCodingTrainingPages(gameManager.SceneIndex + 1, gameManager.CurrentTaskNumber);         
             OpenCodingTrainingPanel_Special();
             onTaskStarted.Invoke();
         }
@@ -59,7 +55,13 @@ namespace Scripts
             codingTrainingPages.transform.GetChild(shouldIncreasePageNumber ? ++currentOpenedTrainingPage : --currentOpenedTrainingPage).gameObject.SetActive(true);
             nextPageButton.gameObject.SetActive(currentOpenedTrainingPage < codingTrainingPages.transform.childCount - 1);
             previousPageButton.gameObject.SetActive(currentOpenedTrainingPage > 0);
-            trainingTheme.text = gameManager.CodingTrainingInfos[gameManager.CurrentTaskNumber][currentOpenedTrainingPage].Title;
+            trainingTheme.text = gameManager.GetCurrentCodingTrainingInfo()[currentOpenedTrainingPage].Title;
+        }
+
+        public void ShowCodingTrainingOnSelectedTheme(int themeNumber, int subThemeNumber)
+        {
+            CreateCodingTrainingPages(themeNumber, subThemeNumber);
+            OpenCodingTrainingPanel();
         }
 
         public IEnumerator ReturnToScene_COR()
@@ -87,11 +89,11 @@ namespace Scripts
             gameManager.CurrentScriptTrigger.MakeTransitionToNextTask();
         }
 
-        private void CreateCodingTrainingPages()
+        private void CreateCodingTrainingPages(int levelNumber, int taskNumber)
         {
             for (var i = codingTrainingPages.transform.childCount; i > 0; i--)
                 Destroy(codingTrainingPages.transform.GetChild(i - 1).gameObject);
-            var codingTrainingInfo = gameManager.CodingTrainingInfos[gameManager.CurrentTaskNumber];
+            var codingTrainingInfo = gameManager.GetCodingTrainingInfo(levelNumber, taskNumber);
             for (var i = 0; i < codingTrainingInfo.Length; i++)
             {
                 var prefab = codingTrainingInfo[i].VideoTitles == "" ? textPagePrefab : textAndVideoPagePrefab;
@@ -110,13 +112,13 @@ namespace Scripts
 
         private IEnumerator ShowTaskPanel_COR()
         {
-            TaskDescriptionScrollbar.value = 1;
-            yield return StartCoroutine(PlayTimeline_COR(TaskPanel, "ShowTaskPanel"));
+            taskDescriptionScrollbar.value = 1;
+            yield return StartCoroutine(PlayTimeline_COR(gameObject, "ShowTaskPanel"));
         }
 
         public IEnumerator HideTaskPanel_COR()
         {
-            yield return StartCoroutine(PlayTimeline_COR(TaskPanel, "HideTaskPanel"));
+            yield return StartCoroutine(PlayTimeline_COR(gameObject, "HideTaskPanel"));
         }
 
         private IEnumerator ShowCodingTrainingPanel_COR()
@@ -137,6 +139,8 @@ namespace Scripts
 
         private IEnumerator CloseCodingTrainingPanel_COR()
         {
+            if (uiManager.PadMode == PadMode.HandbookProgrammingInfo)
+                uiManager.PadMode = PadMode.HandbookSubThemes;
             yield return StartCoroutine(HideCodingTrainingPanel_COR());
             yield return StartCoroutine(ShowTaskPanel_COR());
         }
