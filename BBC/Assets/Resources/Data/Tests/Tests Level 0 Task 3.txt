@@ -5,6 +5,7 @@ public class Level0Task3
         Execute();
         return Door.Number==55;
     }
+    //<playerCode>
 }
 public class Door
 {
@@ -12,6 +13,5 @@ public class Door
     public static void Open(int number)
     {
         Number = number;
-    }
-    
+    }   
 }
