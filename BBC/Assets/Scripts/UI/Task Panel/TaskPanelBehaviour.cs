@@ -158,6 +158,8 @@ namespace Scripts
         {
             if (Input.GetKeyDown(KeyCode.RightControl))
                 StartNewTask();
+            else if (Input.GetKeyDown(KeyCode.RightAlt))
+                StartCoroutine(FinishTask_COR());
         }
 
         private void Start()
