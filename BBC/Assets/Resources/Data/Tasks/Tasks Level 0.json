@@ -36,9 +36,9 @@
       "StartCode": "private void CountGlassCount(float flourV,float waterV,int glassV)\n{\n//Пишите свой код здесь\nCook(waterGlassCount,flourGlassCount);\n}"
     },{
       "ID": 7,
-      "Title": "Взять корм",
-      "Description": "Исправьте оширку в коде, чтобы взять упаковку корма по весу в киллограмах.\nВам нужно взять коробку весом 0.5 кг.\nКогда переменная объявляется с ключевым словом var, ее тип определяется автоматически, на основании данных переданных при инициализации.\nПри делении целого числа на целое, результатом является целое число без остатка\n5-целое число\n5.0f,дробное число (типа float)\n5.0 дробное число( типа double)",
-      "StartCode": "public void Execute()\n{\nvar fullness = 1 / 2;\nFridge.GetFeedPackaging(fullness);\n}"
+      "Title": "Добавить/убавить температуру",
+      "Description": "Вам необходимо реализовать два метода для добавления и убавления температуры.\n Сделать это можно посредством манипуляции с переменной T.\n Считайте, что переменная уже объявлена за пределами метода(как это сделать мы обсудим позже).\nПри передаче некоректных данных выкинуть ArgumentException",
+      "StartCode": "private static void AddT(int deltaT)\n{\n \n}\n private static void SubtractT(int deltaT)\n{\n}"
     },{
       "ID": 8,
       "Title": "Делится или нет",
