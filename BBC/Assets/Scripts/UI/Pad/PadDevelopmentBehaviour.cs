@@ -185,7 +185,7 @@ namespace Scripts
             var challengesHolder = ChallengesPanel.GetComponentInChildren<VerticalLayoutGroup>().transform;
             for (var i = challengesHolder.transform.childCount; i > 0; i--)
                 Destroy(challengesHolder.transform.GetChild(i - 1).gameObject);
-            var challengeTexts = gameManager.TaskChallenges[gameManager.CurrentTaskNumber];
+            var challengeTexts = gameManager.TaskChallenges[gameManager.CurrentTaskNumber - 1];
             var oneStarChallenge = Instantiate(ChallengePrefab, challengesHolder);
             var twoStarsChallenge = Instantiate(ChallengePrefab, challengesHolder);
             var threeStarsChallenge = Instantiate(ChallengePrefab, challengesHolder);
