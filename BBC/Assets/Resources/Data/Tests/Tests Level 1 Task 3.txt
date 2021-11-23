@@ -1,0 +1,8 @@
+public class Level0Task8
+{
+    public bool isTaskCompleted()
+    {
+        return Check(4) && !Check(5);
+    }
+    //<playerCode>
+}

@@ -38,7 +38,7 @@ namespace Scripts
         #region Ìועמהû הכÿ סמבûעטÿ OnTipEnable
         public void EnableTip_Level_Training_Tip_1()
         {
-            uiManager.TaskPanelBehaviour.TaskInfoButton.interactable = false;
+            //uiManager.TaskPanelBehaviour.TaskInfoButton.interactable = false;
             uiManager.PadMenuBehaviour.ShowIDEButton.interactable = false;
             uiManager.PadMenuBehaviour.ShowHandbookButton.interactable = false;
         }
@@ -66,7 +66,7 @@ namespace Scripts
         #region Ìועמהû הכÿ סמבûעטÿ OnTipDisable
         public void DisableTip_Level_Training_Tip_4()
         {
-            uiManager.TaskPanelBehaviour.TaskInfoButton.interactable = true;
+            //uiManager.TaskPanelBehaviour.TaskInfoButton.interactable = true;
             uiManager.PadMenuBehaviour.ShowIDEButton.interactable = true;
             uiManager.PadMenuBehaviour.ShowHandbookButton.interactable = true;
         }
