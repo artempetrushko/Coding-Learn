@@ -1,0 +1,25 @@
+using System;
+public class Level0Task7
+{
+    private static int T=0;
+    public bool isTaskCompleted()
+   {
+       AddT(5);
+       SubtractT(10);
+       try{
+           AddT(-1);}
+       catch(ArgumentException e){
+           try
+           {
+               SubtractT(-1);
+           }
+           catch (ArgumentException c)
+           {
+               return T==-5;
+           }
+       }
+       
+       return false;
+   }
+    //<playerCode>
+}

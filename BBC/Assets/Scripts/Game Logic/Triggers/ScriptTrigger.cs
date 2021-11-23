@@ -41,7 +41,7 @@ namespace Scripts
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject == gameManager.Player)
+            if (other.gameObject.tag =="Player")
             {
                 gameManager.CurrentTaskNumber = taskNumber;
                 gameManager.CurrentScriptTrigger = this;
