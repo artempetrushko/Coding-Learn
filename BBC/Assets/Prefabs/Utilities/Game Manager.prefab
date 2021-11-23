@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1521588603279411651}
+  - component: {fileID: 6539088680678338312}
   - component: {fileID: 1521588603279411650}
   - component: {fileID: 1521588603279411649}
-  - component: {fileID: 8266878591285543211}
-  - component: {fileID: 49771941431460889}
+  - component: {fileID: 6046453696553118226}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -34,6 +34,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &6539088680678338312
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521588603279411648}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 0}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []
 --- !u!114 &1521588603279411650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,29 +63,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 483ef20c2fd125c4fbace1f0eb19b695, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TaskTexts: []
-  Tests: []
-  ScenarioMessages: []
-  StartMessages: []
-  FinishMessages: []
   ThemeTitles: []
+  TaskChallenges: []
+  Tests: []
   Player: {fileID: 0}
   CurrentSceneCamera: {fileID: 0}
   CurrentDialogCamera: {fileID: 0}
   CoinsCount: 0
-  TipsCount: 0
+  TimeToNextTip: 180
   CurrentTaskNumber: 0
   Target: 
   AvailableThemesCount: 0
-  TipPrice: 3
-  Sale: 0.15
+  Cutscenes: []
   ScriptItems: []
   OtherItems: []
-  CurrentInteractiveObject: {fileID: 0}
+  Notes: []
+  CurrentInteractivePuzzle: {fileID: 0}
+  CurrentScriptTrigger: {fileID: 0}
   SceneIndex: 0
   TaskItemsCount: 0
   IsTaskStarted: 0
-  IsTimerStopped: 0
   HasTasksCompleted: 
   AvailableTipsCounts: 
 --- !u!114 &1521588603279411649
@@ -83,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a8d657d812232f40834399f3a73114b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8266878591285543211
+--- !u!114 &6046453696553118226
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,33 +106,96 @@ MonoBehaviour:
   m_GameObject: {fileID: 1521588603279411648}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc4a40a2d1deb454499db621258d61cc, type: 3}
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnTargetChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: TargetPanelBehaviour, Assembly-CSharp
-        m_MethodName: ChangeTarget
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &49771941431460889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1521588603279411648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d33dcf18019cc124eae9594dff4b9507, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 72b58a4b981c32a41b7b94792aff3a30, type: 2}
+    - {fileID: 11400000, guid: 35a7bb05e5cabea41990cde3571f8751, type: 2}
+    - {fileID: 11400000, guid: 587aa764733aa8b429d075e330ae90f7, type: 2}
+    - {fileID: 11400000, guid: 7c7386918f3914a4f8af1ba597e5b64e, type: 2}
+    - {fileID: 11400000, guid: 27dbf59865415184ca75aa34512d5005, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6539088680678338312}
+          m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
+          m_MethodName: Pause
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6539088680678338312}
+          m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
+          m_MethodName: Resume
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: Scripts.StoryPanelBehaviour, Assembly-CSharp
+          m_MethodName: ShowStoryText
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: Scripts.TaskPanelBehaviour, Assembly-CSharp
+          m_MethodName: StartNewTask
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 6539088680678338312}
+          m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
+          m_MethodName: Pause
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: Scripts.StoryPanelBehaviour, Assembly-CSharp
+          m_MethodName: ShowFirstStoryText
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2

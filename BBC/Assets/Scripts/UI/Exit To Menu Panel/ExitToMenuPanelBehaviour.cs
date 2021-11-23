@@ -11,7 +11,6 @@ namespace Scripts
         public GameObject ExitToMenuPanel;
         public GameObject BlackScreen;
 
-        private GameObject blackScreenContent;
         private bool isPressed = false;
 
         public void ReturnToGame() => StartCoroutine(ReturnToGame_COR());
@@ -30,8 +29,8 @@ namespace Scripts
             SaveManager.DeleteSavedDialogueData();
             ExitToMenuPanel.GetComponent<Animator>().Play("ScaleExitToMenuPanelDown");
             yield return new WaitForSeconds(0.75f);
-            BlackScreen.transform.localScale = new Vector3(1, 1, 1);
-            blackScreenContent.GetComponent<Animator>().Play("AppearBlackScreen");
+            BlackScreen.SetActive(true);
+            BlackScreen.GetComponent<Animator>().Play("AppearBlackScreen");
             yield return new WaitForSeconds(1.4f);
             SceneManager.LoadScene(0);
         }
@@ -43,11 +42,6 @@ namespace Scripts
                 ExitToMenuPanel.GetComponent<Animator>().Play("ScaleExitToMenuPanelUp");
                 isPressed = true;
             }
-        }
-
-        private void Start()
-        {
-            blackScreenContent = BlackScreen.transform.GetChild(0).gameObject;
         }
     }
 }
