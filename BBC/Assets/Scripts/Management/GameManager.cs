@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
 
 namespace Scripts
 {
@@ -23,9 +24,9 @@ namespace Scripts
         }
 
         [Serializable]
-        public class LevelMessage : Letter
+        public class Story
         {
-            public int LevelNumber;
+            public string Script;
         }
 
         [Serializable]
@@ -81,7 +82,7 @@ namespace Scripts
         #endregion
 
         #region Данные из JSON и текстовых файлов
-        [HideInInspector] public LevelMessage[] StartMessages;
+        [HideInInspector] public List<Story[]> StoryParts = new List<Story[]>();
         [HideInInspector] public ThemeTitle[] ThemeTitles;
         [HideInInspector] public Challenges[] TaskChallenges;
         [HideInInspector] public List<TaskText[]> TaskTexts = new List<TaskText[]>();
@@ -94,12 +95,12 @@ namespace Scripts
         public static GameManager Instance = null;
 
         [Header("Игрок")]
-        public GameObject Player;
+        [HideInInspector] public GameObject Player;
         [Header("Текущие камеры")]
         [HideInInspector] public Camera CurrentSceneCamera;
-        [HideInInspector] public Camera CurrentDialogCamera;
-        [Header("Счётчики")]
+        [HideInInspector] public Camera CurrentDialogCamera;        
         [HideInInspector] public int CoinsCount;
+        [Header("Счётчики")]
         public int TimeToNextTip = 180;
         [Header("Номер текущего задания")]
         public int CurrentTaskNumber;
@@ -107,6 +108,8 @@ namespace Scripts
         [HideInInspector] public string Target;
         [Header("Количество доступных тем в справочнике")]
         public int AvailableThemesCount;
+        [Header("Катсцены")]
+        public List<PlayableAsset> Cutscenes;
 
         [HideInInspector] public List<InteractiveItem> ScriptItems = new List<InteractiveItem>();
         [HideInInspector] public List<InteractiveItem> OtherItems = new List<InteractiveItem>();
@@ -134,6 +137,24 @@ namespace Scripts
             AvailableTipsCounts[CurrentTaskNumber - 1]--;
             var tipNumber = Tips[CurrentTaskNumber - 1].Length - AvailableTipsCounts[CurrentTaskNumber - 1];
             return Tips[CurrentTaskNumber - 1][tipNumber].Tip;
+        }
+
+        public void PlayNextCutscene()
+        {
+            CurrentTaskNumber++;
+            PlayCutscene(CurrentTaskNumber);
+        }
+
+        private void PlayCutscene(int cutsceneNumber)
+        {
+            var playableDirector = gameObject.GetComponent<PlayableDirector>();
+            playableDirector.time = 0;
+            playableDirector.Play(Cutscenes[cutsceneNumber - 1]);
+        }
+
+        private void Start()
+        {
+            PlayCutscene(1);
         }
 
         private void Awake()
@@ -178,10 +199,11 @@ namespace Scripts
         private void GetDataFromFiles()
         {          
             TaskChallenges = GetResourcesAndWrite<Challenges>("Data/Challenges/Challenges Level " + SceneIndex);
-            StartMessages = GetResourcesAndWrite<LevelMessage>("Data/Start Messages");
             ThemeTitles = GetResourcesAndWrite<ThemeTitle>("Data/Handbook Files/Theme Titles");
             for (var i = 0; i < SceneManager.sceneCountInBuildSettings - 1; i++)
                 TaskTexts.Add(GetResourcesAndWrite<TaskText>("Data/Tasks/Tasks Level " + i));
+            for (var i = 1; i <= TaskTexts[SceneIndex].Length + 1; i++)
+                StoryParts.Add(GetResourcesAndWrite<Story>("Data/Story/Level " + SceneIndex + "/Story Level " + SceneIndex + " Part " + i));
             for (var i = 1; i <= TaskTexts[SceneIndex].Length; i++)
             {
                 Tests.Add(Resources.Load<TextAsset>("Data/Tests/Tests Level " + SceneIndex + " Task " + i).text);
