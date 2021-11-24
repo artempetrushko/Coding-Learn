@@ -1,8 +1,8 @@
-public class Level0Task8
+public class Level1Task2
 {
     public bool isTaskCompleted()
     {
-        return Check(4) && !Check(5);
+        return CorrectName(5,10,8,0)==8;
     }
     //<playerCode>
 }

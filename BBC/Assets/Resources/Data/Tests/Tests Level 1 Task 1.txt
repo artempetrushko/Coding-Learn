@@ -1,8 +1,10 @@
-public class Level0Task8
+public class Level1Task1
 {
+
     public bool isTaskCompleted()
     {
-        return Check(4) && !Check(5);
+        return CountFlower(5)==6;
     }
+
     //<playerCode>
 }

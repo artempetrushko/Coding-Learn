@@ -2,21 +2,21 @@
   "Items": [
     {
       "ID": 1,
-      "Title": "Название",
-      "Description": "Описание",
-      "StartCode": "public int Execute()\n{\n    \n    \n}\n"
+      "Title": "Подсчет цветочков",
+      "Description": "Вам необходимо реализовать метод для подсчета количества цветов. Метод должен считать по 1 цветку за раз.",
+      "StartCode": "public int CountFlower(int oldCount)\n{\n    \n    \n}\n"
     },
     {
       "ID": 2,
-      "Title": "",
-      "Description": "",
-      "StartCode": "public void Execute()\n{\n    \n    \n}\n"
+      "Title": "Правильное название",
+      "Description": "Вам передается 4 переменные с разными именами. Вам необходимо выбрать и вернуть значение переменной с наиболее правильным именем",
+      "StartCode": "public int CorrectName(int mushroom123,int MUSHROOM,int redMushroom, int mushroomMushroom)\n{\n    \n    \n}\n"
     },
     {
       "ID": 3,
-      "Title": "",
-      "Description": "",
-      "StartCode": "public void Execute()\n{\n    \n    \n}\n"
+      "Title": "Округление",
+      "Description": "Вам необходимо посчитать количество яблок в корзинах. К сожалению модуль, который вы используете для подсчетов принемеет только целые числа\n Округлите значение до целого испоьзуя Math.Round() и превратите число в целое используя (int).\n Используйте CountModule.Count(int count); для занесения результатов. ",
+      "StartCode": "public void Count(double fullness)\n{\n    \n    \n}\n"
     },
     {
       "ID": 4,
