@@ -1,8 +1,31 @@
-public class Level0Task8
+public class Level1Task3
 {
     public bool isTaskCompleted()
     {
-        return Check(4) && !Check(5);
+        Count(0.5);
+        var value1 = CountModule.Counter==1;
+        CountModule.Free();
+        Count(0.4);
+        var value2 = CountModule.Counter==0;
+        CountModule.Free();
+        Count(0.1);
+        var value3 = CountModule.Counter==0;
+        CountModule.Free();
+        Count(0.99);
+        var value4 = CountModule.Counter==1;
+        return value1&&value4&&!value2&&!value3;
     }
     //<playerCode>
+}
+public class CountModule
+{
+    public static int Counter { get; private set; }
+    public static void Count(int count)
+    {
+        Counter += count;
+    }
+    public static void Free()
+    {
+        Counter = 0;
+    }
 }
