@@ -16,27 +16,15 @@ public class Level0Task6
         if(waterGlassCount==2f&&flourGlassCount==0f)
             _task4Marker=true;
     }
-   public bool isTaskCompleted()
-   {
-       CountGlassCount(500,250,250); 
-       CountGlassCount(550,220,250);
-       CountGlassCount(0,220,250);
-       CountGlassCount(500,0,250);
-       try
-       {
-           CountGlassCount(500, 250, 0);
-       }
-       catch (ArgumentException e)
-       {
-           return _task1Marker && _task2Marker && _task3Marker && _task4Marker;
-       }
-       return false;
-   }
-
-   private void CountGlassCount(float flourV,float waterV,int glassCount)
-   {
-       Cook(waterGlassCount,flourGlassCount);
-   }
+    public bool isTaskCompleted()
+    {
+        CountGlassCount(500, 250, 250);
+        CountGlassCount(550, 220, 250);
+        CountGlassCount(0, 220, 250);
+        CountGlassCount(500, 0, 250);
+        return _task1Marker && _task2Marker && _task3Marker && _task4Marker;
+    }
+   
 
    //<playerCode>
 }
