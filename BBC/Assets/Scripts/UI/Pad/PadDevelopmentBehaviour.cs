@@ -186,12 +186,11 @@ namespace Scripts
             for (var i = challengesHolder.transform.childCount; i > 0; i--)
                 Destroy(challengesHolder.transform.GetChild(i - 1).gameObject);
             var challengeTexts = gameManager.TaskChallenges[gameManager.CurrentTaskNumber - 1];
-            var oneStarChallenge = Instantiate(ChallengePrefab, challengesHolder);
-            var twoStarsChallenge = Instantiate(ChallengePrefab, challengesHolder);
-            var threeStarsChallenge = Instantiate(ChallengePrefab, challengesHolder);
-            oneStarChallenge.GetComponentInChildren<TMP_Text>().text = challengeTexts.OneStarChallenge;
-            twoStarsChallenge.GetComponentInChildren<TMP_Text>().text = challengeTexts.TwoStarsChallenge;
-            threeStarsChallenge.GetComponentInChildren<TMP_Text>().text = challengeTexts.ThreeStarsChallenge;
+            foreach (var challengeText in challengeTexts)
+            {
+                var challenge = Instantiate(ChallengePrefab, challengesHolder);
+                challenge.GetComponentInChildren<TMP_Text>().text = challengeText.Challenge;
+            }
         }
 
         private IEnumerator ShowErrors_COR(List<CompilationError> errors)
@@ -211,12 +210,13 @@ namespace Scripts
         {
             var isTaskCompleted = (bool)proxy.Call("isTaskCompleted");
             ExecutingProgressBar.SetActive(true);
+            ExecutingProgressBar.GetComponent<Animator>().SetBool("isTaskCompleted", true);
             yield return StartCoroutine(PlayAnimation_COR(ExecutingProgressBar, "FillProgressBar"));
             if (isTaskCompleted)
-            {
-                ExecutingProgressBar.GetComponent<Animator>().Play("ChangeProgressBarColor");
+            {               
                 yield return StartCoroutine(TurnTaskIndicatorOn_COR(successColor));
                 onTaskCompleted.Invoke();
+                ExecutingProgressBar.GetComponent<Animator>().SetBool("isTaskCompleted", false);
             }
             else
             {
