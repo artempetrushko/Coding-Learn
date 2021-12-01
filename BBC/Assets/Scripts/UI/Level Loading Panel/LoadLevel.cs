@@ -13,6 +13,10 @@ namespace Scripts
         [SerializeField] private Image LoadBar;
         [SerializeField] private Text LoadBarText;
 
+        private GameManager gameManager;
+
+        public void LoadLevelAsync() => StartCoroutine(LoadLevelAsync_COR(gameManager.SceneIndex + 1));
+
         public IEnumerator LoadLevelAsync_COR(int sceneIndex)
         {
             LoadScreen.GetComponent<Animator>().Play("AppearLoadScreen");
@@ -25,6 +29,11 @@ namespace Scripts
                 LoadBarText.text = "Загрузка... " + (Mathf.Round(operation.progress * 100)) + "%";
                 yield return null;
             }
+        }
+
+        private void Start()
+        {
+            gameManager = GameManager.Instance;
         }
     }
 }

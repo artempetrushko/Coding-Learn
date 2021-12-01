@@ -24,8 +24,14 @@ namespace Scripts
         [SerializeField] private Button nextPageButton;
         [SerializeField] private GameObject textPagePrefab;
         [SerializeField] private GameObject textAndVideoPagePrefab;
+        [Header("Панель награждения")]
+        [SerializeField] private GameObject rewardingPanel;
+        [SerializeField] private GameObject challengesContainer;
+        [SerializeField] private Button closeRewardingPanelButton;
+        [SerializeField] private GameObject challengePrefab;
         [Space]
         [SerializeField] private UnityEvent onTaskStarted;
+        [SerializeField] private UnityEvent onLevelFinished;
 
         private GameManager gameManager;
         private UIManager uiManager;
@@ -43,6 +49,10 @@ namespace Scripts
         }
 
         public void FinishTask() => StartCoroutine(FinishTask_COR());
+
+        public void GoToNextTask() => StartCoroutine(GoToNextTask_COR());
+
+        public void GoToNextLevel() => StartCoroutine(GoToNextLevel_COR());
 
         public void OpenCodingTrainingPanel() => StartCoroutine(OpenCodingTrainingPanel_COR());
 
@@ -87,9 +97,25 @@ namespace Scripts
         private IEnumerator FinishTask_COR()
         {
             yield return StartCoroutine(HideTaskPanel_COR());
+            yield return StartCoroutine(CheckChallengesCompleting_COR());            
+        }
+
+        private IEnumerator GoToNextTask_COR()
+        {
+            closeRewardingPanelButton.gameObject.SetActive(false);
+            for (var i = challengesContainer.transform.childCount - 1; i >= 0; i--)
+                Destroy(challengesContainer.transform.GetChild(i).gameObject);
+            yield return StartCoroutine(PlayTimeline_COR(rewardingPanel, "HideRewardingPanel"));
+            rewardingPanel.SetActive(false);
             uiManager.BlackScreen.SetActive(true);
             yield return StartCoroutine(PlayAnimation_COR(uiManager.BlackScreen, "AppearBlackScreen"));
             gameManager.PlayNextCutscene();
+        }
+
+        private IEnumerator GoToNextLevel_COR()
+        {
+            onLevelFinished.Invoke();
+            yield break;
         }
 
         private void CreateCodingTrainingPages(int levelNumber, int taskNumber)
@@ -111,6 +137,25 @@ namespace Scripts
             currentOpenedTrainingPage = 0;
             trainingTheme.text = codingTrainingInfo[0].Title;
             previousPageButton.gameObject.SetActive(false);
+        }
+
+        private IEnumerator CheckChallengesCompleting_COR()
+        {
+            rewardingPanel.SetActive(true);
+            yield return StartCoroutine(PlayTimeline_COR(rewardingPanel, "ShowRewardingPanel"));
+            var challenges = gameManager.TaskChallenges[gameManager.CurrentTaskNumber - 1];
+            for (var i = 0; i < challenges.Length; i++)
+            {
+                var challenge = Instantiate(challengePrefab, challengesContainer.transform);
+                challenge.GetComponentInChildren<TMP_Text>().text = challenges[i].Challenge;
+                if (true)
+                {
+                    challenge.GetComponentInChildren<TMP_Text>().color = Color.green;
+                    yield return new WaitForSeconds(0.5f);
+                    yield return StartCoroutine(PlayAnimation_COR(challenge.GetComponentInChildren<Animator>().gameObject, "AppearStar"));
+                }
+            }
+            closeRewardingPanelButton.gameObject.SetActive(true);
         }
 
         private IEnumerator ShowTaskPanel_COR()
