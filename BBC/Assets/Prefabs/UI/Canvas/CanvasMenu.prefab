@@ -462,7 +462,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041F\u0440\u0438\u043D\u044F\u0442\u044C"
+  m_Text: "\u041F\u0440\u0438\u043D\u044F\u0442\u044C   "
 --- !u!1 &5175310129036649923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1554,8 +1554,6 @@ MonoBehaviour:
   MainMenuButtons: {fileID: 7032781561633503588}
   ContinueButton: {fileID: 7032781561326072937}
   WorldMapPanel: {fileID: 0}
-  ChooseLevelLabel: {fileID: 0}
-  BackToMainMenuButton: {fileID: 0}
 --- !u!114 &7032781561219939385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7401,7 +7399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6890306936674611568, guid: e1ff7020406e08d4bb1387e20a786d5a, type: 3}
       propertyPath: m_Text
-      value: "\u041E\u0431\u0443\u0447\u0435\u043D\u0438\u0435"
+      value: "\u0414\u043E\u043C"
       objectReference: {fileID: 0}
     - target: {fileID: 7872147070022661016, guid: e1ff7020406e08d4bb1387e20a786d5a, type: 3}
       propertyPath: m_Text

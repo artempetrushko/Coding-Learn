@@ -52,10 +52,8 @@ namespace Scripts
         [Serializable]
         public class Challenges
         {
-            public int TaskNumber;
-            public string OneStarChallenge;
-            public string TwoStarsChallenge;
-            public string ThreeStarsChallenge;
+            public string Challenge;
+            public double CheckValue;
         }
 
         public static class JsonHelper
@@ -84,7 +82,7 @@ namespace Scripts
         #region Данные из JSON и текстовых файлов
         [HideInInspector] public List<Story[]> StoryParts = new List<Story[]>();
         [HideInInspector] public ThemeTitle[] ThemeTitles;
-        [HideInInspector] public Challenges[] TaskChallenges;
+        [HideInInspector] public List<Challenges[]> TaskChallenges = new List<Challenges[]>();
         [HideInInspector] public List<TaskText[]> TaskTexts = new List<TaskText[]>();
         [HideInInspector] public List<string> Tests = new List<string>();     
         [HideInInspector] public List<TipMessage[]> Tips = new List<TipMessage[]>();     
@@ -103,7 +101,7 @@ namespace Scripts
         [Header("Счётчики")]
         public int TimeToNextTip = 180;
         [Header("Номер текущего задания")]
-        public int CurrentTaskNumber;
+        public int CurrentTaskNumber = 1;
         [Header("Текущая цель")]
         [HideInInspector] public string Target;
         [Header("Количество доступных тем в справочнике")]
@@ -118,8 +116,6 @@ namespace Scripts
         [HideInInspector] public ScriptTrigger CurrentScriptTrigger;
 
         [HideInInspector] public int SceneIndex;
-        [Tooltip("Кол-во предметов, необходимых для прохождения задания")]
-        [HideInInspector] public int TaskItemsCount;
         [HideInInspector] public bool IsTaskStarted;
         [HideInInspector] public List<bool> HasTasksCompleted = new List<bool>();
         [HideInInspector] public List<int> AvailableTipsCounts = new List<int>();
@@ -154,14 +150,12 @@ namespace Scripts
 
         private void Start()
         {
-            PlayCutscene(1);
+            PlayCutscene(CurrentTaskNumber);
         }
 
         private void Awake()
         {
             InitializeGameManager();
-            CurrentTaskNumber = 1;
-            TaskItemsCount = 0;
             SceneIndex = SceneManager.GetActiveScene().buildIndex;
             if (SceneIndex == SceneManager.sceneCountInBuildSettings - 1)
                 SceneIndex = 0;
@@ -197,8 +191,7 @@ namespace Scripts
         }
 
         private void GetDataFromFiles()
-        {          
-            TaskChallenges = GetResourcesAndWrite<Challenges>("Data/Challenges/Challenges Level " + SceneIndex);
+        {         
             ThemeTitles = GetResourcesAndWrite<ThemeTitle>("Data/Handbook Files/Theme Titles");
             for (var i = 0; i < SceneManager.sceneCountInBuildSettings - 1; i++)
                 TaskTexts.Add(GetResourcesAndWrite<TaskText>("Data/Tasks/Tasks Level " + i));
@@ -207,13 +200,14 @@ namespace Scripts
             for (var i = 1; i <= TaskTexts[SceneIndex].Length; i++)
             {
                 Tests.Add(Resources.Load<TextAsset>("Data/Tests/Tests Level " + SceneIndex + " Task " + i).text);
-                Tips.Add(GetResourcesAndWrite<TipMessage>("Data/Tips/Tips Level " + SceneIndex + " Task " + i));
+                Tips.Add(GetResourcesAndWrite<TipMessage>("Data/Tips/Level " + SceneIndex + "/Tips Level " + SceneIndex + " Task " + i));
+                TaskChallenges.Add(GetResourcesAndWrite<Challenges>("Data/Challenges/Level " + SceneIndex + "/Challenges Level " + SceneIndex + " Task " + i));
             }
             for (var i = 0; i <= SceneIndex; i++)
             {
                 CodingTrainingInfos.Add(new List<CodingTrainingInfo[]>());
                 for (var j = 1; j <= TaskTexts[SceneIndex].Length; j++)
-                    CodingTrainingInfos[i].Add(GetResourcesAndWrite<CodingTrainingInfo>("Data/Coding Training/Coding Training Level " + i + " Task " + j));
+                    CodingTrainingInfos[i].Add(GetResourcesAndWrite<CodingTrainingInfo>("Data/Coding Training/Level " + i + "/Coding Training Level " + i + " Task " + j));
             }
         }
 
