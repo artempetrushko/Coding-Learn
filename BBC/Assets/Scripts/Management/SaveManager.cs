@@ -23,7 +23,6 @@ namespace Scripts
             PlayerPrefs.SetFloat("RotationZ", player.transform.eulerAngles.z);
 
             PlayerPrefs.SetInt("CoinsCount", GameManager.Instance.CoinsCount);
-            PlayerPrefs.SetInt("TaskItemsCount", GameManager.Instance.TaskItemsCount);
             PlayerPrefs.SetInt("SceneIndex", SceneManager.GetActiveScene().buildIndex);
 
             var availableTipsCounts = GameManager.Instance.AvailableTipsCounts;
@@ -52,7 +51,6 @@ namespace Scripts
             player.transform.position = new Vector3(PlayerPrefs.GetFloat("PositionX"), PlayerPrefs.GetFloat("PositionY"), PlayerPrefs.GetFloat("PositionZ"));
             player.transform.eulerAngles = new Vector3(PlayerPrefs.GetFloat("RotationX"), PlayerPrefs.GetFloat("RotationY"), PlayerPrefs.GetFloat("RotationZ"));
             GameManager.Instance.CoinsCount = PlayerPrefs.GetInt("CoinsCount");
-            GameManager.Instance.TaskItemsCount = PlayerPrefs.GetInt("TaskItemsCount");
             for (var i = 0; i < GameManager.Instance.HasTasksCompleted.Count; i++)
             {
                 GameManager.Instance.HasTasksCompleted[i] = PlayerPrefs.GetInt("Task " + (i + 1) + " completed") == 1;
