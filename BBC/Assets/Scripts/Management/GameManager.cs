@@ -206,7 +206,7 @@ namespace Scripts
             for (var i = 0; i <= SceneIndex; i++)
             {
                 CodingTrainingInfos.Add(new List<CodingTrainingInfo[]>());
-                for (var j = 1; j <= TaskTexts[SceneIndex].Length; j++)
+                for (var j = 1; j <= TaskTexts[i].Length; j++)
                     CodingTrainingInfos[i].Add(GetResourcesAndWrite<CodingTrainingInfo>("Data/Coding Training/Level " + i + "/Coding Training Level " + i + " Task " + j));
             }
         }

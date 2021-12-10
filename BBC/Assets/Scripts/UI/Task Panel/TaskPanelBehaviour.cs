@@ -116,6 +116,9 @@ namespace Scripts
         {
             onLevelFinished.Invoke();
             yield break;
+            yield break;
+            yield break;
+            yield break;
         }
 
         private void CreateCodingTrainingPages(int levelNumber, int taskNumber)
