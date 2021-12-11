@@ -10,8 +10,6 @@ namespace Scripts
         [Header("Панель обучения")]
         public GameObject TrainingPanel;
         public GameObject TrainingPanelBackground;
-        [Space]
-        public UnityEvent OnLevelStarted;
 
         [Header("Элементы UI для переключения состояния")]
         [SerializeField] private PadDevelopmentBehaviour Pad_Dev;
@@ -21,7 +19,6 @@ namespace Scripts
 
         public void ShowFirstTip(GameObject tip)
         {
-            //gameManager.Player.GetComponent<PlayerBehaviour>().FreezePlayer();
             TrainingPanel.SetActive(true);
             TrainingPanelBackground.SetActive(true);
             tip.SetActive(true);
@@ -32,59 +29,12 @@ namespace Scripts
         {
             TrainingPanel.SetActive(false);
             TrainingPanelBackground.SetActive(false);
-            //gameManager.Player.GetComponent<PlayerBehaviour>().UnfreezePlayer();
         }
-
-        #region Методы для события OnTipEnable
-        public void EnableTip_Level_Training_Tip_1()
-        {
-            //uiManager.TaskPanelBehaviour.TaskInfoButton.interactable = false;
-            uiManager.PadMenuBehaviour.ShowIDEButton.interactable = false;
-            uiManager.PadMenuBehaviour.ShowHandbookButton.interactable = false;
-        }
-
-        public void EnableTip_Level_Training_Tip_5()
-        {
-            Pad_Dev.StartButton.interactable = false;
-            Pad_Dev.ResetButton.interactable = false;
-            Pad_Dev.TipButton.gameObject.SetActive(true);
-            Pad_Dev.TipButton.interactable = false;
-        }
-
-        public void EnableTip_Level_1_Tip_11()
-        {
-            gameManager.Player.GetComponent<PlayerBehaviour>().FreezePlayer();
-
-        }
-
-        public void EnableTip_Level_1_Tip_14()
-        {
-
-        }
-        #endregion
-
-        #region Методы для события OnTipDisable
-        public void DisableTip_Level_Training_Tip_4()
-        {
-            //uiManager.TaskPanelBehaviour.TaskInfoButton.interactable = true;
-            uiManager.PadMenuBehaviour.ShowIDEButton.interactable = true;
-            uiManager.PadMenuBehaviour.ShowHandbookButton.interactable = true;
-        }
-
-        public void DisableTip_Level_1_Tip_10()
-        {
-            Pad_Dev.StartButton.interactable = true;
-            Pad_Dev.ResetButton.interactable = true;
-            Pad_Dev.TipButton.gameObject.SetActive(false);
-            Pad_Dev.TipButton.interactable = true;
-        }
-        #endregion
 
         private void Start()
         {
             gameManager = GameManager.Instance;
             uiManager = UIManager.Instance;
-            OnLevelStarted.Invoke();
         }
     }
 }

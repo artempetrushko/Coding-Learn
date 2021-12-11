@@ -136,7 +136,6 @@ namespace Scripts
 
         private IEnumerator ChangeLevel_COR()
         {
-            SaveManager.Save_NextLevel();
             uiManager.BlackScreen.transform.localScale = new Vector3(1, 1, 1);
             uiManager.BlackScreen.GetComponentInChildren<Animator>().Play("AppearBlackScreen");
             yield return new WaitForSeconds(1.4f);

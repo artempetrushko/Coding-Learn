@@ -122,9 +122,9 @@ namespace Scripts
 
         public TaskText GetCurrentTask() => TaskTexts[SceneIndex][CurrentTaskNumber - 1];
 
-        public CodingTrainingInfo[] GetCurrentCodingTrainingInfo() => CodingTrainingInfos[SceneIndex][CurrentTaskNumber];
+        public CodingTrainingInfo[] GetCurrentCodingTrainingInfo() => CodingTrainingInfos[SceneIndex][CurrentTaskNumber - 1];
 
-        public CodingTrainingInfo[] GetCodingTrainingInfo(int themeNumber, int subThemeNumber) => CodingTrainingInfos[themeNumber - 1][subThemeNumber - 1];
+        public CodingTrainingInfo[] GetCodingTrainingInfo(int themeNumber, int subThemeNumber) => CodingTrainingInfos[themeNumber][subThemeNumber];
 
         public string GetTests() => string.Copy(Tests[CurrentTaskNumber - 1]);
 
@@ -166,7 +166,6 @@ namespace Scripts
             {
                 if (PlayerPrefs.HasKey("IsTransitToNextLevel"))
                 {
-                    SaveManager.Load_NextLevel();
                     PlayerPrefs.DeleteAll();
                 }
                 else

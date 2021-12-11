@@ -43,7 +43,7 @@ namespace Scripts
             var taskText = gameManager.GetCurrentTask();
             taskTitle.text = taskText.Title;
             taskDescription.text = taskText.Description;
-            CreateCodingTrainingPages(gameManager.SceneIndex + 1, gameManager.CurrentTaskNumber);         
+            CreateCodingTrainingPages(gameManager.SceneIndex, gameManager.CurrentTaskNumber - 1);         
             OpenCodingTrainingPanel_Special();
             onTaskStarted.Invoke();
         }
@@ -60,10 +60,11 @@ namespace Scripts
 
         public void CloseCodingTrainingPanel() => StartCoroutine(CloseCodingTrainingPanel_COR());
 
-        public void ChangeCodingTrainingPage(bool shouldIncreasePageNumber)
+        public void ChangeCodingTrainingPage(int coefficient)
         {
             codingTrainingPages.transform.GetChild(currentOpenedTrainingPage).gameObject.SetActive(false);
-            codingTrainingPages.transform.GetChild(shouldIncreasePageNumber ? ++currentOpenedTrainingPage : --currentOpenedTrainingPage).gameObject.SetActive(true);
+            currentOpenedTrainingPage += coefficient;
+            codingTrainingPages.transform.GetChild(currentOpenedTrainingPage).gameObject.SetActive(true);
             nextPageButton.gameObject.SetActive(currentOpenedTrainingPage < codingTrainingPages.transform.childCount - 1);
             previousPageButton.gameObject.SetActive(currentOpenedTrainingPage > 0);
             trainingTheme.text = gameManager.GetCurrentCodingTrainingInfo()[currentOpenedTrainingPage].Title;
@@ -116,15 +117,12 @@ namespace Scripts
         {
             onLevelFinished.Invoke();
             yield break;
-            yield break;
-            yield break;
-            yield break;
         }
 
         private void CreateCodingTrainingPages(int levelNumber, int taskNumber)
         {
-            for (var i = codingTrainingPages.transform.childCount; i > 0; i--)
-                Destroy(codingTrainingPages.transform.GetChild(i - 1).gameObject);
+            for (var i = codingTrainingPages.transform.childCount - 1; i >= 0; i--)
+                Destroy(codingTrainingPages.transform.GetChild(i).gameObject);
             var codingTrainingInfo = gameManager.GetCodingTrainingInfo(levelNumber, taskNumber);
             for (var i = 0; i < codingTrainingInfo.Length; i++)
             {
@@ -184,6 +182,8 @@ namespace Scripts
 
         private IEnumerator OpenCodingTrainingPanel_COR()
         {
+            if (currentOpenedTrainingPage != 0)
+                ChangeCodingTrainingPage(-currentOpenedTrainingPage);
             yield return StartCoroutine(HideTaskPanel_COR());
             yield return StartCoroutine(ShowCodingTrainingPanel_COR());
         }
