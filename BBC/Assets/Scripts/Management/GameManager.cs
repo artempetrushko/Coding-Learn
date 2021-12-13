@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
 
 namespace Scripts
 {
@@ -23,9 +24,9 @@ namespace Scripts
         }
 
         [Serializable]
-        public class LevelMessage : Letter
+        public class Story
         {
-            public int LevelNumber;
+            public string Script;
         }
 
         [Serializable]
@@ -51,10 +52,8 @@ namespace Scripts
         [Serializable]
         public class Challenges
         {
-            public int TaskNumber;
-            public string OneStarChallenge;
-            public string TwoStarsChallenge;
-            public string ThreeStarsChallenge;
+            public string Challenge;
+            public double CheckValue;
         }
 
         public static class JsonHelper
@@ -81,9 +80,9 @@ namespace Scripts
         #endregion
 
         #region Данные из JSON и текстовых файлов
-        [HideInInspector] public LevelMessage[] StartMessages;
+        [HideInInspector] public List<Story[]> StoryParts = new List<Story[]>();
         [HideInInspector] public ThemeTitle[] ThemeTitles;
-        [HideInInspector] public Challenges[] TaskChallenges;
+        [HideInInspector] public List<Challenges[]> TaskChallenges = new List<Challenges[]>();
         [HideInInspector] public List<TaskText[]> TaskTexts = new List<TaskText[]>();
         [HideInInspector] public List<string> Tests = new List<string>();     
         [HideInInspector] public List<TipMessage[]> Tips = new List<TipMessage[]>();     
@@ -94,19 +93,21 @@ namespace Scripts
         public static GameManager Instance = null;
 
         [Header("Игрок")]
-        public GameObject Player;
+        [HideInInspector] public GameObject Player;
         [Header("Текущие камеры")]
         [HideInInspector] public Camera CurrentSceneCamera;
-        [HideInInspector] public Camera CurrentDialogCamera;
-        [Header("Счётчики")]
+        [HideInInspector] public Camera CurrentDialogCamera;        
         [HideInInspector] public int CoinsCount;
+        [Header("Счётчики")]
         public int TimeToNextTip = 180;
         [Header("Номер текущего задания")]
-        public int CurrentTaskNumber;
+        public int CurrentTaskNumber = 1;
         [Header("Текущая цель")]
         [HideInInspector] public string Target;
         [Header("Количество доступных тем в справочнике")]
         public int AvailableThemesCount;
+        [Header("Катсцены")]
+        public List<PlayableAsset> Cutscenes;
 
         [HideInInspector] public List<InteractiveItem> ScriptItems = new List<InteractiveItem>();
         [HideInInspector] public List<InteractiveItem> OtherItems = new List<InteractiveItem>();
@@ -115,17 +116,15 @@ namespace Scripts
         [HideInInspector] public ScriptTrigger CurrentScriptTrigger;
 
         [HideInInspector] public int SceneIndex;
-        [Tooltip("Кол-во предметов, необходимых для прохождения задания")]
-        [HideInInspector] public int TaskItemsCount;
         [HideInInspector] public bool IsTaskStarted;
         [HideInInspector] public List<bool> HasTasksCompleted = new List<bool>();
         [HideInInspector] public List<int> AvailableTipsCounts = new List<int>();
 
         public TaskText GetCurrentTask() => TaskTexts[SceneIndex][CurrentTaskNumber - 1];
 
-        public CodingTrainingInfo[] GetCurrentCodingTrainingInfo() => CodingTrainingInfos[SceneIndex][CurrentTaskNumber];
+        public CodingTrainingInfo[] GetCurrentCodingTrainingInfo() => CodingTrainingInfos[SceneIndex][CurrentTaskNumber - 1];
 
-        public CodingTrainingInfo[] GetCodingTrainingInfo(int themeNumber, int subThemeNumber) => CodingTrainingInfos[themeNumber - 1][subThemeNumber - 1];
+        public CodingTrainingInfo[] GetCodingTrainingInfo(int themeNumber, int subThemeNumber) => CodingTrainingInfos[themeNumber][subThemeNumber];
 
         public string GetTests() => string.Copy(Tests[CurrentTaskNumber - 1]);
 
@@ -136,11 +135,27 @@ namespace Scripts
             return Tips[CurrentTaskNumber - 1][tipNumber].Tip;
         }
 
+        public void PlayNextCutscene()
+        {
+            CurrentTaskNumber++;
+            PlayCutscene(CurrentTaskNumber);
+        }
+
+        private void PlayCutscene(int cutsceneNumber)
+        {
+            var playableDirector = gameObject.GetComponent<PlayableDirector>();
+            playableDirector.time = 0;
+            playableDirector.Play(Cutscenes[cutsceneNumber - 1]);
+        }
+
+        private void Start()
+        {
+            PlayCutscene(CurrentTaskNumber);
+        }
+
         private void Awake()
         {
             InitializeGameManager();
-            CurrentTaskNumber = 1;
-            TaskItemsCount = 0;
             SceneIndex = SceneManager.GetActiveScene().buildIndex;
             if (SceneIndex == SceneManager.sceneCountInBuildSettings - 1)
                 SceneIndex = 0;
@@ -151,7 +166,6 @@ namespace Scripts
             {
                 if (PlayerPrefs.HasKey("IsTransitToNextLevel"))
                 {
-                    SaveManager.Load_NextLevel();
                     PlayerPrefs.DeleteAll();
                 }
                 else
@@ -176,22 +190,23 @@ namespace Scripts
         }
 
         private void GetDataFromFiles()
-        {          
-            TaskChallenges = GetResourcesAndWrite<Challenges>("Data/Challenges/Challenges Level " + SceneIndex);
-            StartMessages = GetResourcesAndWrite<LevelMessage>("Data/Start Messages");
+        {         
             ThemeTitles = GetResourcesAndWrite<ThemeTitle>("Data/Handbook Files/Theme Titles");
             for (var i = 0; i < SceneManager.sceneCountInBuildSettings - 1; i++)
                 TaskTexts.Add(GetResourcesAndWrite<TaskText>("Data/Tasks/Tasks Level " + i));
+            for (var i = 1; i <= TaskTexts[SceneIndex].Length + 1; i++)
+                StoryParts.Add(GetResourcesAndWrite<Story>("Data/Story/Level " + SceneIndex + "/Story Level " + SceneIndex + " Part " + i));
             for (var i = 1; i <= TaskTexts[SceneIndex].Length; i++)
             {
                 Tests.Add(Resources.Load<TextAsset>("Data/Tests/Tests Level " + SceneIndex + " Task " + i).text);
-                Tips.Add(GetResourcesAndWrite<TipMessage>("Data/Tips/Tips Level " + SceneIndex + " Task " + i));
+                Tips.Add(GetResourcesAndWrite<TipMessage>("Data/Tips/Level " + SceneIndex + "/Tips Level " + SceneIndex + " Task " + i));
+                TaskChallenges.Add(GetResourcesAndWrite<Challenges>("Data/Challenges/Level " + SceneIndex + "/Challenges Level " + SceneIndex + " Task " + i));
             }
             for (var i = 0; i <= SceneIndex; i++)
             {
                 CodingTrainingInfos.Add(new List<CodingTrainingInfo[]>());
-                for (var j = 1; j <= TaskTexts[SceneIndex].Length; j++)
-                    CodingTrainingInfos[i].Add(GetResourcesAndWrite<CodingTrainingInfo>("Data/Coding Training/Coding Training Level " + i + " Task " + j));
+                for (var j = 1; j <= TaskTexts[i].Length; j++)
+                    CodingTrainingInfos[i].Add(GetResourcesAndWrite<CodingTrainingInfo>("Data/Coding Training/Level " + i + "/Coding Training Level " + i + " Task " + j));
             }
         }
 

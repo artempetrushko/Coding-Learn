@@ -46,11 +46,11 @@ namespace Scripts
 
         public void ReturnToPreviousPage() => StartCoroutine(ReturnToPreviousPage_COR());
 
-        public void UnlockProgrammingInfo(int chapterNumber)
+        public void UnlockProgrammingInfo()
         {
-            var buttonToUnlock = subThemeButtons.transform.GetChild(gameManager.AvailableThemesCount - 1).GetChild(chapterNumber - 1).GetComponent<Button>();
+            var buttonToUnlock = subThemeButtons.transform.GetChild(gameManager.AvailableThemesCount - 1).GetComponentInChildren<VerticalLayoutGroup>().transform.GetChild(gameManager.CurrentTaskNumber - 1).GetComponent<Button>();
             buttonToUnlock.interactable = true;
-            //buttonToUnlock.GetComponentInChildren<Text>().text = gameManager.HandbookLetters[gameManager.AvailableThemesCount - 1][chapterNumber - 1].Title;
+            buttonToUnlock.GetComponentInChildren<Text>().text = gameManager.GetCurrentCodingTrainingInfo()[gameManager.CurrentTaskNumber - 1].Title;
         }
 
         private IEnumerator OpenHandbook_COR()
@@ -87,16 +87,15 @@ namespace Scripts
             for (var i = 0; i < gameManager.AvailableThemesCount; i++)
             {
                 var themeButton = Instantiate(themeButtonPrefab, themeButtons);
-                var themeNumber = i + 1;
+                var themeNumber = i;
                 themeButton.GetComponentInChildren<Text>().text = gameManager.ThemeTitles[i].Title;
                 themeButton.GetComponent<Button>().onClick.AddListener(() => OpenSubThemesList(themeNumber));
 
                 var subThemeContainer = Instantiate(subThemeButtonsContainerPrefab, subThemeButtons.transform);
-                var parentPosition = subThemeButtons.transform.position;
-                for (var j = 0; j < gameManager.CodingTrainingInfos[gameManager.SceneIndex].Count; j++)
+                for (var j = 0; j < gameManager.CodingTrainingInfos[i].Count; j++)
                 {
                     var subThemeButton = Instantiate(themeButtonPrefab, subThemeContainer.transform.GetChild(0).GetChild(0));
-                    var subThemeNumber = j + 1;
+                    var subThemeNumber = j;
                     if (i == gameManager.AvailableThemesCount - 1)
                     {
                         subThemeButton.GetComponentInChildren<Text>().text = "???";
@@ -119,7 +118,7 @@ namespace Scripts
 
         private IEnumerator MoveSubThemeButtons_COR(bool willBeShown, string animation)
         {
-            var subThemesList = subThemeButtons.transform.GetChild(currentThemeNumber - 1).gameObject;
+            var subThemesList = subThemeButtons.transform.GetChild(currentThemeNumber).gameObject;
             if (willBeShown)
             {
                 subThemesList.SetActive(true);

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Video;
 using UnityEngine.Events;
+using System.Linq;
 
 namespace Scripts
 {
@@ -23,8 +24,14 @@ namespace Scripts
         [SerializeField] private Button nextPageButton;
         [SerializeField] private GameObject textPagePrefab;
         [SerializeField] private GameObject textAndVideoPagePrefab;
+        [Header("Панель награждения")]
+        [SerializeField] private GameObject rewardingPanel;
+        [SerializeField] private GameObject challengesContainer;
+        [SerializeField] private Button closeRewardingPanelButton;
+        [SerializeField] private GameObject challengePrefab;
         [Space]
         [SerializeField] private UnityEvent onTaskStarted;
+        [SerializeField] private UnityEvent onLevelFinished;
 
         private GameManager gameManager;
         private UIManager uiManager;
@@ -36,12 +43,16 @@ namespace Scripts
             var taskText = gameManager.GetCurrentTask();
             taskTitle.text = taskText.Title;
             taskDescription.text = taskText.Description;
-            CreateCodingTrainingPages(gameManager.SceneIndex + 1, gameManager.CurrentTaskNumber);         
+            CreateCodingTrainingPages(gameManager.SceneIndex, gameManager.CurrentTaskNumber - 1);         
             OpenCodingTrainingPanel_Special();
             onTaskStarted.Invoke();
         }
 
         public void FinishTask() => StartCoroutine(FinishTask_COR());
+
+        public void GoToNextTask() => StartCoroutine(GoToNextTask_COR());
+
+        public void GoToNextLevel() => StartCoroutine(GoToNextLevel_COR());
 
         public void OpenCodingTrainingPanel() => StartCoroutine(OpenCodingTrainingPanel_COR());
 
@@ -49,10 +60,11 @@ namespace Scripts
 
         public void CloseCodingTrainingPanel() => StartCoroutine(CloseCodingTrainingPanel_COR());
 
-        public void ChangeCodingTrainingPage(bool shouldIncreasePageNumber)
+        public void ChangeCodingTrainingPage(int coefficient)
         {
             codingTrainingPages.transform.GetChild(currentOpenedTrainingPage).gameObject.SetActive(false);
-            codingTrainingPages.transform.GetChild(shouldIncreasePageNumber ? ++currentOpenedTrainingPage : --currentOpenedTrainingPage).gameObject.SetActive(true);
+            currentOpenedTrainingPage += coefficient;
+            codingTrainingPages.transform.GetChild(currentOpenedTrainingPage).gameObject.SetActive(true);
             nextPageButton.gameObject.SetActive(currentOpenedTrainingPage < codingTrainingPages.transform.childCount - 1);
             previousPageButton.gameObject.SetActive(currentOpenedTrainingPage > 0);
             trainingTheme.text = gameManager.GetCurrentCodingTrainingInfo()[currentOpenedTrainingPage].Title;
@@ -86,13 +98,31 @@ namespace Scripts
         private IEnumerator FinishTask_COR()
         {
             yield return StartCoroutine(HideTaskPanel_COR());
-            gameManager.CurrentScriptTrigger.MakeTransitionToNextTask();
+            yield return StartCoroutine(CheckChallengesCompleting_COR());            
+        }
+
+        private IEnumerator GoToNextTask_COR()
+        {
+            closeRewardingPanelButton.gameObject.SetActive(false);
+            for (var i = challengesContainer.transform.childCount - 1; i >= 0; i--)
+                Destroy(challengesContainer.transform.GetChild(i).gameObject);
+            yield return StartCoroutine(PlayTimeline_COR(rewardingPanel, "HideRewardingPanel"));
+            rewardingPanel.SetActive(false);
+            uiManager.BlackScreen.SetActive(true);
+            yield return StartCoroutine(PlayAnimation_COR(uiManager.BlackScreen, "AppearBlackScreen"));
+            gameManager.PlayNextCutscene();
+        }
+
+        private IEnumerator GoToNextLevel_COR()
+        {
+            onLevelFinished.Invoke();
+            yield break;
         }
 
         private void CreateCodingTrainingPages(int levelNumber, int taskNumber)
         {
-            for (var i = codingTrainingPages.transform.childCount; i > 0; i--)
-                Destroy(codingTrainingPages.transform.GetChild(i - 1).gameObject);
+            for (var i = codingTrainingPages.transform.childCount - 1; i >= 0; i--)
+                Destroy(codingTrainingPages.transform.GetChild(i).gameObject);
             var codingTrainingInfo = gameManager.GetCodingTrainingInfo(levelNumber, taskNumber);
             for (var i = 0; i < codingTrainingInfo.Length; i++)
             {
@@ -108,6 +138,25 @@ namespace Scripts
             currentOpenedTrainingPage = 0;
             trainingTheme.text = codingTrainingInfo[0].Title;
             previousPageButton.gameObject.SetActive(false);
+        }
+
+        private IEnumerator CheckChallengesCompleting_COR()
+        {
+            rewardingPanel.SetActive(true);
+            yield return StartCoroutine(PlayTimeline_COR(rewardingPanel, "ShowRewardingPanel"));
+            var challenges = gameManager.TaskChallenges[gameManager.CurrentTaskNumber - 1];
+            for (var i = 0; i < challenges.Length; i++)
+            {
+                var challenge = Instantiate(challengePrefab, challengesContainer.transform);
+                challenge.GetComponentInChildren<TMP_Text>().text = challenges[i].Challenge;
+                if (true)
+                {
+                    challenge.GetComponentInChildren<TMP_Text>().color = Color.green;
+                    yield return new WaitForSeconds(0.5f);
+                    yield return StartCoroutine(PlayAnimation_COR(challenge.GetComponentInChildren<Animator>().gameObject, "AppearStar"));
+                }
+            }
+            closeRewardingPanelButton.gameObject.SetActive(true);
         }
 
         private IEnumerator ShowTaskPanel_COR()
@@ -133,6 +182,8 @@ namespace Scripts
 
         private IEnumerator OpenCodingTrainingPanel_COR()
         {
+            if (currentOpenedTrainingPage != 0)
+                ChangeCodingTrainingPage(-currentOpenedTrainingPage);
             yield return StartCoroutine(HideTaskPanel_COR());
             yield return StartCoroutine(ShowCodingTrainingPanel_COR());
         }
@@ -143,6 +194,14 @@ namespace Scripts
                 uiManager.PadMode = PadMode.HandbookSubThemes;
             yield return StartCoroutine(HideCodingTrainingPanel_COR());
             yield return StartCoroutine(ShowTaskPanel_COR());
+        }
+
+        private IEnumerator PlayAnimation_COR(GameObject animatorHolder, string animationName)
+        {
+            var animator = animatorHolder.GetComponent<Animator>();
+            var clip = animator.runtimeAnimatorController.animationClips.Where(x => x.name == animationName).First();
+            animator.Play(clip.name);
+            yield return new WaitForSeconds(clip.length);
         }
 
         private IEnumerator PlayTimeline_COR(GameObject director, string playableAssetName = null)

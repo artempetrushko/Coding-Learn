@@ -226,7 +226,6 @@ namespace Scripts
         private IEnumerator MakeActions_Level_3_Task_6()
         {
             yield return StartCoroutine(PlayPostTaskAnimation_COR("AnimatedItems_Task_6"));
-            gameManager.TaskItemsCount++;
             yield return StartCoroutine(ReturnToScene_COR());
             TurnOnScenarioTrigger2_Level_3();
         }
@@ -234,7 +233,6 @@ namespace Scripts
         private IEnumerator MakeActions_Level_3_Task_7()
         {
             yield return StartCoroutine(PlayPostTaskAnimation_COR("AnimatedItems_Task_7"));
-            gameManager.TaskItemsCount++;
             yield return StartCoroutine(ReturnToScene_COR());
             TurnOnScenarioTrigger2_Level_3();
         }
@@ -242,19 +240,18 @@ namespace Scripts
         private IEnumerator MakeActions_Level_3_Task_8()
         {
             yield return StartCoroutine(PlayPostTaskAnimation_COR("AnimatedItems_Task_8"));
-            gameManager.TaskItemsCount++;
             yield return StartCoroutine(ReturnToScene_COR());
             TurnOnScenarioTrigger2_Level_3();
         }
 
         private void TurnOnScenarioTrigger2_Level_3()
         {
-            if (gameManager.TaskItemsCount == 3)
+            if (/*gameManager.TaskItemsCount == 3*/gameObject.activeInHierarchy)
             {
                 triggersBehaviour.ActivateTrigger_ScriptMoment(2);
                 OnTargetChanged.Invoke("Открыть ворота и покинуть поселение");
             }
-            else OnTargetChanged.Invoke("Найти ключи, чтобы открыть ворота (" + gameManager.TaskItemsCount + "/3)");
+            else OnTargetChanged.Invoke("Найти ключи, чтобы открыть ворота (" + /*gameManager.TaskItemsCount*/"/3)");
         }
         #endregion
 
