@@ -30,16 +30,16 @@ namespace Scripts
             if (TipFiller.IsActive())
                 TipFiller.gameObject.SetActive(false);
             Tip.text = gameManager.GetNewTipText();
-            if (gameManager.AvailableTipsCounts[gameManager.CurrentTaskNumber - 1] > 0)
+            if (gameManager.AvailableTipsData[gameManager.CurrentTaskNumber - 1].Amount > 0)
                 WaitUntilNextTip();
         }
 
         public void OpenHelpPanel()
         {
             var taskNumber = gameManager.CurrentTaskNumber;
-            if (gameManager.AvailableTipsCounts[taskNumber - 1] != gameManager.Tips[taskNumber - 1].Length)
+            if (gameManager.AvailableTipsData[taskNumber - 1].Amount != gameManager.Tips[taskNumber - 1].Length)
             {
-                var tipNumber = gameManager.Tips[taskNumber - 1].Length - gameManager.AvailableTipsCounts[taskNumber - 1] - 1;
+                var tipNumber = gameManager.Tips[taskNumber - 1].Length - gameManager.AvailableTipsData[taskNumber - 1].Amount - 1;
                 Tip.text = gameManager.Tips[taskNumber - 1][tipNumber].Tip;
             }
             else Tip.text = "";

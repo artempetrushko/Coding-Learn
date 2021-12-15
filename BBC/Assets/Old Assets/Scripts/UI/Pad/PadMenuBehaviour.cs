@@ -28,7 +28,7 @@ namespace Scripts
         [Tooltip("Кнопка перехода в режим справочника")]
         public Button ShowHandbookButton;
 
-        [HideInInspector] public List<int> AvailableTipsCounts;
+        [HideInInspector] public List<TipsData> AvailableTipsCounts;
         [HideInInspector] public bool IsPadCalled;
         [HideInInspector] public bool IsCallAvailable;
 
@@ -88,7 +88,7 @@ namespace Scripts
             IsPadCalled = false;
             IsCallAvailable = true;
             ShowIDEButton.interactable = gameManager.SceneIndex == 0;
-            AvailableTipsCounts = gameManager.AvailableTipsCounts;
+            AvailableTipsCounts = gameManager.AvailableTipsData;
             UpdatePadData();
         }
     }
