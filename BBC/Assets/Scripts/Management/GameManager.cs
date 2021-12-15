@@ -7,6 +7,18 @@ using UnityEngine.Playables;
 
 namespace Scripts
 {
+    public class TipsData
+    {
+        public int Amount;
+        public bool IsShown;
+
+        public TipsData(int count)
+        {
+            Amount = count;
+            IsShown = false;
+        }
+    }
+
     public class GameManager : MonoBehaviour
     {
         #region Сериализуемые классы  
@@ -117,8 +129,10 @@ namespace Scripts
 
         [HideInInspector] public int SceneIndex;
         [HideInInspector] public bool IsTaskStarted;
+        [HideInInspector] public int SpentTime;
+        [HideInInspector] public bool IsTimerStopped;
         [HideInInspector] public List<bool> HasTasksCompleted = new List<bool>();
-        [HideInInspector] public List<int> AvailableTipsCounts = new List<int>();
+        [HideInInspector] public List<TipsData> AvailableTipsData = new List<TipsData>();
 
         public TaskText GetCurrentTask() => TaskTexts[SceneIndex][CurrentTaskNumber - 1];
 
@@ -130,8 +144,9 @@ namespace Scripts
 
         public string GetNewTipText()
         {
-            AvailableTipsCounts[CurrentTaskNumber - 1]--;
-            var tipNumber = Tips[CurrentTaskNumber - 1].Length - AvailableTipsCounts[CurrentTaskNumber - 1];
+            AvailableTipsData[CurrentTaskNumber - 1].Amount--;
+            AvailableTipsData[CurrentTaskNumber - 1].IsShown = true;
+            var tipNumber = Tips[CurrentTaskNumber - 1].Length - AvailableTipsData[CurrentTaskNumber - 1].Amount;
             return Tips[CurrentTaskNumber - 1][tipNumber].Tip;
         }
 
@@ -139,6 +154,17 @@ namespace Scripts
         {
             CurrentTaskNumber++;
             PlayCutscene(CurrentTaskNumber);
+        }
+
+        public IEnumerator StartTimer_COR()
+        {
+            SpentTime = 0;
+            IsTimerStopped = false;
+            while (!IsTimerStopped)
+            {
+                yield return new WaitForSeconds(1f);
+                SpentTime++;
+            }
         }
 
         private void PlayCutscene(int cutsceneNumber)
@@ -160,26 +186,10 @@ namespace Scripts
             if (SceneIndex == SceneManager.sceneCountInBuildSettings - 1)
                 SceneIndex = 0;
             GetDataFromFiles();
-            for (var i = 0; i <= TaskTexts[SceneIndex].Length; i++)
-                HasTasksCompleted.Add(false);
-            if (PlayerPrefs.HasKey("CoinsCount"))
-            {
-                if (PlayerPrefs.HasKey("IsTransitToNextLevel"))
-                {
-                    PlayerPrefs.DeleteAll();
-                }
-                else
-                {
-                    if (PlayerPrefs.GetInt("SceneIndex") == SceneIndex && SceneIndex <= 4) // второе условие позже убрать
-                        SaveManager.Load();
-                }
-            }
             for (var i = 0; i < TaskTexts[SceneIndex].Length; i++)
-                AvailableTipsCounts.Add(Tips[i].Length);
-            if (PlayerPrefs.HasKey("PositionX"))
             {
-                for (var i = 0; i < AvailableTipsCounts.Count; i++)
-                    AvailableTipsCounts[i] = PlayerPrefs.GetInt("Available Tips Count (Task " + (i + 1) + ")");
+                AvailableTipsData.Add(new TipsData(Tips[i].Length));
+                HasTasksCompleted.Add(false);
             }
         }
 
@@ -191,7 +201,7 @@ namespace Scripts
 
         private void GetDataFromFiles()
         {         
-            ThemeTitles = GetResourcesAndWrite<ThemeTitle>("Data/Handbook Files/Theme Titles");
+            ThemeTitles = GetResourcesAndWrite<ThemeTitle>("Data/Coding Training/Theme Titles");
             for (var i = 0; i < SceneManager.sceneCountInBuildSettings - 1; i++)
                 TaskTexts.Add(GetResourcesAndWrite<TaskText>("Data/Tasks/Tasks Level " + i));
             for (var i = 1; i <= TaskTexts[SceneIndex].Length + 1; i++)

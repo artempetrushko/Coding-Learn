@@ -2,45 +2,45 @@
   "Items": [
     {
       "ID": 1,
-      "Title": "Название",
-      "Description": "Описание",
-      "StartCode": "public int Execute()\n{\n    \n    \n}\n"
+      "Title": "Выбор пути",
+      "Description": "  - Вам необходимо реализовать метод, выбирающий путь. Вам передаются их уровни сложности.\n Определите какой путь легче и верните нужное направление(left или right) в виде строки. \nПри одинаковой сложности можно выбрать любой путь.",
+      "StartCode": "public string ChooseTurn(int leftPathDifficulty,int rightPathDifficulty)\n{\n    \nreturn \"left\";\n    \n}\n"
     },
     {
       "ID": 2,
-      "Title": "",
-      "Description": "",
-      "StartCode": "public void Execute()\n{\n    \n    \n}\n"
+      "Title": "Что сделать с бревном?",
+      "Description": "  - Вам необходимо реализовать метод, который принимает решение о том, что сделать с текущим бревном.\n В метод передается длинна бревна.Если длина бревна меньше или равна 3 с ним не надо делать ничего.\nЕсли больше 3, но меньше 7, положить в повозку.\n Если больше или равно 7 разрубить бревно.\n Используйте для этого методы SkipLog,PutLogInCart и СhopLog соответственно",
+      "StartCode": "public void MakeDecision(int logLength)\n{\n    \n    \n}\n"
     },
     {
       "ID": 3,
-      "Title": "",
-      "Description": "",
-      "StartCode": "public void Execute()\n{\n    \n    \n}\n"
+      "Title": "Идеальный гриб",
+      "Description": "  - Вам необходимо реализовать метод, который выбирает идеальный гриб.\n Идеальным считается не слишком молодой и не слишком старый гриб.\n Вам передается возраст 3 грибов. Вам необходимо вернуть возраст наиболее подходящего из них.",
+      "StartCode": "public int ChooseIdealMushroom(int fitsAge, int secondAge, int thirdAge)\n{\n    \n    \n}\n"
     },
     {
       "ID": 4,
-      "Title": "",
-      "Description": "",
-      "StartCode": "public int Execute()\n{\n    \n    \n}\n"
+      "Title": "Залить или не залить, вот в чем вопрос.",
+      "Description": "  - Вам необходимо реализовить метод, который заливает костер, если в ведре есть вода, в противном случае наполняет ведро водой.\n В качестве параметра передаеться состояние ведра типа bool.\n Чтобы залить костер или наполнить ведро используйте методы PutOutFire или FillBucket соответственно.",
+      "StartCode": "public void MakeDecision(bool isBusketFull)\n{\n    \n    \n}\n"
     },
     {
       "ID": 5,
-      "Title": "",
-      "Description": "",
-      "StartCode": "public void Execute()\n{\n    \n    \n}\n"
+      "Title": "Пройти через мост.",
+      "Description": "  - Вам необходимо реализовать метод, который дает сигнал о начале движения через мост.\n Однако, если мост сломан, то необходимо заменить его наиболее подходящим бревном, а уже потом дать сигнал о начеле движения. Гарантируется, что подходящее бревно существует\nНа вход передается состояние моста в виде bool, длина учестка через который пролегает мост и длины 3 доступных бревен.\n Чтобы дать сигнал о начале движения верните текущее состояние моста(если были использованы бревна, то состояние моста нужно изменить на подчиненное).\n Чтобы используйте метод UseLog ,передав в него длину подходящего бревна, чтобы использовать нужное бревно.",
+      "StartCode": " public bool MoveAcrossBridge(bool brogeState,int brigeLength,int firstLogLength, int secondLogLength,int thirdLogLength)\n{\n    \n    \n}\n"
     },
     {
       "ID": 6,
-      "Title": "",
-      "Description": "",
-      "StartCode": "public void Execute()\n{\n    \n    \n}\n"
+      "Title": "Один из множества",
+      "Description": "  - Вам необходимо реализовить метод, который вернет 1 из множетва путей, на основе переданого количества камней. Вот список соответствий(число камней–путь): 1-8,2-3,3-5,4-2,5-9,6-10,7-6,8-12.В остальных случаях номер пути - 1.",
+      "StartCode": "public int ChoosePath(int stonesNumber)\n{\n    \n    \n}\n"
     },
     {
       "ID": 7,
-      "Title": "",
-      "Description": "",
-      "StartCode": "public void Execute()\n{\n    \n    \n}\n"
+      "Title": "Глупые загадки!",
+      "Description": "  - Вам необходимо реализовить метод, который вернет 1 путей, на основе переданого шифра в виде строки.Вот соответствие шифров и путей(шифр-путь): nagibator228-6,urfu-2,coding-5,learn-4. В остальных случаах путь - 1.",
+      "StartCode": "public int ChoosePath(string cipher)\n{\n    \n    \n}\n"
     }
   ]
 }

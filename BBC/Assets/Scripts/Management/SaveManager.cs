@@ -15,9 +15,9 @@ namespace Scripts
 
             PlayerPrefs.SetInt("SceneIndex", SceneManager.GetActiveScene().buildIndex);
 
-            var availableTipsCounts = GameManager.Instance.AvailableTipsCounts;
+            var availableTipsCounts = GameManager.Instance.AvailableTipsData;
             for (var i = 0; i < availableTipsCounts.Count; i++)
-                PlayerPrefs.SetInt("Available Tips Count (Task " + (i + 1) + ")", availableTipsCounts[i]);
+                PlayerPrefs.SetInt("Available Tips Count (Task " + (i + 1) + ")", availableTipsCounts[i].Amount);
 
             Debug.Log("Сохранено!");
         }

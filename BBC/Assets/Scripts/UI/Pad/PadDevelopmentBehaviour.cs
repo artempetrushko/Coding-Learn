@@ -214,6 +214,7 @@ namespace Scripts
             yield return StartCoroutine(PlayAnimation_COR(ExecutingProgressBar, "FillProgressBar"));
             if (isTaskCompleted)
             {               
+                gameManager.IsTimerStopped = true;
                 yield return StartCoroutine(TurnTaskIndicatorOn_COR(successColor));
                 onTaskCompleted.Invoke();
                 ExecutingProgressBar.GetComponent<Animator>().SetBool("isTaskCompleted", false);
