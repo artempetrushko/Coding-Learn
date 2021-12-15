@@ -15,9 +15,9 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogColor: {r: 0, g: 0, b: 0, a: 1}
   m_FogMode: 2
-  m_FogDensity: 0.004
+  m_FogDensity: 0.001
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -24178,7 +24178,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &1362638793
 Light:
   m_ObjectHideFlags: 0
@@ -24191,7 +24191,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.4245283, g: 0.25832146, b: 0.25832146, a: 1}
-  m_Intensity: 0.9
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -24203,7 +24203,7 @@ Light:
     m_Strength: 1
     m_Bias: 0.05
     m_NormalBias: 0
-    m_NearPlane: 0.2
+    m_NearPlane: 0.1
     m_CullingMatrixOverride:
       e00: 1
       e01: 0
@@ -24230,7 +24230,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -27021,7 +27021,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2977802833888728166, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -559905.25
+      value: -567888.94
       objectReference: {fileID: 0}
     - target: {fileID: 3527389708357153995, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchorMax.x
@@ -27061,7 +27061,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4506596117468333096, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -569665.94
+      value: -578376.6
       objectReference: {fileID: 0}
     - target: {fileID: 4942572647500323182, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_RootOrder
@@ -27113,7 +27113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5558600884194116044, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -206033.72
+      value: -215180.66
       objectReference: {fileID: 0}
     - target: {fileID: 6623838395182106585, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchorMax.x
