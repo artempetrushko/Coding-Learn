@@ -40,6 +40,7 @@ namespace Scripts
 
         public void StartNewTask()
         {
+            StartCoroutine(gameManager.StartTimer_COR());
             var taskText = gameManager.GetCurrentTask();
             taskTitle.text = taskText.Title;
             taskDescription.text = taskText.Description;
@@ -138,6 +139,7 @@ namespace Scripts
             currentOpenedTrainingPage = 0;
             trainingTheme.text = codingTrainingInfo[0].Title;
             previousPageButton.gameObject.SetActive(false);
+            nextPageButton.gameObject.SetActive(codingTrainingPages.transform.childCount > 1);
         }
 
         private IEnumerator CheckChallengesCompleting_COR()
@@ -149,7 +151,7 @@ namespace Scripts
             {
                 var challenge = Instantiate(challengePrefab, challengesContainer.transform);
                 challenge.GetComponentInChildren<TMP_Text>().text = challenges[i].Challenge;
-                if (true)
+                if (IsChallengeCompleting(challenges[i].CheckValue))
                 {
                     challenge.GetComponentInChildren<TMP_Text>().color = Color.green;
                     yield return new WaitForSeconds(0.5f);
@@ -157,6 +159,21 @@ namespace Scripts
                 }
             }
             closeRewardingPanelButton.gameObject.SetActive(true);
+        }
+
+        private bool IsChallengeCompleting(double checkValue)
+        {
+            switch (checkValue)
+            {
+                case 1:
+                    return true;
+                case 0:
+                    return !gameManager.AvailableTipsData[gameManager.CurrentTaskNumber - 1].IsShown;
+                case 120:
+                    return gameManager.SpentTime <= checkValue;
+                default:
+                    return false;
+            }
         }
 
         private IEnumerator ShowTaskPanel_COR()
