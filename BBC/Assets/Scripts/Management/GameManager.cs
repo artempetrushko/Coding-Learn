@@ -201,7 +201,7 @@ namespace Scripts
 
         private void GetDataFromFiles()
         {         
-            ThemeTitles = GetResourcesAndWrite<ThemeTitle>("Data/Handbook Files/Theme Titles");
+            ThemeTitles = GetResourcesAndWrite<ThemeTitle>("Data/Coding Training/Theme Titles");
             for (var i = 0; i < SceneManager.sceneCountInBuildSettings - 1; i++)
                 TaskTexts.Add(GetResourcesAndWrite<TaskText>("Data/Tasks/Tasks Level " + i));
             for (var i = 1; i <= TaskTexts[SceneIndex].Length + 1; i++)
