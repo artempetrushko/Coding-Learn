@@ -36,7 +36,8 @@ namespace Scripts
         private GameManager gameManager;
         private UIManager uiManager;
         private PlayerBehaviour playerBehaviour;
-        private int currentOpenedTrainingPage;
+        private int currentTrainingPageNumber;
+        private GameManager.CodingTrainingInfo[] selectedCodingTrainingInfo;
 
         public void StartNewTask()
         {
@@ -63,12 +64,12 @@ namespace Scripts
 
         public void ChangeCodingTrainingPage(int coefficient)
         {
-            codingTrainingPages.transform.GetChild(currentOpenedTrainingPage).gameObject.SetActive(false);
-            currentOpenedTrainingPage += coefficient;
-            codingTrainingPages.transform.GetChild(currentOpenedTrainingPage).gameObject.SetActive(true);
-            nextPageButton.gameObject.SetActive(currentOpenedTrainingPage < codingTrainingPages.transform.childCount - 1);
-            previousPageButton.gameObject.SetActive(currentOpenedTrainingPage > 0);
-            trainingTheme.text = gameManager.GetCurrentCodingTrainingInfo()[currentOpenedTrainingPage].Title;
+            codingTrainingPages.transform.GetChild(currentTrainingPageNumber).gameObject.SetActive(false);
+            currentTrainingPageNumber += coefficient;
+            codingTrainingPages.transform.GetChild(currentTrainingPageNumber).gameObject.SetActive(true);
+            nextPageButton.gameObject.SetActive(currentTrainingPageNumber < codingTrainingPages.transform.childCount - 1);
+            previousPageButton.gameObject.SetActive(currentTrainingPageNumber > 0);
+            trainingTheme.text = selectedCodingTrainingInfo[currentTrainingPageNumber].Title;
         }
 
         public void ShowCodingTrainingOnSelectedTheme(int themeNumber, int subThemeNumber)
@@ -124,20 +125,20 @@ namespace Scripts
         {
             for (var i = codingTrainingPages.transform.childCount - 1; i >= 0; i--)
                 Destroy(codingTrainingPages.transform.GetChild(i).gameObject);
-            var codingTrainingInfo = gameManager.GetCodingTrainingInfo(levelNumber, taskNumber);
-            for (var i = 0; i < codingTrainingInfo.Length; i++)
+            selectedCodingTrainingInfo = gameManager.GetCodingTrainingInfo(levelNumber, taskNumber);
+            for (var i = 0; i < selectedCodingTrainingInfo.Length; i++)
             {
-                var prefab = codingTrainingInfo[i].VideoTitles == "" ? textPagePrefab : textAndVideoPagePrefab;
+                var prefab = selectedCodingTrainingInfo[i].VideoTitles == "" ? textPagePrefab : textAndVideoPagePrefab;
                 var page = Instantiate(prefab, codingTrainingPages.transform);
-                page.GetComponentInChildren<TMP_Text>().text = codingTrainingInfo[i].Info;
+                page.GetComponentInChildren<TMP_Text>().text = selectedCodingTrainingInfo[i].Info;
                 page.GetComponentInChildren<Scrollbar>().value = 1;
                 var videoPlayer = page.GetComponentInChildren<VideoPlayer>();
                 if (videoPlayer != null)
-                    videoPlayer.clip = Resources.Load<VideoClip>("Video/" + codingTrainingInfo[i].VideoTitles);
+                    videoPlayer.clip = Resources.Load<VideoClip>("Video/" + selectedCodingTrainingInfo[i].VideoTitles);
                 page.SetActive(i == 0);
             }
-            currentOpenedTrainingPage = 0;
-            trainingTheme.text = codingTrainingInfo[0].Title;
+            currentTrainingPageNumber = 0;
+            trainingTheme.text = selectedCodingTrainingInfo[0].Title;
             previousPageButton.gameObject.SetActive(false);
             nextPageButton.gameObject.SetActive(codingTrainingPages.transform.childCount > 1);
         }
@@ -199,8 +200,8 @@ namespace Scripts
 
         private IEnumerator OpenCodingTrainingPanel_COR()
         {
-            if (currentOpenedTrainingPage != 0)
-                ChangeCodingTrainingPage(-currentOpenedTrainingPage);
+            if (currentTrainingPageNumber != 0)
+                ChangeCodingTrainingPage(-currentTrainingPageNumber);
             yield return StartCoroutine(HideTaskPanel_COR());
             yield return StartCoroutine(ShowCodingTrainingPanel_COR());
         }
