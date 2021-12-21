@@ -1,8 +1,53 @@
-public class Level2Task1
+using System;
+using System.Collections.Generic;
+
+public class Level3Task2
 {
+    private List<Tools> _tools;
+    private int _number=-1;
+    public bool IsSaw(int toolNumber) => _tools[toolNumber] == Tools.Saw;
+    public bool IsAxe(int toolNumber) => _tools[toolNumber] == Tools.Axe;
+    public void PickUp(int toolNumber)=>_number=toolNumber;
     public bool isTaskCompleted()
     {
-        return true;
+        var maxCount = 1000;
+        var random = new Random();
+        FillTools(maxCount, random);
+        var result = Math.Min(_tools.IndexOf(Tools.Axe), _tools.IndexOf(Tools.Saw));
+        FindNeededTool(_tools.Count);
+        var firstTest = _number == result;
+        _number = -1;
+        FillTools(maxCount, random);
+        result = Math.Min(_tools.IndexOf(Tools.Axe), _tools.IndexOf(Tools.Saw));
+        FindNeededTool(_tools.Count);
+        var secondTest = _number == result;
+        _number = -1;
+        FillTools(maxCount, random);
+        result = Math.Min(_tools.IndexOf(Tools.Axe), _tools.IndexOf(Tools.Saw));
+        FindNeededTool(_tools.Count);
+        var thirdTest = _number == result;
+        _number = -1;
+        FillTools(maxCount, random);
+        result = Math.Min(_tools.IndexOf(Tools.Axe), _tools.IndexOf(Tools.Saw));
+        FindNeededTool(_tools.Count);
+        var fourthTest = _number == result;
+        return firstTest && secondTest && thirdTest && fourthTest;
+    }
+
+    private void FillTools(int maxCount, Random random)
+    {
+        _tools = new List<Tools>();
+        for (int i = 0; i < random.Next(1, maxCount); i++)
+        {
+            _tools.Add((Tools)random.Next(3));
+        }
+        _tools[_tools.Count - 1] = Tools.Axe;
     }
     //<playerCode>
+}
+public enum Tools
+{
+    Axe,
+    Saw,
+    Ànother
 }
