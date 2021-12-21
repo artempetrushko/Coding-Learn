@@ -1,8 +1,45 @@
-public class Level2Task1
+using System;
+using System.Collections.Generic;
+
+public class Level3Task1
 {
+    private List<bool> _isBoxesOpended = new List<bool>();
+    public bool OpenContainer(int boxNumber) => _isBoxesOpended[boxNumber];
+    
     public bool isTaskCompleted()
     {
-        return true;
+        _isBoxesOpended = new List<bool>()
+        {
+            true,false, false, false, false,true,true,false
+        };
+        var firstTest = OpenAndCountContainer(_isBoxesOpended.Count) == 3;
+        _isBoxesOpended = new List<bool>()
+        {
+            true,false, false, false, false,true,true,false,true,false,true
+        };
+        var secondTest = OpenAndCountContainer(_isBoxesOpended.Count) == 3;
+        var maxCount = 1000;
+        var random = new Random();
+        var result=FillData(maxCount, random);
+        var thirdTest = OpenAndCountContainer(_isBoxesOpended.Count) == result;
+        result = FillData(maxCount, random);
+        var fourthTest=OpenAndCountContainer(_isBoxesOpended.Count)== result;
+        return firstTest && secondTest && thirdTest && fourthTest;
+    }
+
+    private int FillData(int maxCount, Random random)
+    {
+        _isBoxesOpended = new List<bool>();
+        var result = 0;
+        for (var i = 0; i < random.Next(1,maxCount); i++)
+        {
+            var total = random.Next(2) == 1;
+            if (total)
+                result++;
+            _isBoxesOpended.Add(total);
+        }
+        _isBoxesOpended[_isBoxesOpended.Count - 1] = true;
+        return result;
     }
     //<playerCode>
 }
