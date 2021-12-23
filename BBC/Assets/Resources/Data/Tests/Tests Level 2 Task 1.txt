@@ -8,8 +8,8 @@ public class Level2Task1
         var thirdCheck = ChooseTurn(5, 25) == "right";
         var fourthCheck = ChooseTurn(50, 25) == "left";
         var fifthCheckResult = ChooseTurn(25, 25);
-        var fifth—heck= fifthCheckResult == "left"||fifthCheckResult == "right";
-        return firstCheck&&secondCheck&&thirdCheck&&fourthCheck&&fifth—heck;
+        var fifthCheck= fifthCheckResult == "left"||fifthCheckResult == "right";
+        return firstCheck&&secondCheck&&thirdCheck&&fourthCheck&&fifthCheck;
     }
     //<playerCode>
 }
