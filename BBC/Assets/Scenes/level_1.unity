@@ -17476,7 +17476,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828497779}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &828497785
 Camera:
   m_ObjectHideFlags: 0
@@ -33896,7 +33896,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds: []
-  musics: []
+  musics:
+  - {fileID: 2045875945}
 --- !u!4 &1601896025
 Transform:
   m_ObjectHideFlags: 0
@@ -42270,7 +42271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9767117260100506, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -96.775
+      value: -96.77505
       objectReference: {fileID: 0}
     - target: {fileID: 9767117570949975, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_RootOrder
@@ -42791,7 +42792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2977802833888728166, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 4934614.5
+      value: 4900830
       objectReference: {fileID: 0}
     - target: {fileID: 2982276949230971850, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -43055,7 +43056,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4506596117468333096, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3780819.8
+      value: -3820873.2
       objectReference: {fileID: 0}
     - target: {fileID: 4629088410225681239, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -43279,7 +43280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5558600884194116044, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -8628899
+      value: -8665597
       objectReference: {fileID: 0}
     - target: {fileID: 5796182618814682704, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -44594,6 +44595,11 @@ PrefabInstance:
 --- !u!95 &2045875944 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 9767116725360996, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
+  m_PrefabInstance: {fileID: 2045875943}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &2045875945 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5193742968388626074, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
   m_PrefabInstance: {fileID: 2045875943}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &2045875946 stripped
