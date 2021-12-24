@@ -15328,7 +15328,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds: []
-  musics: []
+  musics:
+  - {fileID: 1166451546568109098}
 --- !u!4 &470251662
 Transform:
   m_ObjectHideFlags: 0
@@ -19934,7 +19935,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 4.69, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.22945225, y: 2.3449998, z: 0.11695193}
+  m_ConnectedAnchor: {x: 0.22945237, y: 2.3449998, z: 0.11695193}
   m_UseSpring: 1
   m_Spring:
     spring: 1
@@ -77209,7 +77210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2977802833888728166, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 8655122
+      value: 8652704
       objectReference: {fileID: 0}
     - target: {fileID: 3028331539887691488, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchorMax.y
@@ -77825,7 +77826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4506596117468333096, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1079487.8
+      value: 1076688.1
       objectReference: {fileID: 0}
     - target: {fileID: 4629088410225681239, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -78193,7 +78194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5558600884194116044, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2385856.8
+      value: -2388536.8
       objectReference: {fileID: 0}
     - target: {fileID: 5559727468947541490, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -80393,6 +80394,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
+--- !u!82 &1166451546568109098 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5193742968388626074, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
+  m_PrefabInstance: {fileID: 1166451546568109097}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1261864807785056873
 GameObject:
   m_ObjectHideFlags: 0
