@@ -1,8 +1,68 @@
-public class Level2Task1
+using System;
+using System.Collections.Generic;
+
+public class Level3Task8
 {
+    private List<bool> _plases;
+    private int _index=-1;
+    private int _digCount;
+    public void Dig(int repeatCount)
+    {
+        _index= repeatCount-1;
+        _digCount+=repeatCount;
+    }
+    public bool IsKeyFound()
+    {
+        return _plases[_index];
+    }
     public bool isTaskCompleted()
     {
-        return true;
+        var random=new Random();
+        var maxCount = 100;
+        var testRes = 0;
+        FillData(maxCount, random);
+        FoundKeyInSand(_plases.Count);
+        for (int i = 1; i <= _index; i++)
+            testRes += i+1;
+        var firstCheck = testRes == _digCount;
+        testRes = 0;
+        _index = -1;
+        _digCount = 0;FillData(maxCount, random);
+        FoundKeyInSand(_plases.Count);
+        for (int i = 1; i <= _index; i++)
+            testRes += i+1;
+        var secondCheck = testRes == _digCount;
+        testRes = 0;
+        _index = -1;
+        _digCount = 0;
+        FillData(maxCount, random);
+        FoundKeyInSand(_plases.Count);
+        for (int i = 1; i <= _index; i++)
+            testRes += i+1;
+        var thirdCheck = testRes == _digCount;
+        testRes = 0;
+        _index = -1;
+        _digCount = 0;
+        FillData(maxCount, random);
+        FoundKeyInSand(_plases.Count);
+        for (int i = 1; i <= _index; i++)
+            testRes += i+1;
+        var fourthCheck = testRes == _digCount;
+        return firstCheck && secondCheck && thirdCheck && fourthCheck;
+    }
+    private int FillData(int maxCount, Random random)
+    {
+        _plases = new List<bool>();
+        var result = 0;
+        for (var i = 0; i < random.Next(1, maxCount); i++)
+        {
+            var total = random.Next(2) == 1;
+            if (total)
+                result++;
+            _plases.Add(total);
+        }
+        _plases[_plases.Count - 1] = true;
+        return result;
     }
     //<playerCode>
 }
