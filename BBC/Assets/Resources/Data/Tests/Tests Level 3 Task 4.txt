@@ -1,8 +1,48 @@
-public class Level2Task1
+using System;
+
+public class Level3Task4
 {
+    private int _usesCount;
+    private int _tallTreeCount;
+    private readonly Random _random=new Random();
+    private bool _isTall = false;
+    private void UseTool()
+    {
+        var isTall = _random.Next(2) == 0;
+        if (isTall)
+            _tallTreeCount++;
+        _isTall = isTall;
+        _usesCount++;
+    }
+    public bool IsTreeTall() => _isTall;
     public bool isTaskCompleted()
     {
-        return true;
+        var maxCount = 20;
+        var logCount = _random.Next(maxCount);
+        var playerResult= GetNeededTreeCount(logCount);
+        var result = _tallTreeCount+logCount/2;
+        var firstTest = result == playerResult && playerResult == _usesCount;
+        _usesCount = 0;
+        _tallTreeCount = 0;
+        logCount = _random.Next(maxCount);
+        playerResult= GetNeededTreeCount(logCount);
+        result = _tallTreeCount+logCount/2;
+        var secondTest = result == playerResult && playerResult == _usesCount;
+        _usesCount = 0;
+        _tallTreeCount = 0;
+        logCount = _random.Next(maxCount);
+        playerResult= GetNeededTreeCount(logCount);
+        result = _tallTreeCount+logCount/2;
+        var thirdTest = result == playerResult && playerResult == _usesCount;
+        _usesCount = 0;
+        _tallTreeCount = 0;
+        logCount = _random.Next(maxCount);
+        playerResult= GetNeededTreeCount(logCount);
+        result = _tallTreeCount+logCount/2;
+        var fourthTest = result == playerResult && playerResult == _usesCount;
+        _usesCount = 0;
+        _tallTreeCount = 0;
+        return firstTest && secondTest && thirdTest && fourthTest;
     }
     //<playerCode>
 }

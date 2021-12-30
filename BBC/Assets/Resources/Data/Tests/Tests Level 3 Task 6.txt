@@ -1,8 +1,44 @@
-public class Level2Task1
+using System;
+
+public class Level3Task6
 {
+    private bool[] _places;
+    private int _keyIndex=-1;
+    public bool TryFoundKey(int placeNumber)
+    {   if(_places[placeNumber])
+            _keyIndex = placeNumber;
+        return _places[placeNumber];
+    }
     public bool isTaskCompleted()
+    {   var random = new Random();
+        var maxCount = 50;
+        FillData(maxCount, random);
+        FoundKey(_places.Length);
+        var firstCheck = _places[_keyIndex];
+        _keyIndex = -1;
+        FillData(maxCount, random);
+        FoundKey(_places.Length);
+        var secondCheck = _places[_keyIndex];
+        _keyIndex = -1;
+        FillData(maxCount, random);
+        FoundKey(_places.Length);
+        var thirdCheck = _places[_keyIndex];
+        _keyIndex = -1;
+        FillData(maxCount, random);
+        FoundKey(_places.Length);
+        var fourthCheck = _places[_keyIndex];
+        _keyIndex = -1;
+        return firstCheck && secondCheck && thirdCheck && fourthCheck;
+    }
+    private void FillData(int maxCount, Random random)
     {
-        return true;
+        _places = new bool[random.Next(1,maxCount)];
+        var index = random.Next(0, _places.Length);
+        _places[random.Next(0,_places.Length)] = true;
+        if(index < _places.Length - 1)
+        {
+            _places[random.Next(index, _places.Length)] = true;
+        }
     }
     //<playerCode>
 }
