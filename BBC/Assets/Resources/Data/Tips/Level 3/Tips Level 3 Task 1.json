@@ -1,13 +1,13 @@
 {
   "Items": [
     {
-      "Tip": "...\n{\n    var boxesCount = 0;\n    for (var i = 0; i < 4; i++)\n    {\n        ...\n    }\n}"
+      "Tip": "Совет 1"
     },
     {
-      "Tip": "...\n{\n    var boxesCount = 0;\n    for (var i = 0; i < 4; i++)\n    {\n        OpenContainer();        boxesCount++;\n    }\n}"
+      "Tip": "Совет 2"
     },
     {
-      "Tip": "...\n{\n    var boxesCount = 0;\n    for (var i = 0; i < 4; i++)\n    {\n        OpenContainer();        boxesCount++;\n    }\n    return boxesCount;\n}"
+      "Tip": "Совет 3"
     }
   ]
 }
