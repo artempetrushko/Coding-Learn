@@ -1,13 +1,13 @@
 {
   "Items": [
     {
-      "Tip": "...\n{\n    for (var i = 0; i < partsCount; i++)\n    {\n        ...\n    }\n}"
+      "Tip": "Совет 1"
     },
     {
-      "Tip": "...\n{\n    for (var i = 0; i < partsCount; i++)\n    {\n        if (i == 2 || i == 7)\n            continue;\n        ...\n    }\n}"
+      "Tip": "Совет 2"
     },
     {
-      "Tip": "...\n{\n    for (var i = 0; i < partsCount; i++)\n    {\n        if (i == 2 || i == 7)\n            continue;\n        SetUpBoard();\n    }\n}"
+      "Tip": "Совет 3"
     }
   ]
 }

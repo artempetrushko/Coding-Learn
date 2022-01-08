@@ -1,16 +1,13 @@
 {
   "Items": [
     {
-      "Tip": "...\n{\n    for (var i = 0; i < 4; i++)\n    {\n        ...\n    }\n}"
+      "Tip": "Совет 1"
     },
     {
-      "Tip": "...\n{\n    for (var i = 0; i < 4; i++)\n    {\n        TurnToNextTarget();\n        ...\n    }\n}" 
+      "Tip": "Совет 2"
     },
     {
-      "Tip": "...\n{\n    for (var i = 0; i < 4; i++)\n    {\n        TurnToNextTarget();\n        Dig(i + 2);\n        ...\n    }\n}" 
-    },
-    {
-      "Tip": "...\n{\n    for (var i = 0; i < 4; i++)\n    {\n        TurnToNextTarget();\n        Dig(i + 2);\n        if (IsKeyFound())\n            break;\n    }\n}" 
+      "Tip": "Совет 3"
     }
   ]
 }
