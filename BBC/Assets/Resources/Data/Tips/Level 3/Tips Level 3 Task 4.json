@@ -1,19 +1,13 @@
 {
   "Items": [
     {
-      "Tip": "...\n{\n    var treesCount = 0;\n    while (totalLogsCount > 0)\n    {\n        ...\n    }\n}"
+      "Tip": "Совет 1"
     },
     {
-      "Tip": "...\n{\n    var treesCount = 0;\n    while (totalLogsCount > 0)\n    {\n        UseAxe();\n        treesCount++;\n        ...\n    }\n}"
+      "Tip": "Совет 2"
     },
     {
-      "Tip": "...\n{\n    var treesCount = 0;\n    while (totalLogsCount > 0)\n    {\n        UseAxe();\n        treesCount++;\n        if (IsTreeTall())\n            totalLogsCount -= 4;\n        ...\n    }\n}"
-    },
-    {
-      "Tip": "...\n{\n    var treesCount = 0;\n    while (totalLogsCount > 0)\n    {\n        UseAxe();\n        treesCount++;\n        if (IsTreeTall())\n            totalLogsCount -= 4;\n        else totalLogsCount -= 2;\n    }\n    ...\n}"
-    },
-    {
-      "Tip": "...\n{\n    var treesCount = 0;\n    while (totalLogsCount > 0)\n    {\n        UseAxe();\n        treesCount++;\n        if (IsTreeTall())\n            totalLogsCount -= 4;\n        else totalLogsCount -= 2;\n    }\n    return treesCount;\n}"
+      "Tip": "Совет 3"
     }
   ]
 }
