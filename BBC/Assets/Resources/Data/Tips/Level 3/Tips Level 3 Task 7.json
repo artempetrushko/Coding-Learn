@@ -1,19 +1,13 @@
 {
   "Items": [
     {
-      "Tip": "...\n{\n    var flag = false;\n    for (var i = 0; i < 3; i++)\n    {\n        ...\n    }\n}"
+      "Tip": "Совет 1"
     },
     {
-      "Tip": "...\n{\n    var flag = false;\n    for (var i = 0; i < 3; i++)\n    {\n        for (var j = 0; j < 5; j++)\n        {\n            ...\n        }\n    }\n}" 
+      "Tip": "Совет 2"
     },
     {
-      "Tip": "...\n{\n    var flag = false;\n    for (var i = 0; i < 3; i++)\n    {\n        for (var j = 0; j < 5; j++)\n        {\n            CheckNewItem();\n            if (IsKeyFound())\n            {\n                ...\n            }\n        }\n    }\n}" 
-    },
-    {
-      "Tip": "...\n{\n    var flag = false;\n    for (var i = 0; i < 3; i++)\n    {\n        for (var j = 0; j < 5; j++)\n        {\n            CheckNewItem();\n            if (IsKeyFound())\n            {\n                flag = true;\n                break;\n            }\n        }\n        ...\n    }\n}" 
-    },
-    {
-      "Tip": "...\n{\n    var flag = false;\n    for (var i = 0; i < 3; i++)\n    {\n        for (var j = 0; j < 5; j++)\n        {\n            CheckNewItem();\n            if (IsKeyFound())\n            {\n                flag = true;\n                break;\n            }\n        }\n        if (flag)\n            break;\n    }\n}" 
+      "Tip": "Совет 3"
     }
   ]
 }
