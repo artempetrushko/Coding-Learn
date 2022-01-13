@@ -4,7 +4,7 @@
       "ID": 1,
       "Title": "Выбор пути",
       "Description": "  - Вам необходимо реализовать метод, выбирающий путь. Вам передаются их уровни сложности.\n Определите какой путь легче и верните нужное направление(left или right) в виде строки. \nПри одинаковой сложности можно выбрать любой путь.",
-      "StartCode": "public string ChooseTurn(int leftPathDifficulty,int rightPathDifficulty)\n{\n    \nreturn \"left\";\n    \n}\n"
+      "StartCode": "public string ChooseTurn(int leftPathDifficulty, int rightPathDifficulty)\n{\n    \n    return \"left\";\n    \n}\n"
     },
     {
       "ID": 2,
@@ -28,7 +28,7 @@
       "ID": 5,
       "Title": "Пройти через мост.",
       "Description": "  - Вам необходимо реализовать метод, который дает сигнал о начале движения через мост.\n Однако, если мост сломан, то необходимо заменить его наиболее подходящим бревном, а уже потом дать сигнал о начеле движения. Гарантируется, что подходящее бревно существует\nНа вход передается состояние моста в виде bool, длина учестка через который пролегает мост и длины 3 доступных бревен.\n Чтобы дать сигнал о начале движения верните текущее состояние моста(если были использованы бревна, то состояние моста нужно изменить на подчиненное).\n Чтобы используйте метод UseLog ,передав в него длину подходящего бревна, чтобы использовать нужное бревно.",
-      "StartCode": " public bool MoveAcrossBridge(bool brogeState,int brigeLength,int firstLogLength, int secondLogLength,int thirdLogLength)\n{\n    \n    \n}\n"
+      "StartCode": " public bool MoveAcrossBridge(bool brogeState, int brigeLength, int firstLogLength, int secondLogLength, int thirdLogLength)\n{\n    \n    \n}\n"
     },
     {
       "ID": 6,

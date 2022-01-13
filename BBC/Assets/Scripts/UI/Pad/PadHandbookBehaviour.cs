@@ -52,7 +52,7 @@ namespace Scripts
             {
                 var buttonToUnlock = subThemeButtons.transform.GetChild(gameManager.AvailableThemesCount - 1).GetComponentInChildren<VerticalLayoutGroup>().transform.GetChild(i - 1).GetComponent<Button>();
                 buttonToUnlock.interactable = true;
-                buttonToUnlock.GetComponentInChildren<Text>().text = gameManager.GetCurrentCodingTrainingInfo()[0].Title;
+                buttonToUnlock.GetComponentInChildren<Text>().text = gameManager.GetCodingTrainingInfo(gameManager.AvailableThemesCount - 1, i - 1)[0].Title;
             }
         }
 
