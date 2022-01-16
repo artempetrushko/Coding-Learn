@@ -1,10 +1,38 @@
 using System;
 using System.Collections.Generic;
 
-public class Level4Task1
+public class Level4Task6
 {
+    public enum Color { Red, White, Grey }
+    public enum Form { Gear, Triangle, Square }
+
     public bool isTaskCompleted()
     {
-        return true;
+        var random = new Random();
+        var maxCount = 3;
+        var maxSize = 1000;
+        return Check(random, maxCount, maxSize) && Check(random, maxCount, maxSize);
+    }
+
+    private bool Check(Random random, int maxCount, int maxSize)
+    {
+        var array = CreateArray(random, maxCount, maxSize);
+        var color = random.Next(maxCount);
+        var form = random.Next(maxCount);
+        var tested=GetArray(array,(Color)color,(Form) form) ;
+        var controled=array[color,form];
+        return tested==controled;
+    }
+
+    private static int[,] CreateArray(Random random, int maxCount, int maxSize)
+    {
+        var array = new int[random.Next(maxCount), random.Next(maxCount)];
+        for (int i = 0; i < array.GetLength(0); i++)
+            for (int j = 0; j < array.GetLength(1); j++)
+            {
+                array[i, j] = random.Next(maxSize);
+            }
+
+        return array;
     }
 }
