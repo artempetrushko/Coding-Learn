@@ -140,7 +140,7 @@ namespace Scripts
             currentTrainingPageNumber = 0;
             trainingTheme.text = selectedCodingTrainingInfo[0].Title;
             previousPageButton.gameObject.SetActive(false);
-            nextPageButton.gameObject.SetActive(codingTrainingPages.transform.childCount > 1);
+            nextPageButton.gameObject.SetActive(selectedCodingTrainingInfo.Length > 1);
         }
 
         private IEnumerator CheckChallengesCompleting_COR()

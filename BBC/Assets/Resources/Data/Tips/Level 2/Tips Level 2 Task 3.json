@@ -1,16 +1,13 @@
 {
   "Items": [
     {
-      "Tip": "...\n{\n    int pathNumber;\n    if (isLeftPointerHere)\n        ...\n}"
+      "Tip": "Совет 1"
     },
     {
-      "Tip": "...\n{\n    int pathNumber;\n    if (isLeftPointerHere)\n        pathNumber = 1;\n    ...\n}"
+      "Tip": "Совет 2"
     },
     {
-      "Tip": "...\n{\n    int pathNumber;\n    if (isLeftPointerHere)\n        pathNumber = 1;\n    else pathNumber = 2;\n    ...\n}"
-    },
-    {
-      "Tip": "...\n{\n    int pathNumber;\n    if (isLeftPointerHere)\n        pathNumber = 1;\n    else pathNumber = 2;\n    return pathNumber * 800;\n}"
+      "Tip": "Совет 3"
     }
   ]
 }
