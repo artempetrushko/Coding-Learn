@@ -1,0 +1,20 @@
+using System.Linq;
+
+public class Level2Task7
+{
+
+    public bool isTaskCompleted()
+    {
+        var check = new bool[]
+        {
+           ChoosePath("nagibator228")==6,
+           ChoosePath("urfu")==2,
+           ChoosePath("coding")==5,
+           ChoosePath("learn")==4,
+           ChoosePath("not")==1,
+           
+        };
+        return !check.Any(x => !x);
+    }
+    //<playerCode>
+}

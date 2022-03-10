@@ -1,0 +1,22 @@
+using System.Linq;
+
+public class Level2Task6
+{
+    public bool isTaskCompleted()
+    {
+        var check = new bool[]
+        {
+           ChoosePath(1)==8,
+           ChoosePath(2)==3,
+           ChoosePath(3)==5,
+           ChoosePath(4)==2,
+           ChoosePath(5)==9,
+           ChoosePath(6)==10,
+           ChoosePath(7)==6,
+           ChoosePath(8)==12,
+           ChoosePath(15)==1,
+        };
+        return !check.Any(x=>!x);
+    }
+    //<playerCode>
+}

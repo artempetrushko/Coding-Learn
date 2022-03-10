@@ -1,8 +1,8 @@
-public class Level0Task8
+public class Level1Task4
 {
-    public bool isTaskCompleted()
+    public bool IsTaskCompleted()
     {
-        return Check(4) && !Check(5);
+        return Process(1,5)==32&&Process(0,5)==0;
     }
     //<playerCode>
 }

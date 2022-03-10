@@ -2,7 +2,7 @@ public class Level0Task8
 {
     public bool isTaskCompleted()
     {
-        return Check(4) && !Check(5);
+        return Check(4)==0 && !(Check(5)==0);
     }
     //<playerCode>
 }

@@ -1,0 +1,15 @@
+public class Level2Task1
+{
+
+    public bool isTaskCompleted()
+    {
+        var firstCheck = ChooseTurn(1, 2) == "right";
+        var secondCheck = ChooseTurn(100, 99) == "left";
+        var thirdCheck = ChooseTurn(5, 25) == "right";
+        var fourthCheck = ChooseTurn(50, 25) == "left";
+        var fifthCheckResult = ChooseTurn(25, 25);
+        var fifthCheck= fifthCheckResult == "left"||fifthCheckResult == "right";
+        return firstCheck&&secondCheck&&thirdCheck&&fourthCheck&&fifthCheck;
+    }
+    //<playerCode>
+}

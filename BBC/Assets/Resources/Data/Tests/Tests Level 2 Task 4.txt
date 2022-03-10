@@ -1,0 +1,27 @@
+public class Level2Task4
+{
+    private bool _isBusketFull;
+    private bool _isFirePutOut;
+    public void PutOutFire()
+    {
+        if (_isBusketFull)
+        {
+            _isFirePutOut = true;
+            _isBusketFull = false;
+        }
+    }
+    public void FillBucket()
+    {
+        if(!_isBusketFull)
+            _isBusketFull = true;
+    }
+    public bool isTaskCompleted()
+    {
+        MakeDecision(false);
+        var firstCheck = _isBusketFull && !_isFirePutOut;
+        MakeDecision(true);
+        var secondCheck = !_isBusketFull && _isFirePutOut;
+        return firstCheck&&secondCheck;
+    }
+    //<playerCode>
+}

@@ -1,0 +1,21 @@
+public class Level2Task5
+{
+    private int _logLength=-1;
+    public void UseLog(int logLength)
+    {
+        _logLength = logLength;
+    }
+    public bool isTaskCompleted()
+    {
+        var firstCheck = MoveAcrossBridge(true, 5, 3, 5, 7);
+        var secondCheck = _logLength == -1;
+        var thirdCheck = MoveAcrossBridge(false,4,3,5,10);
+        var fourhCheck= _logLength == 5;
+        var fifthCheck = MoveAcrossBridge(false,9,3,5,10);
+        var sixthCheck= _logLength == 10;
+        var seventhCheck = MoveAcrossBridge(false,3,4,5,10);
+        var eigthCheck= _logLength == 4;
+        return firstCheck&&secondCheck&&thirdCheck&&fourhCheck&&fifthCheck&&sixthCheck&&seventhCheck&&eigthCheck;
+    }
+    //<playerCode>
+}

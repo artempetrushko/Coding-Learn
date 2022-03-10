@@ -1,0 +1,11 @@
+public class Level2Task3
+{
+    public bool isTaskCompleted()
+    {
+        var firstCheck = ChooseIdealMushroom(1, 2, 3);
+        var secondCheck = ChooseIdealMushroom(4, 4, 20);
+        var thirdCheck= ChooseIdealMushroom(2020,2021, 00);
+        return firstCheck==2&&secondCheck==4&&thirdCheck==2020;
+    }
+    //<playerCode>
+}
