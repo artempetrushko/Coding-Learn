@@ -8,30 +8,20 @@ namespace Scripts
 {
     public class SaveManager : MonoBehaviour
     {
-        public static void Save()
+        public static void SaveTaskProgress(int earnedStarsCount)
         {
-            for (var i = 0; i < GameManager.Instance.HasTasksCompleted.Count; i++)
-                PlayerPrefs.SetInt("Task " + (i + 1) + " completed", GameManager.Instance.HasTasksCompleted[i] ? 1 : 0);
-
+            var sceneIndex = GameManager.Instance.SceneIndex;
+            var taskNumber = GameManager.Instance.CurrentTaskNumber;
+            var currentTaskEarnedStarsCountKey = "Level " + sceneIndex + " Task " + taskNumber + " Stars Earned";
             PlayerPrefs.SetInt("SceneIndex", SceneManager.GetActiveScene().buildIndex);
-
-            var availableTipsCounts = GameManager.Instance.AvailableTipsData;
-            for (var i = 0; i < availableTipsCounts.Count; i++)
-                PlayerPrefs.SetInt("Available Tips Count (Task " + (i + 1) + ")", availableTipsCounts[i].Amount);
-
+            PlayerPrefs.SetInt("Is Level " + sceneIndex + " Task " + taskNumber + " Completed", 1);            
+            if (PlayerPrefs.HasKey(currentTaskEarnedStarsCountKey) && earnedStarsCount > PlayerPrefs.GetInt(currentTaskEarnedStarsCountKey))
+                PlayerPrefs.SetInt(currentTaskEarnedStarsCountKey, earnedStarsCount);
+            PlayerPrefs.SetInt("Level " + sceneIndex + "Task Number To Resume", taskNumber + 1);
             Debug.Log("Сохранено!");
         }
 
-        public static void Load()
-        {
-            for (var i = 0; i < GameManager.Instance.HasTasksCompleted.Count; i++)
-            {
-                GameManager.Instance.HasTasksCompleted[i] = PlayerPrefs.GetInt("Task " + (i + 1) + " completed") == 1;
-                var taskTriggers = GameManager.Instance.Player.GetComponentInChildren<TriggersBehaviour>().TaskTriggers;
-                if (GameManager.Instance.HasTasksCompleted[i])
-                    taskTriggers.transform.GetChild(i).gameObject.SetActive(false);
-            }
-        }
+        public static int LoadTaskNumberToResume(int sceneIndex) => PlayerPrefs.GetInt("Level " + sceneIndex + "Task Number To Resume");
 
         public static void DeleteSavedDialogueData()
         {
