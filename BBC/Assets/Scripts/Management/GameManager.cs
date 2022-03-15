@@ -134,6 +134,8 @@ namespace Scripts
         [HideInInspector] public List<bool> HasTasksCompleted = new List<bool>();
         [HideInInspector] public List<TipsData> AvailableTipsData = new List<TipsData>();
 
+        private PlayableDirector playableDirector;
+
         public TaskText GetCurrentTask() => TaskTexts[SceneIndex][CurrentTaskNumber - 1];
 
         public CodingTrainingInfo[] GetCurrentCodingTrainingInfo() => CodingTrainingInfos[SceneIndex][CurrentTaskNumber - 1];
@@ -141,6 +143,8 @@ namespace Scripts
         public CodingTrainingInfo[] GetCodingTrainingInfo(int themeNumber, int subThemeNumber) => CodingTrainingInfos[themeNumber][subThemeNumber];
 
         public string GetTests() => string.Copy(Tests[CurrentTaskNumber - 1]);
+
+        public void ChangeCutsceneCurrentTime(float newTime) => playableDirector.time = newTime;
 
         public string GetNewTipText()
         {
@@ -165,17 +169,19 @@ namespace Scripts
                 yield return new WaitForSeconds(1f);
                 SpentTime++;
             }
-        }
+        }      
 
         private void PlayCutscene(int cutsceneNumber)
         {
-            var playableDirector = gameObject.GetComponent<PlayableDirector>();
-            playableDirector.time = 0;
+            ChangeCutsceneCurrentTime(0);
             playableDirector.Play(Cutscenes[cutsceneNumber - 1]);
         }
 
         private void Start()
         {
+            playableDirector = GetComponent<PlayableDirector>();
+            if (PlayerPrefs.HasKey("Level " + SceneIndex + "Task Number To Resume"))
+                CurrentTaskNumber = SaveManager.LoadTaskNumberToResume(SceneIndex);
             PlayCutscene(CurrentTaskNumber);
         }
 

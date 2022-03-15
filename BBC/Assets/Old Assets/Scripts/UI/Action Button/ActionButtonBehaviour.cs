@@ -145,7 +145,6 @@ namespace Scripts
         private IEnumerator SaveGame_COR()
         {
             uiManager.ActionButton.interactable = false;
-            SaveManager.Save();
             ActivatedTrigger.GetComponentInChildren<Animator>().Play("Saving");
             var buttonText = uiManager.ActionButton.GetComponentInChildren<Text>();
             for (var i = 1; i <= 3; i++)
