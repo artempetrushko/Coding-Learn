@@ -25,13 +25,9 @@ namespace Scripts
         #region Переходы между экранами меню
         public void GoTo_Settings() => StartCoroutine(GoTo_Settings_COR());
 
-        public void GoTo_Profile() => StartCoroutine(GoTo_Profile_COR());
-
         public void GoTo_Levels() => StartCoroutine(GoTo_Levels_COR());
 
         public void ReturnToMainMenuFrom_Settings() => StartCoroutine(ReturnToMainMenu_Settings_COR());
-
-        public void ReturnToMainMenuFrom_Profile() => StartCoroutine(ReturnToMainMenu_Profile_COR());
 
         public void ReturnToMainMenuFrom_Levels() => StartCoroutine(ReturnToMainMenu_Levels_COR());
 
@@ -61,13 +57,6 @@ namespace Scripts
             yield return StartCoroutine(PlayTimeline_COR(gameObject, "ShowSettings"));
         }
 
-        private IEnumerator GoTo_Profile_COR()
-        {
-            yield return StartCoroutine(HideMainMenu_COR());
-            gameObject.GetComponent<PlayerPanelBehaviour>().PlayerPanel.SetActive(false);
-            StartCoroutine(gameObject.GetComponent<ProfileBehaviour>().ShowProfileScreen_COR());
-        }
-
         private IEnumerator GoTo_Levels_COR()
         {
             yield return StartCoroutine(HideMainMenu_COR());
@@ -77,13 +66,6 @@ namespace Scripts
         private IEnumerator ReturnToMainMenu_Settings_COR()
         {
             yield return StartCoroutine(PlayTimeline_COR(gameObject, "HideSettings"));
-            yield return StartCoroutine(ShowMainMenu_COR());
-        }
-
-        private IEnumerator ReturnToMainMenu_Profile_COR()
-        {
-            yield return StartCoroutine(gameObject.GetComponent<ProfileBehaviour>().HideProfileScreen_COR());
-            gameObject.GetComponent<PlayerPanelBehaviour>().PlayerPanel.SetActive(true);
             yield return StartCoroutine(ShowMainMenu_COR());
         }
 
