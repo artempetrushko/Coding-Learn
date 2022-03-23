@@ -45,21 +45,21 @@ namespace Scripts
 
         private void OnTriggerEnter(Collider other)
         {
-            var triggerData = other.gameObject.GetComponent<TriggerData>();
+            /*var triggerData = other.gameObject.GetComponent<TriggerData>();
             if (triggerData != null)
             {
                 switch (triggerData.TriggerPurpose)
                 {
                     case TriggerData.Purpose.Task:
                         if (!gameManager.HasTasksCompleted[triggerData.Task_TaskNumber - 1])
-                            gameManager.CurrentTaskNumber = triggerData.Task_TaskNumber;
+                            gameManager.currentTaskNumber = triggerData.Task_TaskNumber;
                         break;
                 }
                 uiManager.ActionButtonBehaviour.ActivatedTrigger = triggerData;
                 uiManager.ActionButtonBehaviour.ActivateButton(triggerData.ActionButtonText);
             }
             else if (other.name.StartsWith("Coin"))
-                StartCoroutine(PickCoinUp_COR(other));
+                StartCoroutine(PickCoinUp_COR(other));*/
         }
 
         private void OnTriggerExit(Collider other)
@@ -73,8 +73,8 @@ namespace Scripts
             coin.GetComponentInChildren<Animator>().Play("PickCoinUp");
             yield return new WaitForSeconds(1f);
             coin.gameObject.SetActive(false);
-            gameManager.CoinsCount++;
-            uiManager.PadMenuBehaviour.UpdatePadData();
+            /*gameManager.CoinsCount++;
+            uiManager.PadMenuBehaviour.UpdatePadData();*/
         }
 
         void Start()

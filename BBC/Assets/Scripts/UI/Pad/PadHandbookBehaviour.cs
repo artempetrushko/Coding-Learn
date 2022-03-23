@@ -48,11 +48,11 @@ namespace Scripts
 
         public void UnlockProgrammingInfo()
         {
-            for (var i = 1; i <= gameManager.CurrentTaskNumber; i++)
+            for (var i = 1; i <= gameManager.GetCurrentTaskNumber(); i++)
             {
-                var buttonToUnlock = subThemeButtons.transform.GetChild(gameManager.AvailableThemesCount - 1).GetComponentInChildren<VerticalLayoutGroup>().transform.GetChild(i - 1).GetComponent<Button>();
+                var buttonToUnlock = subThemeButtons.transform.GetChild(gameManager.GetAvailableThemesCount() - 1).GetComponentInChildren<VerticalLayoutGroup>().transform.GetChild(i - 1).GetComponent<Button>();
                 buttonToUnlock.interactable = true;
-                buttonToUnlock.GetComponentInChildren<Text>().text = gameManager.GetCodingTrainingInfo(gameManager.AvailableThemesCount - 1, i - 1)[0].Title;
+                buttonToUnlock.GetComponentInChildren<Text>().text = gameManager.GetCodingTrainingInfo(gameManager.GetAvailableThemesCount() - 1, i - 1)[0].Title;
             }
         }
 
@@ -87,7 +87,7 @@ namespace Scripts
         private void FillHandbook()
         {
             var themeButtons = themeButtonsContainer.transform.GetChild(0).GetChild(0);
-            for (var i = 0; i < gameManager.AvailableThemesCount; i++)
+            for (var i = 0; i < gameManager.GetAvailableThemesCount(); i++)
             {
                 var themeButton = Instantiate(themeButtonPrefab, themeButtons);
                 var themeNumber = i;
@@ -99,7 +99,7 @@ namespace Scripts
                 {
                     var subThemeButton = Instantiate(themeButtonPrefab, subThemeContainer.transform.GetChild(0).GetChild(0));
                     var subThemeNumber = j;
-                    if (i == gameManager.AvailableThemesCount - 1)
+                    if (i == gameManager.GetAvailableThemesCount() - 1)
                     {
                         subThemeButton.GetComponentInChildren<Text>().text = "???";
                         subThemeButton.GetComponent<Button>().interactable = false;
