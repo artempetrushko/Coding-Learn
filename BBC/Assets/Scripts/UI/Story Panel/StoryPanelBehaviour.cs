@@ -12,9 +12,13 @@ namespace Scripts
 
         [SerializeField] private TMP_Text storyText;
         [SerializeField] private Button nextStoryPartButton;
+        [SerializeField] private Button skipStoryPartButton;
         [SerializeField] private float totalTextAppearingTime = 5;
+        [SerializeField] private float cutsceneFrameLength = 7;
+        [SerializeField] private float transitionToNextFrameTime = 1.2f;
 
         private GameManager gameManager;
+        private bool isSkipButtonPressed = false;
 
         public void ShowStoryText() => StartCoroutine(ShowStoryText_COR());
 
@@ -31,15 +35,29 @@ namespace Scripts
             storyPartNumber++;
         }
 
+        public void SkipText()
+        {
+            isSkipButtonPressed = true;
+            gameManager.ChangeCutsceneCurrentTime(storyPartNumber * cutsceneFrameLength - transitionToNextFrameTime);
+        }
+
         private IEnumerator ShowStoryText_COR()
         {
+            skipStoryPartButton.gameObject.SetActive(true);
             var storyPartText = gameManager.StoryParts[gameManager.CurrentTaskNumber - 1][storyPartNumber - 1].Script;
             var latency = totalTextAppearingTime / storyPartText.Length;
             for (var i = 0; i < storyPartText.Length; i++)
             {
+                if (isSkipButtonPressed)
+                {
+                    isSkipButtonPressed = false;
+                    storyText.text = storyPartText;
+                    break;
+                }
                 storyText.text += storyPartText[i];
                 yield return new WaitForSeconds(latency);
             }
+            skipStoryPartButton.gameObject.SetActive(false);
             nextStoryPartButton.gameObject.SetActive(true);
         }
 
