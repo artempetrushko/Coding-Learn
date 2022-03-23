@@ -104,60 +104,69 @@ namespace Scripts
         [Tooltip("Ссылка на GameManager для доступа из других скриптов")]
         public static GameManager Instance = null;
 
+        #region Legacy
         [Header("Игрок")]
         [HideInInspector] public GameObject Player;
         [Header("Текущие камеры")]
         [HideInInspector] public Camera CurrentSceneCamera;
-        [HideInInspector] public Camera CurrentDialogCamera;        
-        [HideInInspector] public int CoinsCount;
-        [Header("Счётчики")]
-        public int TimeToNextTip = 180;
-        [Header("Номер текущего задания")]
-        public int CurrentTaskNumber = 1;
+        [HideInInspector] public Camera CurrentDialogCamera;
         [Header("Текущая цель")]
         [HideInInspector] public string Target;
-        [Header("Количество доступных тем в справочнике")]
-        public int AvailableThemesCount;
-        [Header("Катсцены")]
-        public List<PlayableAsset> Cutscenes;
-
+        [HideInInspector] public bool IsTaskStarted;
         [HideInInspector] public List<InteractiveItem> ScriptItems = new List<InteractiveItem>();
         [HideInInspector] public List<InteractiveItem> OtherItems = new List<InteractiveItem>();
         [HideInInspector] public List<InteractiveItem> Notes = new List<InteractiveItem>();
         [HideInInspector] public InteractivePuzzle CurrentInteractivePuzzle;
-        [HideInInspector] public ScriptTrigger CurrentScriptTrigger;
+        #endregion
 
-        [HideInInspector] public int SceneIndex;
-        [HideInInspector] public bool IsTaskStarted;
-        [HideInInspector] public int SpentTime;
+        [Header("Время подготовки подсказки (в секундах)")]
+        [SerializeField] private int timeToNextTip  = 180;
+        [Header("Номер текущего задания")]
+        [SerializeField] private int currentTaskNumber = 1;        
+        [Header("Количество доступных тем в справочнике")]
+        [SerializeField] private int availableThemesCount;
+        [Header("Катсцены")]
+        [SerializeField] private List<PlayableAsset> cutscenes;
+
         [HideInInspector] public bool IsTimerStopped;
         [HideInInspector] public List<bool> HasTasksCompleted = new List<bool>();
-        [HideInInspector] public List<TipsData> AvailableTipsData = new List<TipsData>();
+
+        public int SceneIndex { get; private set; }  
+        public int SpentTime { get; private set; }      
+        public List<TipsData> AvailableTipsData { get; private set; } = new List<TipsData>();
 
         private PlayableDirector playableDirector;
 
-        public TaskText GetCurrentTask() => TaskTexts[SceneIndex][CurrentTaskNumber - 1];
+        public int GetCurrentTaskNumber() => currentTaskNumber;
 
-        public CodingTrainingInfo[] GetCurrentCodingTrainingInfo() => CodingTrainingInfos[SceneIndex][CurrentTaskNumber - 1];
+        public int GetTimeToNextTip() => timeToNextTip;
+
+        public int GetAvailableThemesCount() => availableThemesCount;   
+
+        public TaskText GetCurrentTask() => TaskTexts[SceneIndex][currentTaskNumber - 1];
+
+        public CodingTrainingInfo[] GetCurrentCodingTrainingInfo() => CodingTrainingInfos[SceneIndex][currentTaskNumber - 1];
 
         public CodingTrainingInfo[] GetCodingTrainingInfo(int themeNumber, int subThemeNumber) => CodingTrainingInfos[themeNumber][subThemeNumber];
 
-        public string GetTests() => string.Copy(Tests[CurrentTaskNumber - 1]);
+        public string GetTests() => string.Copy(Tests[currentTaskNumber - 1]);
+
+        public int GetTasksCount() => TaskTexts[SceneIndex].Length;
 
         public void ChangeCutsceneCurrentTime(float newTime) => playableDirector.time = newTime;
 
         public string GetNewTipText()
         {
-            AvailableTipsData[CurrentTaskNumber - 1].Amount--;
-            AvailableTipsData[CurrentTaskNumber - 1].IsShown = true;
-            var tipNumber = Tips[CurrentTaskNumber - 1].Length - AvailableTipsData[CurrentTaskNumber - 1].Amount;
-            return Tips[CurrentTaskNumber - 1][tipNumber].Tip;
+            AvailableTipsData[currentTaskNumber - 1].Amount--;
+            AvailableTipsData[currentTaskNumber - 1].IsShown = true;
+            var tipNumber = Tips[currentTaskNumber - 1].Length - AvailableTipsData[currentTaskNumber - 1].Amount;
+            return Tips[currentTaskNumber - 1][tipNumber].Tip;
         }
 
         public void PlayNextCutscene()
         {
-            CurrentTaskNumber++;
-            PlayCutscene(CurrentTaskNumber);
+            currentTaskNumber++;
+            PlayCutscene(currentTaskNumber);
         }
 
         public IEnumerator StartTimer_COR()
@@ -174,15 +183,13 @@ namespace Scripts
         private void PlayCutscene(int cutsceneNumber)
         {
             ChangeCutsceneCurrentTime(0);
-            playableDirector.Play(Cutscenes[cutsceneNumber - 1]);
+            playableDirector.Play(cutscenes[cutsceneNumber - 1]);
         }
 
         private void Start()
         {
             playableDirector = GetComponent<PlayableDirector>();
-            if (PlayerPrefs.HasKey("Level " + SceneIndex + "Task Number To Resume"))
-                CurrentTaskNumber = SaveManager.LoadTaskNumberToResume(SceneIndex);
-            PlayCutscene(CurrentTaskNumber);
+            PlayCutscene(currentTaskNumber);
         }
 
         private void Awake()
@@ -191,6 +198,7 @@ namespace Scripts
             SceneIndex = SceneManager.GetActiveScene().buildIndex;
             if (SceneIndex == SceneManager.sceneCountInBuildSettings - 1)
                 SceneIndex = 0;
+            SaveManager.SaveCurrentSceneIndex();
             GetDataFromFiles();
             for (var i = 0; i < TaskTexts[SceneIndex].Length; i++)
             {

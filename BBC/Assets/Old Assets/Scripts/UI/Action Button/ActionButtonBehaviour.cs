@@ -61,8 +61,8 @@ namespace Scripts
 
         public IEnumerator ActivateTask_COR(bool hasActivateButton = true)
         {
-            var currentTaskNumber = gameManager.CurrentTaskNumber;
-            gameManager.IsTaskStarted = true;
+            var currentTaskNumber = gameManager.GetCurrentTaskNumber();
+            //gameManager.IsTaskStarted = true;
             uiManager.PadMenuBehaviour.ShowIDEButton.interactable = true;
             robotBehaviour.FreezePlayer();
             if (gameManager.SceneIndex != 0)
