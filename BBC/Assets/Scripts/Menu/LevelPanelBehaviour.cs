@@ -37,6 +37,7 @@ namespace Scripts
 
         public void ShowDefaultLevelInfo(int levelNumber)
         {
+            FillLevelDescriptions();
             if (currentLevelNumber != 0)
                 ChangeCurrentButtonColors(normalButtonColor, normalHighlightedButtonColor);
             ChangeLevelInfo(levelNumber);
@@ -48,6 +49,12 @@ namespace Scripts
             ChangeCurrentButtonColors(selectedButtonColor, selectedHighlightedButtonColor);
             levelTitle.text = menuLocalization.GetLevelInfo(currentLevelNumber).LevelTitle;
             StartCoroutine(SwitchLevelWallpapers_COR());
+        }
+
+        public void FillLevelDescriptions()
+        {
+            for (var i = 1; i <= levelButtons.transform.childCount; i++)
+                levelButtons.transform.GetChild(i - 1).GetChild(0).GetComponentInChildren<Text>().text = menuLocalization.GetLevelInfo(i).Description;
         }
 
         public IEnumerator LoadLevelAsync_COR()
