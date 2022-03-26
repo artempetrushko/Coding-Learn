@@ -111,7 +111,7 @@ namespace Scripts
         {
             if (isErrorPanelShown)
                 ToggleErrorPanelState();
-            playerCodeRowPosition = File.ReadAllLines(Directory.GetFiles(Application.dataPath, "Tests Level " + gameManager.SceneIndex + " Task*.txt", SearchOption.AllDirectories)[gameManager.GetCurrentTaskNumber() - 1])
+            playerCodeRowPosition = File.ReadAllLines(Directory.GetFiles(Application.dataPath, "Tests Task*.txt", SearchOption.AllDirectories)[gameManager.GetCurrentTaskNumber() - 1])
                 .ToList()
                 .FindIndex(x => x.Contains("//<playerCode>"));
             ScriptDomain domain = ScriptDomain.CreateDomain("MyDomain");
