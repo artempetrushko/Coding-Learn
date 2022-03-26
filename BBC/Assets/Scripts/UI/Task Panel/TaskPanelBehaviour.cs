@@ -45,7 +45,7 @@ namespace Scripts
             var taskText = gameManager.GetCurrentTask();
             taskTitle.text = taskText.Title;
             taskDescription.text = taskText.Description;
-            CreateCodingTrainingPages(gameManager.SceneIndex, gameManager.GetCurrentTaskNumber() - 1);         
+            CreateCodingTrainingPages(gameManager.SceneIndex - 1, gameManager.GetCurrentTaskNumber() - 1);         
             OpenCodingTrainingPanel_Special();
             onTaskStarted.Invoke();
         }

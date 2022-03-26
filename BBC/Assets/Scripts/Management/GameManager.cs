@@ -143,15 +143,13 @@ namespace Scripts
 
         public int GetAvailableThemesCount() => availableThemesCount;   
 
-        public TaskText GetCurrentTask() => TaskTexts[SceneIndex][currentTaskNumber - 1];
-
-        public CodingTrainingInfo[] GetCurrentCodingTrainingInfo() => CodingTrainingInfos[SceneIndex][currentTaskNumber - 1];
+        public TaskText GetCurrentTask() => TaskTexts[SceneIndex - 1][currentTaskNumber - 1];
 
         public CodingTrainingInfo[] GetCodingTrainingInfo(int themeNumber, int subThemeNumber) => CodingTrainingInfos[themeNumber][subThemeNumber];
 
         public string GetTests() => string.Copy(Tests[currentTaskNumber - 1]);
 
-        public int GetTasksCount() => TaskTexts[SceneIndex].Length;
+        public int GetTasksCount() => TaskTexts[SceneIndex - 1].Length;
 
         public void ChangeCutsceneCurrentTime(float newTime) => playableDirector.time = newTime;
 
@@ -196,11 +194,9 @@ namespace Scripts
         {
             InitializeGameManager();
             SceneIndex = SceneManager.GetActiveScene().buildIndex;
-            if (SceneIndex == SceneManager.sceneCountInBuildSettings - 1)
-                SceneIndex = 0;
             SaveManager.SaveCurrentSceneIndex();
             GetDataFromFiles();
-            for (var i = 0; i < TaskTexts[SceneIndex].Length; i++)
+            for (var i = 0; i < TaskTexts[SceneIndex - 1].Length; i++)
             {
                 AvailableTipsData.Add(new TipsData(Tips[i].Length));
                 HasTasksCompleted.Add(false);
@@ -216,21 +212,21 @@ namespace Scripts
         private void GetDataFromFiles()
         {         
             ThemeTitles = GetResourcesAndWrite<ThemeTitle>("Data/Coding Training/Theme Titles");
-            for (var i = 0; i < SceneManager.sceneCountInBuildSettings - 1; i++)
+            for (var i = 1; i <= SceneManager.sceneCountInBuildSettings - 1; i++)
                 TaskTexts.Add(GetResourcesAndWrite<TaskText>("Data/Tasks/Tasks Level " + i));
-            for (var i = 1; i <= TaskTexts[SceneIndex].Length + 1; i++)
-                StoryParts.Add(GetResourcesAndWrite<Story>("Data/Story/Level " + SceneIndex + "/Story Level " + SceneIndex + " Part " + i));
-            for (var i = 1; i <= TaskTexts[SceneIndex].Length; i++)
+            for (var i = 1; i <= TaskTexts[SceneIndex - 1].Length + 1; i++)
+                StoryParts.Add(GetResourcesAndWrite<Story>("Data/Story/Level " + SceneIndex + "/Story Part " + i));
+            for (var i = 1; i <= TaskTexts[SceneIndex - 1].Length; i++)
             {
-                Tests.Add(Resources.Load<TextAsset>("Data/Tests/Tests Level " + SceneIndex + " Task " + i).text);
-                Tips.Add(GetResourcesAndWrite<TipMessage>("Data/Tips/Level " + SceneIndex + "/Tips Level " + SceneIndex + " Task " + i));
-                TaskChallenges.Add(GetResourcesAndWrite<Challenges>("Data/Challenges/Level " + SceneIndex + "/Challenges Level " + SceneIndex + " Task " + i));
+                Tests.Add(Resources.Load<TextAsset>("Data/Tests/Level " + SceneIndex + "/Tests Task " + i).text);
+                Tips.Add(GetResourcesAndWrite<TipMessage>("Data/Tips/Level " + SceneIndex + "/Tips Task " + i));
+                TaskChallenges.Add(GetResourcesAndWrite<Challenges>("Data/Challenges/Level " + SceneIndex + "/Challenges Task " + i));
             }
-            for (var i = 0; i <= SceneIndex; i++)
+            for (var i = 1; i <= SceneIndex; i++)
             {
                 CodingTrainingInfos.Add(new List<CodingTrainingInfo[]>());
-                for (var j = 1; j <= TaskTexts[i].Length; j++)
-                    CodingTrainingInfos[i].Add(GetResourcesAndWrite<CodingTrainingInfo>("Data/Coding Training/Level " + i + "/Coding Training Level " + i + " Task " + j));
+                for (var j = 1; j <= TaskTexts[i - 1].Length; j++)
+                    CodingTrainingInfos[i - 1].Add(GetResourcesAndWrite<CodingTrainingInfo>("Data/Coding Training/Level " + i + "/Coding Training Task " + j));
             }
         }
 

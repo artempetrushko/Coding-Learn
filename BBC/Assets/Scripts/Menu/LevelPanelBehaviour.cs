@@ -59,7 +59,7 @@ namespace Scripts
 
         public IEnumerator LoadLevelAsync_COR()
         {
-            var operation = SceneManager.LoadSceneAsync(currentLevelNumber == 1 ? SceneManager.sceneCountInBuildSettings - 1 : currentLevelNumber - 1);
+            var operation = SceneManager.LoadSceneAsync(currentLevelNumber);
             while (!operation.isDone)
             {
                 loadBar.fillAmount = operation.progress;
