@@ -1,0 +1,19 @@
+using System;
+using System.Collections.Generic;
+
+public class Level4Task5
+{
+    public bool isTaskCompleted()
+    {
+        int[] array = null;
+        var firstCheck=CheckFirstElemen(array);
+        array= new int[0];
+        var secondCheck = CheckFirstElemen(array);
+        array = new int[] {0,1};
+        var thirdCheck = CheckFirstElemen(array);
+        array = new int[] {10,0};
+        var fourthCheck = CheckFirstElemen(array);
+
+        return !firstCheck&&!secondCheck&&!thirdCheck&&fourthCheck;
+    }
+}
