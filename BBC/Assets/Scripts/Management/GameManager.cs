@@ -211,23 +211,25 @@ namespace Scripts
 
         private void GetDataFromFiles()
         {         
-            ThemeTitles = GetResourcesAndWrite<ThemeTitle>("Data/Coding Training/Theme Titles");
+            var currentLanguage = (Language)PlayerPrefs.GetInt("Language");
+            ThemeTitles = GetResourcesAndWrite<ThemeTitle>("Data/" + currentLanguage.ToString() + "/Coding Training/Theme Titles");
             for (var i = 1; i <= SceneManager.sceneCountInBuildSettings - 1; i++)
-                TaskTexts.Add(GetResourcesAndWrite<TaskText>("Data/Tasks/Tasks Level " + i));
+                TaskTexts.Add(GetResourcesAndWrite<TaskText>("Data/" + currentLanguage.ToString() + "/Tasks/Tasks Level " + i));
             for (var i = 1; i <= TaskTexts[SceneIndex - 1].Length + 1; i++)
-                StoryParts.Add(GetResourcesAndWrite<Story>("Data/Story/Level " + SceneIndex + "/Story Part " + i));
+                StoryParts.Add(GetResourcesAndWrite<Story>("Data/" + currentLanguage.ToString() + "/Story/Level " + SceneIndex + "/Story Part " + i));
             for (var i = 1; i <= TaskTexts[SceneIndex - 1].Length; i++)
             {
-                Tests.Add(Resources.Load<TextAsset>("Data/Tests/Level " + SceneIndex + "/Tests Task " + i).text);
-                Tips.Add(GetResourcesAndWrite<TipMessage>("Data/Tips/Level " + SceneIndex + "/Tips Task " + i));
-                TaskChallenges.Add(GetResourcesAndWrite<Challenges>("Data/Challenges/Level " + SceneIndex + "/Challenges Task " + i));
+                Tests.Add(Resources.Load<TextAsset>("Tests/Level " + SceneIndex + "/Tests Task " + i).text);
+                Tips.Add(GetResourcesAndWrite<TipMessage>("Data/" + currentLanguage.ToString() + "/Tips/Level " + SceneIndex + "/Tips Task " + i));
+                TaskChallenges.Add(GetResourcesAndWrite<Challenges>("Data/" + currentLanguage.ToString() + "/Challenges/Level " + SceneIndex + "/Challenges Task " + i));
             }
             for (var i = 1; i <= SceneIndex; i++)
             {
                 CodingTrainingInfos.Add(new List<CodingTrainingInfo[]>());
                 for (var j = 1; j <= TaskTexts[i - 1].Length; j++)
-                    CodingTrainingInfos[i - 1].Add(GetResourcesAndWrite<CodingTrainingInfo>("Data/Coding Training/Level " + i + "/Coding Training Task " + j));
+                    CodingTrainingInfos[i - 1].Add(GetResourcesAndWrite<CodingTrainingInfo>("Data/" + currentLanguage.ToString() + "/Coding Training/Level " + i + "/Coding Training Task " + j));
             }
+            gameObject.GetComponent<UiLocalizationScript>().GetResourcesByCurrentLanguage(currentLanguage);
         }
 
         private T[] GetResourcesAndWrite<T>(string resourcePath)
