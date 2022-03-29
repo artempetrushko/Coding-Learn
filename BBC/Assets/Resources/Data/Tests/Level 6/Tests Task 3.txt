@@ -1,44 +1,44 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
-public class Level4Task3
+public class Level5Task3
 {
     public bool isTaskCompleted()
     {
         var random = new Random();
-        var maxCount = 52;
-        var maxSize = 14;
-        return Check(random, maxCount, maxSize) && Check(random, maxCount, maxSize);
+        var maxCount = 1000;
+        var maxSize = 10000;
+        return Check(random, maxCount, maxSize)&& Check(random, maxCount, maxSize);
     }
 
     private bool Check(Random random, int maxCount, int maxSize)
     {
-        var array = CreateArray(random, maxCount, maxSize);
-        var size = random.Next(maxSize);
-        var tested= MakeMove(array, size);
-        var controled = -1;
-        if (size != 1)
+        var str =new string(CreateArray(random, maxCount, maxSize));
+        var testedStr= GetUpperLetters(str);
+        var exampleList=new List<char>();
+        foreach (var e in str)
         {
-            foreach (var item in array)
+            if (char.IsUpper(e))
             {
-                if (item > size && item < controled)
-                    controled = item;
+                exampleList.Add(e);
             }
-            if (controled == -1 && array.Contains(1))
-                controled = 1;
         }
-        return tested==controled;
+        return testedStr.Equals(new string(exampleList.ToArray()));
     }
-
-    private static int[] CreateArray(Random random, int maxCount, int maxSize)
+    
+    private static char[] CreateArray(Random random, int maxCount, int maxSize)
     {
-        var array = new int[random.Next(maxCount)];
-        for (int i = 0; i < array.Length; i++)
+        var array = new char[random.Next(maxCount)];
+        for (var i = 0; i < array.Length; i++)
         {
-            array[i] = random.Next(1,maxSize);
+            array[i] =(char) random.Next(33,123);
+            if (random.Next(2) == 1)
+            {
+                array[i]=char.ToUpper(array[i]);
+            }
         }
 
         return array;
     }
+
 }

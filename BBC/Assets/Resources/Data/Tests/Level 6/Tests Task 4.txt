@@ -1,41 +1,45 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
-public class Level4Task4
-{   public enum Direction
-    {
-        West, Nort, South, East
-    }
+public class Level5Task4
+{
     public bool isTaskCompleted()
     {
         var random = new Random();
         var maxCount = 1000;
-        var maxSize = 4;
-        return Check(random, maxCount, maxSize) && Check(random, maxCount, maxSize);
+        var maxSize = 10000;
+        return Check(random, maxCount, maxSize)&& Check(random, maxCount, maxSize);
     }
 
     private bool Check(Random random, int maxCount, int maxSize)
     {
-        var array = CreateArray(random, maxCount, maxSize);
-        var testedArray = TranslateDirection(array.Select(x=>(Direction)x).ToArray());
-        var secondCheck = true;
-        for (int i = 0; i < testedArray.Length; i++)
-        {
-            if (testedArray[i] != array[i])
-                secondCheck = false;
-        }
-        return secondCheck;
+        var array = CreateArray(random, maxCount, maxSize,out var result);
+        var testedWay = GetRightWay(array);
+        
+        return result==testedWay;
     }
-
-    private static int[] CreateArray(Random random, int maxCount, int maxSize)
+    
+    private static void ReplaceCharInString(ref String str, int index, Char newSymb)
     {
-        var array = new int[random.Next(maxCount)];
+        str = str.Remove(index, 1).Insert(index, newSymb.ToString());
+    }
+    
+    private static string[] CreateArray(Random random, int maxCount, int maxSize,out int resultIndex)
+    {
+        var array = new string[random.Next(maxCount)];
         for (int i = 0; i < array.Length; i++)
         {
-            array[i] = random.Next( maxSize);
+            array[i] = new string('a',random.Next(maxSize));
+            if (random.Next(2) == 1)
+            {
+                var j=random.Next(array[i].Length);
+                var str = array[i].ToUpper();
+                ReplaceCharInString(ref str, j, char.ToLower(str[j]));
+            }
         }
-
+        resultIndex=random.Next(array.Length);
+        array[resultIndex]=array[resultIndex].ToUpper();
         return array;
     }
+
 }
