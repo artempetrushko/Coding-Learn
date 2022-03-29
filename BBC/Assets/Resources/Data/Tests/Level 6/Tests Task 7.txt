@@ -1,30 +1,31 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
-public class Level4Task1
+public class Level4Task7
 {
     public bool isTaskCompleted()
     {
         var random = new Random();
         var maxCount = 1000;
-        var maxSize = 10000;
-        return Check(random, maxCount, maxSize)&& Check(random, maxCount, maxSize);
+        var maxSize = 100;
+        return Check(random, maxCount, maxSize) && Check(random, maxCount, maxSize);
     }
-
     private bool Check(Random random, int maxCount, int maxSize)
     {
         var array = CreateArray(random, maxCount, maxSize);
-        var testedArray = CopyAppleSizesArray(array);
-        var firstCheck = !testedArray.Equals(array);
+        var weight = random.Next(maxSize);
+        var testedArray = ProcessArray(array,weight);
+        var controlArray = array.Select(x => (x>weight)?-1:x).ToArray();
+        var firstCheck=!array.Equals(testedArray);
         var secondCheck = true;
         for (int i = 0; i < testedArray.Length; i++)
         {
-            if (testedArray[i] != array[i])
+            if (testedArray[i] != controlArray[i])
                 secondCheck = false;
         }
-        return firstCheck && secondCheck;
+        return secondCheck&&firstCheck;
     }
-
     private static int[] CreateArray(Random random, int maxCount, int maxSize)
     {
         var array = new int[random.Next(maxCount)];
@@ -35,5 +36,4 @@ public class Level4Task1
 
         return array;
     }
-
 }
