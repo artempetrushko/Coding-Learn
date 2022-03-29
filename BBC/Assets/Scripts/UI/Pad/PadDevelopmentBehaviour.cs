@@ -8,6 +8,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 using RoslynCSharp.Compiler;
+using System.IO;
 
 namespace Scripts
 {
@@ -49,6 +50,7 @@ namespace Scripts
         public GameObject ExecutingProgressBar;
         #endregion
 
+        #region Цвета для подсветки кода
         [Header("Подсветка кода")]
         [Tooltip("Подсветка ключевых слов")]
         [SerializeField] private Color32 keywordsColor;
@@ -58,6 +60,7 @@ namespace Scripts
         [SerializeField] private Color32 methodNameColor;
         [Tooltip("Подсветка имён локальных переменных")]
         [SerializeField] private Color32 localVariablesColor;
+        #endregion
 
         #region Слова для подсветки
         [Header("Подсвечиваемые слова")]
@@ -76,6 +79,7 @@ namespace Scripts
         private Color32 successColor = Color.green;
         private Color32 errorColor = Color.red;
         private bool isErrorPanelShown = false;       
+        private int playerCodeRowPosition;
 
         public void RollPad() => StartCoroutine(RollPad_COR());
 
@@ -107,9 +111,12 @@ namespace Scripts
         {
             if (isErrorPanelShown)
                 ToggleErrorPanelState();
+            playerCodeRowPosition = File.ReadAllLines(Directory.GetFiles(Application.dataPath, "Tests Task*.txt", SearchOption.AllDirectories)[gameManager.GetCurrentTaskNumber() - 1])
+                .ToList()
+                .FindIndex(x => x.Contains("//<playerCode>"));
             ScriptDomain domain = ScriptDomain.CreateDomain("MyDomain");
             try
-            {
+            {                             
                 var robotManagementCode = gameManager.GetTests().Replace("//<playerCode>", CodeField.text);               
                 ScriptType compiledCode = domain.CompileAndLoadMainSource(robotManagementCode);
                 ScriptProxy proxy = compiledCode.CreateInstance(gameObject);
@@ -185,7 +192,7 @@ namespace Scripts
             var challengesHolder = ChallengesPanel.GetComponentInChildren<VerticalLayoutGroup>().transform;
             for (var i = challengesHolder.transform.childCount; i > 0; i--)
                 Destroy(challengesHolder.transform.GetChild(i - 1).gameObject);
-            var challengeTexts = gameManager.TaskChallenges[gameManager.CurrentTaskNumber - 1];
+            var challengeTexts = gameManager.TaskChallenges[gameManager.GetCurrentTaskNumber() - 1];
             foreach (var challengeText in challengeTexts)
             {
                 var challenge = Instantiate(ChallengePrefab, challengesHolder);
@@ -197,10 +204,10 @@ namespace Scripts
         {
             yield return StartCoroutine(TurnTaskIndicatorOn_COR(errorColor));
             var errorsTextField = ErrorsPanel.GetComponentInChildren<TMP_Text>();
-            errorsTextField.text = "";
+            errorsTextField.text = "";         
             foreach (var error in errors)
             {
-                errorsTextField.text += string.Format("<color=red>Error</color>: {0}\n", error.Message);
+                errorsTextField.text += string.Format("<color=red>Error</color> ({0}, {1}): {2}\n", error.SourceLine - playerCodeRowPosition + 1, error.SourceColumn, error.Message);
             }              
             if (!isErrorPanelShown)
                 ToggleErrorPanelState();

@@ -44,7 +44,7 @@ namespace Scripts
             isCodingPuzzleStarted = true;
             isPadActive = true;
             uiManager.InventoryBehaviour.InventoryStatement = InventoryStatement.PuzzleSolving;
-            gameManager.CurrentTaskNumber = CodingPuzzleNumber;
+            //gameManager.currentTaskNumber = CodingPuzzleNumber;
             uiManager.Canvas.GetComponentInChildren<PadDevelopmentBehaviour>().ShowNewTaskCode();
         }
 

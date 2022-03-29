@@ -61,8 +61,8 @@ namespace Scripts
 
         public IEnumerator ActivateTask_COR(bool hasActivateButton = true)
         {
-            var currentTaskNumber = gameManager.CurrentTaskNumber;
-            gameManager.IsTaskStarted = true;
+            var currentTaskNumber = gameManager.GetCurrentTaskNumber();
+            //gameManager.IsTaskStarted = true;
             uiManager.PadMenuBehaviour.ShowIDEButton.interactable = true;
             robotBehaviour.FreezePlayer();
             if (gameManager.SceneIndex != 0)
@@ -145,7 +145,6 @@ namespace Scripts
         private IEnumerator SaveGame_COR()
         {
             uiManager.ActionButton.interactable = false;
-            SaveManager.Save();
             ActivatedTrigger.GetComponentInChildren<Animator>().Play("Saving");
             var buttonText = uiManager.ActionButton.GetComponentInChildren<Text>();
             for (var i = 1; i <= 3; i++)

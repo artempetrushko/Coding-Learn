@@ -30,13 +30,13 @@ namespace Scripts
             if (TipFiller.IsActive())
                 TipFiller.gameObject.SetActive(false);
             Tip.text = gameManager.GetNewTipText();
-            if (gameManager.AvailableTipsData[gameManager.CurrentTaskNumber - 1].Amount > 0)
+            if (gameManager.AvailableTipsData[gameManager.GetCurrentTaskNumber() - 1].Amount > 0)
                 WaitUntilNextTip();
         }
 
         public void OpenHelpPanel()
         {
-            var taskNumber = gameManager.CurrentTaskNumber;
+            var taskNumber = gameManager.GetCurrentTaskNumber();
             if (gameManager.AvailableTipsData[taskNumber - 1].Amount != gameManager.Tips[taskNumber - 1].Length)
             {
                 var tipNumber = gameManager.Tips[taskNumber - 1].Length - gameManager.AvailableTipsData[taskNumber - 1].Amount - 1;
@@ -51,7 +51,7 @@ namespace Scripts
         private IEnumerator WaitUntilNextTip_COR()
         {
             ShowTipButton.interactable = false;
-            var timeToNextTip = gameManager.TimeToNextTip;
+            var timeToNextTip = gameManager.GetTimeToNextTip();
             while (timeToNextTip > 0)
             {
                 var minutes = timeToNextTip / 60;

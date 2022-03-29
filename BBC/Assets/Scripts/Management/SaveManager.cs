@@ -8,29 +8,32 @@ namespace Scripts
 {
     public class SaveManager : MonoBehaviour
     {
-        public static void Save()
+        public static void SaveCurrentSceneIndex()
         {
-            for (var i = 0; i < GameManager.Instance.HasTasksCompleted.Count; i++)
-                PlayerPrefs.SetInt("Task " + (i + 1) + " completed", GameManager.Instance.HasTasksCompleted[i] ? 1 : 0);
-
-            PlayerPrefs.SetInt("SceneIndex", SceneManager.GetActiveScene().buildIndex);
-
-            var availableTipsCounts = GameManager.Instance.AvailableTipsData;
-            for (var i = 0; i < availableTipsCounts.Count; i++)
-                PlayerPrefs.SetInt("Available Tips Count (Task " + (i + 1) + ")", availableTipsCounts[i].Amount);
-
-            Debug.Log("Сохранено!");
+            PlayerPrefs.SetInt("SceneIndexToResume", GameManager.Instance.SceneIndex);
+            Debug.Log("Сохранён номер текущего уровня!");
         }
 
-        public static void Load()
+        public static void SaveTemporaryTaskProgress(int earnedStarsCount)
         {
-            for (var i = 0; i < GameManager.Instance.HasTasksCompleted.Count; i++)
+            var sceneIndex = GameManager.Instance.SceneIndex;
+            var taskNumber = GameManager.Instance.GetCurrentTaskNumber();
+            var currentTaskEarnedStarsCountKey = "Level " + sceneIndex + " Task " + taskNumber + " Stars Earned";         
+            if (!PlayerPrefs.HasKey(currentTaskEarnedStarsCountKey) || earnedStarsCount > PlayerPrefs.GetInt(currentTaskEarnedStarsCountKey))
+                PlayerPrefs.SetInt("Temporary " + currentTaskEarnedStarsCountKey, earnedStarsCount);
+            Debug.Log("Текущий прогресс временно сохранён!");
+        }
+
+        public static void SaveFinishedLevelProgress()
+        {
+            var sceneIndex = GameManager.Instance.SceneIndex;
+            for (var i = 1; i <= GameManager.Instance.GetTasksCount(); i++)
             {
-                GameManager.Instance.HasTasksCompleted[i] = PlayerPrefs.GetInt("Task " + (i + 1) + " completed") == 1;
-                var taskTriggers = GameManager.Instance.Player.GetComponentInChildren<TriggersBehaviour>().TaskTriggers;
-                if (GameManager.Instance.HasTasksCompleted[i])
-                    taskTriggers.transform.GetChild(i).gameObject.SetActive(false);
+                var currentTaskEarnedStarsCountKey = "Level " + sceneIndex + " Task " + i + " Stars Earned";
+                PlayerPrefs.SetInt(currentTaskEarnedStarsCountKey, PlayerPrefs.GetInt("Temporary " + currentTaskEarnedStarsCountKey));
+                PlayerPrefs.DeleteKey("Temporary " + currentTaskEarnedStarsCountKey);
             }
+            Debug.Log("Прогресс уровня сохранён!");
         }
 
         public static void DeleteSavedDialogueData()

@@ -1,37 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Playables;
-using System.Linq;
+using UnityEngine.Events;
 
 namespace Scripts
 {
     public class MenuScript : MonoBehaviour
     {
-        [Header("Авторизован ли пользователь")]
-        [HideInInspector]
-        public bool IsPlayerLoggedIn;
-
         [Header("UI-элементы меню")]
         [SerializeField] private GameObject StartBlackScreen;
         [SerializeField] private GameObject MainMenuButtons;
         [SerializeField] private Button ContinueButton;
         [Header("UI-элементы карты")]
         [SerializeField] private GameObject WorldMapPanel;
+        [SerializeField] private GameObject levelsPanel;
+        [SerializeField] private UnityEvent<int> onLevelsPanelCalled;
+        [SerializeField] private UnityEvent onPlayButtonPressed;
         private LoadLevel levelLoader;
+        private const string timelinesRootPath = "Timelines/Menu/";
 
         #region Переходы между экранами меню
         public void GoTo_Settings() => StartCoroutine(GoTo_Settings_COR());
 
-        public void GoTo_Profile() => StartCoroutine(GoTo_Profile_COR());
-
         public void GoTo_Levels() => StartCoroutine(GoTo_Levels_COR());
 
         public void ReturnToMainMenuFrom_Settings() => StartCoroutine(ReturnToMainMenu_Settings_COR());
-
-        public void ReturnToMainMenuFrom_Profile() => StartCoroutine(ReturnToMainMenu_Profile_COR());
 
         public void ReturnToMainMenuFrom_Levels() => StartCoroutine(ReturnToMainMenu_Levels_COR());
 
@@ -40,7 +37,7 @@ namespace Scripts
 
         public void Continue() => StartCoroutine(Continue_COR());
 
-        public void Start_Level_Training() => StartCoroutine(Start_Level_COR(SceneManager.sceneCountInBuildSettings - 1));
+        public void StartLevel() => StartCoroutine(Start_Level_COR(0));
 
         public void Start_Level(int levelNumber) => StartCoroutine(Start_Level_COR(levelNumber));
 
@@ -58,69 +55,60 @@ namespace Scripts
         private IEnumerator GoTo_Settings_COR()
         {
             yield return StartCoroutine(HideMainMenu_COR());
-            yield return StartCoroutine(PlayTimeline_COR(gameObject, "ShowSettings"));
-        }
-
-        private IEnumerator GoTo_Profile_COR()
-        {
-            yield return StartCoroutine(HideMainMenu_COR());
-            gameObject.GetComponent<PlayerPanelBehaviour>().PlayerPanel.SetActive(false);
-            StartCoroutine(gameObject.GetComponent<ProfileBehaviour>().ShowProfileScreen_COR());
+            yield return StartCoroutine(PlayTimeline_COR("ShowSettings"));
         }
 
         private IEnumerator GoTo_Levels_COR()
         {
+            levelsPanel.SetActive(true);
+            ChangeLevelDataToDefault();
             yield return StartCoroutine(HideMainMenu_COR());
-            StartCoroutine(ShowGlobalMap_COR());
+            //StartCoroutine(ShowGlobalMap_COR());           
+            yield return StartCoroutine(PlayTimeline_COR("ShowLevelsPanel"));
         }
 
         private IEnumerator ReturnToMainMenu_Settings_COR()
         {
-            yield return StartCoroutine(PlayTimeline_COR(gameObject, "HideSettings"));
-            yield return StartCoroutine(ShowMainMenu_COR());
-        }
-
-        private IEnumerator ReturnToMainMenu_Profile_COR()
-        {
-            yield return StartCoroutine(gameObject.GetComponent<ProfileBehaviour>().HideProfileScreen_COR());
-            gameObject.GetComponent<PlayerPanelBehaviour>().PlayerPanel.SetActive(true);
+            yield return StartCoroutine(PlayTimeline_COR("HideSettings"));
             yield return StartCoroutine(ShowMainMenu_COR());
         }
 
         private IEnumerator ReturnToMainMenu_Levels_COR()
         {
-            yield return StartCoroutine(HideGlobalMap_COR());
+            //yield return StartCoroutine(HideGlobalMap_COR());
+            yield return StartCoroutine(PlayTimeline_COR("HideLevelsPanel"));
             yield return StartCoroutine(ShowMainMenu_COR());
+
         }
 
         private IEnumerator ShowMainMenu_COR()
         {
-            yield return StartCoroutine(PlayTimeline_COR(gameObject, "ShowMainMenu"));
+            yield return StartCoroutine(PlayTimeline_COR("ShowMainMenu"));
         }
 
         private IEnumerator HideMainMenu_COR()
         {
-            yield return StartCoroutine(PlayTimeline_COR(gameObject, "HideMainMenu"));
+            yield return StartCoroutine(PlayTimeline_COR("HideMainMenu"));
         }
 
         private IEnumerator Continue_COR()
         {
-            yield return StartCoroutine(PlayTimeline_COR(gameObject, "HideMainMenu"));
-            yield return StartCoroutine(PlayTimeline_COR(gameObject, "StartLevel"));
-            StartCoroutine(levelLoader.LoadLevelAsync_COR(PlayerPrefs.GetInt("SceneIndex")));
+            yield return StartCoroutine(PlayTimeline_COR("HideMainMenu"));
+            yield return StartCoroutine(PlayTimeline_COR("StartLevel"));
+            StartCoroutine(levelLoader.LoadLevelAsync_COR(PlayerPrefs.GetInt("SceneIndexToResume")));
         }
 
         private IEnumerator Start_Level_COR(int levelNumber)
         {
-            PlayerPrefs.DeleteAll();
-            yield return StartCoroutine(HideGlobalMap_COR());
-            yield return StartCoroutine(PlayTimeline_COR(gameObject, "StartLevel"));
-            StartCoroutine(levelLoader.LoadLevelAsync_COR(levelNumber));
+            //yield return StartCoroutine(HideGlobalMap_COR());
+            yield return StartCoroutine(PlayTimeline_COR("ShowLoadScreen"));
+            onPlayButtonPressed.Invoke();
+            //StartCoroutine(levelLoader.LoadLevelAsync_COR(levelNumber));
         }
 
         private IEnumerator ShowGlobalMap_COR()
         {
-            StartCoroutine(PlayTimeline_COR(gameObject, "ShowGlobalMap"));
+            StartCoroutine(PlayTimeline_COR("ShowGlobalMap"));
             yield return new WaitForSeconds(0.75f);
             PlayMarkersAnimation("AppearMapMarker");           
         }
@@ -128,7 +116,13 @@ namespace Scripts
         private IEnumerator HideGlobalMap_COR()
         {
             PlayMarkersAnimation("EraseMapMarker");
-            yield return StartCoroutine(PlayTimeline_COR(gameObject, "HideGlobalMap"));
+            yield return StartCoroutine(PlayTimeline_COR("HideGlobalMap"));
+        }
+
+        private void ChangeLevelDataToDefault()
+        {
+            var defaultLevelNumber = PlayerPrefs.HasKey("SceneIndexToResume") ? PlayerPrefs.GetInt("SceneIndexToResume") : 1;
+            onLevelsPanelCalled.Invoke(defaultLevelNumber);
         }
 
         private void PlayMarkersAnimation(string animationName)
@@ -146,19 +140,32 @@ namespace Scripts
             StartBlackScreen.SetActive(false);
         }
 
+        private IEnumerator PlayTimeline_COR(string playableAssetName = null)
+        {
+            yield return StartCoroutine(PlayTimeline_COR(gameObject, playableAssetName));
+        }
+
         private IEnumerator PlayTimeline_COR(GameObject director, string playableAssetName = null)
         {
             var playableDirector = director.GetComponent<PlayableDirector>();
             if (playableAssetName != null)
-                playableDirector.playableAsset = Resources.Load<PlayableAsset>("Timelines/Menu/" + playableAssetName);
+                playableDirector.playableAsset = Resources.Load<PlayableAsset>(timelinesRootPath + playableAssetName);
             playableDirector.Play();
             yield return new WaitForSeconds((float)playableDirector.playableAsset.duration);
+        }
+
+        private IEnumerator PlayAnimation_COR(GameObject animatorHolder, string animationName)
+        {
+            var animator = animatorHolder.GetComponent<Animator>();
+            var clip = animator.runtimeAnimatorController.animationClips.Where(x => x.name == animationName).First();
+            animator.Play(clip.name);
+            yield return new WaitForSeconds(clip.length);
         }
 
         private void Start()
         {
             levelLoader = gameObject.GetComponent<LoadLevel>();
-            if (!PlayerPrefs.HasKey("PositionX"))
+            if (!PlayerPrefs.HasKey("SceneIndexToResume"))
                 ContinueButton.gameObject.SetActive(false);
             StartCoroutine(PlayStartAnimation_COR());
             PlayMarkersAnimation("EraseMapMarker");
