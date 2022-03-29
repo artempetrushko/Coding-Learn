@@ -38,11 +38,6 @@ namespace Scripts
 
         public void ChangeAvailability(bool isAvailable) => IsCallAvailable = isAvailable;
 
-        public void UpdatePadData()
-        {
-            CoinsMenuCounter.text = gameManager.CoinsCount.ToString();
-        }
-
         /*public void PlayPadMoveAnimation(string normalAnimation, string devAnimation)
         {
             var padMode = uiManager.PadMode;
@@ -89,7 +84,6 @@ namespace Scripts
             IsCallAvailable = true;
             ShowIDEButton.interactable = gameManager.SceneIndex == 0;
             AvailableTipsCounts = gameManager.AvailableTipsData;
-            UpdatePadData();
         }
     }
 }

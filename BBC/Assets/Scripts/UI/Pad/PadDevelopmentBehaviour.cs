@@ -111,7 +111,7 @@ namespace Scripts
         {
             if (isErrorPanelShown)
                 ToggleErrorPanelState();
-            playerCodeRowPosition = File.ReadAllLines(Directory.GetFiles(Application.dataPath, "Tests Level " + gameManager.SceneIndex + " Task*.txt", SearchOption.AllDirectories)[gameManager.CurrentTaskNumber - 1])
+            playerCodeRowPosition = File.ReadAllLines(Directory.GetFiles(Application.dataPath, "Tests Task*.txt", SearchOption.AllDirectories)[gameManager.GetCurrentTaskNumber() - 1])
                 .ToList()
                 .FindIndex(x => x.Contains("//<playerCode>"));
             ScriptDomain domain = ScriptDomain.CreateDomain("MyDomain");
@@ -192,7 +192,7 @@ namespace Scripts
             var challengesHolder = ChallengesPanel.GetComponentInChildren<VerticalLayoutGroup>().transform;
             for (var i = challengesHolder.transform.childCount; i > 0; i--)
                 Destroy(challengesHolder.transform.GetChild(i - 1).gameObject);
-            var challengeTexts = gameManager.TaskChallenges[gameManager.CurrentTaskNumber - 1];
+            var challengeTexts = gameManager.TaskChallenges[gameManager.GetCurrentTaskNumber() - 1];
             foreach (var challengeText in challengeTexts)
             {
                 var challenge = Instantiate(ChallengePrefab, challengesHolder);

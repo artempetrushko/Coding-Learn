@@ -45,7 +45,7 @@ namespace Scripts
             var taskText = gameManager.GetCurrentTask();
             taskTitle.text = taskText.Title;
             taskDescription.text = taskText.Description;
-            CreateCodingTrainingPages(gameManager.SceneIndex, gameManager.CurrentTaskNumber - 1);         
+            CreateCodingTrainingPages(gameManager.SceneIndex - 1, gameManager.GetCurrentTaskNumber() - 1);         
             OpenCodingTrainingPanel_Special();
             onTaskStarted.Invoke();
         }
@@ -80,11 +80,11 @@ namespace Scripts
 
         public IEnumerator ReturnToScene_COR()
         {
-            gameManager.IsTaskStarted = false;
-            gameManager.CurrentSceneCamera.GetComponent<PlayableDirector>().playableAsset = Resources.Load<PlayableAsset>("Timelines/Tasks/Level " + gameManager.SceneIndex + "/ReturnToScene_Task_" + gameManager.CurrentTaskNumber);
+            //gameManager.IsTaskStarted = false;
+            gameManager.CurrentSceneCamera.GetComponent<PlayableDirector>().playableAsset = Resources.Load<PlayableAsset>("Timelines/Tasks/Level " + gameManager.SceneIndex + "/ReturnToScene_Task_" + gameManager.GetCurrentTaskNumber());
             gameManager.CurrentSceneCamera.GetComponent<PlayableDirector>().Play();
             yield return new WaitForSeconds(2f);
-            var isTaskCompleted = gameManager.HasTasksCompleted[gameManager.CurrentTaskNumber - 1];
+            var isTaskCompleted = gameManager.HasTasksCompleted[gameManager.GetCurrentTaskNumber() - 1];
             if (!isTaskCompleted)
             {
                 var activatedTrigger = uiManager.ActionButtonBehaviour.ActivatedTrigger.gameObject;
@@ -147,7 +147,7 @@ namespace Scripts
         {
             rewardingPanel.SetActive(true);
             yield return StartCoroutine(PlayTimeline_COR(rewardingPanel, "ShowRewardingPanel"));
-            var challenges = gameManager.TaskChallenges[gameManager.CurrentTaskNumber - 1];
+            var challenges = gameManager.TaskChallenges[gameManager.GetCurrentTaskNumber() - 1];
             var completedChallenges = 0;
             for (var i = 0; i < challenges.Length; i++)
             {
@@ -161,7 +161,7 @@ namespace Scripts
                     yield return StartCoroutine(PlayAnimation_COR(challenge.GetComponentInChildren<Animator>().gameObject, "AppearStar"));
                 }
             }
-            SaveManager.SaveTaskProgress(completedChallenges);
+            SaveManager.SaveTemporaryTaskProgress(completedChallenges);
             closeRewardingPanelButton.gameObject.SetActive(true);
         }
 
@@ -172,7 +172,7 @@ namespace Scripts
                 case 1:
                     return true;
                 case 0:
-                    return !gameManager.AvailableTipsData[gameManager.CurrentTaskNumber - 1].IsShown;
+                    return !gameManager.AvailableTipsData[gameManager.GetCurrentTaskNumber() - 1].IsShown;
                 case 120:
                     return gameManager.SpentTime <= checkValue;
                 default:
