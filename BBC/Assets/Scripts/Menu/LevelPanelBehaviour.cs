@@ -48,13 +48,20 @@ namespace Scripts
             currentLevelNumber = levelNumber;
             ChangeCurrentButtonColors(selectedButtonColor, selectedHighlightedButtonColor);
             levelTitle.text = menuLocalization.GetLevelInfo(currentLevelNumber).LevelTitle;
+            playButton.GetComponentInChildren<Text>().text = PlayerPrefs.HasKey("LevelNumberToResume") && currentLevelNumber == PlayerPrefs.GetInt("LevelNumberToResume")
+                                                ? menuLocalization.GetPlayButtonText_SavedLevel()
+                                                : menuLocalization.GetPlayButtonText();
             StartCoroutine(SwitchLevelWallpapers_COR());
         }
 
         public void FillLevelDescriptions()
         {
+            var lastAvailableLevelNumber = PlayerPrefs.GetInt("LastAvailableLevelNumber");
             for (var i = 1; i <= levelButtons.transform.childCount; i++)
+            {
                 levelButtons.transform.GetChild(i - 1).GetChild(0).GetComponentInChildren<Text>().text = menuLocalization.GetLevelInfo(i).Description;
+                levelButtons.transform.GetChild(i - 1).GetComponentInChildren<Button>().interactable = i == 1 || i <= lastAvailableLevelNumber;
+            }
         }
 
         public IEnumerator LoadLevelAsync_COR()
@@ -63,7 +70,7 @@ namespace Scripts
             while (!operation.isDone)
             {
                 loadBar.fillAmount = operation.progress;
-                loadBarText.text = "Загрузка... " + (Mathf.Round(operation.progress * 100)) + "%";
+                loadBarText.text = menuLocalization.GetLoadBarText() + "... " + Mathf.Round(operation.progress * 100) + "%";
                 yield return null;
             }
         }

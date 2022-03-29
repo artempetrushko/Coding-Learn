@@ -10,7 +10,10 @@ namespace Scripts
     {
         public static void SaveCurrentSceneIndex()
         {
-            PlayerPrefs.SetInt("SceneIndexToResume", GameManager.Instance.SceneIndex);
+            var currentSceneIndex = GameManager.Instance.SceneIndex;
+            if (currentSceneIndex > PlayerPrefs.GetInt("LastAvailableLevelNumber"))
+                PlayerPrefs.SetInt("LastAvailableLevelNumber", currentSceneIndex);
+            PlayerPrefs.SetInt("LevelNumberToResume", currentSceneIndex);
             Debug.Log("Сохранён номер текущего уровня!");
         }
 

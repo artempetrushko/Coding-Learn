@@ -121,7 +121,7 @@ namespace Scripts
 
         private void ChangeLevelDataToDefault()
         {
-            var defaultLevelNumber = PlayerPrefs.HasKey("SceneIndexToResume") ? PlayerPrefs.GetInt("SceneIndexToResume") : 1;
+            var defaultLevelNumber = PlayerPrefs.HasKey("LevelNumberToResume") ? PlayerPrefs.GetInt("LevelNumberToResume") : 1;
             onLevelsPanelCalled.Invoke(defaultLevelNumber);
         }
 
@@ -165,8 +165,6 @@ namespace Scripts
         private void Start()
         {
             levelLoader = gameObject.GetComponent<LoadLevel>();
-            if (!PlayerPrefs.HasKey("SceneIndexToResume"))
-                ContinueButton.gameObject.SetActive(false);
             StartCoroutine(PlayStartAnimation_COR());
             PlayMarkersAnimation("EraseMapMarker");
         }
