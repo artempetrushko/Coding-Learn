@@ -15,7 +15,12 @@ namespace Scripts
 
         private GameManager gameManager;
 
-        public void LoadLevelAsync() => StartCoroutine(LoadLevelAsync_COR(gameManager.SceneIndex));
+        public void LoadLevelAsync()
+        {
+            if (gameManager.SceneIndex == SceneManager.sceneCountInBuildSettings - 1)
+                StartCoroutine(LoadLevelAsync_COR(0));
+            else StartCoroutine(LoadLevelAsync_COR(gameManager.SceneIndex + 1));
+        }
 
         public IEnumerator LoadLevelAsync_COR(int sceneIndex)
         {
