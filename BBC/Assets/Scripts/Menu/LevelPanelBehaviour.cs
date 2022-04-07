@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
 using UnityEngine.SceneManagement;
 
 namespace Scripts
 {
     public class LevelPanelBehaviour : MonoBehaviour
     {
+        [Header("UI-элементы")]
         [SerializeField] private Text levelTitle;
         [SerializeField] private Button playButton;
         [SerializeField] private Image levelWallpapers;
@@ -17,10 +18,12 @@ namespace Scripts
         [SerializeField] private Image loadBar;
         [SerializeField] private Text loadBarText;
         [SerializeField] private List<Sprite> loadScreens = new List<Sprite>();
+        [Header("Цвета кнопок")]
         [SerializeField] private Color normalButtonColor;
         [SerializeField] private Color normalHighlightedButtonColor;
         [SerializeField] private Color selectedButtonColor;
         [SerializeField] private Color selectedHighlightedButtonColor;
+
         private int currentLevelNumber = 0;
         private MenuLocalizationScript menuLocalization;
 

@@ -37,7 +37,7 @@ namespace Scripts
         private UIManager uiManager;
         private PlayerBehaviour playerBehaviour;
         private int currentTrainingPageNumber;
-        private GameManager.CodingTrainingInfo[] selectedCodingTrainingInfo;
+        private CodingTrainingInfo[] selectedCodingTrainingInfo;
 
         public void StartNewTask()
         {
@@ -148,20 +148,18 @@ namespace Scripts
             rewardingPanel.SetActive(true);
             yield return StartCoroutine(PlayTimeline_COR(rewardingPanel, "ShowRewardingPanel"));
             var challenges = gameManager.TaskChallenges[gameManager.GetCurrentTaskNumber() - 1];
-            var completedChallenges = 0;
             for (var i = 0; i < challenges.Length; i++)
             {
                 var challenge = Instantiate(challengePrefab, challengesContainer.transform);
                 challenge.GetComponentInChildren<TMP_Text>().text = challenges[i].Challenge;
                 if (IsChallengeCompleting(challenges[i].CheckValue))
                 {
-                    completedChallenges++;
+                    SaveManager.SaveTemporaryChallengeProgress(i + 1);
                     challenge.GetComponentInChildren<TMP_Text>().color = Color.green;
                     yield return new WaitForSeconds(0.5f);
                     yield return StartCoroutine(PlayAnimation_COR(challenge.GetComponentInChildren<Animator>().gameObject, "AppearStar"));
                 }
             }
-            SaveManager.SaveTemporaryTaskProgress(completedChallenges);
             closeRewardingPanelButton.gameObject.SetActive(true);
         }
 
