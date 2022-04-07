@@ -23,6 +23,7 @@ namespace Scripts
     public class MenuUiLocalization
     {
         public string PlayButton_MainMenuText;
+        public string StatsButtonText;
         public string SettingsButtonText;
         public string ExitButtonText;
         public string PlayButton_LevelPanelText;
@@ -36,12 +37,14 @@ namespace Scripts
         public string BackToMenuButtonText;
         public string ApplyButtonText;
         public string LoadBarText;
+        public string LevelStatsPanelTitleText;
     }
 
     public class MenuLocalizationScript : MonoBehaviour
     {
         #region UI-элементы для локализации
         [SerializeField] private Text playButton_MainMenuText;
+        [SerializeField] private Text statsButtonText;
         [SerializeField] private Text settingsButtonText;
         [SerializeField] private Text exitButtonText;
         [SerializeField] private Text playButton_LevelPanelText;
@@ -54,6 +57,7 @@ namespace Scripts
         [SerializeField] private Text backToMenuButtonText;
         [SerializeField] private Text applyButtonText;
         [SerializeField] private Text loadBarText;
+        [SerializeField] private Text levelStatsPanelTitleText;
         #endregion
 
         [Space]
@@ -116,6 +120,7 @@ namespace Scripts
                 textProperty.SetValue(currentClassField.FieldType, fieldValue);
             }*/
             playButton_MainMenuText.text = menuUiLocalization.PlayButton_MainMenuText;
+            statsButtonText.text = menuUiLocalization.StatsButtonText;
             settingsButtonText.text = menuUiLocalization.SettingsButtonText;
             exitButtonText.text = menuUiLocalization.ExitButtonText;
             playButton_LevelPanelText.text = menuUiLocalization.PlayButton_LevelPanelText;
@@ -128,12 +133,13 @@ namespace Scripts
             backToMenuButtonText.text = menuUiLocalization.BackToMenuButtonText;
             applyButtonText.text = menuUiLocalization.ApplyButtonText;
             loadBarText.text = menuUiLocalization.LoadBarText;
+            levelStatsPanelTitleText.text = menuUiLocalization.LevelStatsPanelTitleText;
         }
 
         private T[] GetResourcesAndWrite<T>(string resourcePath)
         {
             var resources = Resources.Load<TextAsset>(resourcePath);
-            return GameManager.JsonHelper.FromJson<T>(resources.text);
+            return JsonHelper.FromJson<T>(resources.text);
         }
 
         private void Awake()

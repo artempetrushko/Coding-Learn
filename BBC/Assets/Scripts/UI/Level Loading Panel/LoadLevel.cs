@@ -24,6 +24,8 @@ namespace Scripts
 
         public IEnumerator LoadLevelAsync_COR(int sceneIndex)
         {
+            if (sceneIndex != 0)
+                LoadScreen.GetComponent<Image>().sprite = Resources.Load<Sprite>("Load Screens/LoadScreen_Level" + sceneIndex);
             LoadScreen.GetComponent<Animator>().Play("AppearLoadScreen");
             yield return new WaitForSeconds(0.75f);
             LoadScreen.transform.GetChild(0).gameObject.SetActive(true);
