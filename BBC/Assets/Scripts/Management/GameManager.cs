@@ -19,78 +19,78 @@ namespace Scripts
         }
     }
 
+    #region Сериализуемые классы  
+    public class Letter
+    {
+        public string Title;
+        public string Description;
+    }
+
+    [Serializable]
+    public class TaskText : Letter
+    {
+        public int ID;
+        public string StartCode;
+    }
+
+    [Serializable]
+    public class Story
+    {
+        public string Script;
+    }
+
+    [Serializable]
+    public class TipMessage
+    {
+        public string Tip;
+    }
+
+    [Serializable]
+    public class ThemeTitle
+    {
+        public string Title;
+    }
+
+    [Serializable]
+    public class CodingTrainingInfo
+    {
+        public string Title;
+        public string Info;
+        public string VideoTitles;
+    }
+
+    [Serializable]
+    public class Challenges
+    {
+        public string Challenge;
+        public double CheckValue;
+    }
+
+    public static class JsonHelper
+    {
+        public static T[] FromJson<T>(string json)
+        {
+            Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
+            return wrapper.Items;
+        }
+
+        public static string ToJson<T>(T[] array, bool prettyPrint = false)
+        {
+            Wrapper<T> wrapper = new Wrapper<T>();
+            wrapper.Items = array;
+            return JsonUtility.ToJson(wrapper, prettyPrint);
+        }
+
+        [Serializable]
+        private class Wrapper<T>
+        {
+            public T[] Items;
+        }
+    }
+    #endregion
+
     public class GameManager : MonoBehaviour
     {
-        #region Сериализуемые классы  
-        public class Letter
-        {
-            public string Title;
-            public string Description;
-        }
-
-        [Serializable]
-        public class TaskText : Letter
-        {
-            public int ID;
-            public string StartCode;
-        }
-
-        [Serializable]
-        public class Story
-        {
-            public string Script;
-        }
-
-        [Serializable]
-        public class TipMessage
-        {
-            public string Tip;
-        }
-
-        [Serializable]
-        public class ThemeTitle
-        {
-            public string Title;
-        }
-
-        [Serializable]
-        public class CodingTrainingInfo
-        {
-            public string Title;
-            public string Info;
-            public string VideoTitles;
-        }
-
-        [Serializable]
-        public class Challenges
-        {
-            public string Challenge;
-            public double CheckValue;
-        }
-
-        public static class JsonHelper
-        {
-            public static T[] FromJson<T>(string json)
-            {
-                Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
-                return wrapper.Items;
-            }
-
-            public static string ToJson<T>(T[] array, bool prettyPrint = false)
-            {
-                Wrapper<T> wrapper = new Wrapper<T>();
-                wrapper.Items = array;
-                return JsonUtility.ToJson(wrapper, prettyPrint);
-            }
-
-            [Serializable]
-            private class Wrapper<T>
-            {
-                public T[] Items;
-            }
-        }
-        #endregion
-
         #region Данные из JSON и текстовых файлов
         [HideInInspector] public List<Story[]> StoryParts = new List<Story[]>();
         [HideInInspector] public ThemeTitle[] ThemeTitles;
@@ -211,23 +211,25 @@ namespace Scripts
 
         private void GetDataFromFiles()
         {         
-            ThemeTitles = GetResourcesAndWrite<ThemeTitle>("Data/Coding Training/Theme Titles");
+            var currentLanguage = (Language)PlayerPrefs.GetInt("Language");
+            ThemeTitles = GetResourcesAndWrite<ThemeTitle>("Data/" + currentLanguage.ToString() + "/Coding Training/Theme Titles");
             for (var i = 1; i <= SceneManager.sceneCountInBuildSettings - 1; i++)
-                TaskTexts.Add(GetResourcesAndWrite<TaskText>("Data/Tasks/Tasks Level " + i));
+                TaskTexts.Add(GetResourcesAndWrite<TaskText>("Data/" + currentLanguage.ToString() + "/Tasks/Tasks Level " + i));
             for (var i = 1; i <= TaskTexts[SceneIndex - 1].Length + 1; i++)
-                StoryParts.Add(GetResourcesAndWrite<Story>("Data/Story/Level " + SceneIndex + "/Story Part " + i));
+                StoryParts.Add(GetResourcesAndWrite<Story>("Data/" + currentLanguage.ToString() + "/Story/Level " + SceneIndex + "/Story Part " + i));
             for (var i = 1; i <= TaskTexts[SceneIndex - 1].Length; i++)
             {
-                Tests.Add(Resources.Load<TextAsset>("Data/Tests/Level " + SceneIndex + "/Tests Task " + i).text);
-                Tips.Add(GetResourcesAndWrite<TipMessage>("Data/Tips/Level " + SceneIndex + "/Tips Task " + i));
-                TaskChallenges.Add(GetResourcesAndWrite<Challenges>("Data/Challenges/Level " + SceneIndex + "/Challenges Task " + i));
+                Tests.Add(Resources.Load<TextAsset>("Tests/Level " + SceneIndex + "/Tests Task " + i).text);
+                Tips.Add(GetResourcesAndWrite<TipMessage>("Data/" + currentLanguage.ToString() + "/Tips/Level " + SceneIndex + "/Tips Task " + i));
+                TaskChallenges.Add(GetResourcesAndWrite<Challenges>("Data/" + currentLanguage.ToString() + "/Challenges/Level " + SceneIndex + "/Challenges Task " + i));
             }
             for (var i = 1; i <= SceneIndex; i++)
             {
                 CodingTrainingInfos.Add(new List<CodingTrainingInfo[]>());
                 for (var j = 1; j <= TaskTexts[i - 1].Length; j++)
-                    CodingTrainingInfos[i - 1].Add(GetResourcesAndWrite<CodingTrainingInfo>("Data/Coding Training/Level " + i + "/Coding Training Task " + j));
+                    CodingTrainingInfos[i - 1].Add(GetResourcesAndWrite<CodingTrainingInfo>("Data/" + currentLanguage.ToString() + "/Coding Training/Level " + i + "/Coding Training Task " + j));
             }
+            gameObject.GetComponent<UiLocalizationScript>().GetResourcesByCurrentLanguage(currentLanguage);
         }
 
         private T[] GetResourcesAndWrite<T>(string resourcePath)

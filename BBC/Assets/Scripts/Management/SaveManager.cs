@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Scripts
 {
@@ -10,18 +9,18 @@ namespace Scripts
     {
         public static void SaveCurrentSceneIndex()
         {
-            PlayerPrefs.SetInt("SceneIndexToResume", GameManager.Instance.SceneIndex);
+            var currentSceneIndex = GameManager.Instance.SceneIndex;
+            if (currentSceneIndex > PlayerPrefs.GetInt("LastAvailableLevelNumber"))
+                PlayerPrefs.SetInt("LastAvailableLevelNumber", currentSceneIndex);
+            PlayerPrefs.SetInt("LevelNumberToResume", currentSceneIndex);
             Debug.Log("Сохранён номер текущего уровня!");
         }
 
-        public static void SaveTemporaryTaskProgress(int earnedStarsCount)
+        public static void SaveTemporaryChallengeProgress(int challengeNumber)
         {
             var sceneIndex = GameManager.Instance.SceneIndex;
             var taskNumber = GameManager.Instance.GetCurrentTaskNumber();
-            var currentTaskEarnedStarsCountKey = "Level " + sceneIndex + " Task " + taskNumber + " Stars Earned";         
-            if (!PlayerPrefs.HasKey(currentTaskEarnedStarsCountKey) || earnedStarsCount > PlayerPrefs.GetInt(currentTaskEarnedStarsCountKey))
-                PlayerPrefs.SetInt("Temporary " + currentTaskEarnedStarsCountKey, earnedStarsCount);
-            Debug.Log("Текущий прогресс временно сохранён!");
+            PlayerPrefs.SetInt("Temporary Level " + sceneIndex + " Task " + taskNumber + " Challenge " + challengeNumber + " completed", 1);
         }
 
         public static void SaveFinishedLevelProgress()
@@ -29,9 +28,17 @@ namespace Scripts
             var sceneIndex = GameManager.Instance.SceneIndex;
             for (var i = 1; i <= GameManager.Instance.GetTasksCount(); i++)
             {
-                var currentTaskEarnedStarsCountKey = "Level " + sceneIndex + " Task " + i + " Stars Earned";
-                PlayerPrefs.SetInt(currentTaskEarnedStarsCountKey, PlayerPrefs.GetInt("Temporary " + currentTaskEarnedStarsCountKey));
-                PlayerPrefs.DeleteKey("Temporary " + currentTaskEarnedStarsCountKey);
+                for (var j = 1; j <= 3; j++)
+                {
+                    var completedChallengeSaveKey = "Level " + sceneIndex + " Task " + i + " Challenge " + j + " completed";
+                    var completedChallengeTemporarySaveKey = "Temporary " + completedChallengeSaveKey;
+                    if (PlayerPrefs.HasKey(completedChallengeTemporarySaveKey))
+                    {
+                        PlayerPrefs.SetInt(completedChallengeSaveKey, PlayerPrefs.GetInt(completedChallengeTemporarySaveKey));
+                        PlayerPrefs.DeleteKey(completedChallengeTemporarySaveKey);
+                    }
+                    else PlayerPrefs.SetInt(completedChallengeSaveKey, 0);
+                }                
             }
             Debug.Log("Прогресс уровня сохранён!");
         }

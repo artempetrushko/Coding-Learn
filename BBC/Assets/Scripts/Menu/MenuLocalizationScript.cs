@@ -1,6 +1,4 @@
 using System;
-using System.Linq;
-using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Scripts
 {
-    enum Language
+    public enum Language
     {
         RU, 
         EN
@@ -25,6 +23,7 @@ namespace Scripts
     public class MenuUiLocalization
     {
         public string PlayButton_MainMenuText;
+        public string StatsButtonText;
         public string SettingsButtonText;
         public string ExitButtonText;
         public string PlayButton_LevelPanelText;
@@ -37,12 +36,15 @@ namespace Scripts
         public string MusicSliderText;
         public string BackToMenuButtonText;
         public string ApplyButtonText;
+        public string LoadBarText;
+        public string LevelStatsPanelTitleText;
     }
 
     public class MenuLocalizationScript : MonoBehaviour
     {
         #region UI-элементы для локализации
         [SerializeField] private Text playButton_MainMenuText;
+        [SerializeField] private Text statsButtonText;
         [SerializeField] private Text settingsButtonText;
         [SerializeField] private Text exitButtonText;
         [SerializeField] private Text playButton_LevelPanelText;
@@ -54,6 +56,8 @@ namespace Scripts
         [SerializeField] private Text musicSliderText;
         [SerializeField] private Text backToMenuButtonText;
         [SerializeField] private Text applyButtonText;
+        [SerializeField] private Text loadBarText;
+        [SerializeField] private Text levelStatsPanelTitleText;
         #endregion
 
         [Space]
@@ -64,6 +68,12 @@ namespace Scripts
         private MenuUiLocalization menuUiLocalization;
 
         public LevelInfo GetLevelInfo(int levelNumber) => levelInfos[levelNumber - 1];
+
+        public string GetPlayButtonText() => menuUiLocalization.PlayButton_LevelPanelText;
+
+        public string GetPlayButtonText_SavedLevel() => menuUiLocalization.PlayButton_LevelPanel_SavedLevelText;
+
+        public string GetLoadBarText() => menuUiLocalization.LoadBarText;
 
         public void ChooseNextLanguage() => ChangeLanguage(1);
 
@@ -93,8 +103,8 @@ namespace Scripts
 
         public void GetResourcesByCurrentLanguage()
         {
-            levelInfos = GetResourcesAndWrite<LevelInfo>("Localization/" + currentLanguage.ToString() + "/Menu/LevelInfos");
-            menuUiLocalization = JsonUtility.FromJson<MenuUiLocalization>(Resources.Load<TextAsset>("Localization/" + currentLanguage.ToString() + "/Menu/MenuUI").text);
+            levelInfos = GetResourcesAndWrite<LevelInfo>("Data/" + currentLanguage.ToString() + "/Menu/LevelInfos");
+            menuUiLocalization = JsonUtility.FromJson<MenuUiLocalization>(Resources.Load<TextAsset>("Data/" + currentLanguage.ToString() + "/Menu/MenuUI").text);
             FillUiTexts();
         }
 
@@ -110,6 +120,7 @@ namespace Scripts
                 textProperty.SetValue(currentClassField.FieldType, fieldValue);
             }*/
             playButton_MainMenuText.text = menuUiLocalization.PlayButton_MainMenuText;
+            statsButtonText.text = menuUiLocalization.StatsButtonText;
             settingsButtonText.text = menuUiLocalization.SettingsButtonText;
             exitButtonText.text = menuUiLocalization.ExitButtonText;
             playButton_LevelPanelText.text = menuUiLocalization.PlayButton_LevelPanelText;
@@ -121,12 +132,14 @@ namespace Scripts
             musicSliderText.text = menuUiLocalization.MusicSliderText;
             backToMenuButtonText.text = menuUiLocalization.BackToMenuButtonText;
             applyButtonText.text = menuUiLocalization.ApplyButtonText;
+            loadBarText.text = menuUiLocalization.LoadBarText;
+            levelStatsPanelTitleText.text = menuUiLocalization.LevelStatsPanelTitleText;
         }
 
         private T[] GetResourcesAndWrite<T>(string resourcePath)
         {
             var resources = Resources.Load<TextAsset>(resourcePath);
-            return GameManager.JsonHelper.FromJson<T>(resources.text);
+            return JsonHelper.FromJson<T>(resources.text);
         }
 
         private void Awake()

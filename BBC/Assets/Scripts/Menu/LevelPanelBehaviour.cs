@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
 using UnityEngine.SceneManagement;
 
 namespace Scripts
 {
     public class LevelPanelBehaviour : MonoBehaviour
     {
+        [Header("UI-элементы")]
         [SerializeField] private Text levelTitle;
         [SerializeField] private Button playButton;
         [SerializeField] private Image levelWallpapers;
@@ -17,10 +18,12 @@ namespace Scripts
         [SerializeField] private Image loadBar;
         [SerializeField] private Text loadBarText;
         [SerializeField] private List<Sprite> loadScreens = new List<Sprite>();
+        [Header("Цвета кнопок")]
         [SerializeField] private Color normalButtonColor;
         [SerializeField] private Color normalHighlightedButtonColor;
         [SerializeField] private Color selectedButtonColor;
         [SerializeField] private Color selectedHighlightedButtonColor;
+
         private int currentLevelNumber = 0;
         private MenuLocalizationScript menuLocalization;
 
@@ -48,13 +51,20 @@ namespace Scripts
             currentLevelNumber = levelNumber;
             ChangeCurrentButtonColors(selectedButtonColor, selectedHighlightedButtonColor);
             levelTitle.text = menuLocalization.GetLevelInfo(currentLevelNumber).LevelTitle;
+            playButton.GetComponentInChildren<Text>().text = PlayerPrefs.HasKey("LevelNumberToResume") && currentLevelNumber == PlayerPrefs.GetInt("LevelNumberToResume")
+                                                ? menuLocalization.GetPlayButtonText_SavedLevel()
+                                                : menuLocalization.GetPlayButtonText();
             StartCoroutine(SwitchLevelWallpapers_COR());
         }
 
         public void FillLevelDescriptions()
         {
+            var lastAvailableLevelNumber = PlayerPrefs.GetInt("LastAvailableLevelNumber");
             for (var i = 1; i <= levelButtons.transform.childCount; i++)
+            {
                 levelButtons.transform.GetChild(i - 1).GetChild(0).GetComponentInChildren<Text>().text = menuLocalization.GetLevelInfo(i).Description;
+                levelButtons.transform.GetChild(i - 1).GetComponentInChildren<Button>().interactable = i == 1 || i <= lastAvailableLevelNumber;
+            }
         }
 
         public IEnumerator LoadLevelAsync_COR()
@@ -63,7 +73,7 @@ namespace Scripts
             while (!operation.isDone)
             {
                 loadBar.fillAmount = operation.progress;
-                loadBarText.text = "Загрузка... " + (Mathf.Round(operation.progress * 100)) + "%";
+                loadBarText.text = menuLocalization.GetLoadBarText() + "... " + Mathf.Round(operation.progress * 100) + "%";
                 yield return null;
             }
         }

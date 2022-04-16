@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6539088680678338312}
   - component: {fileID: 1521588603279411650}
   - component: {fileID: 1521588603279411649}
+  - component: {fileID: 3866970847807604050}
   - component: {fileID: 6046453696553118226}
   - component: {fileID: 5565944410986579315}
   m_Layer: 0
@@ -69,20 +70,16 @@ MonoBehaviour:
   Player: {fileID: 0}
   CurrentSceneCamera: {fileID: 0}
   CurrentDialogCamera: {fileID: 0}
-  CoinsCount: 0
-  TimeToNextTip: 180
-  CurrentTaskNumber: 0
   Target: 
-  AvailableThemesCount: 0
-  Cutscenes: []
+  IsTaskStarted: 0
   ScriptItems: []
   OtherItems: []
   Notes: []
   CurrentInteractivePuzzle: {fileID: 0}
-  CurrentScriptTrigger: {fileID: 0}
-  SceneIndex: 0
-  IsTaskStarted: 0
-  SpentTime: 0
+  timeToNextTip: 180
+  currentTaskNumber: 1
+  availableThemesCount: 0
+  cutscenes: []
   IsTimerStopped: 0
   HasTasksCompleted: 
 --- !u!114 &1521588603279411649
@@ -97,6 +94,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a8d657d812232f40834399f3a73114b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3866970847807604050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521588603279411648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea9c531b892fa484b99f440dfc843a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextStoryPartButtonText: {fileID: 0}
+  skipStoryPartButtonText: {fileID: 0}
+  rewardingPanelHeaderText: {fileID: 0}
+  exitToMenuPanelLabelText: {fileID: 0}
+  exitToMenuPanelYesButton: {fileID: 0}
+  exitToMenuPanelNoButton: {fileID: 0}
+  loadBarText: {fileID: 0}
 --- !u!114 &6046453696553118226
 MonoBehaviour:
   m_ObjectHideFlags: 0
