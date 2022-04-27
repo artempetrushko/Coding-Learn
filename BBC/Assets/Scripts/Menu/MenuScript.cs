@@ -92,7 +92,7 @@ namespace Scripts
 
         private void ChangeLevelDataToDefault()
         {
-            var defaultLevelNumber = PlayerPrefs.HasKey("LevelNumberToResume") ? PlayerPrefs.GetInt("LevelNumberToResume") : 1;
+            var defaultLevelNumber = SaveManager.SaveData.LevelNumberToResume > 0 ? SaveManager.SaveData.LevelNumberToResume : 1; 
             onLevelsPanelCalled.Invoke(defaultLevelNumber);
         }
 

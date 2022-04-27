@@ -44,7 +44,7 @@ namespace Scripts
         private IEnumerator ShowStoryText_COR()
         {
             skipStoryPartButton.gameObject.SetActive(true);
-            var storyPartText = gameManager.StoryParts[gameManager.GetCurrentTaskNumber() - 1][storyPartNumber - 1].Script;
+            var storyPartText = ResourcesData.StoryParts[gameManager.GetCurrentTaskNumber() - 1][storyPartNumber - 1].Script;
             var latency = totalTextAppearingTime / storyPartText.Length;
             for (var i = 0; i < storyPartText.Length; i++)
             {

@@ -37,10 +37,10 @@ namespace Scripts
         public void OpenHelpPanel()
         {
             var taskNumber = gameManager.GetCurrentTaskNumber();
-            if (gameManager.AvailableTipsData[taskNumber - 1].Amount != gameManager.Tips[taskNumber - 1].Length)
+            if (gameManager.AvailableTipsData[taskNumber - 1].Amount != ResourcesData.Tips[taskNumber - 1].Length)
             {
-                var tipNumber = gameManager.Tips[taskNumber - 1].Length - gameManager.AvailableTipsData[taskNumber - 1].Amount - 1;
-                Tip.text = gameManager.Tips[taskNumber - 1][tipNumber].Tip;
+                var tipNumber = ResourcesData.Tips[taskNumber - 1].Length - gameManager.AvailableTipsData[taskNumber - 1].Amount - 1;
+                Tip.text = ResourcesData.Tips[taskNumber - 1][tipNumber].Tip;
             }
             else Tip.text = "";
             HelpPanel.GetComponent<Animator>().Play("ScaleUp");

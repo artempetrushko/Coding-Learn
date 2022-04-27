@@ -98,7 +98,7 @@ namespace Scripts
                     break;
             }
             GetResourcesByCurrentLanguage();
-            PlayerPrefs.SetInt("Language", (int)currentLanguage);
+            SaveManager.ChangeLanguageData(currentLanguage);
         }
 
         public void GetResourcesByCurrentLanguage()
@@ -142,11 +142,9 @@ namespace Scripts
             return JsonHelper.FromJson<T>(resources.text);
         }
 
-        private void Awake()
+        private void OnEnable()
         {
-            currentLanguage = Language.EN;
-            if (PlayerPrefs.HasKey("Language"))
-                currentLanguage = (Language)PlayerPrefs.GetInt("Language");
+            currentLanguage = SaveManager.SaveData.Language;
             ChangeLanguage(0);
         }
     }
