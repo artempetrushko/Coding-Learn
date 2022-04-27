@@ -83,8 +83,8 @@ namespace Scripts
             //gameManager.IsTaskStarted = false;
             gameManager.CurrentSceneCamera.GetComponent<PlayableDirector>().playableAsset = Resources.Load<PlayableAsset>("Timelines/Tasks/Level " + gameManager.SceneIndex + "/ReturnToScene_Task_" + gameManager.GetCurrentTaskNumber());
             gameManager.CurrentSceneCamera.GetComponent<PlayableDirector>().Play();
-            yield return new WaitForSeconds(2f);
-            var isTaskCompleted = gameManager.HasTasksCompleted[gameManager.GetCurrentTaskNumber() - 1];
+            yield return new WaitForSeconds(2f); 
+            var isTaskCompleted = true; //заглушка
             if (!isTaskCompleted)
             {
                 var activatedTrigger = uiManager.ActionButtonBehaviour.ActivatedTrigger.gameObject;
@@ -125,7 +125,7 @@ namespace Scripts
         {
             for (var i = codingTrainingPages.transform.childCount - 1; i >= 0; i--)
                 Destroy(codingTrainingPages.transform.GetChild(i).gameObject);
-            selectedCodingTrainingInfo = gameManager.GetCodingTrainingInfo(levelNumber, taskNumber);
+            selectedCodingTrainingInfo = ResourcesData.GetCodingTrainingInfo(levelNumber, taskNumber);
             for (var i = 0; i < selectedCodingTrainingInfo.Length; i++)
             {
                 var prefab = selectedCodingTrainingInfo[i].VideoTitles == "" ? textPagePrefab : textAndVideoPagePrefab;
@@ -147,7 +147,7 @@ namespace Scripts
         {
             rewardingPanel.SetActive(true);
             yield return StartCoroutine(PlayTimeline_COR(rewardingPanel, "ShowRewardingPanel"));
-            var challenges = gameManager.TaskChallenges[gameManager.GetCurrentTaskNumber() - 1];
+            var challenges = ResourcesData.TaskChallenges[gameManager.SceneIndex - 1][gameManager.GetCurrentTaskNumber() - 1];
             for (var i = 0; i < challenges.Length; i++)
             {
                 var challenge = Instantiate(challengePrefab, challengesContainer.transform);

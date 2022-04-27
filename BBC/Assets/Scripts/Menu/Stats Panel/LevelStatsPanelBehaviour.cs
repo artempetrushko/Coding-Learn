@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,10 +13,6 @@ namespace Scripts
         [SerializeField] private GameObject detalizedLevelStats;
         [SerializeField] private GameObject levelStatsCardPrefab;
         [SerializeField] private GameObject taskStatsPrefab;
-        [SerializeField] private GameObject challengeStatsPrefab;
-
-        private List<TaskText[]> tasks = new List<TaskText[]>();
-        private List<List<Challenges[]>> challenges = new List<List<Challenges[]>>();
 
         public void ReturnToLevelStatsCards()
         {
@@ -25,7 +22,7 @@ namespace Scripts
 
         private void CreateLevelStatsCards()
         {
-            var availableLevelsCount = PlayerPrefs.HasKey("LastAvailableLevelNumber") ? PlayerPrefs.GetInt("LastAvailableLevelNumber") : 1;
+            var availableLevelsCount = SaveManager.SaveData.ChallengeCompletingStatuses.Count;
             for (var i = 1; i <= availableLevelsCount; i++)
             {
                 var levelNumber = i;
@@ -47,57 +44,37 @@ namespace Scripts
         private void CreateDetalizedLevelStats(int levelNumber)
         {
             for (var i = detalizedLevelStats.transform.childCount - 1; i >= 0; i--)
+            {
                 Destroy(detalizedLevelStats.transform.GetChild(i).gameObject);
-            var tasksChallenges = challenges[levelNumber - 1];
-            for (var i = 0; i < tasksChallenges.Count; i++)
+            }
+            var tasksChallenges = SaveManager.SaveData.ChallengeCompletingStatuses[levelNumber - 1];
+            for (var i = 1; i <= tasksChallenges.Count; i++)
             {
                 var taskStats = Instantiate(taskStatsPrefab, detalizedLevelStats.transform);
-                taskStats.transform.GetChild(0).GetComponent<Text>().text = tasks[levelNumber - 1][i].Title;
-                taskStats.transform.GetChild(2).GetComponent<Text>().text = GetCompletedChallengesCount(levelNumber, i) + "/3";
+                taskStats.transform.GetChild(0).GetComponent<Text>().text = ResourcesData.TaskTexts[levelNumber - 1][i - 1].Title;
+                taskStats.transform.GetChild(2).GetComponent<Text>().text = GetCompletedChallengesCount(levelNumber, i) + "/" + ResourcesData.TaskChallenges[levelNumber - 1][i - 1].Length;
             }
         }
 
         private Tuple<int, int> GetCompletedAndTotalChallengesCount(int levelNumber)
         {
-            var totalChallengesCount = tasks[levelNumber].Length * 3;
+            var totalChallengesCount = ResourcesData.TaskChallenges[levelNumber - 1].Sum(x => x.Length);
             var completedChallengesCount = 0;
-            for (var i = 1; i <= tasks[levelNumber].Length; i++)
+            for (var i = 1; i <= SaveManager.SaveData.ChallengeCompletingStatuses[levelNumber - 1].Count; i++)
+            {
                 completedChallengesCount += GetCompletedChallengesCount(levelNumber, i);
+            }
             return Tuple.Create(completedChallengesCount, totalChallengesCount);
         }
 
         private int GetCompletedChallengesCount(int levelNumber, int taskNumber)
         {
-            var completedChallengesCount = 0;
-            for (var i = 1; i <= 3; i++)
-            {
-                var completedChallengeSaveKey = "Level " + levelNumber + " Task " + taskNumber + " Challenge " + i + " completed";
-                if (PlayerPrefs.HasKey(completedChallengeSaveKey))
-                    completedChallengesCount += PlayerPrefs.GetInt(completedChallengeSaveKey);
-            }
-            return completedChallengesCount;
+            var taskChallengesStatuses = SaveManager.SaveData.ChallengeCompletingStatuses[levelNumber - 1][taskNumber - 1];         
+            return taskChallengesStatuses.Where(status => status).Count();
         }
 
-        private void GetDataResources()
+        private void Start()
         {
-            var currentLanguage = PlayerPrefs.HasKey("Language") ? (Language)PlayerPrefs.GetInt("Language") : Language.EN;
-            for (var i = 1; i <= PlayerPrefs.GetInt("LastAvailableLevelNumber"); i++)
-            {
-                var challengesFiles = Resources.LoadAll<TextAsset>("Data/" + currentLanguage.ToString() + "/Challenges/Level " + i);
-                var taskChallenges = new List<Challenges[]>();
-                for (var j = 0; j < challengesFiles.Length; j++)
-                    taskChallenges.Add(JsonHelper.FromJson<Challenges>(challengesFiles[j].text));
-                challenges.Add(taskChallenges);
-
-                var tasksFiles = Resources.LoadAll<TextAsset>("Data/" + currentLanguage.ToString() + "/Tasks");
-                for (var j = 0; j < tasksFiles.Length; j++)
-                    tasks.Add(JsonHelper.FromJson<TaskText>(tasksFiles[j].text));
-            }
-        }
-
-        private void Awake()
-        {
-            GetDataResources();
             CreateLevelStatsCards();           
         }
     }

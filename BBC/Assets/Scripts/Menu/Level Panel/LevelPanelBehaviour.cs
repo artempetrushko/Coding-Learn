@@ -42,7 +42,9 @@ namespace Scripts
         {
             FillLevelDescriptions();
             if (currentLevelNumber != 0)
+            {
                 ChangeCurrentButtonColors(normalButtonColor, normalHighlightedButtonColor);
+            }
             ChangeLevelInfo(levelNumber);
         }
 
@@ -51,7 +53,7 @@ namespace Scripts
             currentLevelNumber = levelNumber;
             ChangeCurrentButtonColors(selectedButtonColor, selectedHighlightedButtonColor);
             levelTitle.text = menuLocalization.GetLevelInfo(currentLevelNumber).LevelTitle;
-            playButton.GetComponentInChildren<Text>().text = PlayerPrefs.HasKey("LevelNumberToResume") && currentLevelNumber == PlayerPrefs.GetInt("LevelNumberToResume")
+            playButton.GetComponentInChildren<Text>().text = SaveManager.SaveData.LevelNumberToResume > 0 && currentLevelNumber == SaveManager.SaveData.LevelNumberToResume
                                                 ? menuLocalization.GetPlayButtonText_SavedLevel()
                                                 : menuLocalization.GetPlayButtonText();
             StartCoroutine(SwitchLevelWallpapers_COR());
@@ -59,7 +61,7 @@ namespace Scripts
 
         public void FillLevelDescriptions()
         {
-            var lastAvailableLevelNumber = PlayerPrefs.GetInt("LastAvailableLevelNumber");
+            var lastAvailableLevelNumber = SaveManager.SaveData.LastAvailableLevelNumber;
             for (var i = 1; i <= levelButtons.transform.childCount; i++)
             {
                 levelButtons.transform.GetChild(i - 1).GetChild(0).GetComponentInChildren<Text>().text = menuLocalization.GetLevelInfo(i).Description;

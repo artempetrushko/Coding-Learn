@@ -16,12 +16,12 @@ namespace Scripts
 
         public void MakeActions()
         {
-            var taskNumber = gameManager.GetCurrentTaskNumber();
+            /*var taskNumber = gameManager.GetCurrentTaskNumber();
             if (!gameManager.HasTasksCompleted[taskNumber - 1])
             {
                 StartCoroutine("MakeActions_Level_" + gameManager.SceneIndex + "_Task_" + taskNumber);
                 gameManager.HasTasksCompleted[taskNumber - 1] = true;
-            }
+            }*/
         }
 
         private IEnumerator WaitAndHideTaskPanel_COR()
