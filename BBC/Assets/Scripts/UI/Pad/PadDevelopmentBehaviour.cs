@@ -133,6 +133,8 @@ namespace Scripts
 
         public void ChangeRowCountersScrollbarValue() => RowCounters.GetComponentInChildren<Scrollbar>().value = 1 - CodeField.verticalScrollbar.value;
 
+        public void LimitScrollbarValue() => CodeField.verticalScrollbar.value = Mathf.Clamp01(CodeField.verticalScrollbar.value);
+
         public void HighlightKeywords()
         {
             var wordInfo = codeInfo.wordInfo;

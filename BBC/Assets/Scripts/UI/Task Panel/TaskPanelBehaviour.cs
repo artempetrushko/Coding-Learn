@@ -32,12 +32,14 @@ namespace Scripts
         [Space]
         [SerializeField] private UnityEvent onTaskStarted;
         [SerializeField] private UnityEvent onLevelFinished;
+        [SerializeField] private UnityEvent onExtendedTaskDescriptionCalled;
 
         private GameManager gameManager;
         private UIManager uiManager;
         private PlayerBehaviour playerBehaviour;
-        private int currentTrainingPageNumber;
         private CodingTrainingInfo[] selectedCodingTrainingInfo;
+        private int currentTrainingPageNumber;
+        private bool isExtendedTaskPanelShown = false;
 
         public void StartNewTask()
         {
@@ -45,6 +47,7 @@ namespace Scripts
             var taskText = gameManager.GetCurrentTask();
             taskTitle.text = taskText.Title;
             taskDescription.text = taskText.Description;
+            isExtendedTaskPanelShown = false;
             CreateCodingTrainingPages(gameManager.SceneIndex - 1, gameManager.GetCurrentTaskNumber() - 1);         
             OpenCodingTrainingPanel_Special();
             onTaskStarted.Invoke();
@@ -56,11 +59,15 @@ namespace Scripts
 
         public void GoToNextLevel() => StartCoroutine(GoToNextLevel_COR());
 
+        public void ShowTaskPanel() => StartCoroutine(ShowTaskPanel_COR());
+
         public void OpenCodingTrainingPanel() => StartCoroutine(OpenCodingTrainingPanel_COR());
 
         public void OpenCodingTrainingPanel_Special() => StartCoroutine(ShowCodingTrainingPanel_COR());
 
         public void CloseCodingTrainingPanel() => StartCoroutine(CloseCodingTrainingPanel_COR());
+
+        public void OpenExtendedTaskPanel() => StartCoroutine(OpenExtendedTaskPanel_COR());
 
         public void ChangeCodingTrainingPage(int coefficient)
         {
@@ -199,6 +206,12 @@ namespace Scripts
             yield return StartCoroutine(PlayTimeline_COR(codingTrainingPanel, "HideCodingTrainingPanel"));
         }
 
+        private IEnumerator OpenExtendedTaskPanel_COR()
+        {
+            yield return StartCoroutine(HideTaskPanel_COR());
+            onExtendedTaskDescriptionCalled.Invoke();
+        }
+
         private IEnumerator OpenCodingTrainingPanel_COR()
         {
             if (currentTrainingPageNumber != 0)
@@ -210,9 +223,19 @@ namespace Scripts
         private IEnumerator CloseCodingTrainingPanel_COR()
         {
             if (uiManager.PadMode == PadMode.HandbookProgrammingInfo)
+            {
                 uiManager.PadMode = PadMode.HandbookSubThemes;
+            }
             yield return StartCoroutine(HideCodingTrainingPanel_COR());
-            yield return StartCoroutine(ShowTaskPanel_COR());
+            if (isExtendedTaskPanelShown)
+            {
+                yield return StartCoroutine(ShowTaskPanel_COR());
+            }
+            else
+            {
+                isExtendedTaskPanelShown = true;
+                onExtendedTaskDescriptionCalled.Invoke();
+            }
         }
 
         private IEnumerator PlayAnimation_COR(GameObject animatorHolder, string animationName)
@@ -227,7 +250,9 @@ namespace Scripts
         {
             var playableDirector = director.GetComponent<PlayableDirector>();
             if (playableAssetName != null)
+            {
                 playableDirector.playableAsset = Resources.Load<PlayableAsset>("Timelines/UI/Task Panel/" + playableAssetName);
+            }
             playableDirector.Play();
             yield return new WaitForSeconds((float)playableDirector.playableAsset.duration);
         }
@@ -235,9 +260,13 @@ namespace Scripts
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.RightControl))
+            {
                 StartNewTask();
+            }
             else if (Input.GetKeyDown(KeyCode.RightAlt))
+            {
                 StartCoroutine(FinishTask_COR());
+            }
         }
 
         private void Start()

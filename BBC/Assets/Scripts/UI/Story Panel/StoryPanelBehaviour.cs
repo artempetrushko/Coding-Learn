@@ -8,8 +8,6 @@ namespace Scripts
 {
     public class StoryPanelBehaviour : MonoBehaviour
     {
-        [HideInInspector] public int storyPartNumber;
-
         [SerializeField] private TMP_Text storyText;
         [SerializeField] private Button nextStoryPartButton;
         [SerializeField] private Button skipStoryPartButton;
@@ -18,6 +16,7 @@ namespace Scripts
         [SerializeField] private float transitionToNextFrameTime = 1.2f;
 
         private GameManager gameManager;
+        private int storyPartNumber;
         private bool isSkipButtonPressed = false;
 
         public void ShowStoryText() => StartCoroutine(ShowStoryText_COR());

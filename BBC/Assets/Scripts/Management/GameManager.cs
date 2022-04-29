@@ -40,7 +40,7 @@ namespace Scripts
         #endregion
 
         [Header("Время подготовки подсказки (в секундах)")]
-        [SerializeField] public int timeToNextTip = 180;
+        [SerializeField] private int timeToNextTip = 180;
         [Header("Номер текущего задания")]
         [SerializeField] private int currentTaskNumber = 1;        
         [Header("Количество доступных тем в справочнике")]

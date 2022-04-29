@@ -14,6 +14,7 @@ namespace Scripts
     {
         public int ID;
         public string StartCode;
+        public string ImagesTitles;
     }
 
     [Serializable]
