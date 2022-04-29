@@ -25,7 +25,6 @@ namespace Scripts
         [Tooltip("Скрипты UI-элементов для взаимодействия между собой")]
         public PadMenuBehaviour PadMenuBehaviour;
         public TaskPanelBehaviour TaskPanelBehaviour;
-        public TrainingPanelBehaviour TrainingPanelBehaviour;
 
         [HideInInspector] public InventoryBehaviour InventoryBehaviour;
         [HideInInspector] public ActionButtonBehaviour ActionButtonBehaviour;

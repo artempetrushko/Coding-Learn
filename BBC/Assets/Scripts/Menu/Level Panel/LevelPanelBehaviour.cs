@@ -50,10 +50,11 @@ namespace Scripts
 
         public void ChangeLevelInfo(int levelNumber)
         {
+            var savedLevelNumberToResume = SaveManager.SaveData.LevelNumberToResume;
             currentLevelNumber = levelNumber;
             ChangeCurrentButtonColors(selectedButtonColor, selectedHighlightedButtonColor);
             levelTitle.text = menuLocalization.GetLevelInfo(currentLevelNumber).LevelTitle;
-            playButton.GetComponentInChildren<Text>().text = SaveManager.SaveData.LevelNumberToResume > 0 && currentLevelNumber == SaveManager.SaveData.LevelNumberToResume
+            playButton.GetComponentInChildren<Text>().text = savedLevelNumberToResume > 0 && currentLevelNumber == savedLevelNumberToResume
                                                 ? menuLocalization.GetPlayButtonText_SavedLevel()
                                                 : menuLocalization.GetPlayButtonText();
             StartCoroutine(SwitchLevelWallpapers_COR());

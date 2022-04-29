@@ -25,6 +25,19 @@ namespace Scripts
             PlayerPrefs.SetInt("Temporary Level " + sceneIndex + " Task " + taskNumber + " Challenge " + challengeNumber + " completed", 1);
         }
 
+        public static SaveData LoadSavedData()
+        {
+            try
+            {
+                var serializedData = File.ReadAllText(Application.persistentDataPath + "/save.json");
+                return JSON.ParseString(serializedData).Deserialize<SaveData>();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public static void SaveFinishedLevelProgress()
         {
             var currentLevelTaskChallenges = ResourcesData.TaskChallenges[sceneIndex - 1];
@@ -56,25 +69,12 @@ namespace Scripts
             Debug.Log("Прогресс уровня сохранён!");
         }
         
-        public static void SerializeAndWriteData(SaveData savedData)
+        private static void SerializeAndWriteData(SaveData savedData)
         {
             var serializedData = JSON.Serialize(savedData).CreatePrettyString();
             File.WriteAllText(Application.persistentDataPath + "/save.json", serializedData);
             Debug.Log("Данные сохранены в " + Application.persistentDataPath + "/save.json");
-        }
-
-        public static SaveData LoadSavedData()
-        {
-            try
-            {
-                var serializedData = File.ReadAllText(Application.persistentDataPath + "/save.json");
-                return JSON.ParseString(serializedData).Deserialize<SaveData>();
-            }
-            catch
-            {
-                return null;
-            }
-        }    
+        }       
 
         private static void SaveCurrentLevelNumber(int currentLevelNumber)
         {

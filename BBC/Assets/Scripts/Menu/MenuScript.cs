@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -92,7 +93,7 @@ namespace Scripts
 
         private void ChangeLevelDataToDefault()
         {
-            var defaultLevelNumber = SaveManager.SaveData.LevelNumberToResume > 0 ? SaveManager.SaveData.LevelNumberToResume : 1; 
+            var defaultLevelNumber = Math.Max(1, SaveManager.SaveData.LevelNumberToResume);
             onLevelsPanelCalled.Invoke(defaultLevelNumber);
         }
 
