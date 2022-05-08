@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+
+public class Level5Task2
+{
+    public bool isTaskCompleted()
+    {
+        var random = new Random();
+        var maxSize = 10000;
+        return Check(random, maxSize)&& Check(random, maxSize);
+    }
+
+    private bool Check(Random random, int maxSize)
+    {
+        var str = CreateArray(random,maxSize);
+        var testedLength = GetLength(str);
+        return testedLength == str.Length;
+    }
+    
+    private static string CreateArray(Random random,int maxSize)
+    {
+        var str = new string('1',random.Next(maxSize));
+        return str;
+    }
+
+}
