@@ -1,0 +1,10 @@
+using System;
+using System.Collections.Generic;
+
+public class Level5Task1
+{
+    public bool isTaskCompleted()
+    {
+        return FixName().Equals("left");
+    }
+}
