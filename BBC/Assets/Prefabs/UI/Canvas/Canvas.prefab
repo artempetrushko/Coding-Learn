@@ -634,7 +634,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -2259167.5}
+  m_AnchoredPosition: {x: 0, y: -2356464.5}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4317377925212166070
@@ -2340,6 +2340,18 @@ MonoBehaviour:
       - m_Target: {fileID: 550575450850714147}
         m_TargetAssemblyTypeName: Scripts.PadHandbookBehaviour, Assembly-CSharp
         m_MethodName: UnlockProgrammingInfo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 13549967793567235}
+        m_TargetAssemblyTypeName: Scripts.PadHelpPanelBehaviour, Assembly-CSharp
+        m_MethodName: ClearTipText
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5222,7 +5234,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -2382489.2}
+  m_AnchoredPosition: {x: 0, y: -2486178.2}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5616460389052430369
@@ -7573,11 +7585,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 477e4593dcf6bc84b945414e508a2a47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HelpPanel: {fileID: 1947836940752612744}
-  ShowTipButton: {fileID: 7813741442222138730}
-  Tip: {fileID: 3001026922699317554}
-  TimerText: {fileID: 2741110247573771981}
-  TipFiller: {fileID: 6645412279798120851}
+  helpPanel: {fileID: 1947836940752612744}
+  showTipButton: {fileID: 7813741442222138730}
+  tipText: {fileID: 3001026922699317554}
+  tipStatusText: {fileID: 2741110247573771981}
+  tipFiller: {fileID: 6645412279798120851}
 --- !u!1 &2033530336294488425
 GameObject:
   m_ObjectHideFlags: 0
@@ -10434,7 +10446,7 @@ GameObject:
   - component: {fileID: 7311533451905192315}
   - component: {fileID: 2741110247573771981}
   m_Layer: 5
-  m_Name: TimerText
+  m_Name: TipStatusText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12332,8 +12344,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf703f7583fac9249951b6815b690ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExitToMenuPanel: {fileID: 4323439710799870574}
-  BlackScreen: {fileID: 1158166880170370757}
+  exitToMenuPanel: {fileID: 4323439710799870574}
+  blackScreen: {fileID: 1158166880170370757}
 --- !u!1 &4376645910416263053
 GameObject:
   m_ObjectHideFlags: 0
@@ -18040,7 +18052,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 8.498535, y: -272100.4}
+  m_AnchoredPosition: {x: 8.498535, y: -344769.12}
   m_SizeDelta: {x: 17.0068, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &1774559985777137549

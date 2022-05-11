@@ -1,13 +1,16 @@
 {
   "Items": [
     {
-      "Tip": "Совет 1"
+      "Tip": "Declare a new variable and assign a value to it Math.Round(...)."
     },
     {
-      "Tip": "Совет 2"
+      "Tip": "Instead of ellipses write the argument of the current method."
     },
     {
-      "Tip": "Совет 3"
+      "Tip": "Use an explicit ghost so that the value of your variable is of int type."
+    },
+    {
+      "Tip": "At the end, call the CountModule.Count method and pass it your variable as argument."
     }
   ]
 }

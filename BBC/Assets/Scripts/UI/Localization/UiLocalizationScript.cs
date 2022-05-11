@@ -17,10 +17,18 @@ namespace Scripts
         public string ExitToMenuPanelYesButton;
         public string ExitToMenuPanelNoButton;
         public string LoadBarText;
+        public string ShowTipButtonText;
+        public string TipReadyText;
+        public string TipWaitingText;
+        public string NoTipsText;
     }
 
     public class UiLocalizationScript : MonoBehaviour
     {
+        public string TipReadyText { get; private set; }
+        public string TipWaitingText { get; private set; }
+        public string NoTipsText { get; private set; }
+
         [SerializeField] private TMP_Text nextStoryPartButtonText;
         [SerializeField] private TMP_Text skipStoryPartButtonText;
         [SerializeField] private TMP_Text rewardingPanelHeaderText;
@@ -28,6 +36,7 @@ namespace Scripts
         [SerializeField] private Text exitToMenuPanelYesButton;
         [SerializeField] private Text exitToMenuPanelNoButton;
         [SerializeField] private Text loadBarText;
+        [SerializeField] private Text showTipButtonText;
 
         private GameUiLocalization gameUiLocalization;
 
@@ -46,6 +55,10 @@ namespace Scripts
             exitToMenuPanelYesButton.text = gameUiLocalization.ExitToMenuPanelYesButton;
             exitToMenuPanelNoButton.text = gameUiLocalization.ExitToMenuPanelNoButton;
             loadBarText.text = gameUiLocalization.LoadBarText;
+            showTipButtonText.text = gameUiLocalization.ShowTipButtonText;
+            TipReadyText = gameUiLocalization.TipReadyText;
+            TipWaitingText = gameUiLocalization.TipWaitingText;
+            NoTipsText = gameUiLocalization.NoTipsText;
         }
     }
 }
