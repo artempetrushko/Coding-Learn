@@ -26,7 +26,6 @@ namespace Scripts
 
         private IEnumerator ExitToMenu_COR()
         {
-            SaveManager.DeleteSavedDialogueData();
             yield return StartCoroutine(PlayAnimation_COR(ExitToMenuPanel, "HideExitToMenuPanel"));
             BlackScreen.SetActive(true);
             yield return StartCoroutine(PlayAnimation_COR(BlackScreen, "AppearBlackScreen"));

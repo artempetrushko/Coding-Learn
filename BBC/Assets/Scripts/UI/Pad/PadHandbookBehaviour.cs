@@ -52,7 +52,7 @@ namespace Scripts
             {
                 var buttonToUnlock = subThemeButtons.transform.GetChild(gameManager.GetAvailableThemesCount() - 1).GetComponentInChildren<VerticalLayoutGroup>().transform.GetChild(i - 1).GetComponent<Button>();
                 buttonToUnlock.interactable = true;
-                buttonToUnlock.GetComponentInChildren<Text>().text = gameManager.GetCodingTrainingInfo(gameManager.GetAvailableThemesCount() - 1, i - 1)[0].Title;
+                buttonToUnlock.GetComponentInChildren<Text>().text = ResourcesData.GetCodingTrainingInfo(gameManager.GetAvailableThemesCount() - 1, i - 1)[0].Title;
             }
         }
 
@@ -91,11 +91,11 @@ namespace Scripts
             {
                 var themeButton = Instantiate(themeButtonPrefab, themeButtons);
                 var themeNumber = i;
-                themeButton.GetComponentInChildren<Text>().text = gameManager.ThemeTitles[i].Title;
+                themeButton.GetComponentInChildren<Text>().text = ResourcesData.ThemeTitles[i].Title;
                 themeButton.GetComponent<Button>().onClick.AddListener(() => OpenSubThemesList(themeNumber));
 
                 var subThemeContainer = Instantiate(subThemeButtonsContainerPrefab, subThemeButtons.transform);
-                for (var j = 0; j < gameManager.CodingTrainingInfos[i].Count; j++)
+                for (var j = 0; j < ResourcesData.CodingTrainingInfos[i].Count; j++)
                 {
                     var subThemeButton = Instantiate(themeButtonPrefab, subThemeContainer.transform.GetChild(0).GetChild(0));
                     var subThemeNumber = j;
@@ -104,7 +104,7 @@ namespace Scripts
                         subThemeButton.GetComponentInChildren<Text>().text = "???";
                         subThemeButton.GetComponent<Button>().interactable = false;
                     }
-                    else subThemeButton.GetComponentInChildren<Text>().text = gameManager.GetCodingTrainingInfo(themeNumber, subThemeNumber)[0].Title;
+                    else subThemeButton.GetComponentInChildren<Text>().text = ResourcesData.GetCodingTrainingInfo(themeNumber, subThemeNumber)[0].Title;
                     subThemeButton.GetComponent<Button>().onClick.AddListener(() => OpenSubTheme(subThemeNumber));
                 }
                 subThemeContainer.SetActive(false);

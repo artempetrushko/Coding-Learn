@@ -220,17 +220,17 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   colorGradientTexture: {fileID: 0}
   shallowColor: {r: 0, g: 0.7725491, b: 0.62352943, a: 0.5019608}
-  deepColor: {r: 0.01176471, g: 0.28618425, b: 0.50980073, a: 1}
+  deepColor: {r: 0.01176471, g: 0.2861687, b: 0.50980073, a: 1}
   colorDepth: 0.8
-  horizonColor: {r: 0, g: 0.22736079, b: 0.8, a: 1}
+  horizonColor: {r: 0, g: 0.2273452, b: 0.8, a: 1}
   horizonDistance: 20
   shoreFade: 1
-  shoreColor: {r: 0, g: 0.98039216, b: 0.30187055, a: 0}
+  shoreColor: {r: 0, g: 0.98039216, b: 0.301855, a: 0}
   shoreStrength: 0
   shoreBlend: 1
   shoreDepth: 0.74
   waveColor: {r: 0, g: 0, b: 0, a: 0}
-  underwaterColor: {r: 0.20383605, g: 0.30971366, b: 0.517647, a: 1}
+  underwaterColor: {r: 0.2038213, g: 0.3096981, b: 0.517647, a: 1}
   underwaterColorStrength: 1
   underwaterRefractionStrength: 0.099
   surfaceFoamTexture: {fileID: 2800000, guid: d3b0d77dfe711a04c8ff18ecc260aa66, type: 3}
@@ -261,7 +261,7 @@ MonoBehaviour:
   foamMovement: 0
   intersectionFoamDepth: 0.72
   intersectionFoamTexture: {fileID: 2800000, guid: 772031b03d9d46e4ab03e15c8e17718c, type: 3}
-  intersectionFoamColor: {r: 0.30187333, g: 0.29446858, b: 0.29446858, a: 1}
+  intersectionFoamColor: {r: 0.30185777, g: 0.29445302, b: 0.29445302, a: 1}
   intersectionFoamMovement: {x: 0, y: 0}
   intersectionFoamDirection: 0
   intersectionFoamSpeed: 0
@@ -1722,7 +1722,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1923,7 +1923,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2357,7 +2357,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2780,17 +2780,17 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   colorGradientTexture: {fileID: 0}
   shallowColor: {r: 0, g: 0.7725491, b: 0.62352943, a: 0.5019608}
-  deepColor: {r: 0.01176471, g: 0.28618422, b: 0.50980073, a: 1}
+  deepColor: {r: 0.01176471, g: 0.28616866, b: 0.50980073, a: 1}
   colorDepth: 0.8
-  horizonColor: {r: 0, g: 0.22736073, b: 0.8, a: 1}
+  horizonColor: {r: 0, g: 0.22734517, b: 0.8, a: 1}
   horizonDistance: 20
   shoreFade: 1
-  shoreColor: {r: 0, g: 0.98039216, b: 0.30187052, a: 0}
+  shoreColor: {r: 0, g: 0.98039216, b: 0.30185497, a: 0}
   shoreStrength: 0
   shoreBlend: 1
   shoreDepth: 0.74
   waveColor: {r: 0, g: 0, b: 0, a: 0}
-  underwaterColor: {r: 0.20383602, g: 0.30971363, b: 0.517647, a: 1}
+  underwaterColor: {r: 0.20382127, g: 0.30969808, b: 0.517647, a: 1}
   underwaterColorStrength: 1
   underwaterRefractionStrength: 0.099
   surfaceFoamTexture: {fileID: 2800000, guid: d3b0d77dfe711a04c8ff18ecc260aa66, type: 3}
@@ -2821,7 +2821,7 @@ MonoBehaviour:
   foamMovement: 0
   intersectionFoamDepth: 0.72
   intersectionFoamTexture: {fileID: 2800000, guid: 772031b03d9d46e4ab03e15c8e17718c, type: 3}
-  intersectionFoamColor: {r: 0.3018733, g: 0.29446855, b: 0.29446855, a: 1}
+  intersectionFoamColor: {r: 0.30185774, g: 0.294453, b: 0.294453, a: 1}
   intersectionFoamMovement: {x: 0, y: 0}
   intersectionFoamDirection: 0
   intersectionFoamSpeed: 0
@@ -3010,7 +3010,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -4249,7 +4249,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -4907,7 +4907,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -4997,7 +4997,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -5217,17 +5217,17 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   colorGradientTexture: {fileID: 0}
   shallowColor: {r: 0, g: 0.7725491, b: 0.62352943, a: 0.5019608}
-  deepColor: {r: 0.01176471, g: 0.2861842, b: 0.50980073, a: 1}
+  deepColor: {r: 0.01176471, g: 0.28616863, b: 0.50980073, a: 1}
   colorDepth: 0.8
-  horizonColor: {r: 0, g: 0.2273607, b: 0.8, a: 1}
+  horizonColor: {r: 0, g: 0.22734514, b: 0.8, a: 1}
   horizonDistance: 20
   shoreFade: 1
-  shoreColor: {r: 0, g: 0.98039216, b: 0.3018705, a: 0}
+  shoreColor: {r: 0, g: 0.98039216, b: 0.30185494, a: 0}
   shoreStrength: 0
   shoreBlend: 1
   shoreDepth: 0.74
   waveColor: {r: 0, g: 0, b: 0, a: 0}
-  underwaterColor: {r: 0.203836, g: 0.3097136, b: 0.517647, a: 1}
+  underwaterColor: {r: 0.20382124, g: 0.30969805, b: 0.517647, a: 1}
   underwaterColorStrength: 1
   underwaterRefractionStrength: 0.099
   surfaceFoamTexture: {fileID: 2800000, guid: d3b0d77dfe711a04c8ff18ecc260aa66, type: 3}
@@ -5258,7 +5258,7 @@ MonoBehaviour:
   foamMovement: 0
   intersectionFoamDepth: 0.72
   intersectionFoamTexture: {fileID: 2800000, guid: 772031b03d9d46e4ab03e15c8e17718c, type: 3}
-  intersectionFoamColor: {r: 0.30187327, g: 0.29446852, b: 0.29446852, a: 1}
+  intersectionFoamColor: {r: 0.3018577, g: 0.29445297, b: 0.29445297, a: 1}
   intersectionFoamMovement: {x: 0, y: 0}
   intersectionFoamDirection: 0
   intersectionFoamSpeed: 0
@@ -5859,7 +5859,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -5949,7 +5949,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -6096,7 +6096,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -7862,7 +7862,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -8255,7 +8255,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -8345,7 +8345,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -9631,7 +9631,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -10213,7 +10213,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -10941,7 +10941,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -11344,19 +11344,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2977802833888728166, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1224531.9
+      value: -1264289
       objectReference: {fileID: 0}
     - target: {fileID: 3527389708357153995, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3527389708357153995, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3527389708357153995, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 3859720270069911240, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchorMax.x
@@ -11384,7 +11384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4506596117468333096, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1045575.44
+      value: -1089654.4
       objectReference: {fileID: 0}
     - target: {fileID: 4942572647500323182, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_RootOrder
@@ -11436,7 +11436,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5558600884194116044, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -524557.7
+      value: -558478.75
       objectReference: {fileID: 0}
     - target: {fileID: 6623838395182106585, guid: 925da2e1238fb47459d073207eda39f0, type: 3}
       propertyPath: m_AnchorMax.x
@@ -13101,7 +13101,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -13191,7 +13191,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -13375,7 +13375,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -14678,7 +14678,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -15127,7 +15127,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -15217,7 +15217,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -19967,7 +19967,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -20126,7 +20126,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -20572,7 +20572,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -21067,7 +21067,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -21646,7 +21646,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -21962,7 +21962,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -22146,7 +22146,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -22445,7 +22445,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

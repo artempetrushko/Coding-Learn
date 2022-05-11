@@ -22,6 +22,7 @@ namespace Scripts
         public Text TipFiller;
 
         private GameManager gameManager;
+        private int timeToNextTip;
 
         public void WaitUntilNextTip() => StartCoroutine(WaitUntilNextTip_COR());
 
@@ -37,10 +38,10 @@ namespace Scripts
         public void OpenHelpPanel()
         {
             var taskNumber = gameManager.GetCurrentTaskNumber();
-            if (gameManager.AvailableTipsData[taskNumber - 1].Amount != gameManager.Tips[taskNumber - 1].Length)
+            if (gameManager.AvailableTipsData[taskNumber - 1].Amount != ResourcesData.Tips[taskNumber - 1].Length)
             {
-                var tipNumber = gameManager.Tips[taskNumber - 1].Length - gameManager.AvailableTipsData[taskNumber - 1].Amount - 1;
-                Tip.text = gameManager.Tips[taskNumber - 1][tipNumber].Tip;
+                var tipNumber = ResourcesData.Tips[taskNumber - 1].Length - gameManager.AvailableTipsData[taskNumber - 1].Amount - 1;
+                Tip.text = ResourcesData.Tips[taskNumber - 1][tipNumber].Tip;
             }
             else Tip.text = "";
             HelpPanel.GetComponent<Animator>().Play("ScaleUp");
@@ -51,7 +52,6 @@ namespace Scripts
         private IEnumerator WaitUntilNextTip_COR()
         {
             ShowTipButton.interactable = false;
-            var timeToNextTip = gameManager.GetTimeToNextTip();
             while (timeToNextTip > 0)
             {
                 var minutes = timeToNextTip / 60;
@@ -67,6 +67,7 @@ namespace Scripts
         private void Start()
         {
             gameManager = GameManager.Instance;
+            timeToNextTip = gameManager.GetTimeToNextTip();
         }
     }
 }
