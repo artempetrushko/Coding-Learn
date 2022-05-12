@@ -1,28 +1,28 @@
 {
   "Items": [
     {
-      "Title": "Знакомство с C#. Инструкции, методы",
-      "Info": "     Поздравляем, ты написал свою первую программу, которая работает! Но что вообще произошло? Почему мы написали то, что написали? Сейчас мы начнём знакомиться с <color=green>синтаксисом</color> языка и узнаем, что можно писать, как это писать, а главное - зачем.",
+      "Title": "Introduction to C#. Instructions, methods",
+      "Info": "Congratulations, you've written your first program that works! But what happened anyway? Why did we write what we wrote? Now we'll start getting familiar with the <color=green>syntax</color> of the language and find out what we can write, how to write it, and most importantly - why.",
       "VideoTitles": ""
     },
     {
-      "Title": "Структура программы",
-      "Info": "     Окинем взором структуру программы, когда мы только создали <color=green>проект</color> приложения на C#. Видно, что стартовый шаблон довольно сложен, здесь много разных слов, скобочек и т.д. Всё это, разумеется, имеет смысл, но он станет понятен лишь позже, когда мы наберёмся опыта.\n     В наших программах весь пока не интересный нам код будет спрятан, но если вы чрезвычайно любопытны, то можете найти в Интернете <color=green>документацию</color> по C# и изучить его самостоятельно.",
+      "Title": "Program structure",
+      "Info": "Let's take a look at the structure of the program when we just created the <color=green>project</color> of the C# application. It can be seen that the start template is quite complicated, there are a lot of different words, brackets, etc. All this, of course, it makes sense, but it will become clear only later, when we gain experience.\n In our programs, all code that is not yet interesting to us will be hidden, but if you are extremely curious, you can find <color=green>documentation on the Internet</ color> in C# and learn it yourself.",
       "VideoTitles": "C# Program Review"
     },
     {
-      "Title": "Инструкции и методы",
-      "Info": "     Наши первые программы будут ограничены одним <color=green>методом</color>. Методами в C# называют функции, которые есть и в других языках и выполняют набор записанных в них <color=green>инструкций</color>. Инструкции, в свою очередь, представляют собой различные команды, будь то сложить два числа, умножить их или <color=green>вызвать</color> другой метод, т.е. заставить выполниться другой набор инструкций. Каждая инструкция обязательно заканчивается точкой с запятой.\n Все программы на C# начинают выполняться с метода Main, это <color=green>точка входа</color> в программу. Мы же будем писать вспомогательные методы, которые будут вызываться в том числе и из Main.",
+      "Title": "Instructions and Methods",
+      "Info": "Our first programs will be limited to a single <color=green>method</color>. Methods in C# are functions that exist in other languages ​​and execute a set of <color=green>instructions</color> written in them The instructions, in turn, are different commands, whether it's to add two numbers, multiply them, or <color=green>call</color> another method, i.e. force another set of instructions to be executed.Each instruction necessarily ends with a dot with comma.\n All C# programs start execution from the Main method, this is the <color=green>entry point</color> to the program.We will write helper methods that will be called from Main as well.",
       "VideoTitles": ""
     },
     {
-      "Title": "Аргументы метода",
-      "Info": "     Вы могли заметить, что при вызове метода в прошлой задаче вы писали пустые скобочки? Зачем они нужны?\n     В скобочках методу можно передать <color=green>аргументы</color> - некоторые данные, которые могут быть использованы в инструкциях этого метода. Поскольку в прошлой задаче методу не нужны были никакие аргументы, мы оставили их <color=green>пустыми</color>.\n",
+      "Title": "Method Arguments",
+      "Info": "Did you notice that when you called the method in the previous task, you wrote empty parentheses? Why are they needed?\n You can pass <color=green>arguments</color> in parentheses - some data that can be used in the instructions of this method.Since the method did not need any arguments in the previous task, we left them <color=green>empty</color>.\n",
       "VideoTitles": ""
     },
     {
-      "Title": "Методы с аргументами. Консоль",
-      "Info": "     Сейчас потренируемся вызывать <color=green>методы с аргументами</color>. Для этого напишем, без малого, иконическую программу вывода на <color=green>консоль</color> фразы \"Hello, world!\".\n     <color=green>Консоль</color> - это, по сути, окно, в котором пользователь может взаимодействовать с программой, передавать ей данные или получать их. В С# можно вызвать методы консоли, написав Console., а затем имя какого-то метода. К сожалению, наш планшет не поддерживает работу с более чем одним окном, поэтому вывод фразы будет несколько <color=yellow>условным</color> - консоли мы не увидим, но зато поупражняемся в программировании!)",
+      "Title": "Methods with arguments. Console",
+      "Info": "Now let's practice calling <color=green>methods with arguments</color>. To do this, we will write an iconic output program to <color=green>console</color> of the phrase \Hello, world!\ .\n <color=green>Console</color> is essentially a window where the user can interact with the program, pass data to it, or receive it. In C#, you can call console methods by writing Console., and then the name of some method. Unfortunately, our tablet does not support working with more than one window, so the output of the phrase will be somewhat <color=yellow>conditional</color> - we will not see the console, but we will practice programming!)" ,
       "VideoTitles": "Console Review"
     }
   ]
