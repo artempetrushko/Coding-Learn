@@ -1,28 +1,28 @@
 {
   "Items": [
     {
-      "Title": "Introduction to C#. Instructions, methods",
-      "Info": "Congratulations, you've written your first program that works! But what happened anyway? Why did we write what we wrote? Now we'll start getting familiar with the <color=green>syntax</color> of the language and find out what we can write, how to write it, and most importantly - why.",
+      "Title": "Introduction to C#. Instructions, Methods",
+      "Info": "     Congratulations, you've written your first program that works! But what actually happened? Why did we write what we wrote? Now we will begin to get acquainted with the <color=green>syntax</color> of the language and find out what can be written, how to write it, and most importantly, why.",
       "VideoTitles": ""
     },
     {
-      "Title": "Program structure",
-      "Info": "Let's take a look at the structure of the program when we just created the <color=green>project</color> of the C# application. It can be seen that the start template is quite complicated, there are a lot of different words, brackets, etc. All this, of course, it makes sense, but it will become clear only later, when we gain experience.\n In our programs, all code that is not yet interesting to us will be hidden, but if you are extremely curious, you can find <color=green>documentation on the Internet</ color> in C# and learn it yourself.",
+      "Title": "Program Structure",
+      "Info": "     Let's take a look at the structure of the program when we first created the <color=green>project</color> of the C# application. It can be seen that the starting template is quite complex, there are many different words, brackets, etc. All this, of course, makes sense, but it will become clear only later, when we gain experience.\n In our programs, all code that is not yet interesting to us will be hidden, but if you are extremely curious, you can find <color=green> on the Internet See the C# documentation</color> and learn it yourself.",
       "VideoTitles": "C# Program Review"
     },
     {
       "Title": "Instructions and Methods",
-      "Info": "Our first programs will be limited to a single <color=green>method</color>. Methods in C# are functions that exist in other languages ​​and execute a set of <color=green>instructions</color> written in them The instructions, in turn, are different commands, whether it's to add two numbers, multiply them, or <color=green>call</color> another method, i.e. force another set of instructions to be executed.Each instruction necessarily ends with a dot with comma.\n All C# programs start execution from the Main method, this is the <color=green>entry point</color> to the program.We will write helper methods that will be called from Main as well.",
+      "Info": "     Our first programs will be limited to one <color=green>method</color>. Methods in C# are called functions that exist in other languages ​​and execute a set of <color=green>instructions</color> written in them. The instructions, in turn, are different commands, whether it's to add two numbers, multiply them, or <color=green>call</color> another method, i.e. cause another set of instructions to be executed. Each statement must end with a semicolon.\n All C# programs start with the Main method, this is the <color=green>entry point</color> of the program. We will write auxiliary methods that will be called, including from Main.",
       "VideoTitles": ""
     },
     {
       "Title": "Method Arguments",
-      "Info": "Did you notice that when you called the method in the previous task, you wrote empty parentheses? Why are they needed?\n You can pass <color=green>arguments</color> in parentheses - some data that can be used in the instructions of this method.Since the method did not need any arguments in the previous task, we left them <color=green>empty</color>.\n",
+      "Info": "     Have you noticed that when you called the method in the last task, you wrote empty brackets? Why are they needed?\n You can pass <color=green>arguments</color> in brackets to the method - some data that can be used in the instructions of this method. Since the method didn't need any arguments in the previous task, we left them <color=green>empty</color>.\n",
       "VideoTitles": ""
     },
     {
-      "Title": "Methods with arguments. Console",
-      "Info": "Now let's practice calling <color=green>methods with arguments</color>. To do this, we will write an iconic output program to <color=green>console</color> of the phrase \Hello, world!\ .\n <color=green>Console</color> is essentially a window where the user can interact with the program, pass data to it, or receive it. In C#, you can call console methods by writing Console., and then the name of some method. Unfortunately, our tablet does not support working with more than one window, so the output of the phrase will be somewhat <color=yellow>conditional</color> - we will not see the console, but we will practice programming!)" ,
+      "Title": "Методы с аргументами. Консоль",
+      "Info": "     Now let's practice calling <color=green>methods with arguments</color>. To do this, we will write, almost, an iconic output program to <color=green>console</color> of the phrase \"Hello, world!\".\n <color=green>Console</color> is, in fact, a window , in which the user can interact with the program, send data to it or receive it. In C#, you can call console methods by writing Console. followed by the name of some method. Unfortunately, our tablet does not support working with more than one window, so the output of the phrase will be somewhat <color=yellow>conditional</color> - we will not see the console, but we will practice programming!)",
       "VideoTitles": "Console Review"
     }
   ]

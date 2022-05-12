@@ -1,24 +1,24 @@
 {
-  "Items": [
-    {
-      "Title": "Ветвления (продолжение)",
-      "Info": "     Неплохо, теперь мы можем писать более сложные программы. Но всё равно есть проблема: пока что мы умеем реализовывать только 2 варианта развития событий. А как сделать так, чтобы у нас было <color=green>много</color> условий и так же много вариантов дальнейших действий?\n",
-      "VideoTitles": ""
-    },
-    {
-      "Title": "Конструкция else if",
-      "Info": "     Конечно, мы могли бы попытаться в if и else записать ещё if и else, и порой так можно и нужно сделать. Но не всегда.\n     Куда более полезной более конструкция <color=green>else if</color> (\"иначе если\"). Она позволяет выполнить некоторый код, если условие в if ложно, но <color=green>другое условие</color> (которое написано в скобках после else if) истинно. Если же и оно будет ложно, то будет выполнен код из else.\n     Стоит отметить, что таких else if мы можем написать <color=green>сколь угодно много</color> и, таким образом, сделать программу очень гибкой. Главное, с этим не переборщить!",
-      "VideoTitles": "Branching Else If"
-    },
-    {
-      "Title": "Множественные условия",
-      "Info": "     Хотя else if позволяет учесть множество условий, иногда это может привести к разрастанию и дублированию кода, которых стоит избегать. Тем более когда можно использовать иной подход.\n     В условных конструкциях можно указывать не одно, а <color=green>несколько</color> условий. В этом нам помогут такие условные операторы, как <color=green>&&</color> (логическое <color=green>И</color>) и <color=green>||</color> (логическое <color=green>ИЛИ</color>).\n     Если между двумя условиями стоит &&, то выражение будет истинно, когда <color=green>оба условия истинны</color>. Если же будет стоять ||, для истинности выражения будет достаточно истинности <color=green>хотя бы одного из условий</color>.",
-      "VideoTitles": "Branching Multiple Conditions"
-    },
-    {
-      "Title": "И ещё немного операторов",
-      "Info": "     Прежде чем приступить к заданию, мы хотели рассказать ещё о некоторых полезных операторах.\n     Помимо тех, что мы упоминали ранее, есть также <color=green>==</color> и <color=green>!=</color>. Первый - оператор равенства, с его помощью можно проверить, равна ли левая часть (или, как принято её называть, <color=green>операнд</color>) правой. Второй работает с точностью наоборот: выражение будет истинно, если левый операнд не равен правому.",
-      "VideoTitles": "Branching Extra Operators"
-    }
-  ]
+"Items": [
+{
+"Title": "Branches (continued)",
+"Info": "Not bad, now we can write more complex programs. But still there is a problem: so far we can only implement 2 scenarios. And how to make sure that we have <color=green>many</color > conditions and also many options for further actions?\n",
+"VideoTitles": ""
+},
+{
+"Title": "else if construct",
+"Info": "Of course, we could try to write another if and else in the if and else, and sometimes it is possible and necessary to do so. But not always.\n The <color=green>else if</color construction is much more useful > (\"else if\"). It allows you to execute some code if the condition in the if is false, but <color=green>another condition</color> (which is written in brackets after the else if) is true. If it is also false, then the else if code will be executed.\n It is worth noting that we can write <color=green>as many as we like</color> and thus make the program very flexible. ",
+"VideoTitles": "Branching Else If"
+},
+{
+"Title": "Multiple conditions",
+"Info": " While the else if allows many conditions to be met, it can sometimes lead to bloat and code duplication, which should be avoided. Especially when a different approach can be used.\n In conditional constructs, you can specify more than one, but <color=green >multiple</color> conditions This can be done using conditional operators such as <color=green>&&</color> (boolean <color=green>AND</color>) and <color=green>||</ color> (boolean <color=green>OR</color>).\n If there is && between two conditions, then the expression will be true when <color=green>both conditions are true</color>.If it is || , for the expression to be true, <color=green>at least one of the conditions</color> is true.",
+"VideoTitles": "Branching Multiple Conditions"
+},
+{
+"Title": "And some more operators",
+"Info": "Before starting the quest, we wanted to talk about some more useful operators.\n In addition to those we mentioned earlier, there are also <color=green>==</color> and <color=green>! =</color> The first one is the equality operator, it can be used to check if the left side (or <color=green>operand</color> as it is commonly called) is equal to the right side. The second works exactly the opposite: the expression will be true if the left operand is not equal to the right.",
+"VideoTitles": "Branching Extra Operators"
+}
+]
 }

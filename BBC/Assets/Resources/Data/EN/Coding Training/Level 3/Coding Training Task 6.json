@@ -1,19 +1,19 @@
 {
-  "Items": [
-    {
-      "Title": "Конструкция switch/case",
-      "Info": "     Хоть конструкции if, else и else if - это здорово, порой можно решить задачу более изящным способом. И имя этому способу - <color=green>switch</color>.\n     Конструкция <color=green>switch</color> позволяет сравнить переданное ей значение с некоторыми вариантами (<color=green>case</color>-ами). В случае совпадения выполняется предусмотренный для этого случая код.",
-      "VideoTitles": "Branching Switch"
-    },
-    {
-      "Title": "Завершение case",
-      "Info": "     Каждый case завершается некоторым <color=green>словом-оператором</color>. Их несколько, но мы будем использовать самый популярный - <color=green>break</color>, чтобы программа не стала проверять следующие кейсы и вышла из switch. Как видите, в case не используются фигурные скобки, поэтому код становится короче и чище.",
-      "VideoTitles": "Branching Switch Case"
-    },
-    {
-      "Title": "Оператор default",
-      "Info": "     Кроме case, в конструкции switch можно использовать полезный оператор <color=green>default</color>. Он позволяет выполнить некоторый код в том случае, когда переданное значение <color=green>не совпало ни с одним case-ом</color>. Если же один из case-ов сработал, код в default будет пропущен.",
-      "VideoTitles": "Branching Switch Default"
-    }
-  ]
+"Items": [
+{
+"Title": "Switch/case construction",
+"Info": "While the if, else and else if constructs are great, sometimes you can do things in a more elegant way. And the name of this method is <color=green>switch</color>.\n The <color=green>switch construct </color> allows you to compare the value passed to it with some cases (<color=green>case</color> s). In case of a match, the code provided for this case is executed.",
+"VideoTitles": "Branching Switch"
+},
+{
+"Title": "End case",
+"Info": "Each case ends with some <color=green>word-operator</color>. There are several of them, but we will use the most popular - <color=green>break</color>, so that the program does not check the following cases and exited the switch.As you can see, the case does not use curly braces, so the code is shorter and cleaner.",
+"VideoTitles": "Branching Switch Case"
+},
+{
+"Title": "Operator default",
+"Info": " In addition to case, you can use the useful <color=green>default</color> statement in the switch construct. It allows you to execute some code in the case when the passed <color=green> value did not match any case- om</color>. If one of the cases worked, the code in default will be skipped.",
+"VideoTitles": "Branching Switch Default"
+}
+]
 }

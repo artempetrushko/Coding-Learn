@@ -1,19 +1,19 @@
 {
-  "Items": [
-    {
-      "Title": "Ветвления",
-      "Info": "     Вы стали отлично справляться с написанием простых программ! Пришла пора освоить что-то более сложное.\n     Если вы вспомните, какими были ваши решения, то, возможно, заметите их общее сходство - все команды в них выполнялись <color=green>последовательно</color>, друг за другом. \"Но ведь нельзя сделать все программы такими!\" - скажете вы, и будете правы. Поэтому пришла пора рассказать вам про <color=green>ветвления</color>.",
-      "VideoTitles": ""
-    },
-    {
-      "Title": "Ветвления. Конструкции if, else",
-      "Info": "     <color=green>Ветвления</color> дают возможность выполнять <color=green>различный</color> код в зависимости от некоторого <color=green>условия</color>. Чтобы это осуществить, во многих языках, включая C#, есть специальные <color=green>условные конструкции if</color> и <color=green>else</color>.\n     Как их можно интерпретировать? Всё просто: если (<color=green>if</color>) некоторое условие истинно, то выполняется код, следующий после if в фигурных скобках; в противном случае (<color=green>else</color>) будет выполнена другая часть кода, следующая в скобках после else.",
-      "VideoTitles": "Branching If Else"
-    },
-    {
-      "Title": "Логические операторы и выражения",
-      "Info": "     Ну хорошо, а что за условия должны выполняться и как их писать в коде? На самом деле, их вариаций крайне много, но мы начнём с простых и всем известных - математических.\n     Безусловно, вам известны такие условия, как <, >, <=, >=. Это <color=green>логические операторы</color>, и с их помощью мы и будем создавать условия. Например, в круглых скобках после if можно проверять, число А больше числа B или нет. Если да, выполнится код из секции if, в противном случае - из секции else.\n     Ну и коль скоро мы можем сравнивать числа, вы можете также сравнивать и <color=green>переменные</color>, хранящие их.",
-      "VideoTitles": "Branching Logic Expressions"
-    }
-  ]
+"Items": [
+{
+"Title": "Branches",
+"Info": "You've gotten really good at writing simple programs! It's time to learn something more complex.\n If you remember what your solutions were, you might notice their general similarity - all the commands in them were executed by <color =green>sequentially</color>, one after another. \"But you can't make all programs like this!\" - you will say, and you will be right. Therefore, it's time to tell you about <color=green>branching</color>. ",
+"VideoTitles": ""
+},
+{
+"Title": "Branches. If, else constructs",
+"Info": " <color=green>Branches</color> make it possible to execute <color=green>different</color> code depending on some <color=green>condition</color>. To do this, in many languages, including C#, have special <color=green>if</color> and <color=green>else</color> conditionals.\n How can they be interpreted? It's simple: if (<color=green>if< /color>) some condition is true, then the code following the if in curly braces is executed; otherwise (<color=green>else</color>) the other part of the code following the if in curly braces is executed.",
+"VideoTitles": "Branching If Else"
+},
+{
+"Title": "Logical operators and expressions",
+"Info": "Well, what kind of conditions should be met and how to write them in code? In fact, there are a lot of variations of them, but we will start with simple and well-known - mathematical ones.\n Of course, you know such conditions, like <, >, <=, >=. These are <color=green>logical operators</color>, and with their help we will create conditions.For example, in parentheses after if, you can check whether the number A is greater than the number B or No. If so, the code in the if section will be executed, otherwise, the code in the else section will be executed.\n Well, since we can compare numbers, you can also compare the <color=green>variables</color> that store them." ,
+"VideoTitles": "Branching Logic Expressions"
+}
+]
 }

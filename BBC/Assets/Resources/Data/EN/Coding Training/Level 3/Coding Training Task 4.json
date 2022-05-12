@@ -1,24 +1,24 @@
 {
-  "Items": [
-    {
-      "Title": "Логический тип bool",
-      "Info": "     Мы с вами уже знаем немало условных выражений, которые оказываются крайне полезны в программировании. Всех их объединяет то, что они могут иметь два состояния - <color=green>быть истинными</color> и <color=green>быть ложными</color>. А потому они представляют собой <color=green>логический</color> тип данных - <color=green>bool</color>.",
-      "VideoTitles": ""
-    },
-    {
-      "Title": "Логический тип bool",
-      "Info": "     Переменные типа <color=green>bool</color> могут принимать два значения - <color=green>true</color> (истина) и <color=green>false</color> (ложь). Эти же значения принимают и условные выражения, которые мы использовали ранее, поэтому их (выражения) можно присваивать переменным типа bool (их ещё называют <color=green>булевыми</color> переменными). Это позволяет сохранять результаты проверки на истинность и использовать в других условных конструкциях или возвращать в return.",
-      "VideoTitles": "Branching Bool"
-    },
-    {
-      "Title": "Логические конструкции и code-style",
-      "Info": "     Несколько рекомендаций по коду для логических выражений и bool:\n     - Имена булевых переменных должны быть заданы в виде вопроса, на который можно дать ответ \"Да\" или \"Нет\" (например, isNumberEven - \"Число чётное?\");\n     - Лучше не давать имена с частицей not и не проверять, чем те или иные объекты/явления НЕ являются. Если нужно проверить <color=green>отрицательность</color> утверждения, поставьте перед булевой переменной или логическим выражением оператор <color=green>!</color> (логическое <color=green>НЕ</color>) (при использовании с логическим выржанием нужно предварительно обернуть его в круглые скобки);",
-      "VideoTitles": "Branching Bool CodeStyle"
-    },
-    {
-      "Title": "Логические конструкции и code-style",
-      "Info": "     - Если вы в блоке if и в блоке else лишь возвращаете true или false, то лучше заменить всю эту конструкцию на <color=green>return [условная конструкция];</color>. В процессе работы программы истинность выражения будет подсчитана и тут же возвращена из метода.",
-      "VideoTitles": "Branching CodeStyle Return Bool"
-    }
-  ]
+"Items": [
+{
+"Title": "Boolean type bool",
+"Info": "We already know a lot of conditional expressions that are extremely useful in programming. They all have in common that they can have two states - <color=green>be true</color> and <color=green> be false</color>, so they are a <color=green>boolean</color> data type - <color=green>bool</color>.",
+"VideoTitles": ""
+},
+{
+"Title": "Boolean type bool",
+"Info": " Variables of type <color=green>bool</color> can take two values ​​- <color=green>true</color> (true) and <color=green>false</color> (false). The conditional expressions that we used earlier take the same values, so they (expressions) can be assigned to bool variables (they are also called <color=green>boolean</color> variables).This allows you to store the results of the test for truth and use it in other conditional constructs or return in return.",
+"VideoTitles": "Branching Bool"
+},
+{
+"Title": "Logic constructs and code-style",
+"Info": " A few coding guidelines for booleans and bool:\n - Boolean variable names should be given as a question that can be answered with \"Yes\" or \"No\" (e.g. isNumberEven - \ "Is the number even?\");\n - It's better not to give names with the particle not and not to check if certain objects/phenomena are NOT. variable or logical expression <color=green>!</color> operator (boolean <color=green>NOT</color>) (when used with a logical expression, you must first wrap it in parentheses);",
+"VideoTitles": "Branching Bool CodeStyle"
+},
+{
+"Title": "Logic constructs and code-style",
+"Info": " - If you only return true or false in the if block and in the else block, then it is better to replace this entire construction with <color=green>return [conditional construction];</color>. During the program, the truth of the expression will be calculated and immediately returned from the method.",
+"VideoTitles": "Branching CodeStyle Return Bool"
+}
+]
 }
