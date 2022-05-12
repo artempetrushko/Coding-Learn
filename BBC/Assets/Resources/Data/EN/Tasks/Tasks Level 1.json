@@ -2,8 +2,8 @@
   "Items": [
     {
       "ID": 1,
-      "Title": "Move cube",
-      "Description": "  - In the prepared code, in curly braces, write MoveCube(); (with a semicolon, this is important!).",
+      "Title": "MoveCube",
+      "Description": "  - Wright MoveCube(); (with a semicolon, this is important!).",
       "StartCode": "public void Execute()\n{\n    \n}"
     },
     {
@@ -14,34 +14,34 @@
     },
     {
       "ID": 3,
-      "Title": "Door opening",
+      "Title": "Opening the door",
       "Description": "  - Declare a keyNumber variable of type int with value 55. The variable is declared like this:\n type name = value;",
-      "StartCode": "public void Execute()\n{\n//Declare variable here\nDoor.Open(keyNumber);\n}"
+      "StartCode": "public void Execute()\n{\n//Объявлять переменную здесь\nDoor.Open(keyNumber);\n}"
     },
     {
       "ID": 4,
-      "Title": "Take corm",
-      "Description": "  - Correct a typo in the code to take a package of food by weight in kilograms.\nYou need to take a box weighing 0.5 kg.\nWhen a variable is declared with the var keyword, its type is determined automatically, based on the data assigned during initialization.\nWhen an integer is divided by integer, the result is an integer without a remainder\n5-integer\n5.0f, a fractional number (of type float)\n5.0 a fractional number (of type double)",
+      "Title": "Take Feed",
+      "Description": "  - Correct a typo in the code to take a package of food by weight in kilograms.\nYou need to take a box weighing 0.5 kg.\nWhen a variable is declared with the var keyword, its type is determined automatically, based on the data assigned during initialization. \nWhen an integer is divided by an integer, the result is an integer without a remainder\n5-integer\n5.0f,float (float)\n5.0 fraction(double)",
       "StartCode": "public void Execute()\n{\nvar fullness = 1 / 2;\nFridge.GetFeedPackaging(fullness);\n}"
     },{
       "ID": 5,
       "Title": "How many days will the food last",
-      "Description": "  - n this task, you have to calculate how many days (not counting today) you will have enough food, provided that you feed the fish today.\nThe method is passed the number of fish of 2 types, the daily norm for them is the amount of food. You need to return the number of days the feed will last (excluding today's feed).\n To convert double to int when assigning or passing to a method, precede the value with (int)",
+      "Description": "  - In this task, you have to calculate how many days (not counting today) you will have enough food, provided that you feed the fish today.\nThe method is passed the number of 2 types of fish, the daily norm for them is t the amount of food. You need to return the number of days the food will last (excluding today's feeding).\n To convert a double to an int when assigning or passing to a method, precede the value with (int)",
       "StartCode": "private int CountFishFeed(int fishType1Count, int fishType2Count, double fishType1Norm, double fishType2Norm, double feedCount)\n{\n    \n}"
     },{
       "ID": 6,
       "Title": "Count the number of glasses",
-      "Description": "  - You need to count the number of glasses needed to cook the dish.\n You are given the required volumes of flour and water, as well as the volume of the glass.\nTo round up, use the Math.Floor() method.\n",
+      "Description": "  - You need to calculate the number of glasses needed to cook the dish.\n You are given the required volumes of flour and water, as well as the volume of the glass.\nTo round up, use the Math.Floor() method.\n",
       "StartCode": "private void CountGlassCount(float flourV,float waterV,int glassV)\n{\n//Пишите свой код здесь\nCook(waterGlassCount,flourGlassCount);\n}"
     },{
       "ID": 7,
-      "Title": "Add/reduce temperature",
-      "Description": "  - You need to implement two methods to add and subtract the temperature.\n You can do this by manipulating the T variable.\n Consider that the variable is already declared outside of the method (we'll discuss how to do this later).",
+      "Title": "Add/Reduce Temperature",
+      "Description": "  - You need to implement two methods to add and subtract the temperature.\n You can do this by manipulating the variable T.\n Consider that the variable is already declared outside of the method (we'll discuss how to do this later).",
       "StartCode": "private static void AddT(int deltaT)\n{\n \n}\n private static void SubtractT(int deltaT)\n{\n}"
     },{
       "ID": 8,
-      "Title": "Sharing or not",
-      "Description": "  - You need to determine whether the transferred sum is divisible by 4 and return the remainder of the division (if the remainder is 0).\n Division with remainder: divisible% quotient",
+      "Title": "Shared or not",
+      "Description": "  - You need to determine whether the transferred amount is divisible by 4 and return the remainder of the division (if the remainder is 0).\n Division with remainder: divisible%quotient",
       "StartCode": "private int Check(int value)\n{\n\n}"
     }
   ]
