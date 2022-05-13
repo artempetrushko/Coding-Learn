@@ -1,5 +1,7 @@
+using Leguar.TotalJSON;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,7 +23,7 @@ namespace Scripts
         {
             var levelNumber = SceneManager.GetActiveScene().buildIndex;
             var language = Language.EN;
-            var savedData = SaveManager.LoadSavedData();
+            var savedData = LoadSavedData();
             if (savedData != null)
             {
                 language = savedData.Language;
@@ -39,7 +41,7 @@ namespace Scripts
         {
             var language = Language.EN;
             var levelsCount = 1;
-            var savedData = SaveManager.LoadSavedData();
+            var savedData = LoadSavedData();
             if (savedData != null)
             {
                 language = savedData.Language;
@@ -96,6 +98,19 @@ namespace Scripts
         {
             var resources = Resources.Load<TextAsset>(resourcePath);
             return JsonHelper.FromJson<T>(resources.text);
+        }
+
+        private SaveData LoadSavedData()
+        {
+            try
+            {
+                var serializedData = File.ReadAllText(Application.persistentDataPath + "/save.json");
+                return JSON.ParseString(serializedData).Deserialize<SaveData>();
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         private void Awake()
