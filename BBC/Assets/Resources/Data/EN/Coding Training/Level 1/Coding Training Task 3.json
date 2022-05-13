@@ -3,6 +3,7 @@
 {
 "Title": "Data types. Variables",
 "Info": "Great! We've successfully called the method with an argument. It's time to figure out what we passed as an argument - data, or rather, <color=green>data types</color>, and where they are stored - <color=green>variables</color>",
+<<<<<<< Updated upstream
 "VideoTitles": ""
 },
 {
@@ -18,18 +19,51 @@
 {
 "Title": "Assigning a value to a variable",
 "Info": "We have declared a variable, but so far it is useless - it simply does not store anything. We need to <color=green>set</color> to it some <color=green>value</color>, which we will store in To do this, on the next line after declaring a variable, you need to specify its name, put <color=green>assignment operator</color> = and write the value corresponding to the type of this variable.",
+=======
+Great! You and I successfully called the method with the argument. It's time to deal with what we passed on as an argument - data, or rather, data types, and where they are stored - variables.
+"VideoTitles": ""
+},
+{
+Title: Variables,
+"Info": "In general, any <color=green>variable</color> is some <color=green>named</color>area in computer memory that stores data at some address. Since it is named, using the name we can access this area of memory and get the necessary data.\n By the way, data can be of different types.",
+In general, any variable is some named area in the computer's memory that stores data at some address. Since it is named, with the help of the name we can access this area of memory and get the necessary data. By the way, data comes in different types.
+"VideoTitles": ""
+},
+{
+"Title": "Data types. Assigning a variable",
+"Info": " <color=green>Data types</color> are different, depending on what we want to store in a variable - a number, a string, an object, or something else. For now, let's get acquainted with <color=green >integer</color> type - <color=green>int</color> that stores integers (both positive and negative) from some range.\n To <color=green>declaring</color> a variable (t .i.e. assign a name to some memory cell), you need to specify the data type, and then, separated by a space, the name of the variable.",
+Data types are different, depending on what we want to store in a variable - a number, a string, an object, or something else. So far, let's get acquainted with the integer type - int, which stores integers (both positive and negative) from a range. To declare a variable (that is, assign a name to some memory cell), you need to specify the data type, and then, through a space, the name of the variable.
+"VideoTitles": "Variables Declaration"
+},
+{
+"Title": "Assigning a Variable Value",
+"Info": "We declared a variable, but so far it is useless - it simply does not store anything. We need to <color=green>set</color> to it some <color=green>value</color>, which we will store in To do this, on the next line after declaring a variable, you need to specify its name, put <color=green>assignment operator</color> = and write the value corresponding to the type of this variable.",
+We declared a variable, but so far it is useless - nothing is simply stored in it. You need to assign it a certain value that we will save in memory. To do this, in the next line after declaring a variable, you need to specify its name, put the assignment operator = and write a value corresponding to the type of this variable.
+>>>>>>> Stashed changes
 "VideoTitles": "Variables Definition"
 },
 {
 "Title": "Variable initialization",
+<<<<<<< Updated upstream
 "Info": "Now we know how to declare a variable and assign a value to it, but this requires two lines of code each time. It would be great to perform these operations <color=green>at the same time</color>...\n And so you can do it! Assigning a value to a variable when it is declared is called <color=green>initialization</color> and it is done as follows: the variable is declared and immediately after the name comes the = operator and the value.\n Now you can practice! Although ... there is more something important!",
+=======
+"Info": "Now we know how to declare a variable and assign a value to it, but this requires two lines of code each time. It would be great to perform these operations <color=green>simultaneously</color>...\n And so you can do it! Assigning a value to a variable when it is declared is called <color=green>initialization</color> and it is done as follows: the variable is declared and immediately after the name comes the = operator and the value.\n Now you can practice! Although ... there is more something important!"
+Now we know how to declare a variable and assign its value, but this requires two lines of code each time. It would be great to do these operations at the same time... And so you can do! Assigning the value of a variable when it is declared is called initialization and it is performed as follows: the variable is declared and immediately after the name comes the operator = and the value. Now you can practice! Although... there's something else important!
+>>>>>>> Stashed changes
 "VideoTitles": "Variables Initialization"
 },
 {
 "Title": "Comments",
 "Info": "In some problems and our videos, you may have noticed <color=green>green words</color> after <color=green>double slash</color>. These are <color=green>comments</color>, with their help, you can leave marks on the code to make it easier for other developers to understand.Or, for example, if you need to remove the code from the program, but not erase it, you can put a double slash in front of it.Or (if the text is multiline) frame it with <color characters =green>/*</color> and <color=green>*/</color>.",
+<<<<<<< Updated upstream
 "VideoTitles": "Comments"
 }
 ]
 }
 
+=======
+In some tasks and our videos, you may have noticed green words after a double slash. These are comments, with their help you can leave markings by code so that it is easier for other developers to understand. Or for example, if you need to remove the code from the program, but not erase it, then you can put a double slash in front of it. Or (if the text is multiline) frame it with the characters/* and */.
+"VideoTitles": "Comments"
+}
+]
+>>>>>>> Stashed changes
