@@ -296,7 +296,7 @@ MonoBehaviour:
   soundSliderText: {fileID: 3810191}
   musicSliderText: {fileID: 1666078982}
   musicSource: {fileID: 315014734}
-  soundSource: {fileID: 854128572}
+  soundSource: {fileID: 7032781561101847767}
 --- !u!4 &38198194
 Transform:
   m_ObjectHideFlags: 0
@@ -16717,5 +16717,10 @@ PrefabInstance:
       value: -15.000122
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 8692680883212362156, guid: 22b24259848a4fb4f987c5637b1ed8c2, type: 3}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 22b24259848a4fb4f987c5637b1ed8c2, type: 3}
+--- !u!82 &7032781561101847767 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7749203109660054370, guid: 22b24259848a4fb4f987c5637b1ed8c2, type: 3}
+  m_PrefabInstance: {fileID: 7032781561101847766}
+  m_PrefabAsset: {fileID: 0}
