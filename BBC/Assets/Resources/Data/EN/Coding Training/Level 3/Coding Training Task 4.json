@@ -2,22 +2,22 @@
   "Items": [
     {
       "Title": "Boolean type bool",
-      "Info": "We already know a lot of conditional expressions that are extremely useful in programming. What they all have in common is that they can have two states - <color=green>be true</color> and <color=green>be false</color>. Therefore, they are a <color=green>boolean</color> data type - <color=green>bool</color>.",
+      "Info": "We already know a lot of conditional expressions that are extremely useful in programming. What they all have in common is that they can have two states be true and be false. Therefore, they are a Boolean data type bool.",
       "VideoTitles": ""
     },
     {
       "Title": "Boolean type bool",
-      "Info": "     Variables of type <color=green>bool</color> can take two values ​​- <color=green>true</color> (true) and <color=green>false</color> (false). The conditional expressions that we used earlier take the same values, so they (expressions) can be assigned to bool variables (they are also called <color=green>boolean</color> variables).This allows you to store the results of the test for truth and use it in other conditional constructs or return in return.",
+      "Info": "Variables of type bool can take two values - true (true) false (false). ",
       "VideoTitles": "Branching Bool"
     },
     {
       "Title": "Logic constructs and code-style",
-      "Info": "     A few coding guidelines for booleans and bool:\n - Boolean variable names should be given as a question that can be answered with \"Yes\" or \"No\" (e.g. isNumberEven - Is the number even?;\n - It's better not to give names with the particle not and not to check if certain objects/phenomena are NOT. variable or logical expression <color=green>!</color> operator (boolean <color=green>NOT</color>) (when used with a logical expression, you must first wrap it in parentheses)",
+      "Info": "A few coding guidelines for booleans and bool - Boolean variable names should be given as a question that can be answered with yes or no",
       "VideoTitles": "Branching Bool CodeStyle"
     },
     {
       "Title": "Logic constructs and code-style",
-      "Info": "     - If you only return true or false in the if block and in the else block, then it is better to replace this entire construction with <color=green>return [conditional construction];</color>. During the program, the truth of the expression will be calculated and immediately returned from the method.",
+      "Info": "If you only return true or false in the if block and in the else block, then it is better to replace this whole construction with return.",
       "VideoTitles": "Branching CodeStyle Return Bool"
     }
   ]

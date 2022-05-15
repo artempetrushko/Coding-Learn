@@ -1,7 +1,6 @@
 {
   "Items": [
     {
-<<<<<<< Updated upstream
       "Title": "Introduction to C#. Instructions, Methods",
       "Info": "     Congratulations, you've written your first program that works! But what actually happened? Why did we write what we wrote? Now we will begin to get acquainted with the <color=green>syntax</color> of the language and find out what can be written, how to write it, and most importantly, why.",
       "VideoTitles": ""
@@ -25,33 +24,6 @@
       "Title": "Методы с аргументами. Консоль",
       "Info": "     Now let's practice calling <color=green>methods with arguments</color>. To do this, we will write, almost, an iconic output program to <color=green>console</color> of the phrase \"Hello, world!\".\n <color=green>Console</color> is, in fact, a window , in which the user can interact with the program, send data to it or receive it. In C#, you can call console methods by writing Console. followed by the name of some method. Unfortunately, our tablet does not support working with more than one window, so the output of the phrase will be somewhat <color=yellow>conditional</color> - we will not see the console, but we will practice programming!)",
       "VideoTitles": "Console Review"
-=======
-      "Title": "Introduction to C#. Instructions, methods",
-      "Info": "     Congratulations, you wrote your first program that works! But what even happened? Now we will begin to get acquainted with the syntax of the language and find out: what can be written, how to write it, and most importantly - why.",
-"VideoTitles": ""
-    },
-    {
-      "Title": "Programme structure",
-      "Info": "     Let's look at the structure of the program when we just created an application project in C #. It can be seen that the start pattern is quite complex, there are many different words, brackets, etc. All this, of course, makes sense, but it will become clear only later, when we gain experience. In our programs, all the code that is not yet interesting to us will be hidden, but if you are extremely curious, you can find the C # documentation on the Internet and study it yourself.",
-"VideoTitles": "C# Program Review"
-    },
-    {
-      "Title": "Instructions and methods",
-      "Info": "     Our first programs will be limited to one method. Methods in C # call functions that are in other languages ​ ​ and execute a set of instructions written in them. Instructions, in turn, are different commands, whether it is to add two numbers, multiply them or call another method, that is, to force another set of instructions to execute. Each statement must end with a semicolon. All C # programs start with the Main method, this is the entry point to the program. We will write auxiliary methods that will be called, including from Main.",
-"VideoTitles": ""
-    },
-    {
-      "Title": "Argument of the method",
-      "Info": "     Did you notice that when you called the method in the previous task, you wrote empty brackets? Why are they needed? In brackets, you can pass arguments - some data that can be used in the instructions of this method. Since
-in the previous task, the method did not need any arguments, we left brackets empty.\n",
-"VideoTitles": ""
-    },
-    {
-      "Title": "Methods with arguments. Console",
-      "Info": "      Now we will practice calling methods with arguments. To do this, we will write an almost iconic program for displaying the phrase\" Hello, world !\" To the console. The console is, in fact, a window in which the user can interact with the program, transfer data to it or receive it. In C #, you can call the methods of the console by writing Console.\n, And then the name of some method. Unfortunately, our tablet does not support working with more than one window, so the output of the phrase will be somewhat conditional - we will not see the console, but we will practice programming!",
-      Now we will practice calling methods with arguments. To do this, we will write an almost iconic program for displaying the phrase\" Hello, world !\" To the console. The console is, in fact, a window in which the user can interact with the program, transfer data to it or receive it. In C #, you can call the methods of the console by writing Console., And then the name of some method. Unfortunately, our tablet does not support working with more than one window, so the output of the phrase will be somewhat conditional - we will not see the console, but we will practice programming!
-"VideoTitles": "Console Review"
->>>>>>> Stashed changes
     }
   ]
 }

@@ -2,17 +2,17 @@
   "Items": [
     {
       "Title": "Switch/case construction",
-      "Info": "     While the if, else and else if constructs are great, sometimes you can do things in a more elegant way. And the name of this method is <color=green>switch</color>.\n The <color=green>switch construct </color> allows you to compare the value passed to it with some cases (<color=green>case</color> s). In case of a match, the code provided for this case is executed.",
+      "Info": "     While the if, else and else if constructs are great, sometimes you can do things in a more elegant way.",
       "VideoTitles": "Branching Switch"
     },
     {
       "Title": "End case",
-      "Info": "     Each case ends with some <color=green>word-operator</color>. There are several of them, but we will use the most popular - <color=green>break</color>, so that the program does not check the following cases and exited the switch.As you can see, the case does not use curly braces, so the code is shorter and cleaner.",
+      "Info": "     Each case ends with some <color=green>word-operator</color>.",
       "VideoTitles": "Branching Switch Case"
     },
     {
       "Title": "Operator default",
-      "Info": "     In addition to case, you can use the useful <color=green>default</color> statement in the switch construct. It allows you to execute some code in the case when the passed <color=green> value did not match any case- om</color>. If one of the cases worked, the code in default will be skipped.",
+      "Info": "     In addition to case, you can use the useful <color=green>default</color> statement in the switch construct.",
       "VideoTitles": "Branching Switch Default"
     }
   ]
