@@ -10,63 +10,67 @@ namespace Scripts
     public class PadHelpPanelBehaviour : MonoBehaviour
     {
         [Header("Планшет (панель подсказок)")]
-        [Tooltip("Панель подсказок")]
-        public GameObject HelpPanel;
-        [Tooltip("Кнопка показа подсказки")]
-        public Button ShowTipButton;
-        [Tooltip("Поле с текстом подсказки")]
-        public TMP_Text Tip;
-        [Tooltip("Текст с таймером")]
-        public Text TimerText;
-        [Tooltip("Текст-филлер (заполняет место подсказки, пока она недоступна)")]
-        public Text TipFiller;
+        [SerializeField] private GameObject helpPanel;
+        [SerializeField] private Button showTipButton;
+        [SerializeField] private TMP_Text tipText;
+        [SerializeField] private Text tipStatusText;
+        [SerializeField] private Text tipFiller;
 
         private GameManager gameManager;
+        private UiLocalizationScript uiLocalization;
+        private int timeToNextTip;
 
         public void WaitUntilNextTip() => StartCoroutine(WaitUntilNextTip_COR());
 
         public void ShowTip()
         {
-            if (TipFiller.IsActive())
-                TipFiller.gameObject.SetActive(false);
-            Tip.text = gameManager.GetNewTipText();
-            if (gameManager.AvailableTipsData[gameManager.GetCurrentTaskNumber() - 1].Amount > 0)
-                WaitUntilNextTip();
-        }
-
-        public void OpenHelpPanel()
-        {
-            var taskNumber = gameManager.GetCurrentTaskNumber();
-            if (gameManager.AvailableTipsData[taskNumber - 1].Amount != gameManager.Tips[taskNumber - 1].Length)
+            if (tipFiller.IsActive())
             {
-                var tipNumber = gameManager.Tips[taskNumber - 1].Length - gameManager.AvailableTipsData[taskNumber - 1].Amount - 1;
-                Tip.text = gameManager.Tips[taskNumber - 1][tipNumber].Tip;
+                tipFiller.gameObject.SetActive(false);
+            }            
+            tipText.text += " - " + gameManager.GetNewTipText() + "\n";
+            if (gameManager.GetCurrentTaskTipsData().Amount > 0)
+            {
+                WaitUntilNextTip();
             }
-            else Tip.text = "";
-            HelpPanel.GetComponent<Animator>().Play("ScaleUp");
+            else
+            {
+                showTipButton.interactable = false;
+                tipStatusText.text = uiLocalization.NoTipsText;
+            }
         }
 
-        public void CloseHelpPanel() => HelpPanel.GetComponent<Animator>().Play("ScaleDown");
+        public void ClearTipText()
+        {
+            tipText.text = "";
+            tipFiller.gameObject.SetActive(true);
+        }
+
+        public void OpenHelpPanel() => helpPanel.GetComponent<Animator>().Play("ScaleUp");
+
+        public void CloseHelpPanel() => helpPanel.GetComponent<Animator>().Play("ScaleDown");
 
         private IEnumerator WaitUntilNextTip_COR()
         {
-            ShowTipButton.interactable = false;
-            var timeToNextTip = gameManager.GetTimeToNextTip();
-            while (timeToNextTip > 0)
+            showTipButton.interactable = false;
+            var timer = timeToNextTip;
+            while (timer > 0)
             {
-                var minutes = timeToNextTip / 60;
-                var seconds = timeToNextTip - minutes * 60;
-                TimerText.text = string.Format("Следующая подсказка через {0:d2}:{1:d2}", minutes, seconds);
+                var minutes = timer / 60;
+                var seconds = timer - minutes * 60;
+                tipStatusText.text = uiLocalization.TipWaitingText + string.Format(" {0:d2}:{1:d2}", minutes, seconds);
                 yield return new WaitForSeconds(1f);
-                timeToNextTip--;
+                timer--;
             }
-            TimerText.text = "Получить подсказку";
-            ShowTipButton.interactable = true;
+            tipStatusText.text = uiLocalization.TipReadyText;
+            showTipButton.interactable = true;
         }
 
         private void Start()
         {
             gameManager = GameManager.Instance;
+            uiLocalization = gameManager.GetComponent<UiLocalizationScript>();
+            timeToNextTip = gameManager.GetTimeToNextTip();
         }
     }
 }

@@ -32,12 +32,14 @@ namespace Scripts
         [Space]
         [SerializeField] private UnityEvent onTaskStarted;
         [SerializeField] private UnityEvent onLevelFinished;
+        [SerializeField] private UnityEvent onExtendedTaskDescriptionCalled;
 
         private GameManager gameManager;
         private UIManager uiManager;
         private PlayerBehaviour playerBehaviour;
+        private CodingTrainingInfo[] selectedCodingTrainingInfo;
         private int currentTrainingPageNumber;
-        private GameManager.CodingTrainingInfo[] selectedCodingTrainingInfo;
+        private bool isExtendedTaskPanelShown = false;
 
         public void StartNewTask()
         {
@@ -45,6 +47,7 @@ namespace Scripts
             var taskText = gameManager.GetCurrentTask();
             taskTitle.text = taskText.Title;
             taskDescription.text = taskText.Description;
+            isExtendedTaskPanelShown = false;
             CreateCodingTrainingPages(gameManager.SceneIndex - 1, gameManager.GetCurrentTaskNumber() - 1);         
             OpenCodingTrainingPanel_Special();
             onTaskStarted.Invoke();
@@ -56,11 +59,15 @@ namespace Scripts
 
         public void GoToNextLevel() => StartCoroutine(GoToNextLevel_COR());
 
+        public void ShowTaskPanel() => StartCoroutine(ShowTaskPanel_COR());
+
         public void OpenCodingTrainingPanel() => StartCoroutine(OpenCodingTrainingPanel_COR());
 
         public void OpenCodingTrainingPanel_Special() => StartCoroutine(ShowCodingTrainingPanel_COR());
 
         public void CloseCodingTrainingPanel() => StartCoroutine(CloseCodingTrainingPanel_COR());
+
+        public void OpenExtendedTaskPanel() => StartCoroutine(OpenExtendedTaskPanel_COR());
 
         public void ChangeCodingTrainingPage(int coefficient)
         {
@@ -83,8 +90,8 @@ namespace Scripts
             //gameManager.IsTaskStarted = false;
             gameManager.CurrentSceneCamera.GetComponent<PlayableDirector>().playableAsset = Resources.Load<PlayableAsset>("Timelines/Tasks/Level " + gameManager.SceneIndex + "/ReturnToScene_Task_" + gameManager.GetCurrentTaskNumber());
             gameManager.CurrentSceneCamera.GetComponent<PlayableDirector>().Play();
-            yield return new WaitForSeconds(2f);
-            var isTaskCompleted = gameManager.HasTasksCompleted[gameManager.GetCurrentTaskNumber() - 1];
+            yield return new WaitForSeconds(2f); 
+            var isTaskCompleted = true; //заглушка
             if (!isTaskCompleted)
             {
                 var activatedTrigger = uiManager.ActionButtonBehaviour.ActivatedTrigger.gameObject;
@@ -125,7 +132,7 @@ namespace Scripts
         {
             for (var i = codingTrainingPages.transform.childCount - 1; i >= 0; i--)
                 Destroy(codingTrainingPages.transform.GetChild(i).gameObject);
-            selectedCodingTrainingInfo = gameManager.GetCodingTrainingInfo(levelNumber, taskNumber);
+            selectedCodingTrainingInfo = ResourcesData.GetCodingTrainingInfo(levelNumber, taskNumber);
             for (var i = 0; i < selectedCodingTrainingInfo.Length; i++)
             {
                 var prefab = selectedCodingTrainingInfo[i].VideoTitles == "" ? textPagePrefab : textAndVideoPagePrefab;
@@ -147,21 +154,19 @@ namespace Scripts
         {
             rewardingPanel.SetActive(true);
             yield return StartCoroutine(PlayTimeline_COR(rewardingPanel, "ShowRewardingPanel"));
-            var challenges = gameManager.TaskChallenges[gameManager.GetCurrentTaskNumber() - 1];
-            var completedChallenges = 0;
+            var challenges = ResourcesData.TaskChallenges[gameManager.SceneIndex - 1][gameManager.GetCurrentTaskNumber() - 1];
             for (var i = 0; i < challenges.Length; i++)
             {
                 var challenge = Instantiate(challengePrefab, challengesContainer.transform);
                 challenge.GetComponentInChildren<TMP_Text>().text = challenges[i].Challenge;
                 if (IsChallengeCompleting(challenges[i].CheckValue))
                 {
-                    completedChallenges++;
+                    SaveManager.SaveTemporaryChallengeProgress(i + 1);
                     challenge.GetComponentInChildren<TMP_Text>().color = Color.green;
                     yield return new WaitForSeconds(0.5f);
                     yield return StartCoroutine(PlayAnimation_COR(challenge.GetComponentInChildren<Animator>().gameObject, "AppearStar"));
                 }
             }
-            SaveManager.SaveTemporaryTaskProgress(completedChallenges);
             closeRewardingPanelButton.gameObject.SetActive(true);
         }
 
@@ -201,6 +206,12 @@ namespace Scripts
             yield return StartCoroutine(PlayTimeline_COR(codingTrainingPanel, "HideCodingTrainingPanel"));
         }
 
+        private IEnumerator OpenExtendedTaskPanel_COR()
+        {
+            yield return StartCoroutine(HideTaskPanel_COR());
+            onExtendedTaskDescriptionCalled.Invoke();
+        }
+
         private IEnumerator OpenCodingTrainingPanel_COR()
         {
             if (currentTrainingPageNumber != 0)
@@ -212,9 +223,19 @@ namespace Scripts
         private IEnumerator CloseCodingTrainingPanel_COR()
         {
             if (uiManager.PadMode == PadMode.HandbookProgrammingInfo)
+            {
                 uiManager.PadMode = PadMode.HandbookSubThemes;
+            }
             yield return StartCoroutine(HideCodingTrainingPanel_COR());
-            yield return StartCoroutine(ShowTaskPanel_COR());
+            if (isExtendedTaskPanelShown)
+            {
+                yield return StartCoroutine(ShowTaskPanel_COR());
+            }
+            else
+            {
+                isExtendedTaskPanelShown = true;
+                onExtendedTaskDescriptionCalled.Invoke();
+            }
         }
 
         private IEnumerator PlayAnimation_COR(GameObject animatorHolder, string animationName)
@@ -229,7 +250,9 @@ namespace Scripts
         {
             var playableDirector = director.GetComponent<PlayableDirector>();
             if (playableAssetName != null)
+            {
                 playableDirector.playableAsset = Resources.Load<PlayableAsset>("Timelines/UI/Task Panel/" + playableAssetName);
+            }
             playableDirector.Play();
             yield return new WaitForSeconds((float)playableDirector.playableAsset.duration);
         }
@@ -237,9 +260,13 @@ namespace Scripts
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.RightControl))
+            {
                 StartNewTask();
+            }
             else if (Input.GetKeyDown(KeyCode.RightAlt))
+            {
                 StartCoroutine(FinishTask_COR());
+            }
         }
 
         private void Start()

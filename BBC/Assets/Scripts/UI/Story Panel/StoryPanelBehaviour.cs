@@ -8,8 +8,6 @@ namespace Scripts
 {
     public class StoryPanelBehaviour : MonoBehaviour
     {
-        [HideInInspector] public int storyPartNumber;
-
         [SerializeField] private TMP_Text storyText;
         [SerializeField] private Button nextStoryPartButton;
         [SerializeField] private Button skipStoryPartButton;
@@ -18,6 +16,7 @@ namespace Scripts
         [SerializeField] private float transitionToNextFrameTime = 1.2f;
 
         private GameManager gameManager;
+        private int storyPartNumber;
         private bool isSkipButtonPressed = false;
 
         public void ShowStoryText() => StartCoroutine(ShowStoryText_COR());
@@ -44,7 +43,7 @@ namespace Scripts
         private IEnumerator ShowStoryText_COR()
         {
             skipStoryPartButton.gameObject.SetActive(true);
-            var storyPartText = gameManager.StoryParts[gameManager.GetCurrentTaskNumber() - 1][storyPartNumber - 1].Script;
+            var storyPartText = ResourcesData.StoryParts[gameManager.GetCurrentTaskNumber() - 1][storyPartNumber - 1].Script;
             var latency = totalTextAppearingTime / storyPartText.Length;
             for (var i = 0; i < storyPartText.Length; i++)
             {
@@ -58,7 +57,7 @@ namespace Scripts
                 yield return new WaitForSeconds(latency);
             }
             skipStoryPartButton.gameObject.SetActive(false);
-            nextStoryPartButton.gameObject.SetActive(true);
+            //nextStoryPartButton.gameObject.SetActive(true);
         }
 
         private void Start()

@@ -133,6 +133,8 @@ namespace Scripts
 
         public void ChangeRowCountersScrollbarValue() => RowCounters.GetComponentInChildren<Scrollbar>().value = 1 - CodeField.verticalScrollbar.value;
 
+        public void LimitScrollbarValue() => CodeField.verticalScrollbar.value = Mathf.Clamp01(CodeField.verticalScrollbar.value);
+
         public void HighlightKeywords()
         {
             var wordInfo = codeInfo.wordInfo;
@@ -192,7 +194,7 @@ namespace Scripts
             var challengesHolder = ChallengesPanel.GetComponentInChildren<VerticalLayoutGroup>().transform;
             for (var i = challengesHolder.transform.childCount; i > 0; i--)
                 Destroy(challengesHolder.transform.GetChild(i - 1).gameObject);
-            var challengeTexts = gameManager.TaskChallenges[gameManager.GetCurrentTaskNumber() - 1];
+            var challengeTexts = ResourcesData.TaskChallenges[gameManager.SceneIndex - 1][gameManager.GetCurrentTaskNumber() - 1];
             foreach (var challengeText in challengeTexts)
             {
                 var challenge = Instantiate(ChallengePrefab, challengesHolder);

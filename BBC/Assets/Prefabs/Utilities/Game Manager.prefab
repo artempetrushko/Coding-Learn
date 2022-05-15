@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1521588603279411650}
   - component: {fileID: 1521588603279411649}
   - component: {fileID: 3866970847807604050}
+  - component: {fileID: 5888913198164409973}
   - component: {fileID: 6046453696553118226}
   - component: {fileID: 5565944410986579315}
   m_Layer: 0
@@ -113,6 +114,18 @@ MonoBehaviour:
   exitToMenuPanelYesButton: {fileID: 0}
   exitToMenuPanelNoButton: {fileID: 0}
   loadBarText: {fileID: 0}
+--- !u!114 &5888913198164409973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521588603279411648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ca3235747bd2cd4d8eb3543edfa2583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6046453696553118226
 MonoBehaviour:
   m_ObjectHideFlags: 0
