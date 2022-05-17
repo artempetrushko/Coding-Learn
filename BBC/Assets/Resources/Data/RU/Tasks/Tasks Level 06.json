@@ -32,20 +32,20 @@
     },
     {
       "ID": 6,
-      "Title": "",
-      "Description": "",
-      "StartCode": "public void Execute()\n{\n    \n    \n}\n"
+      "Title": "Кривое разделение",
+      "Description": "Программа неправильно разделила текст. Вам предстоит это исправить. Для этого вам необходимо собрать тектс воедино и раделить его, используя раделители:+,-,*,/",
+      "StartCode": "public string[] FixArray(string[] array)\n{\n    \n    \n}\n"
     },
     {
       "ID": 7,
-      "Title": "",
-      "Description": "",
-      "StartCode": "public void Execute()\n{\n    \n    \n}\n"
+      "Title": "Очистить матрицу пути",
+      "Description": "Вам необходимо исправить матрицы пути, поврежденные в ходе программного сбоя. Известно, что в марице путь обозначен бинарными символами, а так же точками начала и конца пути([S],[F]), следовательно все остальные символы необходимо заменить на 0.",
+      "StartCode": " private string[] FixPathMatrix(string[] matrix)\n{\n    \n    \n}\n"
     },
     {
       "ID": 8,
-      "Title": "",
-      "Description": "",
+      "Title": "Задача на стадии разработки",
+      "Description": "Просто отпрвьте задачу на проверку, чтобы продолжить",
       "StartCode": "public void Execute()\n{\n    \n    \n}\n"
     }
   ]
