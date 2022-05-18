@@ -1,29 +1,29 @@
 {
-  "Items": [
-    {
-      "Title": "Понятие code-style",
-      "Info": "     Поскольку мы с вами уже освоили некоторые конструкции языка, и вы даже можете пробовать программировать самостоятельно, будет правильным рассказать ещё и о <color=green>стиле кода</color> (code-style).\n     В наше время, когда программирование получило серьёзное развитие, мало просто писать рабочий код. Важно чтобы он также был <color=green>красивым</color>, <color=green>лаконичным</color> и <color=green>понятным</color> для других разработчиков. Поэтому в дальнейшем мы будем рассказывать не только о том, что можно использовать при написании кода, но и как это делать наилучшим образом.\n     И начать мы бы хотели с <color=green>названий переменных</color>.",
-      "VideoTitles": ""
-    },
-    {
-      "Title": "Правила наименования переменных. Язык",
-      "Info": "     Начнём с того, что все названия должны быть на <color=green>английском</color> языке. Причём недостаточно написать слово, но английскими буквами - оно должно быть взято прямиком из английского языка. Если перевод на английский вызывает у вас трудности, не стесняйтесь пользоваться переводчиком. Ваш код должен быть понятен любому человеку из любой точки мира!",
-      "VideoTitles": "Vars Naming Rules Language"
-    },
-    {
-      "Title": "Правила наименования переменных. Символы",
-      "Info": "     Имя переменной должно начинаться с <color=green>маленькой буквы</color> и быть записано в т.н. <color=green>нижнем \"верблюжьем\"</color> стиле (в англ. lowerCamelCase): все слова в имени пишутся слитно и начинаются с заглавной буквы, кроме самой первой.",
-      "VideoTitles": "Vars Naming Rules Symbols"
-    },
-    {
-      "Title": "Правила наименования переменных. Слова",
-      "Info": "     Имя переменной может состоять из одного или нескольких слов. Здесь главный критерий - <color=green>осмысленность</color>: имя должно чётко говорить, что за значение хранит переменная. Именно поэтому считается дурным тоном давать имена вроде a, b, cd, xyz и т.д. Однако <color=red>слишком длинное</color> имя тоже плохо, т.к. оно также будет тяжело восприниматься разработчиком. Поэтому одна из рекомендаций - не использовать в именах предлоги навроде of.\n     Вывод: старайтесь давать переменным в меру длинные осмысленные имена, чтобы ваш код и ваши намерения были понятны каждому!",
-      "VideoTitles": "Vars Naming Rules Words"
-    },
-    {
-      "Title": "Напоследок про code-style",
-      "Info": "     Разумеется, это далеко не все правила написания хорошего кода. По мере изучения нового материала мы ещё не раз будем говорить о лучших практиках в программировании!",
-      "VideoTitles": ""
-    }
-  ]
+"Items": [
+{
+"Title": "The concept of code-style",
+"Info": " Since you and I have already mastered some of the language constructs, and you can even try programming on your own, it would be right to tell you more about <color=green>code style</color> (code-style).\n In our In a time when programming was taking off, it's not enough just to write working code, it's also important that it's also <color=green>beautiful</color>, <color=green>concise</color> and <color=green>understandable</color > for other developers. Therefore, in the future we will talk not only about what can be used when writing code, but also how to do it in the best way.\n And we would like to start with <color=green>variable names</color> .",
+"VideoTitles": ""
+},
+{
+"Title": "Variable naming rules. Language",
+"Info": "Let's start with the fact that all names must be in <color=green>English</color>. Moreover, it is not enough to write a word, but in English letters - it must be taken straight from the English language. If the translation into English causes if you're having trouble, feel free to use a translator. Your code should be understandable by anyone from anywhere in the world!",
+"VideoTitles": "Vars Naming Rules Language"
+},
+{
+"Title": "Variable naming rules. Symbols",
+"Info": " The variable name must start with <color=green>small letter</color> and be written in the so-called <color=green>lower \"camel\"</color> style (in English lowerCamelCase ): all words in the name are written together and begin with a capital letter, except for the very first.",
+"VideoTitles": "Vars Naming Rules Symbols"
+},
+{
+"Title": "Variable naming rules. Words",
+"Info": " A variable name can consist of one or more words. The main criterion here is <color=green>meaningfulness</color>: the name must clearly say what value the variable stores. That is why it is considered bad form to give names like a , b, cd, xyz, etc. However, the <color=red>too long</color> name is also bad, because it will also be difficult for the developer to understand.Therefore, one of the recommendations is not to use prepositions like of in names .\n Conclusion: try to give variables moderately long meaningful names so that your code and your intentions are clear to everyone!",
+"VideoTitles": "Vars Naming Rules Words"
+},
+{
+"Title": "Finally about code-style",
+"Info": "Of course, these are not all the rules for writing good code. As we study new material, we will talk more than once about the best practices in programming!",
+"VideoTitles": ""
+}
+]
 }
