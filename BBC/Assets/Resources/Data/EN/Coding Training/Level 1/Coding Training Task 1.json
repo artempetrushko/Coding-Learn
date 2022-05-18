@@ -13,104 +13,62 @@
     {
       "Title": "Instruction. Pad",
       "Info": "     We need some kind of tool for programming, so a multifunctional pad is available to you. To turn it on, just click on it.",
-"VideoTitles": "Game Training Turn Pad On"
-    },
+{
+  "Items": [
     {
-      "Title": "Instruction. Coding",
-      "Info": "     Most of the pad screen is occupied by a field for code, and programming happens here.",
-"VideoTitles": "Game Training Coding"
-    },
-    {
-      "Title": "Instruction. Reset code",
-      "Info": "     If you think that the solution to the problem has gone somewhere wrong, you can quickly return to the initial code using the Reset code button.",
-"VideoTitles": "Game Training Reset Code"
-    },
-    {
-      "Title": "Instruction. Clues",
-      "Info": "      If it is not clear how to solve the problem, you can get a clue. Each clue becomes available in a few minutes, so it is better to try to solve the problem yourself.",
-"VideoTitles": "Game Training Advice Showing"
-    },
-    {
-      "Title": "Instruction. Guidebook",
-      "Info": "     During solving problems, you'll learn a lot about the programming. In order not to forget anything, you can read a special guiidebook where everything that you learned earlier is collected.",
-"VideoTitles": "Game Training Handbook"
-    },
-    {
-      "Title": "Instruction. Challenges",
-      "Info": "     To solve problems it was interesting, challenges are available for each of them. For the passage of challenge you will receive stars. Try to get all of them!",
-"VideoTitles": "Game Training Challenges"
-    },
-    {
-      "Title": "Instruction. Mistakes",
-      "Info": "     If you make a mistake in the code, the development environment will inform you about this by showing a message at the bottom of the screen.",
-"VideoTitles": "Game Training Errors"
-    },
-    {
-      "Title": "Instruction. Tablet minimizer",
-      "Info": "    The button in the upper right corner of the tablet minimizes it. So you can see the location during the task, it can be sometimes useful - clues can beeverywhere!",      
-"VideoTitles": "Game Training Turn Pad Off"
-    },
-    {
-      "Title": "First task",
-      "Info": "     Well, now it's time to program! We have prepared the first task for you, but do not be afraid - it, of course, is very simple.",
-"VideoTitles": ""
-<<<<<<< Updated upstream
-=======
-=======
-      "Name": "Beginning"
-      "Info": "Hello player! \nYou have to solve the problem by writing code to help the main character - <color=green>assistant robot</color> - solve problems on his way and continue his story.\n Now going to a little more.",
-      "Video Titles": ""
+      "Title": "Start",
+      "Info": "Hi player! Welcome to <color=green>Coding Learn</color>, a game where you can learn the basics of programming in <color=green>C#</color>, one of the most popular languages. \n You have to solve problems by writing code to help the main character - <color=green>assistant robot</color> - overcome obstacles in his path and continue his story.\n Now let's talk a little more.",
+      "VideoTitles": ""
     },
     {
       "Title": "Training Quest",
-      "Information": "During the execution of the task, you can see its description in the <color=green>left section of the area</color>. In addition, the detection of a <color=green>gray dot</color> in the area can be obtained again additional information that is held before the task.",
-      "VideoTitles": "Game Tutorial"
+      "Info": "During the execution of the task, you can see its description in the <color=green>upper left corner</color>. In addition, by clicking on the <color=green>gray button</color> in the corner, you can again get additional information that appears before the task.",
+      "VideoTitles": "Game Training Task"
     },
     {
-      "Header": "Training. Tablet",
-      "Info": "Programming requires some kind of tool, so the multi-functionality of the <color=green>tablet</color> is available to you. To enable it, all you need to do is <color=green>click on it</color>.",
-      "VideoTitles": "Learn to play, turn on the panel"
+      "Title": "Learning. Tablet",
+      "Info": "We need a tool for programming, so a multifunctional <color=green>tablet</color> is available to you. To turn it on, just <color=green>click on it</color>.",
+      "VideoTitles": "Game Training Turn Pad On"
     },
     {
       "Title": "Learning. Writing Code",
-      "Info": " Most of the tablet screen is occupied by the code field, this is where the most important thing happens - <color=green>programming</color>.",
-      "VideoTitles": "Coding Game Learning"
+      "Info": " Most of the tablet screen is occupied by the code field, where the most important thing happens - <color=green>programming</color>.",
+      "VideoTitles": "Game Training Coding"
     },
     {
       "Title": "Learning. Code Reset",
-      "Info": " If it suddenly seems to you that the solution to the problem went somewhere wrong, you can quickly return to the initial code using the <color=green>Reset code</color> button.",
-      "VideoTitles": "Game Workout Reset Code"
+      "Info": " If it suddenly seems to you that the solution to the problem has gone somewhere wrong, you can quickly return to the initial code using the <color=green>Reset code</color> button.",
+      "VideoTitles": "Game Training Reset Code"
     },
     {
-      "Header": "Learning. Hints",
-      "Information": "In case it is not clear how to take the stand, you can pick up a <color=green>hint</color>. Each hint becomes available after a few minutes, so it's best to solve the stand problem for yourself. Plus, it's just more fun!)",
-      "VideoTitles": "Show game tips"
+      "Title": "Tutorial. Hints",
+      "Info": " In case you don't understand how to solve a problem, you can get a <color=green>hint</color>. Each hint becomes available after a few minutes, so it's best to try to solve the problem yourself. Plus, it's easy more interesting!)",
+      "VideoTitles": "Game Training Advice Showing"
     },
     {
-      "Title": "Training. Handbook",
-      "Info": " While solving a problem, you will discover a lot of new things about the programming language. In order not to forget anything, you can tell about a specific <color=green>reference</color>, where everything that you have learned earlier is collected.",
-      "VideoTitles": "Handbook for Playful Learning"
+      "Title": "Learning Handbook",
+      "Info": " While solving problems, you will learn a lot about the programming language. In order not to forget anything, you can read a special <color=green>reference</color>, which collects everything that you have learned before.",
+      "VideoTitles": "Game Training Handbook"
     },
     {
       "Title": "Training. Tests",
-      "Info": "To keep things interesting, each challenge has been given <color=green>challenge</color>. Completing each one will give you <color=green>stars</color>. Try to get them all!" ,
-      "VideoTitles": "Training Game Challenges"
+      "Info": "To make the tasks more interesting, <color=green>challenge</color> is available for each of them. For completing each one you will get <color=green>stars</color>. Try to get them all!" ,
+      "VideoTitles": "Game Training Challenges"
     },
     {
-      "Header": "Learning. Mistakes",
-      "Info": "If you make a <color=green>error</color> in your code, the IDE will let you know, ask for a <color=green>message</color> at the bottom of the screen.",
-      "VideoTitles": "Mistakes in learning the game"
+      "Title": "Training. Mistakes",
+      "Info": "If you happen to make a <color=green>error</color> in your code, the IDE will let you know by displaying a <color=green>message</color> at the bottom of the screen.",
+      "VideoTitles": "Game Training Errors"
     },
     {
-      "Title": "Learning. Minimizing the tablet",
-      "Info": "Button in the <color=green>top resolution area</color> of the tablet collapses it. >!",
-      "VideoTitles": "Learning to play, turn off the panel"
+      "Title": "Tutorial. Minimizing tablet",
+      "Info": " The button in the <color=green>upper right corner</color> of the tablet minimizes it. This way you can see the location during the mission, which can be sometimes useful - hints can be <color=green>everywhere</color >!",
+      "VideoTitles": "Game Training Turn Pad Off"
     },
     {
-      "Name": "First task",
-      "Info": "Well, now it's time to program!
-      "Video Titles": ""
->>>>>>> Stashed changes
+      "Title": "First task",
+      "Info": "Well, now it's time to program! We have prepared the first task for you, but don't be afraid - it is, of course, very simple.",
+      "VideoTitles": ""
     }
   ]
 }
