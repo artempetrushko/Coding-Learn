@@ -1,8 +1,45 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Level4Task1
 {
+    public List<string> data=new List<string>()
+    {"lorem",
+"ipsum",
+"dolor",
+"sit",
+"amet",
+"consectetur",
+"adipiscing",
+"elit",
+"sed",
+"do",
+"eiusmod",
+"tempor",
+"incididunt",
+"ut",
+"labore",
+"et",
+"dolore",
+"magna",
+"aliqua",
+"enim",
+"ad",
+"minim",
+"veniam",
+"quis",
+"nostrud",
+"exercitation",
+"ullamco",
+"laboris",
+"nisi",
+"aliquip",
+"ex",
+"ea",
+"commodo",
+"consequat"
+    };
     public bool isTaskCompleted()
     {
         var random = new Random();
@@ -13,24 +50,36 @@ public class Level4Task1
 
     private bool Check(Random random, int maxCount, int maxSize)
     {
-        var array = CreateArray(random, maxCount, maxSize);
-        var testedArray = CopyAppleSizesArray(array);
-        var firstCheck = !testedArray.Equals(array);
-        var secondCheck = true;
-        for (int i = 0; i < testedArray.Length; i++)
+        var set=new List<string>();
+        foreach(var item in data)
         {
-            if (testedArray[i] != array[i])
-                secondCheck = false;
+            if(!set.Contains(item))
+                set.Add(item);
         }
-        return firstCheck && secondCheck;
+        var array = CreateArray(random, maxCount,set);
+        var text = string.Join(" ", array);
+        var testedArray = GetMostFrequent(text);
+        var test=array.GroupBy(x=>x).Select(x=>Tuple.Create(x.Key, x.Count())).OrderByDescending(x=>x.Item2).Take(5).Select(x=>x.Item1).ToList();
+        
+        return StringListEquals(testedArray,test);
     }
 
-    private static int[] CreateArray(Random random, int maxCount, int maxSize)
+
+    private bool StringListEquals(List<string> arr1, List<string> arr2)
     {
-        var array = new int[random.Next(maxCount)];
+        if (arr1.Count != arr2.Count)
+            return false;
+        for (int i = 0; i < arr1.Count; i++)
+            if (arr1[i] != arr2[i])
+                return false;
+        return true;
+    }
+    private static string[] CreateArray(Random random, int maxCount,List<string> data)
+    {
+        var array = new string[random.Next(maxCount)];
         for (int i = 0; i < array.Length; i++)
         {
-            array[i] = random.Next(maxSize);
+            array[i] = data[random.Next(0, data.Count - 1)]; ;
         }
 
         return array;

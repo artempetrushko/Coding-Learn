@@ -26,27 +26,27 @@
     },
     {
       "ID": 5,
-      "Title": "Декодировать текст",
-      "Description": "Вам необходимо декодировать текст. Для этого необходимо из исходного текста взять все слова, начинающиеся с заглавной буквы и поместить их в результирующий масив в обратном порядке.",
-      "StartCode": "public string[] GetDecodedText(string[] text)\n{\n    \n    \n}\n"
+      "Title": "Вернуть обратный список",
+      "Description": "Необходимо переместить содержимого массива в список в обратном порядке.",
+      "StartCode": "public List<string> GetReversedList(string[] array)\n{\n    \n    \n}\n"
     },
     {
       "ID": 6,
-      "Title": "",
-      "Description": "",
-      "StartCode": "public void Execute()\n{\n    \n    \n}\n"
+      "Title": "Словарь",
+      "Description": "Необходимо создать словрь и добавить в него переданые ключ и значение",
+      "StartCode": " public Dictionary<int,string> CreateAndAdd(int key, string value)\n{\n    \n    \n}\n"
     },
     {
       "ID": 7,
-      "Title": "",
-      "Description": "",
-      "StartCode": "public void Execute()\n{\n    \n    \n}\n"
+      "Title": "Преобразовать в список",
+      "Description": "Необходимо преобразовать словарь в лист. Ключем в словаре выступает порядковый номер строки в списке.",
+      "StartCode": "public List<string> CreateListFromDict(Dictionary<int, string> dict)\n{\n    \n    \n}\n"
     },
     {
       "ID": 8,
-      "Title": "",
-      "Description": "",
-      "StartCode": "public void Execute()\n{\n    \n    \n}\n"
+      "Title": "Частовстречающиеся слова",
+      "Description": "Необходимо вернуть 5 наиболее частовстречающихся в тексте слов. В текте в качестве разделителя используется только пробелы и все слова в нижнем регистре.",
+      "StartCode": "public List<string> GetMostFrequent(string text)\n{\n    \n    \n}\n"
     }
   ]
 }
