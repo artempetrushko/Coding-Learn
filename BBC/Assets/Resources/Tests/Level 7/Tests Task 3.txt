@@ -3,42 +3,52 @@ using System.Collections.Generic;
 
 public class Level5Task3
 {
+    public class Point
+    {
+        public int X;
+        public int Y;
+
+        public Point(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
+
+        public override bool Equals(object obj)
+        {
+            var point=obj as Point;
+            return X==point.X&&Y==point.Y;
+        }
+    }
     public bool isTaskCompleted()
     {
         var random = new Random();
-        var maxCount = 1000;
-        var maxSize = 10000;
+        var maxCount = 100;
+        var maxSize = 100;
         return Check(random, maxCount, maxSize)&& Check(random, maxCount, maxSize);
     }
 
     private bool Check(Random random, int maxCount, int maxSize)
     {
-        var str =new string(CreateArray(random, maxCount, maxSize));
-        var testedStr= GetUpperLetters(str);
-        var exampleList=new List<char>();
-        foreach (var e in str)
+        var list=new List<Point>();
+        for (int i = 0; i < random.Next(10,maxCount); i++)
         {
-            if (char.IsUpper(e))
-            {
-                exampleList.Add(e);
-            }
+            list.Add(new Point(random.Next(maxSize), random.Next(maxSize)));
         }
-        return testedStr.Equals(new string(exampleList.ToArray()));
+        var addedPoint=new Point(random.Next(maxSize,2*maxSize), random.Next(maxSize, 2 * maxSize));
+        var newList=new List<Point>();
+        CopyAndAdd(list, newList, addedPoint);
+        return newList.Count==list.Count+1&&ContainsRange(newList,list)&&newList.Contains(addedPoint);
     }
-    
-    private static char[] CreateArray(Random random, int maxCount, int maxSize)
+    public bool ContainsRange(List<Point> list,IEnumerable<Point> range)
     {
-        var array = new char[random.Next(maxCount)];
-        for (var i = 0; i < array.Length; i++)
+        foreach(var point in range)
         {
-            array[i] =(char) random.Next(33,123);
-            if (random.Next(2) == 1)
-            {
-                array[i]=char.ToUpper(array[i]);
-            }
+            if(!list.Contains(point))
+                return false;
         }
-
-        return array;
+        return true;
     }
+
 
 }
