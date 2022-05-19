@@ -1,10 +1,21 @@
 using System;
 using System.Collections.Generic;
 
-public class Level5Task1
+public class Level6Task1
 {
     public bool isTaskCompleted()
     {
-        return FixName().Equals("left");
+        var random = new Random();
+        var max = 100;
+        return Check(random, max)&& Check(random, max);
+    }
+
+    private bool Check(Random random, int max)
+    {
+        var v1 = random.Next(max);
+        var v2 = random.Next(max);
+        var v3 = random.Next(max);
+        List<int> list = InitList(v1, v2, v3);
+        return list.Count == 3 && list.Contains(v1) && list.Contains(v2) && list.Contains(v3);
     }
 }
