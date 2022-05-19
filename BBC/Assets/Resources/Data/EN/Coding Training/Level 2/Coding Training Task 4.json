@@ -1,14 +1,14 @@
 {
-  "Items": [
-    {
-      "Title": "Функции Math. Возведение в степень",
-      "Info": "     Разберём ещё одну полезную функцию из библиотеки Math - <color=green>Math.Pow()</color>. Она позволяет возвести некоторое число x в некоторую степень y, а её название - это сокращение от <color=green>power()</color> (в англ. языке это слово обозначает также и возведение в степень).\n     В качестве аргументов функция принимает числа типа double (или неявно приводит их к double), а на выходе мы также получаем double.",
-      "VideoTitles": "MathPow Function"
-    },
-    {
-      "Title": "Пример использования",
-      "Info": "     Функция Math.Pow() будет незаменима для решения различных расчётных задач. К примеру, для довольно популярной задачи <color=green>перевода числа</color> из <color=green>двоичной</color> системы счисления в <color=green>десятичную</color>.\n     Напомним алгоритм решения. Для каждой цифры двоичного числа нужно узнать его порядковый номер (цифры нумеруются <color=green>справа налево</color> и начиная с <color=green>нуля</color>). Затем возвести <color=green>основание СС</color> (в нашем случае 2, т.к. система двоичная) в степень, равную порядковому номеру цифры, и затем умножить на эту самую цифру.\n     Эти действия необходимо проделать для <color=green>каждой</color> цифры в числе, а затем сложить все полученные результаты. В итоге получим привычное нам десятичное число.",
-      "VideoTitles": ""
-    }
-  ]
+"Items": [
+{
+"Title": "Math functions. Exponentiation",
+"Info": " Let's look at another useful function from the Math library - <color=green>Math.Pow()</color>. It allows you to raise a certain number x to a certain power y, and its name is an abbreviation for <color= green>power()</color> (in English, this word also means exponentiation).\n As arguments, the function takes numbers of the double type (or implicitly casts them to double), and at the output we also get double .",
+"VideoTitles": "MathPow Function"
+},
+{
+"Title": "Usage example",
+"Info": " The Math.Pow() function will be indispensable for solving various computational problems. For example, for the rather popular task of <color=green>translating a number</color> from a <color=green>binary</color> number system to <color=green>decimal</color>.\n Recall the solution algorithm: For each digit of a binary number, you need to find out its ordinal number (digits are numbered <color=green>from right to left</color> and starting with <color=green> zero</color>). n These steps must be done for <color=green>each</color> digit in the number, and then add up all the results.As a result, we get the usual decimal number.",
+"VideoTitles": ""
+}
+]
 }
