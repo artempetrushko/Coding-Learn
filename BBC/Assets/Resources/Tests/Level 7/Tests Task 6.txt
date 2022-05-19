@@ -13,27 +13,10 @@ public class Level4Task1
 
     private bool Check(Random random, int maxCount, int maxSize)
     {
-        var array = CreateArray(random, maxCount, maxSize);
-        var testedArray = CopyAppleSizesArray(array);
-        var firstCheck = !testedArray.Equals(array);
-        var secondCheck = true;
-        for (int i = 0; i < testedArray.Length; i++)
-        {
-            if (testedArray[i] != array[i])
-                secondCheck = false;
-        }
-        return firstCheck && secondCheck;
-    }
-
-    private static int[] CreateArray(Random random, int maxCount, int maxSize)
-    {
-        var array = new int[random.Next(maxCount)];
-        for (int i = 0; i < array.Length; i++)
-        {
-            array[i] = random.Next(maxSize);
-        }
-
-        return array;
+        var key=random.Next(maxSize);
+        var value=$"{random.Next(maxSize)}";
+        var dict = CreateAndAdd(key, value);
+        return dict.ContainsKey(key)&&dict[key]==value;
     }
 
 }

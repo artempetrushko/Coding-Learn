@@ -14,16 +14,14 @@ public class Level4Task1
 
     private bool Check(Random random, int maxCount, int maxSize)
     {
-        var list = CreateArray(random, maxCount, maxSize).ToList();
-        Shuffle(list);
-        var dict=new Dictionary<int ,string>();
-        for(int i = 0; i < list.Count; i++)
-        {
-            dict.Add(i, list[i]);
-        }
-        var testedList=CreateListFromDict(dict);
-        return StringListEquals(list,testedList);
+        var array = CreateArray(random, maxCount, maxSize);
+        var firstCheck = array.Reverse().ToList();
+        firstCheck.Reverse();
+        var testedList = GetReversedList(array);
+        return StringListEquals(firstCheck,testedList) ;
     }
+
+
     private bool StringListEquals(List<string> arr1, List<string> arr2)
     {
         if (arr1.Count != arr2.Count)
@@ -33,34 +31,13 @@ public class Level4Task1
                 return false;
         return true;
     }
-    private static Random rng = new Random((int)DateTime.Now.Ticks & 0x0000FFFF);
-    public static void Shuffle<T>(IList<T> list)
-    {
-        int n = list.Count;
-        while (n > 1)
-        {
-            n--;
-            int k = rng.Next(n + 1);
-            T value = list[k];
-            list[k] = list[n];
-            list[n] = value;
-        }
-    }
-
-
     private static string[] CreateArray(Random random, int maxCount, int maxSize)
     {
         var array = new string[random.Next(maxCount)];
         for (int i = 0; i < array.Length; i++)
         {
-            var val = $"{random.Next(maxSize)}";
-            while (array.Contains(val))
-            {
-                val = $"{random.Next(maxSize)}";
-            }
-            array[i] = $"{random.Next(maxSize)}";
+            array[i] =$"{random.Next(10,maxSize)}";
         }
-
         return array;
     }
 
