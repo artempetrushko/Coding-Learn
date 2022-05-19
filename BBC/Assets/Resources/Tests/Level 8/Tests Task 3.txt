@@ -1,44 +1,28 @@
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 
 public class Level5Task3
 {
     public bool isTaskCompleted()
     {
         var random = new Random();
-        var maxCount = 1000;
-        var maxSize = 10000;
-        return Check(random, maxCount, maxSize)&& Check(random, maxCount, maxSize);
+        var maxSize = 20;
+        return Check(random, maxSize)&& Check(random, maxSize);
     }
 
-    private bool Check(Random random, int maxCount, int maxSize)
+    private bool Check(Random random, int maxSize)
     {
-        var str =new string(CreateArray(random, maxCount, maxSize));
-        var testedStr= GetUpperLetters(str);
-        var exampleList=new List<char>();
-        foreach (var e in str)
-        {
-            if (char.IsUpper(e))
-            {
-                exampleList.Add(e);
-            }
-        }
-        return testedStr.Equals(new string(exampleList.ToArray()));
+        var n = random.Next(maxSize);
+        var fib=GetFib(n);
+        var testedFib = Fibonacci(n);
+        return fib==testedFib;
     }
-    
-    private static char[] CreateArray(Random random, int maxCount, int maxSize)
-    {
-        var array = new char[random.Next(maxCount)];
-        for (var i = 0; i < array.Length; i++)
-        {
-            array[i] =(char) random.Next(33,123);
-            if (random.Next(2) == 1)
-            {
-                array[i]=char.ToUpper(array[i]);
-            }
-        }
 
-        return array;
+
+    private static BigInteger GetFib(BigInteger n)
+    {
+        return n > 1 ? GetFib(n - 1) + GetFib(n - 2) : n;
     }
 
 }
