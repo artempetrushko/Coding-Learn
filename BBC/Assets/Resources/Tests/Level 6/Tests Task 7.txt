@@ -1,36 +1,63 @@
 using System;
-using System.Collections.Generic;
+using System.Text;
+using System.Text.RegularExpressions;
 
-public class Level4Task1
+public class Level5Task7
 {
+    private readonly string[] pattern= new string[]
+        {
+            "00000000000000000[F]",
+            "00000000000000000000",
+            "00000000000000000000",
+            "00000000000000000000",
+            "00000000000000000000",
+            "00000000000000000000",
+            "00000000000000000000",
+            "[S]00000000000000000"
+        };
     public bool isTaskCompleted()
     {
         var random = new Random();
-        var maxCount = 1000;
-        var maxSize = 10000;
-        return Check(random, maxCount, maxSize)&& Check(random, maxCount, maxSize);
+        return Check(random)&& Check(random);
     }
 
-    private bool Check(Random random, int maxCount, int maxSize)
+    private bool Check(Random random)
     {
-        var array = CreateArray(random, maxCount, maxSize);
-        var testedArray = CopyAppleSizesArray(array);
-        var firstCheck = !testedArray.Equals(array);
-        var secondCheck = true;
-        for (int i = 0; i < testedArray.Length; i++)
+        var array = CreateArray(random);
+        return StringArrEquals(CommonCheck(array), FixPathMatrix(array));
+    }
+    private bool StringArrEquals(string[] arr1, string[] arr2)
+    {
+        if (arr1.Length != arr2.Length)
+            return false;
+        for (int i = 0; i < arr1.Length; i++)
+            if (arr1[i] != arr2[i])
+                return false;
+        return true;
+    }
+    string[] CommonCheck(string[] arr)
+    {
+        var rgx = new Regex("[23456789]");
+        var taskCorrectArray2 = new string[arr.Length];
+        for (int i = 0; i < arr.Length; i++)
         {
-            if (testedArray[i] != array[i])
-                secondCheck = false;
+            taskCorrectArray2[i] = rgx.Replace(arr[i], "0");
         }
-        return firstCheck && secondCheck;
+        return taskCorrectArray2;
     }
-
-    private static int[] CreateArray(Random random, int maxCount, int maxSize)
+    private string[] CreateArray(Random random)
     {
-        var array = new int[random.Next(maxCount)];
+        var array = new string[pattern.Length];
         for (int i = 0; i < array.Length; i++)
         {
-            array[i] = random.Next(maxSize);
+            var sb = new StringBuilder();
+            for (int j = 0; j < pattern[0].Length; j++)
+            {
+                if(pattern[i][j] == '0')
+                    sb.Append((char)random.Next(48, 57));
+                else sb.Append(pattern[i][j]);
+            }
+            array[i] = sb.ToString();
         }
 
         return array;

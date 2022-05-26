@@ -57,7 +57,7 @@ namespace Scripts
                 yield return new WaitForSeconds(latency);
             }
             skipStoryPartButton.gameObject.SetActive(false);
-            nextStoryPartButton.gameObject.SetActive(true);
+            //nextStoryPartButton.gameObject.SetActive(true);
         }
 
         private void Start()

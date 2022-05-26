@@ -1,19 +1,19 @@
 {
-  "Items": [
-    {
-      "Title": "Типы float и double",
-      "Info": "     Отлично, мы научились сохранять целые числа в переменные! Но что если нам нужно сохранить числа с дробной частью (или, как их ещё называют, числа с плавающей точкой)?\n     На помощь нам придут другие типы данных - <color=green>float</color> и <color=green>double</color>. В них можно записать как число как с дробной частью, так и без неё.",
-      "VideoTitles": "Float Double"
-    },
-    {
-      "Title": "Диапазон значений и размер в памяти",
-      "Info": "     У вас мог возникнуть вопрос - а зачем нам использовать разные числовые типы, если они предназначены для одних и тех же данных?\n     Для хранения целых чисел и чисел с плавающей точкой предусмотрено довольно много типов данных. Каждый из них имеет свой <color=green>диапазон значений</color>. Например, double представляет собой число двойной (double) точности и способен хранить намного больше цифр после запятой, чем float (речь идёт о сотнях знаков!). Некоторые типы, наоборот, могут хранить числа из меньшего диапазона, чем, например, у int.\n     Это зависит от <color=green>кол-ва памяти</color>, выделенной под переменную. К примеру, каждая переменная типа int или float занимает 4 байта, а double - уже 8 байт! Поскольку память компьютера - ресурс <color=red>ограниченный</color>, при написании большой программы следует хорошенько подумать, где и какие типы данных подойдут лучше всего.",
-      "VideoTitles": ""
-    },
-    {
-      "Title": "Ключевое слово var",
-      "Info": "     А теперь - минутка полезных лайфхаков! Если вы инициализируете переменную, то можно вместо типа данных указать ключевое слово <color=green>var</color>. Тогда <color=green>компилятор</color> (программа, которая собирает и запускает написанный нами код) определит тип переменной <color=green>автоматически</color>! Это крайне полезная возможность языка C#, которой пользоваться совсем не зазорно - применение var считается одной из хороших практик при написании кода!",
-      "VideoTitles": "Var Usage"
-    }
-  ]
+"Items": [
+{
+"Title": "Types float and double",
+"Info": "Great, we learned how to store integers in variables! But what if we need to store fractional numbers (or, as they are also called, floating point numbers)?\n Other data types will come to the rescue - < color=green>float</color> and <color=green>double</color> They can be written as a number with or without a fractional part.",
+"VideoTitles": "Float Double"
+},
+{
+"Title": "Value range and size in memory",
+"Info": "You might be wondering - why do we need to use different numeric types if they are intended for the same data?\n There are quite a few data types for storing integers and floating point numbers. Each of them has its own <color=green>value range</color>. For example, double represents a double precision number and can store many more decimal places than float (we are talking about hundreds of characters!). Some types, on the contrary, can store numbers from a smaller range than, for example, an int.\n This depends on the <color=green>amount of memory</color> allocated for the variable.For example, each variable of type int or float occupies 4 bytes, and double is already 8 bytes!Because computer memory is a resource <color=red>limited</color>,when writing a large program, you should think carefully about where and what data types will fit best.",
+"VideoTitles": ""
+},
+{
+"Title": "Keyword var",
+"Info": "Now - a minute of useful life hacks! If you initialize a variable, you can specify the keyword <color=green>var</color> instead of the data type. Then <color=green>compiler</color> (the program that which builds and runs the code we write) will determine the type of the variable <color=green>automatically</color>! This is a very useful feature of the C# language, which is not at all shameful to use - using var is considered one of the good practices when writing code!",
+"VideoTitles": "Var Usage"
+}
+]
 }

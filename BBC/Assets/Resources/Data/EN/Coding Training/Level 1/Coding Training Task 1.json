@@ -1,58 +1,73 @@
 {
   "Items": [
     {
-      "Title": "Начало",
-      "Info": "     Привет, игрок! Добро пожаловать в <color=green>Coding Learn</color> - игру, где ты сможешь освоить азы программирования на <color=green>C#</color>, одном из самых популярных языков.\n     Тебе предстоит решать задачи при помощи написания кода, чтобы помочь главному герою - <color=green>роботу-помощнику</color> - преодолевать препятствия на его пути и продолжить его историю.\n     Сейчас расскажем немного подробнее.",
+      "Title": "Beginning",
+      "Info": "     Hello! Welcome to <color=green>the game</color> where you can learn the basics of programming in one of the most popular languages.\n You have to solve problems by writing code to help the main character - the Robot  - overcome obstacles in his path and continue his story.\n Now let's tell you a little more.",      
       "VideoTitles": ""
     },
     {
-      "Title": "Обучение. Задание",
-      "Info": "     Во время выполнения задания ты можешь увидеть его описание в <color=green>левом верхнем углу</color>. Кроме того, нажав на <color=green>серую кнопку</color> в углу, можно снова получить дополнительную информацию, которая появляется перед заданием.",
+      "Title": "Instruction. Task",
+      "Info": "     During the task, you can see its description in the upper left corner. In addition, by clicking on the gray button in the corner, you can again get additional information that appears before the task.",
+"VideoTitles": "Game Training Task"
+    },
+    {
+      "Title": "Instruction. Pad",
+      "Info": "     We need some kind of tool for programming, so a multifunctional pad is available to you. To turn it on, just click on it.",
+{
+  "Items": [
+    {
+      "Title": "Start",
+      "Info": "Hi player! Welcome to <color=green>Coding Learn</color>, a game where you can learn the basics of programming in <color=green>C#</color>, one of the most popular languages. \n You have to solve problems by writing code to help the main character - <color=green>assistant robot</color> - overcome obstacles in his path and continue his story.\n Now let's talk a little more.",
+      "VideoTitles": ""
+    },
+    {
+      "Title": "Training Quest",
+      "Info": "During the execution of the task, you can see its description in the <color=green>upper left corner</color>. In addition, by clicking on the <color=green>gray button</color> in the corner, you can again get additional information that appears before the task.",
       "VideoTitles": "Game Training Task"
     },
     {
-      "Title": "Обучение. Планшет",
-      "Info": "     Для программирования нам нужен какой-нибудь инструмент, поэтому тебе доступен многофункциональный <color=green>планшет</color>. Чтобы включить его, достаточно <color=green>нажать на него</color>.",
+      "Title": "Learning. Tablet",
+      "Info": "We need a tool for programming, so a multifunctional <color=green>tablet</color> is available to you. To turn it on, just <color=green>click on it</color>.",
       "VideoTitles": "Game Training Turn Pad On"
     },
     {
-      "Title": "Обучение. Написание кода",
-      "Info": "     Большую часть экрана планшета занимает поле для кода, здесь и происходит самое главное - <color=green>программирование</color>.",
+      "Title": "Learning. Writing Code",
+      "Info": " Most of the tablet screen is occupied by the code field, where the most important thing happens - <color=green>programming</color>.",
       "VideoTitles": "Game Training Coding"
     },
     {
-      "Title": "Обучение. Сброс кода",
-      "Info": "     Если тебе вдруг кажется, что решение задачи зашло куда-то не туда, можно быстро вернуться к начальному коду с помощью кнопки <color=green>Сброс кода</color>.",
+      "Title": "Learning. Code Reset",
+      "Info": " If it suddenly seems to you that the solution to the problem has gone somewhere wrong, you can quickly return to the initial code using the <color=green>Reset code</color> button.",
       "VideoTitles": "Game Training Reset Code"
     },
     {
-      "Title": "Обучение. Подсказки",
-      "Info": "     В случае, если непонятно, как решать задачу, ты можешь получить <color=green>подсказку</color>. Каждая подсказка становится доступна через несколько минут, поэтому лучше пытаться решить задачу самому. К тому же, это просто интереснее!)",
+      "Title": "Tutorial. Hints",
+      "Info": " In case you don't understand how to solve a problem, you can get a <color=green>hint</color>. Each hint becomes available after a few minutes, so it's best to try to solve the problem yourself. Plus, it's easy more interesting!)",
       "VideoTitles": "Game Training Advice Showing"
     },
     {
-      "Title": "Обучение. Справочник",
-      "Info": "     Решая задачи, ты будешь узнавать много нового о языке программирования. Чтобы ничего не забыть, ты можешь почитать специальный <color=green>справочник</color>, где собирается всё, что ты изучил ранее.",
+      "Title": "Learning Handbook",
+      "Info": " While solving problems, you will learn a lot about the programming language. In order not to forget anything, you can read a special <color=green>reference</color>, which collects everything that you have learned before.",
       "VideoTitles": "Game Training Handbook"
     },
     {
-      "Title": "Обучение. Испытания",
-      "Info": "     Чтобы решать задачи было интересно, для каждой из них доступны <color=green>испытания</color>. За прохождение каждого ты будешь получать <color=green>звёзды</color>. Попробуй получить их все!",
+      "Title": "Training. Tests",
+      "Info": "To make the tasks more interesting, <color=green>challenge</color> is available for each of them. For completing each one you will get <color=green>stars</color>. Try to get them all!" ,
       "VideoTitles": "Game Training Challenges"
     },
     {
-      "Title": "Обучение. Ошибки",
-      "Info": "     Если в коде ты вдруг допустишь <color=green>ошибку</color>, среда разработки сообщит тебе об этом, показав <color=green>сообщение</color> в нижней части экрана.",
+      "Title": "Training. Mistakes",
+      "Info": "If you happen to make a <color=green>error</color> in your code, the IDE will let you know by displaying a <color=green>message</color> at the bottom of the screen.",
       "VideoTitles": "Game Training Errors"
     },
     {
-      "Title": "Обучение. Сворачивание планшета",
-      "Info": "     Кнопка в <color=green>верхнем правом углу</color> планшета сворачивает его. Так ты сможешь увидеть локацию во время задания, что может быть иногда полезно - подсказки могут быть <color=green>повсюду</color>!",
+      "Title": "Tutorial. Minimizing tablet",
+      "Info": " The button in the <color=green>upper right corner</color> of the tablet minimizes it. This way you can see the location during the mission, which can be sometimes useful - hints can be <color=green>everywhere</color >!",
       "VideoTitles": "Game Training Turn Pad Off"
     },
     {
-      "Title": "Первое задание",
-      "Info": "     Ну а теперь пришла пора программировать! Мы приготовили для тебя первую задачу, но не стоит бояться - она, разумеется, очень простая.",
+      "Title": "First task",
+      "Info": "Well, now it's time to program! We have prepared the first task for you, but don't be afraid - it is, of course, very simple.",
       "VideoTitles": ""
     }
   ]

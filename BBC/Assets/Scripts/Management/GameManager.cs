@@ -64,16 +64,22 @@ namespace Scripts
 
         public TaskText GetCurrentTask() => ResourcesData.TaskTexts[SceneIndex - 1][currentTaskNumber - 1];
 
+        public TipMessage[] GetCurrentTaskTips() => ResourcesData.Tips[currentTaskNumber - 1];
+
+        public TipsData GetCurrentTaskTipsData() => AvailableTipsData[currentTaskNumber - 1];
+
         public string GetTests() => string.Copy(ResourcesData.Tests[currentTaskNumber - 1]);
 
         public void ChangeCutsceneCurrentTime(float newTime) => playableDirector.time = newTime;
 
         public string GetNewTipText()
         {
-            AvailableTipsData[currentTaskNumber - 1].Amount--;
-            AvailableTipsData[currentTaskNumber - 1].IsShown = true;
-            var tipNumber = ResourcesData.Tips[currentTaskNumber - 1].Length - AvailableTipsData[currentTaskNumber - 1].Amount;
-            return ResourcesData.Tips[currentTaskNumber - 1][tipNumber].Tip;
+            var currentTaskTipsData = GetCurrentTaskTipsData();
+            var currentTaskTips = GetCurrentTaskTips();
+            var tipNumber = currentTaskTips.Length - currentTaskTipsData.Amount;
+            currentTaskTipsData.Amount--;
+            currentTaskTipsData.IsShown = true;            
+            return currentTaskTips[tipNumber].Tip;
         }
 
         public void PlayNextCutscene()

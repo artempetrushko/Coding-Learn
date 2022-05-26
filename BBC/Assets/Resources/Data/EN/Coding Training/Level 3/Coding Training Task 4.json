@@ -1,23 +1,23 @@
 {
   "Items": [
     {
-      "Title": "Логический тип bool",
-      "Info": "     Мы с вами уже знаем немало условных выражений, которые оказываются крайне полезны в программировании. Всех их объединяет то, что они могут иметь два состояния - <color=green>быть истинными</color> и <color=green>быть ложными</color>. А потому они представляют собой <color=green>логический</color> тип данных - <color=green>bool</color>.",
+      "Title": "Boolean type bool",
+      "Info": "We already know a lot of conditional expressions that are extremely useful in programming. What they all have in common is that they can have two states be true and be false. Therefore, they are a Boolean data type bool.",
       "VideoTitles": ""
     },
     {
-      "Title": "Логический тип bool",
-      "Info": "     Переменные типа <color=green>bool</color> могут принимать два значения - <color=green>true</color> (истина) и <color=green>false</color> (ложь). Эти же значения принимают и условные выражения, которые мы использовали ранее, поэтому их (выражения) можно присваивать переменным типа bool (их ещё называют <color=green>булевыми</color> переменными). Это позволяет сохранять результаты проверки на истинность и использовать в других условных конструкциях или возвращать в return.",
+      "Title": "Boolean type bool",
+      "Info": "Variables of type bool can take two values - true (true) false (false). ",
       "VideoTitles": "Branching Bool"
     },
     {
-      "Title": "Логические конструкции и code-style",
-      "Info": "     Несколько рекомендаций по коду для логических выражений и bool:\n     - Имена булевых переменных должны быть заданы в виде вопроса, на который можно дать ответ \"Да\" или \"Нет\" (например, isNumberEven - \"Число чётное?\");\n     - Лучше не давать имена с частицей not и не проверять, чем те или иные объекты/явления НЕ являются. Если нужно проверить <color=green>отрицательность</color> утверждения, поставьте перед булевой переменной или логическим выражением оператор <color=green>!</color> (логическое <color=green>НЕ</color>) (при использовании с логическим выржанием нужно предварительно обернуть его в круглые скобки);",
+      "Title": "Logic constructs and code-style",
+      "Info": "A few coding guidelines for booleans and bool - Boolean variable names should be given as a question that can be answered with yes or no",
       "VideoTitles": "Branching Bool CodeStyle"
     },
     {
-      "Title": "Логические конструкции и code-style",
-      "Info": "     - Если вы в блоке if и в блоке else лишь возвращаете true или false, то лучше заменить всю эту конструкцию на <color=green>return [условная конструкция];</color>. В процессе работы программы истинность выражения будет подсчитана и тут же возвращена из метода.",
+      "Title": "Logic constructs and code-style",
+      "Info": "If you only return true or false in the if block and in the else block, then it is better to replace this whole construction with return.",
       "VideoTitles": "Branching CodeStyle Return Bool"
     }
   ]

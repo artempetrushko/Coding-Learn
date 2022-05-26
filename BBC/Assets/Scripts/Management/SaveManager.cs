@@ -23,20 +23,7 @@ namespace Scripts
         {
             var taskNumber = GameManager.Instance.GetCurrentTaskNumber();
             PlayerPrefs.SetInt("Temporary Level " + sceneIndex + " Task " + taskNumber + " Challenge " + challengeNumber + " completed", 1);
-        }
-
-        public static SaveData LoadSavedData()
-        {
-            try
-            {
-                var serializedData = File.ReadAllText(Application.persistentDataPath + "/save.json");
-                return JSON.ParseString(serializedData).Deserialize<SaveData>();
-            }
-            catch
-            {
-                return null;
-            }
-        }
+        }       
 
         public static void SaveFinishedLevelProgress()
         {
@@ -93,6 +80,19 @@ namespace Scripts
             savedData.LastAvailableLevelNumber = 1;
             savedData.ChallengeCompletingStatuses = new List<List<List<bool>>> { new List<List<bool>> { new List<bool> { } } };
             SaveData = savedData;
+        }
+
+        private SaveData LoadSavedData()
+        {
+            try
+            {
+                var serializedData = File.ReadAllText(Application.persistentDataPath + "/save.json");
+                return JSON.ParseString(serializedData).Deserialize<SaveData>();
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         private void Awake()

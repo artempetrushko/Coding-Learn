@@ -9,8 +9,8 @@ namespace Scripts
     public class ExitToMenuPanelBehaviour : MonoBehaviour
     {
         [Header("Панель выхода в меню")]
-        public GameObject ExitToMenuPanel;
-        public GameObject BlackScreen;
+        [SerializeField] private GameObject exitToMenuPanel;
+        [SerializeField] private GameObject blackScreen;
 
         private bool isPressed = false;
 
@@ -20,15 +20,15 @@ namespace Scripts
 
         private IEnumerator ReturnToGame_COR()
         {
-            yield return StartCoroutine(PlayAnimation_COR(ExitToMenuPanel, "HideExitToMenuPanel"));
+            yield return StartCoroutine(PlayAnimation_COR(exitToMenuPanel, "HideExitToMenuPanel"));
             isPressed = false;
         }
 
         private IEnumerator ExitToMenu_COR()
         {
-            yield return StartCoroutine(PlayAnimation_COR(ExitToMenuPanel, "HideExitToMenuPanel"));
-            BlackScreen.SetActive(true);
-            yield return StartCoroutine(PlayAnimation_COR(BlackScreen, "AppearBlackScreen"));
+            yield return StartCoroutine(PlayAnimation_COR(exitToMenuPanel, "HideExitToMenuPanel"));
+            blackScreen.SetActive(true);
+            yield return StartCoroutine(PlayAnimation_COR(blackScreen, "AppearBlackScreen"));
             SceneManager.LoadScene(0);
         }
 
@@ -44,7 +44,7 @@ namespace Scripts
         {
             if (Input.GetKey(KeyCode.Escape) && !isPressed)
             {
-                ExitToMenuPanel.GetComponent<Animator>().Play("AppearExitToMenuPanel");
+                exitToMenuPanel.GetComponent<Animator>().Play("AppearExitToMenuPanel");
                 isPressed = true;
             }
         }
