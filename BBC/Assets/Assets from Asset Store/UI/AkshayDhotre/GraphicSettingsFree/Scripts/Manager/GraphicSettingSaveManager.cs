@@ -38,8 +38,8 @@ namespace AkshayDhotre.GraphicSettingsMenu
             }
 
             //Initialize the default data container
-            defaultDataContainer.screenHeight = 768;
-            defaultDataContainer.screenWidth = 1024;
+            defaultDataContainer.screenHeight = Screen.height;
+            defaultDataContainer.screenWidth = Screen.width;
             defaultDataContainer.screenMode = 0;
             defaultDataContainer.qualityLevel = 0;
 
