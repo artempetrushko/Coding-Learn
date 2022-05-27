@@ -79,7 +79,6 @@ namespace Scripts
         private Color32 successColor = Color.green;
         private Color32 errorColor = Color.red;
         private bool isErrorPanelShown = false;       
-        private int playerCodeRowPosition;
 
         public void RollPad() => StartCoroutine(RollPad_COR());
 
@@ -111,9 +110,6 @@ namespace Scripts
         {
             if (isErrorPanelShown)
                 ToggleErrorPanelState();
-            playerCodeRowPosition = File.ReadAllLines(Directory.GetFiles(Application.dataPath, "Tests Task*.txt", SearchOption.AllDirectories)[gameManager.GetCurrentTaskNumber() - 1])
-                .ToList()
-                .FindIndex(x => x.Contains("//<playerCode>"));
             ScriptDomain domain = ScriptDomain.CreateDomain("MyDomain");
             try
             {                             
@@ -209,7 +205,7 @@ namespace Scripts
             errorsTextField.text = "";         
             foreach (var error in errors)
             {
-                errorsTextField.text += string.Format("<color=red>Error</color> ({0}, {1}): {2}\n", error.SourceLine - playerCodeRowPosition + 1, error.SourceColumn, error.Message);
+                errorsTextField.text += string.Format("<color=red>Error</color> ({0}, {1}): {2}\n", error.SourceLine, error.SourceColumn, error.Message);
             }              
             if (!isErrorPanelShown)
                 ToggleErrorPanelState();
