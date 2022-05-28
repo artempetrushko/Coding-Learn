@@ -89,15 +89,31 @@ namespace Scripts
             var files = Resources.LoadAll<TextAsset>(folderPath);
             foreach (var file in files)
             {
-                data.Add(JsonHelper.FromJson<T>(file.text));
+                try 
+                { 
+                    data.Add(JsonHelper.FromJson<T>(file.text)); 
+                }
+                catch
+                {
+                    Debug.LogError("Некорректный текст JSON в файле " + file.name);
+                }               
             }
             return data;
-        }  
+        }
 
         private T[] GetResourcesAndWrite<T>(string resourcePath)
         {
             var resources = Resources.Load<TextAsset>(resourcePath);
-            return JsonHelper.FromJson<T>(resources.text);
+            try
+            {
+                var deserializedResource = JsonHelper.FromJson<T>(resources.text);
+                return deserializedResource;
+            }
+            catch
+            {
+                Debug.LogError("Некорректный текст JSON в файле " + resources.name);
+                return null;
+            }
         }
 
         private SaveData LoadSavedData()
