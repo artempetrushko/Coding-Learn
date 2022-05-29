@@ -14,51 +14,21 @@ public class Level4Task1
 
     private bool Check(Random random, int maxCount, int maxSize)
     {
-        var array = CreateArray(random, maxCount, maxSize);
-        var testedArray = GetDecodedText(array);
-        var firstCheck = new List<string>();
-        foreach (var e in array)
-        {
-            if (char.IsLetter(e[0]))
-            {
-                firstCheck.Add(e);
-            }
-        }
-        firstCheck.Reverse();
-        return string.Join("", firstCheck).Equals(string.Join("",testedArray));
+        var fitstArray=CreateArray(random, maxCount, maxSize);
+        var secondArray=CreateArray(random, maxCount, maxSize);
+        var correct=fitstArray.Concat(secondArray).OrderByDescending(x=>x).ToArray();
+        return correct.SequenceEqual(MergeSort(fitstArray,secondArray));
     }
-    
-    private static void ReplaceCharInString(ref String str, int index, Char newSymb)
+
+
+    private static int[] CreateArray(Random random, int maxCount, int maxSize)
     {
-        str = str.Remove(index, 1).Insert(index, newSymb.ToString());
-    }
-    private static char[] CreateCharArray(Random random, int maxCount, int maxSize)
-    {
-        var array = new char[random.Next(maxCount)];
+        var array = new int[random.Next(maxCount)];
         for (var i = 0; i < array.Length; i++)
         {
-            array[i] =(char) random.Next(33,123);
-            if (random.Next(2) == 1)
-            {
-                array[i]=char.ToUpper(array[i]);
-            }
+            array[i] =random.Next(maxSize);
         }
 
-        return array;
-    }
-    private static string[] CreateArray(Random random, int maxCount, int maxSize)
-    {
-        var array = new string[random.Next(maxCount)];
-        for (int i = 0; i < array.Length; i++)
-        {
-            array[i] = new string(CreateCharArray(random,maxCount,maxSize));
-            if (random.Next(2) == 1)
-            {
-                var j=0;
-                var str = array[i];
-                ReplaceCharInString(ref str, j, char.ToUpper(str[j]));
-            }
-        }
         return array;
     }
 

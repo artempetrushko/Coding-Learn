@@ -1,8 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Level5Task4
 {
+    public enum Direction
+    {
+        Up,Down,Left,Right
+    }
     public bool isTaskCompleted()
     {
         var random = new Random();
@@ -13,12 +18,30 @@ public class Level5Task4
 
     private bool Check(Random random, int maxCount, int maxSize)
     {
-        var array = CreateArray(random, maxCount, maxSize,out var result);
-        var testedWay = GetRightWay(array);
-        
-        return result==testedWay;
+        var attacks = new List<Tuple<Direction, Direction, int>>()
+        {
+            Tuple.Create(Direction.Up,Direction.Down,random.Next(maxCount)),
+            Tuple.Create(Direction.Up,Direction.Left,random.Next(maxCount)),
+            Tuple.Create(Direction.Up,Direction.Right,random.Next(maxCount)),
+            Tuple.Create(Direction.Up,Direction.Up,random.Next(maxCount)),
+            Tuple.Create(Direction.Down,Direction.Down,random.Next(maxCount)),
+            Tuple.Create(Direction.Down,Direction.Left,random.Next(maxCount)),
+            Tuple.Create(Direction.Down,Direction.Right,random.Next(maxCount)),
+            Tuple.Create(Direction.Down,Direction.Up,random.Next(maxCount)),
+            Tuple.Create(Direction.Right,Direction.Down,random.Next(maxCount)),
+            Tuple.Create(Direction.Right,Direction.Left,random.Next(maxCount)),
+            Tuple.Create(Direction.Right,Direction.Right,random.Next(maxCount)),
+            Tuple.Create(Direction.Right,Direction.Up,random.Next(maxCount)),
+            Tuple.Create(Direction.Left,Direction.Down,random.Next(maxCount)),
+            Tuple.Create(Direction.Left,Direction.Left,random.Next(maxCount)),
+            Tuple.Create(Direction.Left,Direction.Right,random.Next(maxCount)),
+            Tuple.Create(Direction.Left,Direction.Up,random.Next(maxCount)),
+        };
+        var attack = (Direction)random.Next(3);
+        var correct=attacks.Where(x=>x.Item1==attack).OrderByDescending(x=>x.Item3).First().Item2;
+        return FindNextAttack(attacks,attack)==correct;
     }
-    
+
     private static void ReplaceCharInString(ref String str, int index, Char newSymb)
     {
         str = str.Remove(index, 1).Insert(index, newSymb.ToString());
