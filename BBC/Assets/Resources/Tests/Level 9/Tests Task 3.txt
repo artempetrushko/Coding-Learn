@@ -1,44 +1,41 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Level5Task3
 {
+    public static bool SortTests(int[] array)
+    {
+        var sortedArray = array.OrderBy(x => x).ToArray();
+        QuickSort(array);
+        return sortedArray.SequenceEqual(array);
+    }
+
+    private static int[] CreateArray(Random random, int maxCount, int maxSize)
+    {
+        var array = new int[random.Next(10, maxCount)];
+        for (int i = 0; i < array.Length; i++)
+        {
+            var val = random.Next(maxSize);
+            while (array.Contains(val))
+            {
+                val = random.Next(maxSize);
+            }
+            array[i] = val;
+        }
+
+        return array;
+    }
+    private bool Check(Random random, int maxCount, int maxSize)
+    {
+        var array = CreateArray(random, maxCount, maxSize);
+        return SortTests(array);
+    }
     public bool isTaskCompleted()
     {
         var random = new Random();
         var maxCount = 1000;
         var maxSize = 10000;
-        return Check(random, maxCount, maxSize)&& Check(random, maxCount, maxSize);
+        return Check(random, maxCount, maxSize) && Check(random, maxCount, maxSize);
     }
-
-    private bool Check(Random random, int maxCount, int maxSize)
-    {
-        var str =new string(CreateArray(random, maxCount, maxSize));
-        var testedStr= GetUpperLetters(str);
-        var exampleList=new List<char>();
-        foreach (var e in str)
-        {
-            if (char.IsUpper(e))
-            {
-                exampleList.Add(e);
-            }
-        }
-        return testedStr.Equals(new string(exampleList.ToArray()));
-    }
-    
-    private static char[] CreateArray(Random random, int maxCount, int maxSize)
-    {
-        var array = new char[random.Next(maxCount)];
-        for (var i = 0; i < array.Length; i++)
-        {
-            array[i] =(char) random.Next(33,123);
-            if (random.Next(2) == 1)
-            {
-                array[i]=char.ToUpper(array[i]);
-            }
-        }
-
-        return array;
-    }
-
 }
