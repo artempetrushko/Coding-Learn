@@ -25,7 +25,7 @@ namespace AkshayDhotre.GraphicSettingsMenu
             //and we don't want to reassign it.
             if (currentSubOption.name == "" && subOptionList.Count > 0)
             {
-                currentSubOptionIndex = 0;
+                currentSubOptionIndex = subOptionList.Count - 1;//0;
                 currentSubOption = subOptionList[currentSubOptionIndex];
                 
             }

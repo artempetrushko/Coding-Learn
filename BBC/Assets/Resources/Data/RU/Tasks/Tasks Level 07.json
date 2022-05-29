@@ -2,51 +2,51 @@
   "Items": [
     {
       "ID": 1,
-      "Title": "Исправить указатель",
-      "Description": "Необходимо объявить переменную строкового типа со значением left и вернуть эту переменную",
-      "StartCode": "public string FixNames()\n{\n    \n    \n}\n"
+      "Title": "Инициализировать лист",
+      "Description": "Необходимо создать лист и добавить в него 3 переменные, переданные в параметрах метода",
+      "StartCode": "public List<int> InitList(int v1, int v2, int v3)\n{\n    \n    \n}\n"
     },
     {
       "ID": 2,
-      "Title": "Длинна строки",
-      "Description": "На вход передается строка, необходимо вернуть ее длинну",
-      "StartCode": "public int GetLength(string str)\n{\n    \n    \n}\n"
+      "Title": "Удалить",
+      "Description": "Необходимо удалить из списка первый элемент",
+      "StartCode": "public void RemoveFirst(List<string> list)\n{\n    \n    \n}\n"
     },
     {
       "ID": 3,
-      "Title": "Верхний регистр",
-      "Description": "Необходимо вернуть строку, содержащую только символы верхнего регистра из исходной строки",
-      "StartCode": "public string GetUpperLetters(string str)\n{\n    \n    \n}\n"
+      "Title": "Копировать и добаить",
+      "Description": "Необходимо скопировать содержимое списка(list) в другой список(newList) и добавить в него новую точку, передаваемую в параметре метода",
+      "StartCode": "public void CopyAndAdd(List<Point> list, List<Point> newList, Point addedPoint)\n{\n    \n    \n}\n"
     },
     {
       "ID": 4,
-      "Title": "Надежный путь",
-      "Description": "Необходимо найти надежный путь. Пути представлены в виде строк, передающихся в массиве. Надежным считается путь, в котором все символы в верхнем регистре. Вернуть необходимо индекс надежного пути.",
-      "StartCode": "public int GetRightWay(string[] ways)\n{\n    \n    \n}\n"
+      "Title": "Сортировка и поиск",
+      "Description": "Необходимо отсортировать список и используя бинарный поиск найти и вернуть индекс искомого элемента",
+      "StartCode": "public int SortAndSearch(List<int> list,int valueToSearch)\n{\n    \n    \n}\n"
     },
     {
       "ID": 5,
-      "Title": "Декодировать текст",
-      "Description": "Вам необходимо декодировать текст. Для этого необходимо из исходного текста взять все слова, начинающиеся с заглавной буквы и поместить их в результирующий масив в обратном порядке.",
-      "StartCode": "public string[] GetDecodedText(string[] text)\n{\n    \n    \n}\n"
+      "Title": "Вернуть обратный список",
+      "Description": "Необходимо переместить содержимого массива в список в обратном порядке.",
+      "StartCode": "public List<string> GetReversedList(string[] array)\n{\n    \n    \n}\n"
     },
     {
       "ID": 6,
-      "Title": "",
-      "Description": "",
-      "StartCode": "public void Execute()\n{\n    \n    \n}\n"
+      "Title": "Словарь",
+      "Description": "Необходимо создать словрь и добавить в него переданые ключ и значение",
+      "StartCode": " public Dictionary<int,string> CreateAndAdd(int key, string value)\n{\n    \n    \n}\n"
     },
     {
       "ID": 7,
-      "Title": "",
-      "Description": "",
-      "StartCode": "public void Execute()\n{\n    \n    \n}\n"
+      "Title": "Преобразовать в список",
+      "Description": "Необходимо преобразовать словарь в лист. Ключем в словаре выступает порядковый номер строки в списке.",
+      "StartCode": "public List<string> CreateListFromDict(Dictionary<int, string> dict)\n{\n    \n    \n}\n"
     },
     {
       "ID": 8,
-      "Title": "",
-      "Description": "",
-      "StartCode": "public void Execute()\n{\n    \n    \n}\n"
+      "Title": "Частовстречающиеся слова",
+      "Description": "Необходимо вернуть 5 наиболее частовстречающихся в тексте слов. В текте в качестве разделителя используется только пробелы и все слова в нижнем регистре.",
+      "StartCode": "public List<string> GetMostFrequent(string text)\n{\n    \n    \n}\n"
     }
   ]
 }

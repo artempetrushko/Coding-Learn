@@ -2,33 +2,33 @@
   "Items": [
     {
       "ID": 1,
-      "Title": "Исправить указатель",
-      "Description": "Необходимо объявить переменную строкового типа со значением left и вернуть эту переменную",
-      "StartCode": "public string FixNames()\n{\n    \n    \n}\n"
+      "Title": "Cортировка пузырьком",
+      "Description": "Необходимо отсортировать массив, используя сортировку пузырьком",
+      "StartCode": "public static void BubbleSort(int[] array)\n{\n    \n    \n}\n"
     },
     {
       "ID": 2,
-      "Title": "Длинна строки",
-      "Description": "На вход передается строка, необходимо вернуть ее длинну",
-      "StartCode": "public int GetLength(string str)\n{\n    \n    \n}\n"
+      "Title": "Сортировка “расческой”",
+      "Description": "Необходимо отсортировать массив, используя сортировку “расческой”",
+      "StartCode": "public static void CombSort(int[] array)\n{\n    \n    \n}\n"
     },
     {
       "ID": 3,
-      "Title": "Верхний регистр",
-      "Description": "Необходимо вернуть строку, содержащую только символы верхнего регистра из исходной строки",
-      "StartCode": "public string GetUpperLetters(string str)\n{\n    \n    \n}\n"
+      "Title": "Быстрая сортировка",
+      "Description": "Необходимо отсортировать массив, используя быструю сортировку",
+      "StartCode": "public static void QuickSort(int[] array)\n{\n    \n    \n}\n"
     },
     {
       "ID": 4,
-      "Title": "Надежный путь",
-      "Description": "Необходимо найти надежный путь. Пути представлены в виде строк, передающихся в массиве. Надежным считается путь, в котором все символы в верхнем регистре. Вернуть необходимо индекс надежного пути.",
-      "StartCode": "public int GetRightWay(string[] ways)\n{\n    \n    \n}\n"
+      "Title": "Сортировка слиянием",
+      "Description": "Необходимо отсортировать массив, используя сортировку слиянием",
+      "StartCode": "public static void MergeSort(int[] array)\n{\n    \n    \n}\n"
     },
     {
       "ID": 5,
-      "Title": "Декодировать текст",
-      "Description": "Вам необходимо декодировать текст. Для этого необходимо из исходного текста взять все слова, начинающиеся с заглавной буквы и поместить их в результирующий масив в обратном порядке.",
-      "StartCode": "public string[] GetDecodedText(string[] text)\n{\n    \n    \n}\n"
+      "Title": "Бинарный поиск",
+      "Description": "Необходимо с помощью бинарного поиска найти индекс искомого элемента. На вход передается отсортированный в лексикографическом порядке массив строк.",
+      "StartCode": "public int BinarySearch(string[] array, string desiredVal)\n{\n    \n    \n}\n"
     },
     {
       "ID": 6,
