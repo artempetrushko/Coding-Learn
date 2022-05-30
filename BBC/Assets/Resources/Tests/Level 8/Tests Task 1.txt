@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-public class Level5Task1
+public class Level8Task1
 {
     double Pow(double value, int pow)
     {
@@ -33,4 +33,5 @@ public class Level5Task1
                 return false;
         return true;
     }
+    //<playerCode>
 }

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-public class Level6Task1
+public class Level7Task1
 {
     public bool isTaskCompleted()
     {
@@ -18,4 +18,5 @@ public class Level6Task1
         List<int> list = InitList(v1, v2, v3);
         return list.Count == 3 && list.Contains(v1) && list.Contains(v2) && list.Contains(v3);
     }
+    //<playerCode>
 }

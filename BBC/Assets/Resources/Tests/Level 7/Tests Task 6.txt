@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-public class Level4Task1
+public class Level7Task1
 {
     public bool isTaskCompleted()
     {
@@ -18,5 +18,5 @@ public class Level4Task1
         var dict = CreateAndAdd(key, value);
         return dict.ContainsKey(key)&&dict[key]==value;
     }
-
+    //<playerCode>
 }
