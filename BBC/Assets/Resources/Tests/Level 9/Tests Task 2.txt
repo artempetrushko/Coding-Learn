@@ -38,5 +38,5 @@ public class Level9Task2
         var maxSize = 10000;
         return Check(random, maxCount, maxSize) && Check(random, maxCount, maxSize);
     }
-
+    //<playerCode>
 }

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-public class Level5Task2
+public class Level6Task2
 {
     public bool isTaskCompleted()
     {
@@ -22,5 +22,5 @@ public class Level5Task2
         var str = new string('1',random.Next(maxSize));
         return str;
     }
-
+    //<playerCode>
 }

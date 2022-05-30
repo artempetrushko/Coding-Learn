@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Numerics;
 
-public class Level5Task2
+public class Level8Task2
 {
     public bool isTaskCompleted()
     {
@@ -32,4 +32,5 @@ public class Level5Task2
         else
             return n * Fact(n - 1);
     }
+    //<playerCode>
 }
