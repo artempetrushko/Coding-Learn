@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-public class Level4Task5
+public class Level5Task5
 {
     public bool isTaskCompleted()
     {
@@ -16,4 +16,5 @@ public class Level4Task5
 
         return !firstCheck&&!secondCheck&&!thirdCheck&&fourthCheck;
     }
+    //<playerCode>
 }

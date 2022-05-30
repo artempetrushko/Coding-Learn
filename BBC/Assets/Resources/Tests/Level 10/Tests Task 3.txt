@@ -1,44 +1,72 @@
 using System;
 using System.Collections.Generic;
 
-public class Level5Task3
+public class Level10Task3
 {
     public bool isTaskCompleted()
     {
-        var random = new Random();
-        var maxCount = 1000;
-        var maxSize = 10000;
-        return Check(random, maxCount, maxSize)&& Check(random, maxCount, maxSize);
+
+        return Check();
     }
 
-    private bool Check(Random random, int maxCount, int maxSize)
+    private bool Check()
     {
-        var str =new string(CreateArray(random, maxCount, maxSize));
-        var testedStr= GetUpperLetters(str);
-        var exampleList=new List<char>();
-        foreach (var e in str)
+        var firstTest = new string[,]
         {
-            if (char.IsUpper(e))
-            {
-                exampleList.Add(e);
-            }
-        }
-        return testedStr.Equals(new string(exampleList.ToArray()));
-    }
-    
-    private static char[] CreateArray(Random random, int maxCount, int maxSize)
-    {
-        var array = new char[random.Next(maxCount)];
-        for (var i = 0; i < array.Length; i++)
+            {"brk","bkt","bbp","bqn","bkg","bbp","bkt","brk"},
+            {"bpn","bpn","bpn","bpn","bpn","bpn","bpn","bpn"},
+            {"","","","","","","",""},
+            {"","","","","","","",""},
+            {"","","","","","","",""},
+            {"","","","","","","",""},
+            {"wpn","wpn","wpn","wpn","wpn","wpn","wpn","wpn"},
+            {"wrk","wkt","wbp","wqn","wkg","wbp","wkt","wrk"}
+        };
+        var secondTest = new string[,]
         {
-            array[i] =(char) random.Next(33,123);
-            if (random.Next(2) == 1)
-            {
-                array[i]=char.ToUpper(array[i]);
-            }
-        }
-
-        return array;
+            {"","","","","","","",""},
+            {"","","","","","","",""},
+            {"","","","","","","",""},
+            {"","","","","","","",""},
+            {"","","","","","","",""},
+            {"","","bkg","","","","",""},
+            {"","bqn","","","","","",""},
+            {"","wkg","","","","","",""}
+        };
+        var thirdTest = new string[,]
+        {
+            {"","","","","","","",""},
+            {"","","","","","","",""},
+            {"","","","","","","",""},
+            {"","","","","","","",""},
+            {"","","","","","","",""},
+            {"","","","bkg","","","",""},
+            {"","","","","","","",""},
+            {"","","","wkg","","","brk",""}
+        };
+        var fourthTest = new string[,]
+        {
+            {"","","","","","","",""},
+            {"","bkg","","","","","",""},
+            {"","","","","","","",""},
+            {"","","","","","","","wpn"},
+            {"","bqn","","","","wkg","",""},
+            {"","","","","","wqn","",""},
+            {"","","","","","","",""},
+            {"","","","","","","",""}
+        };
+        var fithTest = new string[,]
+        {
+            {"","","","","","","bkg",""},
+            {"","","","","","","","bpn"},
+            {"","","","","","","bpn",""},
+            {"","","","","","","",""},
+            {"","","","","","","",""},
+            {"","","","","","wrk","",""},
+            {"","","","","","","wpn","wpn"},
+            {"","","","brk","","","wkg",""}
+        };
+        return !CheckSituation(firstTest)&&CheckSituation(secondTest)&&CheckSituation(thirdTest)&&!CheckSituation(fourthTest)&&!CheckSituation(fithTest);
     }
-
+    //<playerCode>
 }

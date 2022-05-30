@@ -1,10 +1,29 @@
 using System;
 using System.Collections.Generic;
 
-public class Level5Task1
+public class Level10Task1
 {
+    public const double g = 9.8;
+    public static double DegToRad = (Math.PI / 180);
+    public static  double CountInitialVelocityCorrect(double x,double y,double angle)
+    {
+        var cos = Math.Cos(angle);
+        return Math.Sqrt(g*x*x/(2*(y-x*Math.Tan(angle))*cos*cos));
+    }
     public bool isTaskCompleted()
     {
-        return FixName().Equals("left");
+        var random=new Random();
+        return Check(random)&&Check(random);
     }
+
+    public static bool Check(Random random)
+    {
+        var max = 1000;
+        var maxAngle = 89;
+        var x = random.Next(max) + random.NextDouble();
+        var y = random.Next(max) + random.NextDouble();
+        var angle=(random.Next(maxAngle)+random.NextDouble())*DegToRad;
+        return Math.Abs(CountInitialVelocityCorrect(x,y,angle)- CountInitialVelocity(x, y, angle))<0.0001;
+    }
+    //<playerCode>
 }

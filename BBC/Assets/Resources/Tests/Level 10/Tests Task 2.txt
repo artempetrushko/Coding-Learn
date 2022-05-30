@@ -1,26 +1,26 @@
 using System;
 using System.Collections.Generic;
 
-public class Level5Task2
+public class Level10Task2
 {
     public bool isTaskCompleted()
     {
-        var random = new Random();
-        var maxSize = 10000;
-        return Check(random, maxSize)&& Check(random, maxSize);
+        return Check();
     }
 
-    private bool Check(Random random, int maxSize)
+    private bool Check()
     {
-        var str = CreateArray(random,maxSize);
-        var testedLength = GetLength(str);
-        return testedLength == str.Length;
+        var firstTest = "{}";
+        var secondTest = "(}";
+        var thirdTest = "{)";
+        var fourthTest = "({}[()])";
+        var fifthTest = "({}[(])";
+        var sixthTest = "{[}]";
+        var seventhTest = "(<{}[()]>)";
+        var lastTest = "(<{[}>)]";
+        return CheckString(firstTest)&&!CheckString(secondTest)&&!CheckString(thirdTest)&&CheckString(fourthTest)
+            &&!CheckString(fifthTest)&&!CheckString(fifthTest)&&CheckString(seventhTest)&&!CheckString(lastTest);
     }
-    
-    private static string CreateArray(Random random,int maxSize)
-    {
-        var str = new string('1',random.Next(maxSize));
-        return str;
-    }
+    //<playerCode>
 
 }
