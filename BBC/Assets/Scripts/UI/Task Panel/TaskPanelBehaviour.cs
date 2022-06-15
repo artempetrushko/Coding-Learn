@@ -181,7 +181,7 @@ namespace Scripts
                     return true;
                 case 0:
                     return !gameManager.AvailableTipsData[gameManager.GetCurrentTaskNumber() - 1].IsShown;
-                case 120:
+                case 300:
                     return gameManager.SpentTime <= checkValue;
                 default:
                     return false;

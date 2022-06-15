@@ -72,7 +72,7 @@ namespace Scripts
 
         private IEnumerator WaitUntilTaskSkipping_COR()
         {
-            skipTaskButton.interactable = false;
+            /*skipTaskButton.interactable = false;
             var timer = timeToSkipTask;
             while (timer > 0)
             {
@@ -83,7 +83,9 @@ namespace Scripts
                 timer--;
             }
             skipTaskButton.GetComponentInChildren<Text>().text = uiLocalization.SkipTaskText;
-            skipTaskButton.interactable = true;
+            skipTaskButton.interactable = true;*/
+            skipTaskButton.GetComponentInChildren<Text>().text = uiLocalization.SkipTaskText;
+            yield break;
         }
 
         private void Start()
