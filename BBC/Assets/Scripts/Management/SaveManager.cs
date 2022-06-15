@@ -19,10 +19,10 @@ namespace Scripts
             SerializeAndWriteData(SaveData);
         }
 
-        public static void SaveTemporaryChallengeProgress(int challengeNumber)
+        public static void SaveTemporaryChallengeProgress(int challengeNumber, bool isChallengeCompleted)
         {
             var taskNumber = GameManager.Instance.GetCurrentTaskNumber();
-            PlayerPrefs.SetInt("Temporary Level " + sceneIndex + " Task " + taskNumber + " Challenge " + challengeNumber + " completed", 1);
+            PlayerPrefs.SetInt("Temporary Level " + sceneIndex + " Task " + taskNumber + " Challenge " + challengeNumber + " completed", isChallengeCompleted ? 1 : 0);
         }       
 
         public static void SaveFinishedLevelProgress()
