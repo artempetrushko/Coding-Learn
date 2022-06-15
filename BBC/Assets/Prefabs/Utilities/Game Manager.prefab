@@ -66,8 +66,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 483ef20c2fd125c4fbace1f0eb19b695, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThemeTitles: []
-  Tests: []
   Player: {fileID: 0}
   CurrentSceneCamera: {fileID: 0}
   CurrentDialogCamera: {fileID: 0}
@@ -77,12 +75,12 @@ MonoBehaviour:
   OtherItems: []
   Notes: []
   CurrentInteractivePuzzle: {fileID: 0}
-  timeToNextTip: 180
   currentTaskNumber: 1
   availableThemesCount: 0
+  timeToNextTip: 180
+  timeToSkipTask: 720
   cutscenes: []
   IsTimerStopped: 0
-  HasTasksCompleted: 
 --- !u!114 &1521588603279411649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +112,7 @@ MonoBehaviour:
   exitToMenuPanelYesButton: {fileID: 0}
   exitToMenuPanelNoButton: {fileID: 0}
   loadBarText: {fileID: 0}
+  showTipButtonText: {fileID: 0}
 --- !u!114 &5888913198164409973
 MonoBehaviour:
   m_ObjectHideFlags: 0
