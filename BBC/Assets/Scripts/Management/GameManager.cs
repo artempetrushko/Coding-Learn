@@ -39,12 +39,14 @@ namespace Scripts
         [HideInInspector] public InteractivePuzzle CurrentInteractivePuzzle;
         #endregion
 
-        [Header("Время подготовки подсказки (в секундах)")]
-        [SerializeField] private int timeToNextTip = 180;
         [Header("Номер текущего задания")]
         [SerializeField] private int currentTaskNumber = 1;        
         [Header("Количество доступных тем в справочнике")]
         [SerializeField] private int availableThemesCount;
+        [Header("Время подготовки подсказки (в секундах)")]
+        [SerializeField] private int timeToNextTip = 180;
+        [Header("Время до возможности пропустить задание")]
+        [SerializeField] private int timeToSkipTask = 720;
         [Header("Катсцены")]
         [SerializeField] private List<PlayableAsset> cutscenes;
 
@@ -59,6 +61,8 @@ namespace Scripts
         public int GetCurrentTaskNumber() => currentTaskNumber;
 
         public int GetTimeToNextTip() => timeToNextTip;
+
+        public int GetTimeToSkipTask() => timeToSkipTask;
 
         public int GetAvailableThemesCount() => availableThemesCount;   
 

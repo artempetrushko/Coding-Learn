@@ -12,6 +12,7 @@ namespace Scripts
         [Header("Планшет (панель подсказок)")]
         [SerializeField] private GameObject helpPanel;
         [SerializeField] private Button showTipButton;
+        [SerializeField] private Button skipTaskButton;
         [SerializeField] private TMP_Text tipText;
         [SerializeField] private Text tipStatusText;
         [SerializeField] private Text tipFiller;
@@ -19,8 +20,11 @@ namespace Scripts
         private GameManager gameManager;
         private UiLocalizationScript uiLocalization;
         private int timeToNextTip;
+        private int timeToSkipTask;
 
         public void WaitUntilNextTip() => StartCoroutine(WaitUntilNextTip_COR());
+
+        public void WaitUntilTaskSkipping() => StartCoroutine(WaitUntilTaskSkipping_COR()); 
 
         public void ShowTip()
         {
@@ -66,11 +70,28 @@ namespace Scripts
             showTipButton.interactable = true;
         }
 
+        private IEnumerator WaitUntilTaskSkipping_COR()
+        {
+            skipTaskButton.interactable = false;
+            var timer = timeToSkipTask;
+            while (timer > 0)
+            {
+                var minutes = timer / 60;
+                var seconds = timer - minutes * 60;
+                skipTaskButton.GetComponentInChildren<Text>().text = uiLocalization.SkipTaskText + string.Format(" ({0:d2}:{1:d2})", minutes, seconds);
+                yield return new WaitForSeconds(1f);
+                timer--;
+            }
+            skipTaskButton.GetComponentInChildren<Text>().text = uiLocalization.SkipTaskText;
+            skipTaskButton.interactable = true;
+        }
+
         private void Start()
         {
             gameManager = GameManager.Instance;
             uiLocalization = gameManager.GetComponent<UiLocalizationScript>();
             timeToNextTip = gameManager.GetTimeToNextTip();
+            timeToSkipTask = gameManager.GetTimeToSkipTask();
         }
     }
 }
