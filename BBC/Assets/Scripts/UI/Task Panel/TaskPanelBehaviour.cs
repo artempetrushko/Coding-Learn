@@ -262,6 +262,7 @@ namespace Scripts
 
         private void Update()
         {
+            #if UNITY_EDITOR
             if (Input.GetKeyDown(KeyCode.RightControl))
             {
                 StartNewTask();
@@ -270,6 +271,7 @@ namespace Scripts
             {
                 StartCoroutine(FinishTask_COR());
             }
+            #endif
         }
 
         private void Start()
