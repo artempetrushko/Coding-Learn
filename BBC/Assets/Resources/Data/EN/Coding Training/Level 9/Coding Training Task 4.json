@@ -1,9 +1,14 @@
 {
-  "Items": [
-    {
-      "Title": "Enum",
-      "Info": "     Кроме примитивных типов данных в языке программирования C# есть такой тип как <color=green>enum или перечисление</color>. Перечисления представляют набор логически связанных констант. Объявление перечисления происходит с помощью оператора enum:\n     enum название_перечисления\n     {\n     значение1,\n     значение2,\n      …..\n      значениеN\n     } ",
-      "VideoTitles": "m5"
-    }
-  ]
+   "Items": [
+     {
+       "Title": "Merge Sort",
+       "Info": "Merge sort is useful for data structures where elements are accessed sequentially (for example, for streams). Here, the array is split into two approximately equal parts and each of them is sorted separately. Then the two sorted subarrays are merged into one .\n-GIF-",
+       "VideoTitles": "9.7"
+     },
+     {
+       "Title": "Merge Sort Implementation",
+       "Info": "Video clip demonstration",
+       "VideoTitles": "9.8"
+     }
+   ]
 }

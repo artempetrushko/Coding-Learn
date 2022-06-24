@@ -1,19 +1,39 @@
 {
   "Items": [
     {
-      "Title": "Массивы в C#",
-      "Info": "     Итак, на данный момент мы знаем, что такое переменная, как задаётся её тип и как переменную инициализировать. Теперь, когда мы знаем какие виды циклов имеются в C# и в чём их отличия, можно детально изучать вопросы, связанные с использованием <color=green>массивов</color> C#. Допустим, у вам необходимо хранить в вашей программе 10 целочисленных значений. С одной стороны, если вам не лень вы можете объявить 10 переменных типа int, инициализировать их и работать. А что делать, если требуется 100 значений или 1000? Можно сделать проще — объявить переменную-массив и хранить в ней все значения. <color=green>Массив</color> – это структура данных для хранения элементом определенного типа, имеющая фиксированный размер. Доступ к элементам массива производится по числовому индексу. ",
+      "Title": "Algorithms and their efficiency",
+      "Info": "In programming, we often have to work with a set of data, such as searching for elements in it or sorting it. For such purposes, we use algorithms, and in general, we can say that the whole program is one continuous algorithm.\nAn algorithm represents is a sequence of steps that is designed to solve a specific problem.In other words, an algorithm is a way to solve this problem.\n\nAn important criterion for an algorithm is efficiency.An algorithm can perfectly solve a given problem, but be inefficient.As a rule, the efficiency of an algorithm means time for which this algorithm should be executed.You can also look at the efficiency of the algorithm in terms of the memory required for the operation, but we will not touch on this.\n",
       "VideoTitles": " "
     },
     {
-      "Title": "Объявление массивов",
-      "Info": "    Для объявления массива, после указания типа его элементов, ставятся <color=green>квадратные скобки</color>:\n     int[] a1;\n     Перед использованием массив обязательно нужно <color=green>проинициализировать</color>, это можно сделать сразу, при его объявлении. Примеры объявления массивов на видео. ",
-      "VideoTitles": "m1"
+      "Title": "Basic types of algorithm complexity",
+      "Info": "The complexity of an algorithm indicates how many operations the algorithm will, in the worst case, perform before returning the correct answer. Depending on the efficiency, there are many types of algorithms, among which the following can be distinguished (listed in order of decreasing efficiency):\n\n1 .Const\nPerforms a fixed number of operations, which usually take constant time.For example, imagine an algorithm that prints the first 5 elements from an array to the screen.Then in the worst case, it will have to perform 5 iterations, and if the array is short, length is only 3, then the algorithm performs only 3 iterations.\n",
+      "VideoTitles": " "
     },
     {
-      "Title": "Доступ к элементам массива. Обход элементов массива.",
-      "Info": "     Для обращения к элементам массива используются <color=green>индексы</color>. Индекс представляет номер элемента в массиве, при этом нумерация начинается с нуля, поэтому индекс первого элемента будет равен 0, индекс четвертого элемента - 3. При этом, если вы укажете индекс больше, чем максимально возможный, то будет выброшено исключение.\n     Обход элементов массива можно производить с помощью <color=green>циклов for, foreach и while</color>, последний самый неудобный для работы с массивами, его мы рассматривать не будем. Если вы работаете с циклом for, то для указания верхней границы инкрементируемой переменной можно воспользоваться <color=green>свойством Length</color> у массива. Каждый массив имеет свойство Length, которое хранит длину массива. Преимущество цикла for состоит в том, что в нем вы можете модифицировать элементы массива. ",
-      "VideoTitles": "m2"
+      "Title": "2. Logarithmic (logN)",
+      "Info": "Hereinafter, N is the size of the input data to the algorithm.\nThe logarithmic algorithm runs slower than programs with constant time. The increase in execution time as N grows will increase by some constant amount.\n",
+      "VideoTitles": " "
+    },
+    {
+      "Title": "3. Linear (N)",
+      "Info": "Here, the execution of the method depends on n. What value for n will be passed to the method, the number of times the loop will be executed. That is, the increase in the complexity of the algorithm for this method is proportional to the value of n, which is why it is called linear.\n",
+      "VideoTitles": " "
+    },
+    {
+      "Title": "4. Quadratic (N^2)",
+      "Info": "As a rule, the methods that correspond to this algorithm contain two loops - an outer and a nested one, which are executed for all values ​​up to N.\n\nThere are other variations, and we will touch on one of them a little later. Worth also note that complexity is usually denoted by the letter “O.” For example, for a quadratic algorithm, the complexity will be O(N^2).This letter has a certain meaning, but for now we will not go deep into it and we will assume that it is simply indicates difficulty.\n",
+      "VideoTitles": " "
+    },
+    {
+      "Title": "Bubble Sort",
+      "Info": "Bubble sort is one of the most well-known sorting algorithms. Here you need to sequentially compare the values of adjacent elements and swap numbers if the previous one is greater than the next one. This way, elements with larger values end up at the end of the list, while those with smaller values remain at the beginning .\n\nThis algorithm is considered educational and almost never used in practice due to low efficiency: it is slow on tests in which small elements (called turtles) are at the end of the array.However, many other methods are based on it, for example, shaker sort and comb sort.The complexity of such an algorithm is quite large - O(N^2)",
+      "VideoTitles": "9.1"
+    },
+    {
+      "Title": "Bubble Sort Algorithm",
+      "Info": "Video demo",
+      "VideoTitles": "9.2"
     }
   ]
 }

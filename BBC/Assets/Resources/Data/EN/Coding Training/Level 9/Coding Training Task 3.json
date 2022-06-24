@@ -1,9 +1,14 @@
 {
   "Items": [
     {
-      "Title": "Условие в массиве, foreach",
-      "Info": "     Познакомимся с другим способом обхода массива. Более удобным для обхода элементов будет <color=green>цикл foreach</color>. Здесь в цикле foreach мы указали тип элементов int, так как у нас массив содержит элементы этого типа и после ключевого слова in указали массив элементы которого необходимо перебрать. Разберем на примере. ",
-      "VideoTitles": "m4"
+      "Title": "Quick Sort",
+      "Info": "This algorithm is one of the most efficient.\nIt consists of three steps. First, one element must be selected from the array - it is usually called the pivot. Then the other elements in the array are redistributed so that elements less than the pivot are before it , and greater or equal - after. And then recursively apply the first two steps to the subarrays to the right and left of the reference value.\n–GIF–",
+      "VideoTitles": "9.5"
+    },
+    {
+      "Title": "Quick Sort Implementation",
+      "Info": "Shown in video clip",
+      "VideoTitles": "9.6"
     }
   ]
 }
