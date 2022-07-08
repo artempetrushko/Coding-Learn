@@ -1,15 +1,9 @@
 {
   "Items": [
     {
-      "Title": "Двумерный массив",
-      "Info": "     Теперь разберемся с <color=green>многомерными массивами</color>.  Теоретически мы можем задать массив с любым количеством измерений (которые кстати, называются рангом), но на практике, обычно встречаются одно-, двух- и намного реже — трехмерные массивы. Образно, двумерный массив можно представить как обычную таблицу, а трехмерный массив — как куб переменных. Например, чтобы задать двумерный массив чисел (ранг = 2), необходима сделать вот такое объявление переменной:\n     int[,] TwoDimArray;",
-      "VideoTitles": "m7"
-    },
-
-    {
-      "Title": "Робота с двумерным массивом",
-      "Info": "     Обратите внимание на запятую в квадратных скобках. В C# существует простое правило: ранг массива всегда на единицу больше количества запятых в квадратных скобках.  Инициализируются многомерные массивы точно также, как и одномерные — необходимо задать количество элементов в каждом измерении. Теперь, чтобы обратиться как какому-либо элементу массива, нам необходимо указывать два индекса — <color=green>индекс строки и индекс столбца</color>. Также для работы с многомерными массивами нам поможет <color=green>функция GetLength()</color>.GetLength возвращает длину заданного измерения многомерного массива. Length возвращает сумму общего количества элементов во всех измерениях. для двумерного массива, длина == метод getlength(0) * метод getlength(1)",
-      "VideoTitles": " "
+      "Title": "Dictionary initialization",
+      "Info": "Dictionaries are another common collection type. A dictionary stores objects that represent a key-value pair. The Dictionary<K, V> dictionary class is typed with two types: the K parameter represents the key type, and the V parameter provides the value type. \n \n If we draw a rough analogy, we can say that a dictionary is a list, but instead of its indices, it can be anything and in any order.Agree, this is convenient if you need to store pairs of data together, for example, a word and its translation Then the key can be a word in your native language, and the value can be the translation of this word, or vice versa. store in a very inconvenient format.",
+      "VideoTitles": "7.6"
     }
   ]
 }

@@ -2,51 +2,45 @@
   "Items": [
     {
       "ID": 1,
-      "Title": "Скопировать массивы",
-      "Description": "Вам необходимо реализовать метод, который возвращает копию переданного массиива размеров яблок.",
-      "StartCode": "public int[] CopyAppleSizesArray(int[] sizeArray)\n{\n    \n    \n}\n"
+      "Title": "Copy arrays",
+      "Description": "You need to implement a method that returns a copy of the passed array of apple sizes.",
+      "StartCode": "public int[] CopyAppleSizesArray(int[] sizeArray)\n{\n \n \n}\n"
     },
     {
       "ID": 2,
-      "Title": "Выбрать дрова",
-      "Description": "Вам необходимо релизовать метод, возвращяющий массив bool такого же размера, как и входной масиив размер полена.\n В зависимости от того подходит ли размер полена или нет в выходном массиве по соответствующему индексу должно быть true или false сообветственно.\n Полено подходит, если его размер меньше либо равен переданному размеру.",
-      "StartCode": "public bool[] SelectSuitableLogs(int neededLogSize, int[] logSizes)\n{\n    \n    \n}\n"
+      "Title": "Select firewood",
+      "Description": "You need to implement a method that returns a bool array of the same size as the input array and the size of the field.\n Depending on whether the size of the field is appropriate or not, the corresponding index in the output array must be true or false, respectively.\n The log matches if its size is less than or equal to the size passed.",
+      "StartCode": "public bool[] SelectSuitableLogs(int neededLogSize, int[] logSizes)\n{\n \n \n}\n"
     },
     {
       "ID": 3,
-      "Title": "Скам мамонта",
-      "Description": "Вам необходимо реализовать метод, который выбирает, какой картой походить(или же спасовать)\n На вход передается доступный набор карт и ход противника.\n Необходимо вернуть достоинство карты, которой нужно отбиваться, либо -1 если игрок пасует.\n Ходить необходимо картой с наименьшем подходящим достоинством,т.е. большим достоинством, чем карта, которой походил противник, либо тузом, если ничего другого подходящего нет.\n Достоинство карт их номер от 1 до 13. Туз, 2-10,валет, дама, король.\n Следует помнить, что туз хоть и имеет наименьшее достоинство, является картой, бьющей все остальные(кроме туза соответсвенно).\n У игрока может быть несколько карт с одинаковым достоинством.",
-      "StartCode": "public int MakeMove(int[] cards,int enemyMove)\n{\n    \n    \n}\n"
+      "Title": "Mammoth Scam",
+      "Description": "You need to implement a method that chooses which card to play (or pass)\n The available set of cards and the opponent's turn are passed as input.\n You need to return the value of the card to fight back, or -1 if the player passes .\n It is necessary to move with a card with the lowest suitable value, i.e. a higher value than the card that the opponent looked like, or an ace if there is nothing else suitable.\n The value of the cards is their number from 1 to 13. Ace, 2-10 ,jack, queen, king.\n It should be remembered that although the ace has the lowest value, it is a card that beats all the others (except for the ace, respectively).\n A player can have several cards with the same value.",
+      "StartCode": "public int MakeMove(int[] cards,int enemyMove)\n{\n \n \n}\n"
     },
     {
       "ID": 4,
-      "Title": "Сохранение пути",
-      "Description": "Вам необходимо реализовать метод, который преобразует массив enum-ов в массив чисел для более удобного хранения. На вход передается массив enum-ов Direction, который может быть West, Nort, South, East.",
-      "StartCode": "public int[] TranslateDirection(Direction[] directions)\n{\n    \n    \n}\n"
+      "Title": "Save Path",
+      "Description": "You need to implement a method that converts an array of enums into an array of numbers for easier storage. An array of Direction enums is passed as input, which can be West, Nort, South, East.",
+      "StartCode": "public int[] TranslateDirection(Direction[] directions)\n{\n \n \n}\n"
     },
     {
       "ID": 5,
-      "Title": "Проверить массив",
-      "Description": "Вам необходимо реализовать метод, который проверяет массив на соответствие критериям. Критерии: массив не null, массив имеет хотя бы 1 элемент, первый элемент массива не 0.",
-      "StartCode": "public bool CheckFirstElemen(int[] array)\n{\n    \n    \n}\n"
+      "Title": "Check Array",
+      "Description": "You need to implement a method that checks the array against criteria. Criteria: array is not null, array has at least 1 element, first element of array is not 0.",
+      "StartCode": "public bool CheckFirstElemen(int[] array)\n{\n \n \n}\n"
     },
     {
       "ID": 6,
-      "Title": "Двумерный массив",
-      "Description": "Вам необходимо реализовать метод, который возвращает нужный элемент двумерного массива. На вход передается двумерный массив, цвет в виде enum Color{Red,White,Grey}, и форма в виде enum Form{Gear,Triangle,Square}.\n Цвет соответствует первой координате, форма -- второй.",
-      "StartCode": "public int GetArray(int[,] array,Color color,Form form)\n{\n    \n    \n}\n"
+      "Title": "2D array",
+      "Description": "You need to implement a method that returns the desired element of a two-dimensional array. The input is a two-dimensional array, a color in the form of enum Color{Red,White,Grey}, and a shape in the form of enum Form{Gear,Triangle,Square}. \n Color corresponds to the first coordinate, shape to the second.",
+      "StartCode": "public int GetArray(int[,] array,Color color,Form form)\n{\n \n \n}\n"
     },
     {
       "ID": 7,
-      "Title": "Перевозимый вес",
-      "Description": "Вам необходимо реализовать метод который обрабатывает массив максимально перевозимого веса для лодки. Вам необходимо заменить вес на -1 для лодок, которые не смогут перевезти груз, вес которого передается на вход. Необходимо вернуть измененную копию массива.",
-      "StartCode": "public int[] ProcessArray(int[] array, int weight)\n{\n    \n    \n}\n"
-    },
-    {
-      "ID": 8,
-      "Title": "hard_task_4",
-      "Description": "hard_task_4_desc",
-      "StartCode": "public void Execute()\n{\n    \n    \n}\n"
+      "Title": "Weight carried",
+      "Description": "You need to implement a method that handles an array of the maximum carrying weight for a boat. You need to change the weight to -1 for boats that will not be able to carry the weight of the input. You need to return a modified copy of the array.",
+      "StartCode": "public int[] ProcessArray(int[] array, int weight)\n{\n \n \n}\n"
     }
   ]
 }

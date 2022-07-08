@@ -1,9 +1,14 @@
 {
   "Items": [
     {
-      "Title": "Возвращение массива по условию",
-      "Info": "     Иногда нам нужно возвращать не индексы или значения, а целый массив. Также можно прописывать условия, по которым можно отбирать нужный нам массив. ",
-      "VideoTitles": "m6"
+      "Title": "Binary Search",
+      "Info": "If you are given a random array of elements and you need to find one of them in it, then you have no choice but to simply iterate one element after another until the desired one is found. This algorithm is called linear search, and unfortunately, it's impossible to do some clever trick here and significantly speed up the search.\n\nHowever, if you know something about the data array, for example, that it is sorted, then the situation changes dramatically. look at its middle element, then you will be able to determine exactly which half your desired number lies in. Because, it is either greater than the middle element, in which case you need to continue searching on the right side of the array, or it is less, in which case you need to look on the left. Or if you're lucky, the middle element will be the one you're looking for, in which case you don't need to keep searching. i binary",
+      "VideoTitles": ""
+    },
+    {
+      "Title": "Binary Search Implementation",
+      "Info": "The binary search algorithm looks like this:\n 1. “Divide” the array in half and find the middle.\n 2. Compare the middle element with the given desired element.\n 3. If the desired number is greater than the average, continue searching in the right parts of the array (if it is sorted in ascending order): divide it in half, repeating step 2. If the specified number is less, the algorithm will continue searching in the left side of the array, again returning to step 2.\n–IMAGE–",
+      "VideoTitles": "9.9"
     }
   ]
 }
