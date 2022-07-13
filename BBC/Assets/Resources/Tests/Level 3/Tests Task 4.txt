@@ -1,5 +1,10 @@
+using System;
+using System.Collections.Generic;
+
+
 public class Level2Task4
 {
+//<playerCode>
     private bool _isBusketFull;
     private bool _isFirePutOut;
     public void PutOutFire()
@@ -23,5 +28,5 @@ public class Level2Task4
         var secondCheck = !_isBusketFull && _isFirePutOut;
         return firstCheck&&secondCheck;
     }
-    //<playerCode>
+    
 }

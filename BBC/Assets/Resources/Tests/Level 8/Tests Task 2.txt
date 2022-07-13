@@ -4,6 +4,7 @@ using System.Numerics;
 
 public class Level8Task2
 {
+//<playerCode>
     public bool isTaskCompleted()
     {
         var random = new Random();
@@ -32,5 +33,5 @@ public class Level8Task2
         else
             return n * Fact(n - 1);
     }
-    //<playerCode>
+    
 }

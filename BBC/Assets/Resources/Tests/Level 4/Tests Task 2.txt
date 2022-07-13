@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 
+
 public class Level3Task2
 {
+//<playerCode>
     private List<Tools> _tools;
     private int _number=-1;
     public bool IsSaw(int toolNumber) => _tools[toolNumber] == Tools.Saw;
@@ -43,7 +45,7 @@ public class Level3Task2
         }
         _tools[_tools.Count - 1] = Tools.Axe;
     }
-    //<playerCode>
+    
 }
 public enum Tools
 {

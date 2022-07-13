@@ -1,14 +1,15 @@
 using System;
+using System.Collections.Generic;
+
 
 public class Level0Task5
 {
-    public bool isTaskCompleted()
+//<playerCode>
+   public bool isTaskCompleted()
    {
        var result =false;
        result =CountFishFeed(2, 1, 0.01, 0.02, 0.5)==11;
        result =result &&CountFishFeed(2, 1, 0.01, 0.02, 0.04)==0;
        return result;
-   }
-   
-   //<playerCode>
+   } 
 }
