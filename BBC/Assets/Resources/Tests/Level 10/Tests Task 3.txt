@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 
+
 public class Level10Task3
 {
+//<playerCode>
     public bool isTaskCompleted()
     {
 
@@ -68,5 +70,5 @@ public class Level10Task3
         };
         return !CheckSituation(firstTest)&&CheckSituation(secondTest)&&CheckSituation(thirdTest)&&!CheckSituation(fourthTest)&&!CheckSituation(fithTest);
     }
-    //<playerCode>
+    
 }
