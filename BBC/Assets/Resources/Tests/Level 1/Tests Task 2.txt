@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 
@@ -8,12 +7,12 @@ public class Level0Task2
     public bool isTaskCompleted()
    {
        Execute();
-       return Computer.Text=="Hello World!";
+       return Console.Text=="Hello World!";
    }
 
    
 }
-public class Computer
+public class Console
 {
     public static string Text { get; private set; }
     public static void WriteLine(string text)
