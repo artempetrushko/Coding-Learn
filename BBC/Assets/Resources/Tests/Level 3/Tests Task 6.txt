@@ -1,7 +1,10 @@
-using System.Linq;
+using System;
+using System.Collections.Generic;
+
 
 public class Level2Task6
 {
+//<playerCode>
     public bool isTaskCompleted()
     {
         var check = new bool[]
@@ -18,5 +21,5 @@ public class Level2Task6
         };
         return !check.Any(x=>!x);
     }
-    //<playerCode>
+    
 }

@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public class Level4Task4
-{   public enum Direction
+public class Level5Task4
+{   
+//<playerCode>
+    public enum Direction
     {
         West, Nort, South, East
     }
@@ -38,4 +40,5 @@ public class Level4Task4
 
         return array;
     }
+    
 }

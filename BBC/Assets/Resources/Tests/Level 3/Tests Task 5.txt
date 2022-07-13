@@ -1,5 +1,10 @@
+using System;
+using System.Collections.Generic;
+
+
 public class Level2Task5
 {
+//<playerCode>
     private int _logLength=-1;
     public void UseLog(int logLength)
     {
@@ -17,5 +22,5 @@ public class Level2Task5
         var eigthCheck= _logLength == 4;
         return firstCheck&&secondCheck&&thirdCheck&&fourhCheck&&fifthCheck&&sixthCheck&&seventhCheck&&eigthCheck;
     }
-    //<playerCode>
+    
 }

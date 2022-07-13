@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public class Level5Task3
+public class Level9Task3
 {
+//<playerCode>
     public static bool SortTests(int[] array)
     {
         var sortedArray = array.OrderBy(x => x).ToArray();
@@ -38,4 +39,5 @@ public class Level5Task3
         var maxSize = 10000;
         return Check(random, maxCount, maxSize) && Check(random, maxCount, maxSize);
     }
+    
 }

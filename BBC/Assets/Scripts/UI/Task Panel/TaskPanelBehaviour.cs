@@ -53,6 +53,8 @@ namespace Scripts
             onTaskStarted.Invoke();
         }
 
+        public void SkipTask() => StartCoroutine(FinishTask_COR(true));
+
         public void FinishTask() => StartCoroutine(FinishTask_COR());
 
         public void GoToNextTask() => StartCoroutine(GoToNextTask_COR());
@@ -104,10 +106,10 @@ namespace Scripts
             uiManager.PadMode = PadMode.Normal;
         }
 
-        private IEnumerator FinishTask_COR()
+        private IEnumerator FinishTask_COR(bool isTaskSkipped = false)
         {
             yield return StartCoroutine(HideTaskPanel_COR());
-            yield return StartCoroutine(CheckChallengesCompleting_COR());            
+            yield return StartCoroutine(CheckChallengesCompleting_COR(isTaskSkipped));            
         }
 
         private IEnumerator GoToNextTask_COR()
@@ -150,7 +152,7 @@ namespace Scripts
             nextPageButton.gameObject.SetActive(selectedCodingTrainingInfo.Length > 1);
         }
 
-        private IEnumerator CheckChallengesCompleting_COR()
+        private IEnumerator CheckChallengesCompleting_COR(bool isTaskSkipped = false)
         {
             rewardingPanel.SetActive(true);
             yield return StartCoroutine(PlayTimeline_COR(rewardingPanel, "ShowRewardingPanel"));
@@ -159,11 +161,12 @@ namespace Scripts
             {
                 var challenge = Instantiate(challengePrefab, challengesContainer.transform);
                 challenge.GetComponentInChildren<TMP_Text>().text = challenges[i].Challenge;
-                if (IsChallengeCompleting(challenges[i].CheckValue))
+                yield return new WaitForSeconds(0.5f);
+                var isChallengeCompleted = IsChallengeCompleting(challenges[i].CheckValue);
+                SaveManager.SaveTemporaryChallengeProgress(i + 1, isChallengeCompleted);
+                if (isChallengeCompleted && !isTaskSkipped)
                 {
-                    SaveManager.SaveTemporaryChallengeProgress(i + 1);
-                    challenge.GetComponentInChildren<TMP_Text>().color = Color.green;
-                    yield return new WaitForSeconds(0.5f);
+                    challenge.GetComponentInChildren<TMP_Text>().color = Color.green;                  
                     yield return StartCoroutine(PlayAnimation_COR(challenge.GetComponentInChildren<Animator>().gameObject, "AppearStar"));
                 }
             }
@@ -178,7 +181,7 @@ namespace Scripts
                     return true;
                 case 0:
                     return !gameManager.AvailableTipsData[gameManager.GetCurrentTaskNumber() - 1].IsShown;
-                case 120:
+                case 300:
                     return gameManager.SpentTime <= checkValue;
                 default:
                     return false;
@@ -259,6 +262,7 @@ namespace Scripts
 
         private void Update()
         {
+            #if UNITY_EDITOR
             if (Input.GetKeyDown(KeyCode.RightControl))
             {
                 StartNewTask();
@@ -267,6 +271,7 @@ namespace Scripts
             {
                 StartCoroutine(FinishTask_COR());
             }
+            #endif
         }
 
         private void Start()

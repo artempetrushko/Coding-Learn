@@ -1,9 +1,9 @@
 {
-  "Items": [
-    {
-      "Title": "Условие в массиве",
-      "Info": "     Также в наш массив можно добавлять <color=green>условия</color>. Попробуем добавить дополнительное условие и вывести значения только элементов с чётными индексами. ",
-      "VideoTitles": "m3"
-    }
-  ]
+   "Items": [
+     {
+       "Title": "Removing from the list",
+       "Info": "You can remove elements from the list in various ways, let's get acquainted with some of them:\n* RemoveAt() removes an element by its index\n* Remove() removes an element by its value\n* RemoveRange() removes elements by indexes in the given range\n* people.Clear() completely clears the list",
+       "VideoTitles": "7.2"
+     }
+   ]
 }

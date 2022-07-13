@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 
-public class Level5Task6
+
+public class Level6Task6
 {
+//<playerCode>
     public bool isTaskCompleted()
     {
         var taskArray = new string[]
@@ -92,5 +94,5 @@ public class Level5Task6
                 return false;
         return true;
     }
-
+    
 }

@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public class Level5Task4
+public class Level10Task4
 {
+//<playerCode>
     public enum Direction
     {
         Up,Down,Left,Right
@@ -64,5 +65,5 @@ public class Level5Task4
         array[resultIndex]=array[resultIndex].ToUpper();
         return array;
     }
-
+    
 }

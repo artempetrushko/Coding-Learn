@@ -1,5 +1,11 @@
+using System;
+using System.Collections.Generic;
+
+
 public class Level0Task1
 {  
+//<playerCode>
+
     public bool IsMoved=false;
 
     private void MoveCube()=>IsMoved=true;
@@ -9,5 +15,4 @@ public class Level0Task1
         Execute(); 
         return IsMoved;
     }
-    //<playerCode>
 }

@@ -1,6 +1,10 @@
 using System;
+using System.Collections.Generic;
+
+
 public class Level0Task7
 {
+//<playerCode>
     private static int T=0;
     public bool isTaskCompleted()
    {
@@ -10,5 +14,5 @@ public class Level0Task7
        SubtractT(-1);
        return T==-5;
    }
-    //<playerCode>
+    
 }

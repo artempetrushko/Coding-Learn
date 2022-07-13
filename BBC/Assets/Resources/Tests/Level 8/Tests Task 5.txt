@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public class Level4Task1
+public class Level8Task1
 {
+//<playerCode>
     public string[] Palindroms = new string[]
     {
         "лёшанаполкеклопанашёл",
@@ -42,5 +43,5 @@ public class Level4Task1
             return !Palindrom(word);
         }
     }
-
+    
 }

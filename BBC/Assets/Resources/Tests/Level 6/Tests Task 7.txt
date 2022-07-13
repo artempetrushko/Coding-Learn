@@ -2,8 +2,9 @@ using System;
 using System.Text;
 using System.Text.RegularExpressions;
 
-public class Level5Task7
+public class Level6Task7
 {
+//<playerCode>
     private readonly string[] pattern= new string[]
         {
             "00000000000000000[F]",
@@ -62,5 +63,5 @@ public class Level5Task7
 
         return array;
     }
-
+    
 }

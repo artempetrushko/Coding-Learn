@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public class Level4Task1
+public class Level10Task1
 {
+//<playerCode>
     public bool isTaskCompleted()
     {
         var random = new Random();
@@ -31,5 +32,5 @@ public class Level4Task1
 
         return array;
     }
-
+    
 }

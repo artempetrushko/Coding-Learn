@@ -1,9 +1,14 @@
 {
   "Items": [
     {
-      "Title": "Условие в массиве",
-      "Info": "     Также в наш массив можно добавлять <color=green>условия</color>. Попробуем добавить дополнительное условие и вывести значения только элементов с чётными индексами. ",
-      "VideoTitles": "m3"
+      "Title": "Comb Sorting",
+      "Info": "Comb sort is an improvement on bubble sort. Its idea is toeliminate elements with small values at the end of the array, which slow down the algorithm. If bubble sort compares adjacent elements when iterating over an array, then when combing, a sufficiently large distance between the compared values is taken first, and then it narrows down to the minimum.\n\nThe initial gap should not be chosen randomly, but taking into account a special value - a reduction factor, the optimal value of which is 1.247. elements will be equal to the size of the array divided by 1.247, at each subsequent step the distance will again be divided by the reduction factor - and so on until the end of the algorithm.",
+      "VideoTitles": "9.3"
+    },
+    {
+      "Title": "Comb Sorting Algorithm",
+      "Info": "This is only a partial implementation of the algorithm. Here you need to add the CombSort method in the ellipsis to make it work. \n–IMAGE–",
+      "VideoTitles": "9.4"
     }
   ]
 }

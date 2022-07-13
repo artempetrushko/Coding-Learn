@@ -205,7 +205,7 @@ namespace Scripts
             errorsTextField.text = "";         
             foreach (var error in errors)
             {
-                errorsTextField.text += string.Format("<color=red>Error</color> ({0}, {1}): {2}\n", error.SourceLine, error.SourceColumn, error.Message);
+                errorsTextField.text += string.Format("<color=red>Error</color> ({0}, {1}): {2}\n", error.SourceLine - 5, error.SourceColumn, error.Message);
             }              
             if (!isErrorPanelShown)
                 ToggleErrorPanelState();

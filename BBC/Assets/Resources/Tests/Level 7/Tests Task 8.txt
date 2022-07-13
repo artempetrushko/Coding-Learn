@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public class Level4Task1
+public class Level7Task1
 {
+//<playerCode>
     public List<string> data=new List<string>()
     {"lorem",
 "ipsum",
@@ -84,5 +85,5 @@ public class Level4Task1
 
         return array;
     }
-
+    
 }

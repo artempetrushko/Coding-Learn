@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Generic;
+
 
 public class Level3Task6
 {
+//<playerCode>
     private bool[] _places;
     private int _keyIndex=-1;
     public bool TryFoundKey(int placeNumber)
@@ -40,5 +43,5 @@ public class Level3Task6
             _places[random.Next(index, _places.Length)] = true;
         }
     }
-    //<playerCode>
+    
 }

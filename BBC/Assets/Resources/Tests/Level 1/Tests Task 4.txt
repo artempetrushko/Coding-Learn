@@ -1,13 +1,15 @@
+using System;
+using System.Collections.Generic;
+
 
 public class Level0Task4
 {
+//<playerCode>
     public bool isTaskCompleted()
     {
         Execute();
         return Fridge.Number==0.5;
     }
-
-    //<playerCode>
 }
 
 public class Fridge
