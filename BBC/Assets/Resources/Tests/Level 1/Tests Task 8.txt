@@ -1,8 +1,12 @@
+using System;
+using System.Collections.Generic;
+
+
 public class Level0Task8
 {
+//<playerCode>
     public bool isTaskCompleted()
     {
         return Check(4)==0 && !(Check(5)==0);
-    }
-    //<playerCode>
+    } 
 }

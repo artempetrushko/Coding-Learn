@@ -1,6 +1,10 @@
+using System;
+using System.Collections.Generic;
+
+
 public class Level1Task5
 {
-    
+//<playerCode>   
     public readonly Log Log = new Log();
     public void TakeLog(object log)
     {
@@ -22,7 +26,7 @@ public class Level1Task5
         RemoveLog(Log);
         return Log.IsRemoved();
     }
-    //<playerCode>
+    
 }
 public class Log
 {

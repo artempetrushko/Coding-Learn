@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 
+
 public class Level3Task7
 {
+//<playerCode>
     private IEnumerator<bool> _enumerator;
     private int _index=0;
     private static Random random = new Random();
@@ -40,5 +42,5 @@ public class Level3Task7
     {
         yield return random.Next(100)<10;
     }
-    //<playerCode>
+    
 }

@@ -1,12 +1,17 @@
+using System;
+using System.Collections.Generic;
+
+
 public class Level0Task2
 {
+//<playerCode>
     public bool isTaskCompleted()
    {
        Execute();
        return Computer.Text=="Hello World!";
    }
 
-   //<playerCode>
+   
 }
 public class Computer
 {

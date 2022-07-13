@@ -1,5 +1,10 @@
+using System;
+using System.Collections.Generic;
+
+
 public class Level1Task3
 {
+//<playerCode>
     public bool isTaskCompleted()
     {
         Count(0.5);
@@ -15,7 +20,7 @@ public class Level1Task3
         var value4 = CountModule.Counter==1;
         return value1&&value4&&!value2&&!value3;
     }
-    //<playerCode>
+    
 }
 public class CountModule
 {

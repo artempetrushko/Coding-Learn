@@ -4,6 +4,7 @@ using System.Linq;
 
 public class Level5Task3
 {
+//<playerCode>
     public bool isTaskCompleted()
     {
         var random = new Random();
@@ -41,5 +42,5 @@ public class Level5Task3
 
         return array;
     }
-    //<playerCode>
+    
 }
