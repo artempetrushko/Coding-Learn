@@ -22,6 +22,7 @@ namespace Scripts
         public string TipWaitingText;
         public string NoTipsText;
         public string SkipTaskText;
+        public string CloseRewardingPanelButtonText;
     }
 
     public class UiLocalizationScript : MonoBehaviour
@@ -39,6 +40,7 @@ namespace Scripts
         [SerializeField] private Text exitToMenuPanelNoButton;
         [SerializeField] private Text loadBarText;
         [SerializeField] private Text showTipButtonText;
+        [SerializeField] private TMP_Text closeRewardingPanelButtonText;
 
         private GameUiLocalization gameUiLocalization;
 
@@ -62,6 +64,7 @@ namespace Scripts
             TipWaitingText = gameUiLocalization.TipWaitingText;
             NoTipsText = gameUiLocalization.NoTipsText;
             SkipTaskText = gameUiLocalization.SkipTaskText;
+            closeRewardingPanelButtonText.text = gameUiLocalization.CloseRewardingPanelButtonText;
         }
     }
 }

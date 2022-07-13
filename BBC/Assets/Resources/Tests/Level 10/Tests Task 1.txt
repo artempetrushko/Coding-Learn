@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 
+
 public class Level10Task1
 {
+//<playerCode>
     public const double g = 9.8;
     public static double DegToRad = (Math.PI / 180);
     public static  double CountInitialVelocityCorrect(double x,double y,double angle)
@@ -25,5 +27,5 @@ public class Level10Task1
         var angle=(random.Next(maxAngle)+random.NextDouble())*DegToRad;
         return Math.Abs(CountInitialVelocityCorrect(x,y,angle)- CountInitialVelocity(x, y, angle))<0.0001;
     }
-    //<playerCode>
+    
 }

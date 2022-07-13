@@ -1,8 +1,13 @@
+using System;
+using System.Collections.Generic;
+
+
 public class Level1Task2
 {
+//<playerCode>
     public bool isTaskCompleted()
     {
         return CorrectName(5,10,8,0)==8;
     }
-    //<playerCode>
+    
 }

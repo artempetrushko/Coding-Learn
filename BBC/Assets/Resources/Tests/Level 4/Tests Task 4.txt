@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Generic;
+
 
 public class Level3Task4
 {
+//<playerCode>
     private int _usesCount;
     private int _tallTreeCount;
     private readonly Random _random=new Random();
@@ -44,5 +47,5 @@ public class Level3Task4
         _tallTreeCount = 0;
         return firstTest && secondTest && thirdTest && fourthTest;
     }
-    //<playerCode>
+    
 }

@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 
+
 public class Level3Task1
 {
+//<playerCode>
     private List<bool> _isBoxesOpened = new List<bool>();
     public bool OpenContainer(int boxNumber) => _isBoxesOpened[boxNumber];
     
@@ -41,5 +43,5 @@ public class Level3Task1
         _isBoxesOpened[_isBoxesOpened.Count - 1] = true;
         return result;
     }
-    //<playerCode>
+    
 }
