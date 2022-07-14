@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,7 +28,6 @@ namespace AkshayDhotre.GraphicSettingsMenu
             {
                 currentSubOptionIndex = subOptionList.Count - 1;//0;
                 currentSubOption = subOptionList[currentSubOptionIndex];
-                
             }
 
             UpdateSuboptionText();
@@ -56,12 +56,15 @@ namespace AkshayDhotre.GraphicSettingsMenu
             int i = 0;
             foreach(Resolution r in Screen.resolutions)
             {
-                SubOption t = new SubOption();
-                t.name = r.width.ToString() + "x" + r.height.ToString();
-                t.vector2Value = new Vector2(r.width, r.height);
-                t.indexInList = i;
-                subOptionList.Add(t);
-                i++;
+                if (Math.Abs(r.width / (float)r.height - 1.77) < 1e-2)
+                {
+                    SubOption t = new SubOption();
+                    t.name = r.width.ToString() + "x" + r.height.ToString();
+                    t.vector2Value = new Vector2(r.width, r.height);
+                    t.indexInList = i;
+                    subOptionList.Add(t);
+                    i++;
+                }
             }
         }
 
