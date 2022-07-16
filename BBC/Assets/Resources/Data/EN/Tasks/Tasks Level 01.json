@@ -26,7 +26,7 @@
     },{
       "ID": 5,
       "Title": "How many days will the food last",
-      "Description": "  - In this task, you have to calculate how many days (not counting today) you will have enough food, provided that you feed the fish today.\nThe method is passed the number of 2 types of fish, the daily norm for them is t the amount of food. You need to return the number of days the food will last (excluding today's feeding).\n To convert a double to an int when assigning or passing to a method, precede the value with (int)",
+      "Description": "  - In this task, you have to calculate how many days (not counting today) you will have enough food, provided that you feed the fish today.\nThe method is passed the number of 2 types of fish, the daily norm for them and the amount of food. You need to return the number of days the food will last (excluding today's feeding).\n To convert a double to an int when assigning or passing to a method, precede the value with (int)",
       "StartCode": "private int CountFishFeed(int fishType1Count, int fishType2Count, double fishType1Norm, double fishType2Norm, double feedCount)\n{\n    \n}"
     },{
       "ID": 6,
