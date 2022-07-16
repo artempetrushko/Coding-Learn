@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Generic;
+
 
 public class Level3Task3
 {
+//<playerCode>
     private int _totalStepsCount;
     private int _neededStepsCount;
 
@@ -33,5 +36,5 @@ public class Level3Task3
         _neededStepsCount = random.Next(maxCount);
 
     }
-    //<playerCode>
+    
 }

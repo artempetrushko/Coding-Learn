@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Level8Task1
 {
+//<playerCode>
     double Pow(double value, int pow)
     {
         if (pow == 0)
@@ -33,5 +34,5 @@ public class Level8Task1
                 return false;
         return true;
     }
-    //<playerCode>
+    
 }

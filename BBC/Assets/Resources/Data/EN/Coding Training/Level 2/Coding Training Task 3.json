@@ -8,22 +8,22 @@
 {
 "Title": "Round() function",
 "Info": "Of course, we can't help but show you a couple of functions from this library!\n One of them is the <color=green>Rounding</color> Math.Round() function. It has several modes of operation (about you can read them in the C# documentation), but the basics will be enough for us when the function works according to the rules of mathematics: if the number <color=green>is greater than or equal to 0.5</color>, the number is rounded up to <color=green>greater</color > side, otherwise - to a smaller one.",
-"VideoTitles": "Video1"
+"VideoTitles": ""
 },
 {
 "Title": "Arguments and output of the Round function",
 "Info": " As an argument, the Round function accepts variables of type <color=green>double</color>. However, it also returns a result of type double. And sometimes we would like to get an int - what to do?",
-"VideoTitles": "Video2"
+"VideoTitles": ""
 },
 {
 "Title": "Type casting - cast",
 "Info": "Here we will be helped by such language feature as <color=green>cast</color> (conversion) of types (in English <color=green>cast</color>). Any data type can be cast to what -something else (but not to anyone!), and this can happen <color=green>explicitly</color> and <color=green>implicitly</color>.\n <color=green>Implicit</color> casting the language will do this on its own, this is possible when the new type accepts a <color=green>greater range/color> of values (for example, you can cast an int to a double this way.) If, on the contrary, the new type accepts a <color=green>smaller</color> range of values, then you need to indicate in brackets what type we want to cast.",
-"VideoTitles": "Video2"
+"VideoTitles": ""
 },
 {
 "Title": "Danger cast",
 "Info": " While an implicit cast is fairly transparent and understandable, an explicit cast is sometimes <color=red>dangerous</color>!\n The fact is that during the cast, when the range of values of the new type narrows, we can lose a piece of data, for example, if a variable of type double stores a number with a fractional part, then when cast to int, the fractional part will simply disappear, since int stores only the integer part!\n In our game, you can safely perform type casting where it is required, but in real problems, when using an explicit cast, be extremely careful!",
-"VideoTitles": "Video2"
+"VideoTitles": ""
 }
 ]
 }

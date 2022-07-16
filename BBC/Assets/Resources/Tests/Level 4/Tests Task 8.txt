@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 
+
 public class Level3Task8
 {
+//<playerCode>
     private List<bool> _plases;
     private int _index=-1;
     private int _digCount;
@@ -64,5 +66,5 @@ public class Level3Task8
         _plases[_plases.Count - 1] = true;
         return result;
     }
-    //<playerCode>
+    
 }

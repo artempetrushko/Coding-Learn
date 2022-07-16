@@ -4,6 +4,7 @@ using System.Linq;
 
 public class Level3Task5
 {
+//<playerCode>
     private List<bool> _isPartsBroken;
     public bool IsBroken(int partNumber)
     {
@@ -41,5 +42,5 @@ public class Level3Task5
         }
         _isPartsBroken[_isPartsBroken.Count - 1] = true;
     }
-    //<playerCode>
+    
 }

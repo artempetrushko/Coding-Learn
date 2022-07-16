@@ -1,4 +1,4 @@
-{
+   {
   "Items": [
     {
       "ID": 1,
@@ -9,14 +9,14 @@
     {
       "ID": 2,
       "Title": "Write Hello World!",
-      "Description": "  - You need to call the WriteLine() method of the Computer(Computer.WriteLine) class and pass the Hello World!",
+      "Description": "  - You need to call the WriteLine() method of the Console(Console.WriteLine) class and pass the Hello World!",
       "StartCode": "public void Execute()\n{\n    \n}"
     },
     {
       "ID": 3,
       "Title": "Opening the door",
       "Description": "  - Declare a keyNumber variable of type int with value 55. The variable is declared like this:\n type name = value;",
-      "StartCode": "public void Execute()\n{\n//Объявлять переменную здесь\nDoor.Open(keyNumber);\n}"
+      "StartCode": "public void Execute()\n{\n//Declare variable here\nDoor.Open(keyNumber);\n}"
     },
     {
       "ID": 4,
@@ -32,7 +32,7 @@
       "ID": 6,
       "Title": "Count the number of glasses",
       "Description": "  - You need to calculate the number of glasses needed to cook the dish.\n You are given the required volumes of flour and water, as well as the volume of the glass.\nTo round up, use the Math.Floor() method.\n",
-      "StartCode": "private void CountGlassCount(float flourV,float waterV,int glassV)\n{\n//Пишите свой код здесь\nCook(waterGlassCount,flourGlassCount);\n}"
+      "StartCode": "private void CountGlassCount(float flourV,float waterV,int glassV)\n{\n//Write your code here\nCook(waterGlassCount,flourGlassCount);\n}"
     },{
       "ID": 7,
       "Title": "Add/Reduce Temperature",

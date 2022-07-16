@@ -4,6 +4,7 @@ using System.Linq;
 
 public class Level9Task4
 {
+//<playerCode>
     public static bool SortTests(int[] array)
     {
         var sortedArray = array.OrderBy(x => x).ToArray();
@@ -38,5 +39,5 @@ public class Level9Task4
         var maxSize = 10000;
         return Check(random, maxCount, maxSize) && Check(random, maxCount, maxSize);
     }
-    //<playerCode>
+    
 }

@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 
+
 public class Level5Task6
 {
+//<playerCode>
     public enum Color { Red, White, Grey }
     public enum Form { Gear, Triangle, Square }
 
@@ -35,5 +37,5 @@ public class Level5Task6
 
         return array;
     }
-    //<playerCode>
+    
 }

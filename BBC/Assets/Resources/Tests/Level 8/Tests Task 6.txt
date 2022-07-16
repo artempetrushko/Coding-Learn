@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Level8Task1
 {
+//<playerCode>
     public bool isTaskCompleted()
     {
         var random = new Random();
@@ -18,5 +19,5 @@ public class Level8Task1
         return list.GroupBy(x => x).Where(x => x.Key != x.Count()).Count() == 0;
 
     }
-    //<playerCode>
+    
 }
