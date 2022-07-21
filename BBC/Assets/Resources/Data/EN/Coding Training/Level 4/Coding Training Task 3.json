@@ -1,13 +1,13 @@
 {
   "Items": [
     {
-      "Title": "Знакомство с while. Конструкция while.",
-      "Info": "     Теперь перейдем к другому варианту построения цикла - <color=green>цикла while</color>. В данном случае действия цикла повторяются до тех пор, пока выполняется указанное условие. Этот цикл функционирует по принципу: «Сперва думаем, после делаем». В общем виде выглядит так:\n     while(<Условие>)\n     {\n         <Действия>\n     } ",
+      "Title": "An introduction to while. The while construct.",
+      "Info": "Now let's move on to another version of the loop construction - <color=green>while loop</color>. In this case, the actions of the loop are repeated until the specified condition is met. This loop functions according to the principle: First, we think after doing. In general, it looks like this:\n while(<Condition>)\n {\n <Actions>\n } ",
       "VideoTitles": ""
     },
     {
-      "Title": "Правила наименования переменных. Язык",
-      "Info": "     В этом цикле проверяется условие, и если оно истинно, то выполняется набор операторов внутри тела цикла. Обязательно убедитесь, что <color=green>изменяете переменную</color>, от которой зависит условие, иначе цикл станет бесконечным. Пример работы с циклом while: ",
+      "Title": "Variable naming rules. Language",
+      "Info": " In this loop, the condition is checked, and if it is true, then a set of statements inside the loop body is executed. Be sure to <color=green>change the variable</color> on which the condition depends, otherwise the loop will become infinite. An example of working with a while loop: ",
       "VideoTitles": "Loops While"
     }
   ]
