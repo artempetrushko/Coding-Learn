@@ -1,18 +1,18 @@
 {
   "Items": [
     {
-      "Title": "Знакомство с циклами",
-      "Info": "     Теперь мы затронем важную тему программирования – <color=green>циклы</color>. Циклы в языках программирования предназначены для построения конструкции, выполняющей заданный блок кода некоторое количество раз, которое определяется тем или иным условием. ",
+      "Title": "Introducing Cycles",
+      "Info": "Now we will touch on an important topic of programming - <color=green>loops</color>. Loops in programming languages ​​are designed to build a structure that executes a given block of code a certain number of times, which is determined by one or another condition. ",
       "VideoTitles": " "
     },
     {
-      "Title": "Цикл for. Его конструкция",
-      "Info": "     Рассмотрим один из вариантов построения цикла – <color=green>цикл for</color>. Он может использоваться в ситуациях, когда до входа в цикл известно количество итераций (повторений цикла). Имеет следующий вид:\n     for(<инициализация>; <условие>; <порядок выполнения>) \n     {\n        <действия>\n     }\n     <color=green>Инициализация</color> — установка начальных параметров счетчика;\n     <color=green>Условие</color> — условие выхода из цикла, как только оно вернет ложь — произойдет выход из цикла;\n     <color=green>Порядок выполнения</color> — команда увеличения счетчика.\n     Действия, выполняемые циклически, называются телом цикла.",
+      "Title": "The for loop. Its construction",
+      "Info": " Let's consider one of the loop construction options - <color=green>for loop</color>. It can be used in situations where the number of iterations (loop repetitions) is known before entering the loop. It has the following form:\n for (<initialization>; <condition>; <execution order>) \n {\n <actions>\n }\n <color=green>Initialization</color> — setting the initial parameters of the counter;\n <color=green> Condition</color> is a condition for exiting the loop, as soon as it returns false, the loop will exit;\n <color=green>Execution order</color> is a command to increase the counter.\n Actions performed cyclically are called the loop body .",
       "VideoTitles": " "
     },
     {
-      "Title": "Пример цикла for",
-      "Info": "     Рассмотрим стандартный цикл for:\n     В нем мы инициализируем локальную переменную значением 0, затем проверяем, что переменная меньше десяти, выполняем тело цикла –прибавляем к переменной sum переменную i. На каждой итерации прибавляем к переменной значение, снова проверяем условие и выполняем тело цикла, и так, до тех пор, пока условие (i < 10) будет истинным. ",
+      "Title": "For Loop Example",
+      "Info": " Consider the standard loop for:\n In it, we initialize the local variable with the value 0, then check that the variable is less than ten, execute the body of the loop - add the variable i to the variable sum. At each iteration, add the value to the variable, check again condition and execute the loop body, and so on, until the condition (i < 10) is true. ",
       "VideoTitles": "Loops For"
     }
   ]

@@ -1,18 +1,18 @@
 {
   "Items": [
     {
-      "Title": "Массивы в C#",
-      "Info": "     Итак, на данный момент мы знаем, что такое переменная, как задаётся её тип и как переменную инициализировать. Теперь, когда мы знаем какие виды циклов имеются в C# и в чём их отличия, можно детально изучать вопросы, связанные с использованием <color=green>массивов</color> C#. Допустим, у вам необходимо хранить в вашей программе 10 целочисленных значений. С одной стороны, если вам не лень вы можете объявить 10 переменных типа int, инициализировать их и работать. А что делать, если требуется 100 значений или 1000? Можно сделать проще — объявить переменную-массив и хранить в ней все значения. <color=green>Массив</color> – это структура данных для хранения элементом определенного типа, имеющая фиксированный размер. Доступ к элементам массива производится по числовому индексу. ",
+      "Title": "Arrays in C#",
+      "Info": "So, at the moment we know what a variable is, how its type is set, and how to initialize a variable. Now that we know what types of loops are available in C # and how they differ, we can study in detail issues related to using <color=green>arrays</color> C#.Suppose you need to store 10 integer values in your program.On the one hand, if you are not too lazy, you can declare 10 int variables, initialize them and work.And what to do if you want 100 values or 1000? You can make it simpler by declaring an array variable and storing all the values in it.<color=green>Array</color> is a fixed size data structure to hold an element of a particular type. array is produced by numeric index. ",
       "VideoTitles": " "
     },
     {
-      "Title": "Объявление массивов",
-      "Info": "    Для объявления массива, после указания типа его элементов, ставятся <color=green>квадратные скобки</color>:\n     int[] a1;\n     Перед использованием массив обязательно нужно <color=green>проинициализировать</color>, это можно сделать сразу, при его объявлении. Примеры объявления массивов на видео. ",
+      "Title": "Declaring arrays",
+      "Info": "To declare an array, after specifying the type of its elements, put <color=green>square brackets</color>:\n int[] a1;\n Before using the array, you must first <color=green>initialize</ color>, this can be done immediately, when it is declared. Examples of declaring arrays in the video. ",
       "VideoTitles": "m1"
     },
     {
-      "Title": "Доступ к элементам массива. Обход элементов массива.",
-      "Info": "     Для обращения к элементам массива используются <color=green>индексы</color>. Индекс представляет номер элемента в массиве, при этом нумерация начинается с нуля, поэтому индекс первого элемента будет равен 0, индекс четвертого элемента - 3. При этом, если вы укажете индекс больше, чем максимально возможный, то будет выброшено исключение.\n     Обход элементов массива можно производить с помощью <color=green>циклов for, foreach и while</color>, последний самый неудобный для работы с массивами, его мы рассматривать не будем. Если вы работаете с циклом for, то для указания верхней границы инкрементируемой переменной можно воспользоваться <color=green>свойством Length</color> у массива. Каждый массив имеет свойство Length, которое хранит длину массива. Преимущество цикла for состоит в том, что в нем вы можете модифицировать элементы массива. ",
+      "Title": "Accessing array elements. Traversing array elements.",
+      "Info": "<color=green>indexes</color> are used to refer to array elements. Index represents the number of the element in the array, numbering starts from zero, so the index of the first element will be 0, the index of the fourth element will be 3. In this case, if you specify an index greater than the maximum possible, an exception will be thrown.\n Array elements can be traversed using <color=green>for, foreach and while</color> loops, the last one is the most inconvenient for working with arrays , we will not consider it.If you are working with a for loop, then you can use the <color=green>Length</color> property of the array to specify the upper bound of the variable being incremented.Each array has a Length property that stores the length of the array.The advantage of the loop for is that you can modify array elements in it. ",
       "VideoTitles": "m2"
     }
   ]
