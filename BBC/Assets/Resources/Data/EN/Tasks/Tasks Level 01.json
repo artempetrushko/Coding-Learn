@@ -1,4 +1,4 @@
-   {
+{
   "Items": [
     {
       "ID": 1,
@@ -41,7 +41,7 @@
     },{
       "ID": 8,
       "Title": "Shared or not",
-      "Description": "  - You need to determine whether the transferred amount is divisible by 4 and return the remainder of the division (if the remainder is 0).\n Division with remainder: divisible%quotient",
+      "Description": "  - You need to determine whether the transferred amount is divisible by 4 and return the remainder of the division (if the remainder is 0).\n Remainder of the division: divisible%quotient",
       "StartCode": "private int Check(int value)\n{\n\n}"
     }
   ]
