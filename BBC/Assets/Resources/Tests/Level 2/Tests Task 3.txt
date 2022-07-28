@@ -18,7 +18,7 @@ public class Level1Task3
         CountModule.Free();
         Count(0.99);
         var value4 = CountModule.Counter==1;
-        return value1&&value4&&!value2&&!value3;
+        return value1&&value4&&value2&&value3;
     }
     
 }
