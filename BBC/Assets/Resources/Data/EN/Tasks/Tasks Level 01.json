@@ -31,7 +31,7 @@
     },{
       "ID": 6,
       "Title": "Count the number of glasses",
-      "Description": "  - You need to calculate the number of glasses needed to cook the dish.\n You are given the required volumes of flour and water, as well as the volume of the glass.\nTo round up, use the Math.Floor() method.\n",
+      "Description": "  - You need to calculate the number of glasses needed to cook the dish.\n You are given the required volumes of flour and water, as well as the volume of the glass.\nTo round up, use the Math.Ceiling() method.\n",
       "StartCode": "private void CountGlassCount(float flourV,float waterV,int glassV)\n{\n//Write your code here\nCook(waterGlassCount,flourGlassCount);\n}"
     },{
       "ID": 7,
