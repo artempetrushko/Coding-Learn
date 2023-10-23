@@ -23,11 +23,8 @@ namespace Scripts
 
         [Header("Скрипты UI-элементов")]
         [Tooltip("Скрипты UI-элементов для взаимодействия между собой")]
-        public PadMenuBehaviour PadMenuBehaviour;
         public TaskPanelBehaviour TaskPanelBehaviour;
 
-        [HideInInspector] public InventoryBehaviour InventoryBehaviour;
-        [HideInInspector] public ActionButtonBehaviour ActionButtonBehaviour;
         [HideInInspector] public PadMode PadMode;
 
         private void InitializeUiManager()

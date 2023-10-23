@@ -12,6 +12,15 @@ using System.IO;
 
 namespace Scripts
 {
+    public enum PadMode
+    {
+        Normal,
+        Development,
+        HandbookMainThemes,
+        HandbookSubThemes,
+        HandbookProgrammingInfo
+    }
+
     public class PadDevelopmentBehaviour : MonoBehaviour
     {
         [HideInInspector] public string StartCode;

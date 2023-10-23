@@ -33,10 +33,6 @@ namespace Scripts
         [Header("Текущая цель")]
         [HideInInspector] public string Target;
         [HideInInspector] public bool IsTaskStarted;
-        [HideInInspector] public List<InteractiveItem> ScriptItems = new List<InteractiveItem>();
-        [HideInInspector] public List<InteractiveItem> OtherItems = new List<InteractiveItem>();
-        [HideInInspector] public List<InteractiveItem> Notes = new List<InteractiveItem>();
-        [HideInInspector] public InteractivePuzzle CurrentInteractivePuzzle;
         #endregion
 
         [Header("Номер текущего задания")]

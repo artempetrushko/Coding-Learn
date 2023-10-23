@@ -36,7 +36,6 @@ namespace Scripts
 
         private GameManager gameManager;
         private UIManager uiManager;
-        private PlayerBehaviour playerBehaviour;
         private CodingTrainingInfo[] selectedCodingTrainingInfo;
         private int currentTrainingPageNumber;
         private bool isExtendedTaskPanelShown = false;
@@ -85,25 +84,6 @@ namespace Scripts
         {
             CreateCodingTrainingPages(themeNumber, subThemeNumber);
             OpenCodingTrainingPanel();
-        }
-
-        public IEnumerator ReturnToScene_COR()
-        {
-            //gameManager.IsTaskStarted = false;
-            gameManager.CurrentSceneCamera.GetComponent<PlayableDirector>().playableAsset = Resources.Load<PlayableAsset>("Timelines/Tasks/Level " + gameManager.SceneIndex + "/ReturnToScene_Task_" + gameManager.GetCurrentTaskNumber());
-            gameManager.CurrentSceneCamera.GetComponent<PlayableDirector>().Play();
-            yield return new WaitForSeconds(2f); 
-            var isTaskCompleted = true; //заглушка
-            if (!isTaskCompleted)
-            {
-                var activatedTrigger = uiManager.ActionButtonBehaviour.ActivatedTrigger.gameObject;
-                gameManager.Player.GetComponentInChildren<TriggersBehaviour>().ActivateTrigger_Any(activatedTrigger);
-                StartCoroutine(uiManager.ActionButtonBehaviour.ShowActionButton_COR());
-            }
-            playerBehaviour.UnfreezePlayer();
-            uiManager.PadMenuBehaviour.ShowIDEButton.interactable = false;
-            uiManager.ActionButtonBehaviour.IsPressed = false;
-            uiManager.PadMode = PadMode.Normal;
         }
 
         private IEnumerator FinishTask_COR(bool isTaskSkipped = false)
