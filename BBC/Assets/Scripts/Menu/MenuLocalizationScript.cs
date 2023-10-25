@@ -145,7 +145,7 @@ namespace Scripts
         private void OnEnable()
         {
             currentLanguage = SaveManager.SaveData.Language;
-            ChangeLanguage(0);
+            //ChangeLanguage(0);
         }
     }
 }

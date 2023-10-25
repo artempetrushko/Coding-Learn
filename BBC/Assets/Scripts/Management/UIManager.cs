@@ -12,10 +12,6 @@ namespace Scripts
         [Header("Интерфейс")]
         public Canvas Canvas;
 
-        [Header("Кнопки")]
-        [Tooltip("Кнопка выполнения действия (активация задания, смена сцены и т.д.)")]
-        public Button ActionButton;
-
         [Header("Чёрный экран (контейнер)")]
         public GameObject BlackScreen;
         [Header("Загрузочный экран")]
@@ -23,7 +19,7 @@ namespace Scripts
 
         [Header("Скрипты UI-элементов")]
         [Tooltip("Скрипты UI-элементов для взаимодействия между собой")]
-        public TaskPanelBehaviour TaskPanelBehaviour;
+        public TaskPanel TaskPanelBehaviour;
 
         [HideInInspector] public PadMode PadMode;
 

@@ -24,17 +24,6 @@ namespace Scripts
         [Tooltip("Ссылка на GameManager для доступа из других скриптов")]
         public static GameManager Instance = null;
 
-        #region Legacy
-        [Header("Игрок")]
-        [HideInInspector] public GameObject Player;
-        [Header("Текущие камеры")]
-        [HideInInspector] public Camera CurrentSceneCamera;
-        [HideInInspector] public Camera CurrentDialogCamera;
-        [Header("Текущая цель")]
-        [HideInInspector] public string Target;
-        [HideInInspector] public bool IsTaskStarted;
-        #endregion
-
         [Header("Номер текущего задания")]
         [SerializeField] private int currentTaskNumber = 1;        
         [Header("Количество доступных тем в справочнике")]
