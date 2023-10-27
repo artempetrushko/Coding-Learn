@@ -13,7 +13,7 @@ namespace Scripts
 
         public void Start()
         {
-            if (!PlayerPrefs.HasKey("musicvolume"))
+           /* if (!PlayerPrefs.HasKey("musicvolume"))
                 PlayerPrefs.SetInt("musicvolume", 5);
 
             if (!PlayerPrefs.HasKey("soundvolume"))
@@ -23,19 +23,19 @@ namespace Scripts
             soundSlider.value = PlayerPrefs.GetInt("soundvolume");
 
             musicSource.volume = (float)PlayerPrefs.GetInt("musicvolume") / 10;
-            soundSource.volume = (float)PlayerPrefs.GetInt("soundvolume") / 10;
+            soundSource.volume = (float)PlayerPrefs.GetInt("soundvolume") / 10;*/
         }
 
         public void Update()
         {
-            PlayerPrefs.SetInt("musicvolume", (int)musicSlider.value);
+            /*PlayerPrefs.SetInt("musicvolume", (int)musicSlider.value);
             PlayerPrefs.SetInt("soundvolume", (int)soundSlider.value);
 
             soundSliderText.text = soundSlider.value.ToString();
             musicSliderText.text = musicSlider.value.ToString();
 
             musicSource.volume = (float)PlayerPrefs.GetInt("musicvolume") / 10;
-            soundSource.volume = (float)PlayerPrefs.GetInt("soundvolume") / 10;
+            soundSource.volume = (float)PlayerPrefs.GetInt("soundvolume") / 10;*/
         }
     }
 }

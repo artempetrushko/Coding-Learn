@@ -9,7 +9,7 @@ namespace Scripts
     public class StatsManager : MonoBehaviour
     {
         [SerializeField]
-        private StatsPanel levelStatsPanel;
+        private StatsSectionView levelStatsPanel;
 
         private void Start()
         {
@@ -25,8 +25,9 @@ namespace Scripts
                 var levelNumber = i;
                 var levelCardThumbnail = Resources.Load<Sprite>("Load Screens/LoadScreen_Level" + levelNumber);
                 var completedAndTotalChallengesCount = GetCompletedAndTotalChallengesCount(levelNumber);
+                var taskStatsDatas = GetDetailedTasksStats(levelNumber);
                 statsCardDatas.Add(new LevelStatsCardData(levelCardThumbnail, completedAndTotalChallengesCount.Item1, completedAndTotalChallengesCount.Item2, 
-                                                                () => levelStatsPanel.ShowDetalizedLevelStats(levelNumber)));
+                                                                () => levelStatsPanel.ShowDetalizedLevelStats(taskStatsDatas)));
             }
             return statsCardDatas;
         }
@@ -46,6 +47,19 @@ namespace Scripts
         {
             var taskChallengesStatuses = SaveManager.SaveData.ChallengeCompletingStatuses[levelNumber - 1][taskNumber - 1];
             return taskChallengesStatuses.Where(status => status).Count();
+        }
+
+        private List<TaskStatsData> GetDetailedTasksStats(int levelNumber)
+        {
+            var taskChallengesInfos = SaveManager.SaveData.ChallengeCompletingStatuses[levelNumber - 1];
+            var taskStatsDatas = new List<TaskStatsData>();
+            for (var i = 1; i <= taskChallengesInfos.Count; i++)
+            {
+                taskStatsDatas.Add(new TaskStatsData(ResourcesData.TaskTexts[levelNumber - 1][i - 1].Title, 
+                                                     GetCompletedChallengesCount(levelNumber, i), 
+                                                     ResourcesData.TaskChallenges[levelNumber - 1][i - 1].Length));
+            }
+            return taskStatsDatas;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Scripts
         [SerializeField] private GameObject startBlackScreen;
         [SerializeField] private GameObject levelsPanel;
         [Space]
-        [SerializeField] private UnityEvent<int> onLevelsPanelCalled;
+        [SerializeField] private UnityEvent<int> onLevelsSectionCalled;
         [SerializeField] private UnityEvent onPlayButtonPressed;
         [SerializeField] private UnityEvent onStatsPanelHid;
 
@@ -44,7 +44,7 @@ namespace Scripts
         private IEnumerator GoTo_Settings_COR()
         {
             yield return StartCoroutine(HideMainMenu_COR());
-            yield return StartCoroutine(PlayTimeline_COR("ShowSettings"));
+            yield return StartCoroutine(PlayTimeline_COR("Show Settings"));
         }
 
         private IEnumerator GoTo_Levels_COR()
@@ -52,54 +52,54 @@ namespace Scripts
             levelsPanel.SetActive(true);
             ChangeLevelDataToDefault();
             yield return StartCoroutine(HideMainMenu_COR());         
-            yield return StartCoroutine(PlayTimeline_COR("ShowLevelsPanel"));
+            yield return StartCoroutine(PlayTimeline_COR("Show Levels Panel"));
         }
 
         private IEnumerator GoTo_Stats_COR()
         {
             yield return StartCoroutine(HideMainMenu_COR());
-            yield return StartCoroutine(PlayTimeline_COR("ShowLevelStatsPanel"));
+            yield return StartCoroutine(PlayTimeline_COR("Show Level Stats Panel"));
         }
 
         private IEnumerator ReturnToMainMenu_Settings_COR()
         {
-            yield return StartCoroutine(PlayTimeline_COR("HideSettings"));
+            yield return StartCoroutine(PlayTimeline_COR("Hide Settings"));
             yield return StartCoroutine(ShowMainMenu_COR());
         }
 
         private IEnumerator ReturnToMainMenu_Levels_COR()
         {
-            yield return StartCoroutine(PlayTimeline_COR("HideLevelsPanel"));
+            yield return StartCoroutine(PlayTimeline_COR("Hide Levels Panel"));
             yield return StartCoroutine(ShowMainMenu_COR());
         }
 
         private IEnumerator ReturnToMainMenu_Stats_COR()
         {
-            yield return StartCoroutine(PlayTimeline_COR("HideLevelStatsPanel"));
+            yield return StartCoroutine(PlayTimeline_COR("Hide Level Stats Panel"));
             onStatsPanelHid.Invoke();
             yield return StartCoroutine(ShowMainMenu_COR());
         }
 
         private IEnumerator ShowMainMenu_COR()
         {
-            yield return StartCoroutine(PlayTimeline_COR("ShowMainMenu"));
+            yield return StartCoroutine(PlayTimeline_COR("Show Main Menu"));
         }
 
         private IEnumerator HideMainMenu_COR()
         {
-            yield return StartCoroutine(PlayTimeline_COR("HideMainMenu"));
+            yield return StartCoroutine(PlayTimeline_COR("Hide Main Menu"));
         }
 
         private IEnumerator Start_Level_COR()
         {
-            yield return StartCoroutine(PlayTimeline_COR("ShowLoadScreen"));
+            yield return StartCoroutine(PlayTimeline_COR("Show Load Screen"));
             onPlayButtonPressed.Invoke();
         }
 
         private void ChangeLevelDataToDefault()
         {
             var defaultLevelNumber = Math.Max(1, SaveManager.SaveData.LevelNumberToResume);
-            onLevelsPanelCalled.Invoke(defaultLevelNumber);
+            onLevelsSectionCalled.Invoke(defaultLevelNumber);
         }
 
         private IEnumerator PlayStartAnimation_COR()
