@@ -14,13 +14,12 @@ namespace Scripts
     {
         public int ID;
         public string StartCode;
-        public string ImagesTitles;
     }
 
     [Serializable]
     public class Story
     {
-        public string Script;
+        public string Text;
     }
 
     [Serializable]

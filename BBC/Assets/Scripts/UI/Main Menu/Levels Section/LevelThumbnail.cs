@@ -11,9 +11,9 @@ namespace Scripts
         private Animator animator;
         private Image image;
 
-        public void Enable(Sprite thumbnail)
+        public void Enable(Sprite content)
         {
-            image.sprite = thumbnail;
+            image.sprite = content;
             animator.Play("Show Level Thumbnail");
         }
 

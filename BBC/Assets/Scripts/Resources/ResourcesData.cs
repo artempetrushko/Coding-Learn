@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Scripts
 {
@@ -17,27 +16,29 @@ namespace Scripts
         public static List<List<Challenges[]>> TaskChallenges { get; private set; }
         public static List<List<CodingTrainingInfo[]>> CodingTrainingInfos { get; private set; }
 
+        private string contentRootFolderPath = "Data/";
+
         public static CodingTrainingInfo[] GetCodingTrainingInfo(int themeNumber, int subThemeNumber) => CodingTrainingInfos[themeNumber][subThemeNumber];
 
-        private void LoadData()
+        public void LoadContentFromResources(int currentLevelNumber, Language selectedLanguage)
         {
-            var levelNumber = SceneManager.GetActiveScene().buildIndex;
-            var language = Language.EN;
-            var savedData = LoadSavedData();
-            if (savedData != null)
+            var localizedContentFolderPath = contentRootFolderPath + selectedLanguage.ToString();
+            StoryParts = LoadDataFromResources<Story>(localizedContentFolderPath + "/Story/Level " + currentLevelNumber);
+            Tips = LoadDataFromResources<TipMessage>(localizedContentFolderPath + "/Tips/Level " + currentLevelNumber);
+            TaskTexts = LoadDataFromResources<TaskText>(localizedContentFolderPath + "/Tasks");
+            ThemeTitles = GetResourcesAndWrite<ThemeTitle>(localizedContentFolderPath + "/Coding Training/Theme Titles");
+            TaskChallenges = LoadManyDataFromResources<Challenges>(localizedContentFolderPath + "/Challenges/Level ", currentLevelNumber);
+            CodingTrainingInfos = LoadManyDataFromResources<CodingTrainingInfo>(localizedContentFolderPath + "/Coding Training/Level ", currentLevelNumber);
+
+            Tests = new List<string>();
+            var files = Resources.LoadAll<TextAsset>("Tests/Level " + currentLevelNumber);
+            foreach (var file in files)
             {
-                language = savedData.Language;
+                Tests.Add(file.text);
             }
-            LoadStoryParts(language, levelNumber);
-            LoadChallenges(language, levelNumber);
-            LoadTips(language, levelNumber);
-            LoadTasks(language);
-            LoadThemeTitles(language);
-            LoadTests(levelNumber);
-            LoadCodingTrainingInfos(language, levelNumber);
         }
 
-        private void LoadData_MenuRequired()
+        /*private void LoadData_MenuRequired()
         {
             var language = Language.EN;
             var levelsCount = 1;
@@ -49,29 +50,7 @@ namespace Scripts
             }
             LoadChallenges(language, levelsCount);
             LoadTasks(language);
-        }
-
-        private void LoadStoryParts(Language currentLanguage, int levelNumber) => StoryParts = LoadDataFromResources<Story>("Data/" + currentLanguage.ToString() + "/Story/Level " + levelNumber);
-
-        private void LoadTips(Language currentLanguage, int levelNumber) => Tips = LoadDataFromResources<TipMessage>("Data/" + currentLanguage.ToString() + "/Tips/Level " + levelNumber);
-
-        private void LoadTasks(Language currentLanguage) => TaskTexts = LoadDataFromResources<TaskText>("Data/" + currentLanguage.ToString() + "/Tasks");
-
-        private void LoadThemeTitles(Language currentLanguage) => ThemeTitles = GetResourcesAndWrite<ThemeTitle>("Data/" + currentLanguage.ToString() + "/Coding Training/Theme Titles");
-
-        private void LoadChallenges(Language currentLanguage, int levelsCount) => TaskChallenges = LoadManyDataFromResources<Challenges>("Data/" + currentLanguage.ToString() + "/Challenges/Level ", levelsCount);
-
-        private void LoadCodingTrainingInfos(Language currentLanguage, int levelsCount) => CodingTrainingInfos = LoadManyDataFromResources<CodingTrainingInfo>("Data/" + currentLanguage.ToString() + "/Coding Training/Level ", levelsCount);
-
-        private void LoadTests(int levelNumber)
-        {
-            Tests = new List<string>();
-            var files = Resources.LoadAll<TextAsset>("Tests/Level " + levelNumber);
-            foreach (var file in files)
-            {
-                Tests.Add(file.text);
-            }
-        }
+        }*/
 
         private List<List<T[]>> LoadManyDataFromResources<T>(string commonFolderPath, int foldersCount)
         {
@@ -113,32 +92,6 @@ namespace Scripts
             {
                 Debug.LogError("Некорректный текст JSON в файле " + resources.name);
                 return null;
-            }
-        }
-
-        private SaveData LoadSavedData()
-        {
-            try
-            {
-                var serializedData = File.ReadAllText(Application.persistentDataPath + "/save.json");
-                return JSON.ParseString(serializedData).Deserialize<SaveData>();
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        private void Awake()
-        {
-            var sceneIndex = SceneManager.GetActiveScene().buildIndex;
-            if (sceneIndex == 0)
-            {
-                LoadData_MenuRequired();
-            }
-            else
-            {
-                LoadData();
             }
         }
     }

@@ -32,12 +32,12 @@ namespace Scripts
         {
             CreateDetalizedLevelStats(taskStatsDatas);
             backToPreviousPageButton.gameObject.SetActive(true);
-            GetComponent<Animator>().Play("ShowDetalizedLevelStats");
+            GetComponent<Animator>().Play("Show Detalized Level Stats");
         }
 
         public void ReturnToLevelStatsCards()
         {
-            GetComponent<Animator>().Play("HideDetalizedLevelStats");
+            GetComponent<Animator>().Play("Hide Detalized Level Stats");
             backToPreviousPageButton.gameObject.SetActive(false);
         }
 

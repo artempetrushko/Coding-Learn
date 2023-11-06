@@ -12,6 +12,12 @@ GameObject:
   - component: {fileID: 6539088680678338312}
   - component: {fileID: 1521588603279411650}
   - component: {fileID: 1521588603279411649}
+  - component: {fileID: 5363064862126088373}
+  - component: {fileID: 7955842500387971599}
+  - component: {fileID: -5739413121893373772}
+  - component: {fileID: -2679990804237974468}
+  - component: {fileID: -4741594969527248707}
+  - component: {fileID: -4564359685168556614}
   - component: {fileID: 3866970847807604050}
   - component: {fileID: 5888913198164409973}
   - component: {fileID: 6046453696553118226}
@@ -30,12 +36,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521588603279411648}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!320 &6539088680678338312
 PlayableDirector:
@@ -66,15 +73,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 483ef20c2fd125c4fbace1f0eb19b695, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  CurrentSceneCamera: {fileID: 0}
-  CurrentDialogCamera: {fileID: 0}
-  Target: 
-  IsTaskStarted: 0
-  ScriptItems: []
-  OtherItems: []
-  Notes: []
-  CurrentInteractivePuzzle: {fileID: 0}
   currentTaskNumber: 1
   availableThemesCount: 0
   timeToNextTip: 180
@@ -93,6 +91,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a8d657d812232f40834399f3a73114b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5363064862126088373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521588603279411648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fafe97f7d73a5a84d8b319c44007c30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7955842500387971599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521588603279411648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a0365e98e3cba443b256487c7f0d85e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-5739413121893373772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521588603279411648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 382dbead17728044890fc05d202a6cf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  codingTrainingSectionView: {fileID: 0}
+--- !u!114 &-2679990804237974468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521588603279411648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2150ac4656f4d854d9da48799f27ea45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-4741594969527248707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521588603279411648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e0e647c8c59ce49ae7742cb65978f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-4564359685168556614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521588603279411648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 063bd8c394e92d24198dbf05bd97d53d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PadMode: 0
 --- !u!114 &3866970847807604050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +185,7 @@ MonoBehaviour:
   exitToMenuPanelNoButton: {fileID: 0}
   loadBarText: {fileID: 0}
   showTipButtonText: {fileID: 0}
+  closeRewardingPanelButtonText: {fileID: 0}
 --- !u!114 &5888913198164409973
 MonoBehaviour:
   m_ObjectHideFlags: 0
