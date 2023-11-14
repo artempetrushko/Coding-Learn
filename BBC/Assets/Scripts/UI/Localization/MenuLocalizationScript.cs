@@ -98,7 +98,7 @@ namespace Scripts
                     break;
             }
             GetResourcesByCurrentLanguage();
-            SaveManager.ChangeLanguageData(currentLanguage);
+            //SaveManager.ChangeLanguageData(currentLanguage);
         }
 
         public void GetResourcesByCurrentLanguage()
