@@ -1,9 +1,0 @@
-{
-  "Items": [
-    {
-      "Title": "Access to dictionary elements",
-      "Info": "Note that each element in the dictionary represents a KeyValuePair<TKey, TValue> structure, where the TKey parameter represents the key type and the TValue parameter represents the element's value type. This structure provides Key and Value properties that can be used to get respectively, the key and value of an element in a dictionary.\n\nYou can get the value of a dictionary element by its key using square brackets, as in arrays and lists, or you can use a foreach loop to iterate. hardly suitable, since indexes can be not only numbers, and the dictionary itself is not an ordered collection.\n\nTo get the key and value of the dictionary element, the Key and Value properties are used, respectively.",
-      "VideoTitles": "7.7"
-    }
-  ]
-}

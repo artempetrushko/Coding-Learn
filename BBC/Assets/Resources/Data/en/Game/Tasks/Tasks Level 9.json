@@ -1,0 +1,132 @@
+[
+  {
+    "ID": 1,
+    "Title": "Bubble Sort",
+    "Description": "Need to sort the array using bubble sort",
+    "StartCode": "public static void BubbleSort(int[] array)\n{\n \n \n}\n",
+    "Tips": [
+
+    ],
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "Description": "Solve the task",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "Description": "Don't use the prompts",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "Description": "Spend no more than 5 minutes on the solution",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": 2,
+    "Title": "Comb sort",
+    "Description": "Need to sort array using comb sort",
+    "StartCode": "public static void CombSort(int[] array)\n{\n \n \n}\n",
+    "Tips": [
+
+    ],
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "Description": "Solve the task",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "Description": "Don't use the prompts",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "Description": "Spend no more than 5 minutes on the solution",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": 3,
+    "Title": "Quick Sort",
+    "Description": "Need to sort the array using quick sort",
+    "StartCode": "public static void QuickSort(int[] array)\n{\n \n \n}\n",
+    "Tips": [
+
+    ],
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "Description": "Solve the task",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "Description": "Don't use the prompts",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "Description": "Spend no more than 5 minutes on the solution",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": 4,
+    "Title": "Merge Sort",
+    "Description": "The array needs to be sorted using merge sort",
+    "StartCode": "public static void MergeSort(int[] array)\n{\n \n \n}\n",
+    "Tips": [
+
+    ],
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "Description": "Solve the task",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "Description": "Don't use the prompts",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "Description": "Spend no more than 5 minutes on the solution",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": 5,
+    "Title": "Binary Search",
+    "Description": "It is necessary to find the index of the required element using binary search. An array of strings sorted in lexicographic order is passed as input.",
+    "StartCode": "public int BinarySearch(string[] array, string desiredVal)\n{\n \n \n}\n",
+    "Tips": [
+
+    ],
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "Description": "Solve the task",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "Description": "Don't use the prompts",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "Description": "Spend no more than 5 minutes on the solution",
+        "CheckValue": 300
+      }
+    ]
+  }
+]

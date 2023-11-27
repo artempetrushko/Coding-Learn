@@ -1,0 +1,132 @@
+[
+  {
+    "ID": 1,
+    "Title": "Балистика",
+    "Description": "Необходимо реализовать метод, который расчитывает, какую начальную скорость нужно предать камню, чтобы он попал в цель. Координаты цели и угол броска передаются в метод. Константа g (ускорение свободного падения) уже объявлена.",
+    "StartCode": "public static double CountInitialVelocity(double x, double y, double angle)\n{\n    \n    \n}\n",
+    "Tips": [
+
+    ],
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "Description": "Решить задачу",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "Description": "Не использовать подсказки",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "Description": "Потратить на решение не более 5 минут",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": 2,
+    "Title": "Закрываются ли скобки",
+    "Description": "Необходимо проверить, закрываются ли скобки в строке. Каждый тип скобки должен закрываться парой такого же типа. Скобки могут быть:(){}[]<>.",
+    "StartCode": "public static bool CheckString(string str)\n{\n    \n    \n}\n",
+    "Tips": [
+
+    ],
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "Description": "Решить задачу",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "Description": "Не использовать подсказки",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "Description": "Потратить на решение не более 5 минут",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": 3,
+    "Title": "Шахматная партия",
+    "Description": "Необходимо проверить поставлен ли белому королю мат. Фигуры обозначаются:<первая буква цвета><первая буква названия><последняя буква названия>.\n Названия: Белый - white Черный - black Король - king Королева (ферзь) - queen Ладья - rook Слон -  bishop Конь - knight Пешка - pawn",
+    "StartCode": "public bool CheckSituation(string[,] firstTest)\n{\n    \n    \n}\n",
+    "Tips": [
+
+    ],
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "Description": "Решить задачу",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "Description": "Не использовать подсказки",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "Description": "Потратить на решение не более 5 минут",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": 4,
+    "Title": "Бой насмерть",
+    "Description": "Необходимо найти наиболее вероятное направление атаки. На вход передается последнее направление атаки(Direction -- enum, может быть Up,Down,Right,Left) , а так же список предидущих атак противника в виде кортежа<прошлый удар,текущий удар,количество подобных последовательностей>\n Чтобы получить элемент кортежа необходимо обратиться к полю Item<номер элемента> например Item1.",
+    "StartCode": "public Direction FindNextAttack(List<Tuple<Direction, Direction, int>> attacks, Direction attack)\n{\n    \n    \n}\n",
+    "Tips": [
+
+    ],
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "Description": "Решить задачу",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "Description": "Не использовать подсказки",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "Description": "Потратить на решение не более 5 минут",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": 5,
+    "Title": "Сортировка слиянием",
+    "Description": "Вам необходимо отсортировать массивы дисков и колец, выполнив рекурсивную сортировку слиянием.",
+    "StartCode": "public int[] MergeSort(int[] fitstArray, int[] secondArray)\n{\n    \n    \n}\n",
+    "Tips": [
+
+    ],
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "Description": "Решить задачу",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "Description": "Не использовать подсказки",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "Description": "Потратить на решение не более 5 минут",
+        "CheckValue": 300
+      }
+    ]
+  }
+]

@@ -7,28 +7,11 @@ namespace Scripts
 {
     public class ExitToMenuSectionView : MonoBehaviour
     {
-        private Animator animator;
-
-        public IEnumerator ShowContent_COR()
+        private ExitToMenuSectionAnimator animator;
+        
+        public IEnumerator ChangeVisibility_COR(bool isVisible)
         {
-            yield return StartCoroutine(PlayAnimation_COR("Show Exit To Menu Section"));
-        }
-
-        public IEnumerator HideContent_COR()
-        {
-            yield return StartCoroutine(PlayAnimation_COR("Show Exit To Menu Section"));
-        }
-
-        private void OnEnable()
-        {
-            animator = GetComponent<Animator>();
-        }
-
-        private IEnumerator PlayAnimation_COR(string animationName)
-        {
-            var clip = animator.runtimeAnimatorController.animationClips.Where(x => x.name == animationName).First();
-            animator.Play(clip.name);
-            yield return new WaitForSeconds(clip.length);
+            yield return StartCoroutine(animator.ChangeContentVisibility_COR(isVisible));
         }
     }
 }

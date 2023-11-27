@@ -309,7 +309,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1521588603279411648}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76dc89adebca27e4a96f1bc0f7d720d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b0fa98c50bd74f4384bef816e069e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5363064862126088373
@@ -344,8 +344,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   codingTrainingManager: {fileID: -5739413121893373772}
   devEnvironmentManager: {fileID: -2679990804237974468}
+  handbookManager: {fileID: -4741594969527248707}
+  taskSectionView: {fileID: 0}
   taskDescriptionSectionView: {fileID: 0}
-  animator: {fileID: 0}
 --- !u!114 &-5739413121893373772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,7 +405,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   padHandbookView: {fileID: 0}
-  availableThemesCount: 0
   onSubThemeButtonPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -420,4 +420,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0365e98e3cba443b256487c7f0d85e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  padChallengesScreenView: {fileID: 0}
   rewardingSectionView: {fileID: 0}

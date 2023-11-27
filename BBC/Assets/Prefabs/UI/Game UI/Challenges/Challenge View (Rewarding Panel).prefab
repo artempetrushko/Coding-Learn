@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5820482361025189414}
   - component: {fileID: 6245760835132448047}
   - component: {fileID: 8252047526746140639}
+  - component: {fileID: 1091495117397305153}
   m_Layer: 5
   m_Name: Challenge View (Rewarding Panel)
   m_TagString: Untagged
@@ -132,6 +133,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fa4489a29d78ba49bb1dd9ebf472fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  challengeDescriptionText: {fileID: 416916919738815103}
+  animator: {fileID: 1091495117397305153}
+--- !u!114 &1091495117397305153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359811677311395879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b5ad14500f8214596cf3c563789bcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  challengeDescriptionText: {fileID: 416916919738815103}
+  starFillingImage: {fileID: 4641394355683931772}
 --- !u!1 &3295365975419781984
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,6 +404,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b688f8cbb271e5f43a4b8d8de7466009, type: 3}
+--- !u!114 &4641394355683931772 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3423969142212694750, guid: b688f8cbb271e5f43a4b8d8de7466009, type: 3}
+  m_PrefabInstance: {fileID: 8065360173288891554}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6556369842664531038 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3823852930074525948, guid: b688f8cbb271e5f43a4b8d8de7466009, type: 3}

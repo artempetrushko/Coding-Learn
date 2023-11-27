@@ -1,0 +1,136 @@
+[
+  {
+    "ID": 1,
+    "Title": "Подсчет цветочков",
+    "Description": "  - Вам необходимо реализовать метод для подсчета количества цветов.\n     На вход передаётся количество цветов - результат предыдущих подсчётов. Нужно вернуть это значение, увеличенное на единицу.",
+    "StartCode": "public int CountFlower(int oldCount)\n{\n    \n    \n}\n",
+    "Tips": [
+      "Просто увеличь значение oldCount на 1 и верни его! :)"
+    ],
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "Description": "Решить задачу",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "Description": "Не использовать подсказки",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "Description": "Потратить на решение не более 5 минут",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": 2,
+    "Title": "Правильное название",
+    "Description": "  - Вам передается 4 переменные с разными именами. Необходимо выбрать и вернуть значение переменной с наиболее правильным (с точки зрения код-стайла C#) именем.",
+    "StartCode": "public int CorrectName(int mushroom123,int MUSHROOM,int redMushroom, int mushroomMushroom)\n{\n    \n    \n}\n",
+    "Tips": [
+      "Если нужно, прочитай в справочнике про то, как лучше называть переменные."
+    ],
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "Description": "Решить задачу",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "Description": "Не использовать подсказки",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "Description": "Потратить на решение не более 5 минут",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": 3,
+    "Title": "Округление",
+    "Description": "  - Вам необходимо посчитать количество яблок в корзинах.\n     Среди фруктов есть очень маленькие, которые было бы правильно считать за часть яблока, но к сожалению, модуль, который вы используете для подсчетов, принимает только целые числа. Округлите значение до целого с помощью Math.Round() и приведите его к целочисленному типу, используя (int).\n     Используйте CountModule.Count(int count) для занесения результатов. ",
+    "StartCode": "public void Count(double fullness)\n{\n    \n    \n}\n",
+    "Tips": [
+      "Объяви новую переменную и присвой ей значение Math.Round(...).",
+      "Вместо многоточия впиши аргумент текущего метода.",
+      "Используй явное привидение, чтобы значение твоей переменной было типа int.",
+      "В конце вызови метод CountModule.Count и передай ему как аргумент свою переменную."
+    ],
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "Description": "Решить задачу",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "Description": "Не использовать подсказки",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "Description": "Потратить на решение не более 5 минут",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": 4,
+    "Title": "Из двоичной в десятичную.",
+    "Description": "  - Вам необходимо реализовать метод, который обрабатывает текущую цифру двоичного числа, для перевода его в десятичное. Вам передается цифра двоичного числа(digit) и его порядковый номер(number).",
+    "StartCode": "public int Process(int digit,int number)\n{\n    \n    \n}\n",
+    "Tips": [
+      "В справочнике есть алгоритм перевода числа в другую систему счисления. Тебе нужно перевести лишь одну цифру."
+    ],
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "Description": "Решить задачу",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "Description": "Не использовать подсказки",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "Description": "Потратить на решение не более 5 минут",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": 5,
+    "Title": "Избавиться от бревна",
+    "Description": "  - Вам предстоит реализовать метод, убирающий препятствие в виде бревна. Сделать это можно с помощью методов последовательного использования методов TakeLog, MoveLog, PutLog.\n     Каждый из них принимает объект(бревно), над которым нужно провести манипуляцию.",
+    "StartCode": "public void RemoveLog(object log)\n{\n    \n    \n}\n",
+    "Tips": [
+      "По очереди вызови каждый из методов.",
+      "Каждому как аргумент передай log."
+    ],
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "Description": "Решить задачу",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "Description": "Не использовать подсказки",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "Description": "Потратить на решение не более 5 минут",
+        "CheckValue": 300
+      }
+    ]
+  }
+]

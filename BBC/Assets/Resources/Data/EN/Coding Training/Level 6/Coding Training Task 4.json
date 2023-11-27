@@ -1,9 +1,0 @@
-{
-  "Items": [
-    {
-      "Title": "String as character set",
-      "Info": "Because a string stores a collection of characters, it defines an indexer to access those characters. By using an indexer, we can refer to a string as an array of characters and get any of its characters by index.\n\nEach character is then has its own case: lowercase or uppercase.If the letter is capitalized, then its case is uppercase, and if not, it is lowercase.Digits and special characters can only have lowercase.\nIt can be checked by calling the IsUpper() method on char.\n What else can you do with strings? For example, add them. Visually, this is done in exactly the same way as adding numeric variables: through the '+' sign. The result of the addition will be a new string.",
-      "VideoTitles": "6.3"
-    }
-  ]
-}

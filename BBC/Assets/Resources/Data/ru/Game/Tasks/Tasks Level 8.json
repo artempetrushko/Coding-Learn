@@ -1,0 +1,158 @@
+[
+  {
+    "ID": 1,
+    "Title": "Возвести в степень",
+    "Description": "Необходимо рекурсивно возвести число в степень и взять 4 цифры после запятой и вернуть их в списке",
+    "StartCode": "public List<int> PowAndTake(double value, int pow)\n{\n    \n    \n}\n",
+    "Tips": [
+
+    ],
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "Description": "Решить задачу",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "Description": "Не использовать подсказки",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "Description": "Потратить на решение не более 5 минут",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": 2,
+    "Title": "Факториал",
+    "Description": "Необходимо вернуть факториал числа n",
+    "StartCode": "public BigInteger Factorial(BigInteger n)\n{\n    \n    \n}\n",
+    "Tips": [
+
+    ],
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "Description": "Решить задачу",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "Description": "Не использовать подсказки",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "Description": "Потратить на решение не более 5 минут",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": 3,
+    "Title": "Фибоначчи",
+    "Description": "Необходимо вернуть n-ое число Фибоначчи",
+    "StartCode": "public BigInteger Fibonacci(BigInteger n)\n{\n    \n    \n}\n",
+    "Tips": [
+
+    ],
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "Description": "Решить задачу",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "Description": "Не использовать подсказки",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "Description": "Потратить на решение не более 5 минут",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": 4,
+    "Title": "Простые числа",
+    "Description": "Необходимо проверить является ли число простым",
+    "StartCode": "public bool IsPrime(uint number)\n{\n    \n    \n}\n",
+    "Tips": [
+
+    ],
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "Description": "Решить задачу",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "Description": "Не использовать подсказки",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "Description": "Потратить на решение не более 5 минут",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": 5,
+    "Title": "Палиндром",
+    "Description": "Необходимо проверить является ли строка палиндромом",
+    "StartCode": "public bool Palindrom(string word)(string[] text)\n{\n    \n    \n}\n",
+    "Tips": [
+
+    ],
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "Description": "Решить задачу",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "Description": "Не использовать подсказки",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "Description": "Потратить на решение не более 5 минут",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": 6,
+    "Title": "Последовательность",
+    "Description": "Необходимо вернуть последовательность, где n встречается n раз",
+    "StartCode": "public List<int> GetSequence(int n)\n{\n    \n    \n}\n",
+    "Tips": [
+
+    ],
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "Description": "Решить задачу",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "Description": "Не использовать подсказки",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "Description": "Потратить на решение не более 5 минут",
+        "CheckValue": 300
+      }
+    ]
+  }
+]

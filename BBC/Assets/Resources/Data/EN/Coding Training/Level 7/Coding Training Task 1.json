@@ -1,9 +1,0 @@
-{
-  "Items": [
-    {
-      "Title": "Initializing a List Collection",
-      "Info": "Although there are arrays in the C# language that store sets of objects of the same type, it is not always convenient to work with them. For example, an array stores a fixed number of objects, but what if we do not know in advance how many objects we need. And in this case, it is much more convenient to use collections.Another advantage of collections is that some of them implement standard data structures, such as stack, queue, dictionary, which can be useful for solving various special tasks.Most of the collection classes are contained in the namespace System.Collections.Generic.\n\nThe List<T> class from the System.Collections.Generic namespace represents the simplest list of objects of the same type.The List class is typed by the type whose objects will be stored in the list.\n\nAn instance of the List class can be created as follows :\nList<variable type> list_name = new List<variable type>();\n\nThis creates an empty collection, but you can immediately fill it with the necessary set elements by specifying them in curly braces, or by passing another list or array as a parameter.",
-      "VideoTitles": "7.1"
-    }
-  ]
-}
