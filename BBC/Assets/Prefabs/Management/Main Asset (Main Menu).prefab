@@ -92,6 +92,7 @@ MonoBehaviour:
   - LocalizedTextReference: Main Menu Settings Button
     LinkedSection: {fileID: 183553500082925368}
   levelsManager: {fileID: 645008090352811079}
+  statsManager: {fileID: 5671055109694567506}
   saveManager: {fileID: 1972732636517427528}
   contentManager: {fileID: 6123237475107596564}
 --- !u!114 &645008090352811079
@@ -708,7 +709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3670640926107437737, guid: 22b24259848a4fb4f987c5637b1ed8c2, type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3770981147351182624, guid: 22b24259848a4fb4f987c5637b1ed8c2, type: 3}
       propertyPath: m_AnchorMax.y
@@ -820,7 +821,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4323684529887395678, guid: 22b24259848a4fb4f987c5637b1ed8c2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1140.0969
+      value: 0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 4497679312687429929, guid: 22b24259848a4fb4f987c5637b1ed8c2, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1180,7 +1181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7010279395573901470, guid: 22b24259848a4fb4f987c5637b1ed8c2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1140.0999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7032781560957400573, guid: 22b24259848a4fb4f987c5637b1ed8c2, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1592,7 +1593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9062861357499753451, guid: 22b24259848a4fb4f987c5637b1ed8c2, type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9072070545895206705, guid: 22b24259848a4fb4f987c5637b1ed8c2, type: 3}
       propertyPath: m_AnchoredPosition.x

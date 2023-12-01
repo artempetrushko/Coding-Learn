@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Video;
 
 namespace Scripts
 {
@@ -11,8 +9,6 @@ namespace Scripts
     {
         [SerializeField]
         private CodingTrainingSectionView codingTrainingSectionView;
-        [Space, SerializeField]
-        private string trainingVideoResourcesFolderPath = "Video/";
         [Space, SerializeField]
         private UnityEvent codingTrainingSectionDisabled;
 
@@ -52,9 +48,9 @@ namespace Scripts
         private void ShowTrainingContentPart(int trainingPartNumber)
         {
             var selectedCodingTrainingPart = currentCodingTrainingInfos[trainingPartNumber - 1];
-            if (selectedCodingTrainingPart.VideoTitle != "")
+            if (!string.IsNullOrEmpty(selectedCodingTrainingPart.VideoTitle))
             {
-                codingTrainingSectionView.CreateTrainingTextVideoPage(selectedCodingTrainingPart.Title, selectedCodingTrainingPart.Info, Resources.Load<VideoClip>(trainingVideoResourcesFolderPath + selectedCodingTrainingPart.VideoTitle), ShowingMode);
+                codingTrainingSectionView.CreateTrainingTextVideoPage(selectedCodingTrainingPart.Title, selectedCodingTrainingPart.Info, GameContentManager.GetTrainingVideo(selectedCodingTrainingPart.VideoTitle), ShowingMode);
             }
             else
             {

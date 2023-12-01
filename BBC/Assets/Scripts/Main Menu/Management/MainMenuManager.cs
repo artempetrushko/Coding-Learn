@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Localization.Settings;
 
 namespace Scripts
 {
@@ -13,6 +12,8 @@ namespace Scripts
         private List<MainMenuButtonData> buttonDatas = new List<MainMenuButtonData>();
         [Space, SerializeField]
         private LevelsManager levelsManager;
+        [SerializeField]
+        private StatsManager statsManager;
         [SerializeField]
         private MainMenuSaveManager saveManager;
         [SerializeField]
@@ -42,12 +43,13 @@ namespace Scripts
 
         private void Awake()
         {
-            saveManager.LoadOrCreateSaveData();
+            saveManager.LoadOrCreateSaveData(levelsManager.LevelsCount);
             contentManager.LoadContentFromResources(levelsManager.LevelsCount);
         }
 
         private void Start()
         {
+            statsManager.CreateLevelStatsCards();
             mainMenuSectionView.CreateButtons(buttonDatas, ShowSelectedSection);
             StartCoroutine(mainMenuSectionView.PlayStartAnimation_COR());
         }

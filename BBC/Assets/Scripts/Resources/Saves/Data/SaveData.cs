@@ -9,10 +9,8 @@ namespace Scripts
     public class SaveData
     {
         public string LanguageCode;
-
-        public int LevelNumberToResume;
+        public int TotalLevelsCount;
         public int LastAvailableLevelNumber;
-
-        public List<List<List<bool>>> ChallengeCompletingStatuses;
+        public LevelChallengesResults[] AllChallengeStatuses;
     }
 }

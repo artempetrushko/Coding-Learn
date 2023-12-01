@@ -12,22 +12,47 @@ namespace Scripts
         private DevEnvironmentManager devEnvironmentManager;
         [SerializeField]
         private HandbookManager handbookManager;
+        [SerializeField]
+        private ChallengesManager challengesManager;
         [Space, SerializeField]
         private TaskSectionView taskSectionView;
         [SerializeField]
         private TaskDescriptionSectionView taskDescriptionSectionView;
 
         private int currentTaskNumber;
+        private bool isTaskStarted;
 
-        public void StartNewTask()
+        public void LoadNewTask()
         {
             currentTaskNumber++;
             SetTaskInfo();
             handbookManager.SetData(currentTaskNumber);
+            challengesManager.SetChallengeInfos(currentTaskNumber);
             codingTrainingManager.ShowTrainingContent(GameManager.CurrentLevelNumber, currentTaskNumber);
         }
 
-        public void ShowTaskContent() => StartCoroutine(taskSectionView.ChangeMainContentVisibility_COR(true));
+        public void ShowTaskContent()
+        {
+            if (!isTaskStarted)
+            {
+                isTaskStarted = true;
+                challengesManager.StartChallengeTimer();
+            }
+            StartCoroutine(taskSectionView.ChangeMainContentVisibility_COR(true));
+        }
+
+        public void ReturnToCodingTraining(int levelNumber, int taskNumber) => StartCoroutine(ReturnToCodingTraining_COR(levelNumber, taskNumber));
+
+        public void FinishTask() => StartCoroutine(ProcessTaskResults_COR(false));
+
+        public void SkipTask() => StartCoroutine(ProcessTaskResults_COR(true));
+
+        private IEnumerator ProcessTaskResults_COR(bool isTaskSkipped)
+        {
+            isTaskStarted = false;
+            yield return StartCoroutine(taskSectionView.ChangeMainContentVisibility_COR(false));
+            challengesManager.CheckChallengesCompleting(currentTaskNumber, isTaskSkipped);
+        }
 
         private void SetTaskInfo()
         {
@@ -35,6 +60,12 @@ namespace Scripts
             var currentTaskTests = GameContentManager.GetTests(currentTaskNumber);
             taskDescriptionSectionView.SetContent(currentTaskInfo.Title, currentTaskInfo.Description);
             devEnvironmentManager.SetCurrentTaskInfo(currentTaskInfo.StartCode, currentTaskTests);
+        }
+
+        private IEnumerator ReturnToCodingTraining_COR(int levelNumber, int taskNumber)
+        {
+            yield return StartCoroutine(taskSectionView.ChangeMainContentVisibility_COR(false));
+            codingTrainingManager.ShowTrainingContent(levelNumber, taskNumber);
         }
     }
 }

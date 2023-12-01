@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
 namespace Scripts
 {
@@ -11,24 +13,15 @@ namespace Scripts
         private StorytellingSectionView storytellingSectionView;
         [SerializeField]
         private PlayableDirector playableDirector;
-        [Space, SerializeField] 
-        private float totalTextAppearingTime = 5;
-        [SerializeField] 
-        private float cutsceneFrameLength = 7;
-        [SerializeField] 
-        private float transitionToNextFrameTime = 1.2f;
         [SerializeField]
-        private List<PlayableAsset> cutscenes = new List<PlayableAsset>();
+        private List<TimelineAsset> cutscenes = new List<TimelineAsset>();
 
         private StoryInfo storyPart;
         private int currentCutsceneNumber;
         private int currentStoryPartNumber;
+        private double correctiveTimeOffset = 0.2;
 
-        public void PlayFirstCutscene()
-        {
-            currentCutsceneNumber = 1;
-            PlayCutscene(currentCutsceneNumber);
-        }
+        public void PlayFirstCutscene() => PlayCutscene(1);
 
         public void PlayNextCutscene() => PlayCutscene(++currentCutsceneNumber);    
 
@@ -39,31 +32,43 @@ namespace Scripts
             storytellingSectionView.SetNextStoryPartButtonActive(false);
         }
 
-        public void ShowFirstStoryPart()
-        {
-            currentStoryPartNumber = 1;
-            storytellingSectionView.ShowStoryText(storyPart.Articles[currentStoryPartNumber - 1], totalTextAppearingTime);
-        }
+        public void ShowFirstStoryPart() => ShowNewStoryPart(1);
 
-        public void ShowNextStoryPart()
-        {
-            currentStoryPartNumber++;
-            storytellingSectionView.ShowStoryText(storyPart.Articles[currentStoryPartNumber - 1], totalTextAppearingTime);
-        }      
+        public void ShowNextStoryPart() => ShowNewStoryPart(++currentStoryPartNumber);     
 
         public void SkipCurrentStoryPart()
         {
             storytellingSectionView.SkipStoryTextShowing();
-            ChangeCutsceneCurrentTime(currentStoryPartNumber * cutsceneFrameLength - transitionToNextFrameTime);
+            playableDirector.time = GetCurrentClipStopTime();
         }
 
         private void PlayCutscene(int cutsceneNumber)
         {
-            storyPart = GameContentManager.GetStoryInfo(cutsceneNumber);
-            ChangeCutsceneCurrentTime(0);
-            playableDirector.Play(cutscenes[cutsceneNumber - 1]);
+            currentCutsceneNumber = cutsceneNumber;
+            storyPart = GameContentManager.GetStoryInfo(currentCutsceneNumber);
+            playableDirector.time = 0;
+            playableDirector.Play(cutscenes[currentCutsceneNumber - 1]);
         }
 
-        private void ChangeCutsceneCurrentTime(float newTime) => playableDirector.time = newTime;
+        private void ShowNewStoryPart(int storyPartNumber)
+        {
+            currentStoryPartNumber = storyPartNumber;
+            var totalTextAppearingTime = (float)(GetCurrentClipStopTime() - playableDirector.time);
+            storytellingSectionView.ShowStoryText(storyPart.Articles[currentStoryPartNumber - 1], totalTextAppearingTime);
+        }
+
+        private double GetCurrentClipStopTime()
+        {
+            var currentCameraClip = GetCurrentCutsceneTrackClips(1)[currentStoryPartNumber - 1];
+            var blackScreenClips = GetCurrentCutsceneTrackClips(2);
+            if (currentStoryPartNumber * 2 < blackScreenClips.Count)
+            {
+                var blackScreenShowDuration = blackScreenClips[currentStoryPartNumber * 2 - 1].duration;
+                return currentCameraClip.end - blackScreenShowDuration - correctiveTimeOffset;
+            }
+            return currentCameraClip.end - currentCameraClip.blendOutDuration - correctiveTimeOffset;
+        }
+
+        private List<TimelineClip> GetCurrentCutsceneTrackClips(int trackIndex) => cutscenes[currentCutsceneNumber - 1].GetOutputTrack(trackIndex).GetClips().ToList();
     }
 }

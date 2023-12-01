@@ -1,6 +1,4 @@
-﻿using DG.Tweening;
-using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,7 +8,7 @@ namespace Scripts
     public class GameManager : MonoBehaviour
     {
         [SerializeField]
-        private SaveManager saveManager;
+        private GameSaveManager saveManager;
         [SerializeField]
         private GameContentManager contentManager;
         [SerializeField]
@@ -21,7 +19,7 @@ namespace Scripts
         private void Awake()
         {
             CurrentLevelNumber = SceneManager.GetActiveScene().buildIndex;
-            saveManager.LoadOrCreateSaveData();
+            saveManager.LoadSaveData();
             contentManager.LoadContentFromResources(CurrentLevelNumber);
         }
 

@@ -1,11 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using RoslynCSharp.Compiler;
 
 namespace Scripts
 {
@@ -33,9 +31,9 @@ namespace Scripts
 
         public void SetDefaultCode(string defaultCode) => codeField.text = defaultCode;
 
-        public void SetAndShowCompilationErrorsInfo(List<CompilationError> errors)
+        public void SetAndShowCompilationErrorsInfo(List<(int line, int column, string message)> errors)
         {
-            var errorsMessage = string.Join("\n", errors.Select(error => string.Format("<color=red>Error</color> ({0}, {1}): {2}", error.SourceLine - 5, error.SourceColumn, error.Message)));
+            var errorsMessage = string.Join("\n", errors.Select(error => string.Format("<color=red>Error</color> ({0}, {1}): {2}", error.line - 5, error.column, error.message)));
             StartCoroutine(ShowErrors_COR(errorsMessage));
         }
 

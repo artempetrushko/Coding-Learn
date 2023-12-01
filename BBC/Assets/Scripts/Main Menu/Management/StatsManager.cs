@@ -11,14 +11,14 @@ namespace Scripts
         [SerializeField]
         private StatsSectionView statsSectionView;
 
-        private void Start()
+        public void CreateLevelStatsCards()
         {
             statsSectionView.CreateLevelStatsCards(GetAllStatsCardDatas());
         }
 
         private List<LevelStatsCardData> GetAllStatsCardDatas()
         {
-            var availableLevelsCount = MainMenuSaveManager.SaveData.ChallengeCompletingStatuses.Count;
+            var availableLevelsCount = MainMenuSaveManager.SaveData.AllChallengeStatuses.Length;
             var statsCardDatas = new List<LevelStatsCardData>();
             for (var i = 1; i <= availableLevelsCount; i++)
             {
@@ -35,22 +35,23 @@ namespace Scripts
         private (int totalCount, int completedCount) GetLevelChallengesData(int levelNumber)
         {
             var totalChallengesCount = MainMenuContentManager.GetLevelTaskInfos(levelNumber).Sum(task => task.ChallengeInfos.Length);
-            var completedChallengesCount = MainMenuSaveManager.SaveData.ChallengeCompletingStatuses[levelNumber - 1].Sum(taskChallengeStatuses => taskChallengeStatuses.Where(status => status).Count());
+            var completedChallengesCount = MainMenuSaveManager.SaveData.AllChallengeStatuses[levelNumber - 1].TasksChallengesResults
+                .Sum(taskChallengeStatuses => taskChallengeStatuses.ChallengeCompletingStatuses.Count(status => status));
             return (totalChallengesCount, completedChallengesCount);
         }
 
         private (int totalCount, int completedCount) GetTaskChallengesData(int levelNumber, int taskNumber)
         {
             var totalChallengesCount = MainMenuContentManager.GetTaskInfo(levelNumber, taskNumber).ChallengeInfos.Length;
-            var completedChallengesCount = MainMenuSaveManager.SaveData.ChallengeCompletingStatuses[levelNumber - 1][taskNumber - 1].Where(status => status).Count();
+            var completedChallengesCount = MainMenuSaveManager.SaveData.AllChallengeStatuses[levelNumber - 1].TasksChallengesResults[taskNumber - 1].ChallengeCompletingStatuses.Count(status => status);
             return (totalChallengesCount, completedChallengesCount);
         }
 
         private List<TaskStatsData> GetDetailedTasksStats(int levelNumber)
         {
-            var taskChallengesInfos = MainMenuSaveManager.SaveData.ChallengeCompletingStatuses[levelNumber - 1];
+            var taskChallengesInfos = MainMenuSaveManager.SaveData.AllChallengeStatuses[levelNumber - 1];
             var taskStatsDatas = new List<TaskStatsData>();
-            for (var i = 1; i <= taskChallengesInfos.Count; i++)
+            for (var i = 1; i <= taskChallengesInfos.TasksChallengesResults.Length; i++)
             {
                 var taskChallengesData = GetTaskChallengesData(levelNumber, i);
                 taskStatsDatas.Add(new TaskStatsData(MainMenuContentManager.GetTaskInfo(levelNumber, i).Title, taskChallengesData.completedCount, taskChallengesData.totalCount));

@@ -27,44 +27,37 @@ namespace Scripts
             }
         }
 
+        public void ShowHandbookView() => StartCoroutine(padHandbookView.ChangeVisibility_COR(true));
+
+        public void HideHandbookView() => StartCoroutine(padHandbookView.ChangeVisibility_COR(false));
+
+        public void ReturnToMainThemeButtons() => StartCoroutine(padHandbookView.ReturnToMainThemeButtons_COR());
+
         private void CreateMainThemeButtons()
         {
             var handbookMainThemes = GameContentManager.GetFirstCodingTrainingThemes(GameManager.CurrentLevelNumber)
                 .Select(theme => theme.Title)
                 .ToList();
-            padHandbookView.CreateThemeButtons(TrainingThemeType.MainTheme, handbookMainThemes, CreateSubThemeButtons);
+            padHandbookView.CreateThemeButtons(TrainingThemeType.MainTheme, handbookMainThemes, GoToSubThemeButtons);
         }
 
-
-
-        //public void OpenHandbook() => StartCoroutine(padHandbookView.OpenHandbook());
-
-        //public void CloseHandbook() => StartCoroutine(CloseHandbook_COR());
-
-        private void GoToSubThemeButtons(int mainThemeNumber) => StartCoroutine(GoToSubThemeButtons_COR(mainThemeNumber));
-
-        private IEnumerator GoToSubThemeButtons_COR(int mainThemeNumber)
+        private void GoToSubThemeButtons(int mainThemeNumber)
         {
-            /*selectedMainThemeNumber = mainThemeNumber;
-            var subThemes = GameContentManager.CodingTrainingInfos[selectedMainThemeNumber - 1]
-                .Select(info => info.)
+            selectedMainThemeNumber = mainThemeNumber;
+            var subThemes = GameContentManager.GetCodingTrainingTheme(selectedMainThemeNumber).SubThemes
+                .Select(info => info.Title)
                 .ToList();
-            padHandbookView.CreateThemeButtons(TrainingThemeType.SubTheme, subThemes, ShowSubThemeContent);*/
-            yield break;
-        }
-
-
-        private void CreateSubThemeButtons(int mainThemeNumber)
-        {
-            /*var subThemes = GameContentManager.CodingTrainingInfos[mainThemeNumber - 1]
-                .Select(info => info.)
-                .ToList();
-            padHandbookView.CreateThemeButtons(TrainingThemeType.SubTheme, subThemes, ShowSubThemeContent);*/
+            if (selectedMainThemeNumber == GameManager.CurrentLevelNumber)
+            {
+                subThemes = subThemes.Take(currentSubThemeNumber).ToList();
+            }
+            padHandbookView.CreateThemeButtons(TrainingThemeType.SubTheme, subThemes, ShowSubThemeContent);
+            StartCoroutine(padHandbookView.ShowSubThemeButtons_COR());
         }
 
         private void ShowSubThemeContent(int subThemeNumber)
         {
-
+            onSubThemeButtonPressed.Invoke(selectedMainThemeNumber, subThemeNumber);
         }
     }
 }

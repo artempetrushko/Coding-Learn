@@ -12,24 +12,38 @@ namespace Scripts
         [SerializeField]
         private RewardingSectionView rewardingSectionView;
 
-        private int challengeCompletingTime;
+        private TaskChallengesResults currentTaskChallengesResults;
         private bool isTimerStopped;
+        private int challengeCompletingTime;
+        private int usedTipsCount;
 
         public void SetChallengeInfos(int currentTaskNumber)
         {
-            var challengeInfos = GameContentManager.GetTaskInfo(currentTaskNumber).ChallengeInfos
-                .Select(challenge => challenge.Description)
-                .ToList();
-            padChallengesScreenView.CreateNewChallengeViews(challengeInfos);
+            var challengeInfos = GameContentManager.GetTaskInfo(currentTaskNumber).ChallengeInfos;
+            var challengeDescriptions = challengeInfos.Select(challenge => challenge.Description).ToList();
+            padChallengesScreenView.CreateNewChallengeViews(challengeDescriptions);
+
+            currentTaskChallengesResults = GameSaveManager.GetCurrentTaskChallengesResults(currentTaskNumber);
+            currentTaskChallengesResults.ChallengeCompletingStatuses ??= new bool[challengeInfos.Length];
+            usedTipsCount = 0;
         }
 
-        public void CheckChallengesCompleting(int currentTaskNumber, bool isTaskSkipped = false)
+        public void ShowChallengesScreen() => padChallengesScreenView.ChangeVisibility(true);
+
+        public void HideChallengesScreen() => padChallengesScreenView.ChangeVisibility(false);
+
+        public void CheckChallengesCompleting(int currentTaskNumber, bool isTaskSkipped)
         {
             var challengeDatas = GameContentManager.GetTaskInfo(currentTaskNumber).ChallengeInfos
                                     .Select(challenge => (description: challenge.Description, isCompleted: !isTaskSkipped && IsChallengeCompleting(challenge)))
                                     .ToList();
-            //SaveManager.SaveTemporaryChallengeProgress(i + 1, isChallengeCompleted);
-
+            for (var i = 0; i < currentTaskChallengesResults.ChallengeCompletingStatuses.Length; i++)
+            {
+                if (challengeDatas[i].isCompleted && !currentTaskChallengesResults.ChallengeCompletingStatuses[i])
+                {
+                    currentTaskChallengesResults.ChallengeCompletingStatuses[i] = challengeDatas[i].isCompleted;
+                }             
+            }
             StartCoroutine(rewardingSectionView.ShowChallengesResults_COR(challengeDatas));  
         }
 
@@ -37,7 +51,9 @@ namespace Scripts
 
         public void StopChallengeTimer() => isTimerStopped = true;
 
-        public IEnumerator StartChallengeTimer_COR()
+        public void IncreaseUsedTipsCountByOne() => usedTipsCount++;
+
+        private IEnumerator StartChallengeTimer_COR()
         {
             challengeCompletingTime = 0;
             isTimerStopped = false;
@@ -52,8 +68,8 @@ namespace Scripts
         {
             return challenge.Type switch
             {
-                ChallengeType.SolveTask => (bool)challenge.CheckValue,
-                ChallengeType.NoTips => (bool)challenge.CheckValue, //TODO: сравнивать со значением из TipsManager
+                ChallengeType.SolveTask => true,
+                ChallengeType.NoTips => usedTipsCount == 0,
                 ChallengeType.CompletingTimeLessThan => challengeCompletingTime < (int)challenge.CheckValue
             };
         }

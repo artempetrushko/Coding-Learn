@@ -15,9 +15,7 @@ namespace Scripts
         [Space, SerializeField]
         private PadViewsAnimator animator;
 
-        public void Show() => StartCoroutine(animator.ChangeViewVisibility_COR(gameObject, true));
-
-        public void Hide() => StartCoroutine(animator.ChangeViewVisibility_COR(gameObject, false));
+        public void ChangeVisibility(bool isVisible) => StartCoroutine(animator.ChangeViewVisibility_COR(gameObject, isVisible));
 
         public void CreateNewChallengeViews(List<string> challengeDescriptions)
         {

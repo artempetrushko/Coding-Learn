@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Scripts
@@ -27,17 +26,38 @@ namespace Scripts
         [Space, SerializeField]
         private PadHandbookAnimator animator;
 
-        public void OpenHandbook() => StartCoroutine(OpenHandbook_COR());
+        public IEnumerator ChangeVisibility_COR(bool isVisible)
+        {
+            if (isVisible)
+            {
+                previousHandbookPageButton.transform.parent.gameObject.SetActive(false);
+                SetContainerScrollbarDefaultValue(mainThemeButtonsContainer);
+                yield return StartCoroutine(animator.ShowHandbook_COR());
+            }
+            else
+            {
+                yield return StartCoroutine(animator.HideHandbook_COR());
+            }
+        }
 
-        public void CloseHandbook() => StartCoroutine(CloseHandbook_COR());
+        public IEnumerator ShowSubThemeButtons_COR()
+        {
+            SetContainerScrollbarDefaultValue(subThemeButtonsContainer);
+            yield return StartCoroutine(animator.GoToSubThemeButtons_COR());
+            previousHandbookPageButton.gameObject.SetActive(true);
+        }
 
-        public void ShowSubThemeButtons() => StartCoroutine(ShowSubThemeButtons_COR());
-
-        public void ReturnToMainThemeButtons() => StartCoroutine(ReturnToMainThemeButtons_COR());
+        public IEnumerator ReturnToMainThemeButtons_COR()
+        {
+            SetContainerScrollbarDefaultValue(mainThemeButtonsContainer);
+            yield return StartCoroutine(animator.ReturnToMainThemeButtons_COR());
+            previousHandbookPageButton.gameObject.SetActive(false);
+        }
 
         public void CreateThemeButtons(TrainingThemeType themeType, List<string> themes, Action<int> themeButtonPressedAction)
         {
             var buttonsContainer = themeType == TrainingThemeType.MainTheme ? mainThemeButtonsContainer : subThemeButtonsContainer;
+            ClearButtonsContainer(buttonsContainer);
             for (var i = 1; i <= themes.Count; i++)
             {
                 var themeNumber = i;
@@ -47,30 +67,13 @@ namespace Scripts
             SetContainerScrollbarDefaultValue(buttonsContainer);
         }
 
-        private IEnumerator OpenHandbook_COR()
+        private void ClearButtonsContainer(GameObject buttonsContainer)
         {
-            previousHandbookPageButton.transform.parent.gameObject.SetActive(false);
-            SetContainerScrollbarDefaultValue(mainThemeButtonsContainer);
-            yield return StartCoroutine(animator.ShowHandbook_COR());
-        }
-
-        private IEnumerator CloseHandbook_COR()
-        {
-            yield return StartCoroutine(animator.HideHandbook_COR());
-        }
-
-        private IEnumerator ShowSubThemeButtons_COR()
-        {
-            SetContainerScrollbarDefaultValue(subThemeButtonsContainer);
-            yield return StartCoroutine(animator.GoToSubThemeButtons_COR());
-            previousHandbookPageButton.gameObject.SetActive(true);
-        }
-
-        private IEnumerator ReturnToMainThemeButtons_COR()
-        {
-            SetContainerScrollbarDefaultValue(mainThemeButtonsContainer);
-            yield return StartCoroutine(animator.ReturnToMainThemeButtons_COR());
-            previousHandbookPageButton.gameObject.SetActive(false);
+            for (var i = buttonsContainer.transform.childCount - 1; i >= 0; i--)
+            {
+                Destroy(buttonsContainer.transform.GetChild(i).gameObject);
+            }
+            buttonsContainer.transform.DetachChildren();
         }
 
         private void SetContainerScrollbarDefaultValue(GameObject buttonsContainer)

@@ -31,11 +31,11 @@ namespace Scripts
         [Space, SerializeField]
         private CodingTrainingSectionAnimator animator;
 
-        public void Show() => StartCoroutine(animator.Show_COR());
+        public void Show() => StartCoroutine(animator.ChangeVisibility_COR(true));
 
         public IEnumerator Hide_COR()
         {
-            yield return StartCoroutine(animator.Hide_COR());
+            yield return StartCoroutine(animator.ChangeVisibility_COR(false));
         }
 
         public void CreateTrainingTextPage(string trainingTheme, string trainingContent, TrainingShowingMode trainingShowingMode)

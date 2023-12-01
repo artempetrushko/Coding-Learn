@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Localization.Components;
 
 namespace Scripts
 {
@@ -22,9 +22,7 @@ namespace Scripts
         [Space, SerializeField]
         private PadViewsAnimator animator;
 
-        public void Show() => StartCoroutine(animator.ChangeViewVisibility_COR(gameObject, true));
-
-        public void Hide() => StartCoroutine(animator.ChangeViewVisibility_COR(gameObject, false));
+        public void ChangeVisibility(bool isVisible) => StartCoroutine(animator.ChangeViewVisibility_COR(gameObject, isVisible));
 
         public void AddNewTipText(string tip)
         {
@@ -39,9 +37,24 @@ namespace Scripts
 
         public void SetSkipTaskButtonState(bool isInteractable) => skipTaskButton.interactable = isInteractable;
 
-        public void SetSkipTaskButtonLabelText(string text) => skipTaskButton.GetComponentInChildren<TMP_Text>().text = text;
+        public void SetSkipTaskButtonLabelText(string localizationTableReference, string localizedTextReference) 
+            => skipTaskButton.GetComponentInChildren<LocalizeStringEvent>().StringReference.SetReference(localizationTableReference, localizedTextReference);
 
-        public void SetTipStatusText(string status) => tipStatusText.text = status;
+        public void SetSkipTaskButtonLabelTextWithTimer(string localizationTableReference, string localizedTextReference, string formattedTimerText)
+        {
+            var buttonTextReference = skipTaskButton.GetComponentInChildren<LocalizeStringEvent>().StringReference;
+            buttonTextReference.SetReference(localizationTableReference, localizedTextReference);
+            var buttonLocalizedText = buttonTextReference.GetLocalizedString(formattedTimerText);
+            //Localization
+        }
+
+        public void SetTipStatusText(string localizationTableReference, string localizedTextReference)
+            => tipStatusText.GetComponent<LocalizeStringEvent>().StringReference.SetReference(localizationTableReference, localizedTextReference);
+
+        public void SetTipStatusTextWithTimer(string localizationTableReference, string localizedTextReference, string formattedTimerText)
+        {
+            
+        }
 
         public void ClearTipText()
         {

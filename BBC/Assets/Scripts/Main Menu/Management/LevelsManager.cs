@@ -13,51 +13,19 @@ namespace Scripts
         private LevelsSectionView levelsSectionView;
 
         private bool isLevelButtonsCreated = false;
-        private int selectedLevelNumber = 0;
+        private int selectedLevelNumber;
 
         public int LevelsCount => levelsCount;
-
-        public void SetLevelsSectionStartState()
+        private int SelectedLevelNumber
         {
-            if (!isLevelButtonsCreated)
+            get => selectedLevelNumber;
+            set
             {
-                levelsSectionView.CreateLevelButtons(levelsCount, MainMenuSaveManager.SaveData.LastAvailableLevelNumber, ChangeLevelInfo);
-                isLevelButtonsCreated = true;
-            }
-            SetLevelInfo(selectedLevelNumber);
-            levelsSectionView.MakeLevelButtonSelected(selectedLevelNumber);
-        }
-
-        public void LoadSelectedLevel() => StartCoroutine(LoadLevelAsync_COR());
-
-        public void ChangeLevelInfo(int levelNumber)
-        {
-            if (levelNumber != selectedLevelNumber)
-            {
-                selectedLevelNumber = levelNumber;              
-                SetLevelInfo(levelNumber);
-            }
-        }
-
-        private void Start()
-        {       
-            selectedLevelNumber = MainMenuSaveManager.SaveData.LastAvailableLevelNumber;
-        }
-
-        private void SetLevelInfo(int levelNumber)
-        {
-            var selectedLevelTitle = MainMenuContentManager.GetLevelInfo(selectedLevelNumber).LevelTitle;
-            levelsSectionView.SetLevelInfo(selectedLevelTitle);
-            levelsSectionView.SetLevelThumbnail(MainMenuContentManager.GetLoadingScreen(levelNumber));
-        }
-
-        private IEnumerator LoadLevelAsync_COR()
-        {
-            var operation = SceneManager.LoadSceneAsync(selectedLevelNumber);
-            while (!operation.isDone)
-            {
-                //levelsSectionView.SetLoadingBarInfo(menuLocalization.GetLoadBarText(), operation.progress);
-                yield return null;
+                if (selectedLevelNumber != value)
+                {
+                    selectedLevelNumber = value;
+                    SetLevelInfo(selectedLevelNumber);
+                }
             }
         }
 
@@ -70,7 +38,41 @@ namespace Scripts
 
         public override IEnumerator HideSectionView_COR()
         {
-            throw new System.NotImplementedException();
+            yield return StartCoroutine(levelsSectionView.ChangeVisibility_COR(false));
+            levelsSectionView.gameObject.SetActive(false);
+        }
+
+        public void SetLevelsSectionStartState()
+        {
+            var lastAvailableLevelNumber = MainMenuSaveManager.SaveData.LastAvailableLevelNumber;
+            if (!isLevelButtonsCreated)
+            {
+                levelsSectionView.CreateLevelButtons(levelsCount, lastAvailableLevelNumber, ChangeLevelInfo);
+                isLevelButtonsCreated = true;
+            }
+            //SetLevelInfo(selectedLevelNumber);
+            levelsSectionView.MakeLevelButtonSelected(lastAvailableLevelNumber);
+        }
+
+        public void LoadSelectedLevel() => StartCoroutine(LoadLevelAsync_COR());
+
+        private void ChangeLevelInfo(int levelNumber) => SelectedLevelNumber = levelNumber;
+
+        private void SetLevelInfo(int levelNumber)
+        {
+            var selectedLevelTitle = MainMenuContentManager.GetLevelInfo(levelNumber).LevelTitle;
+            levelsSectionView.SetLevelInfo(selectedLevelTitle);
+            levelsSectionView.SetLevelThumbnail(MainMenuContentManager.GetLoadingScreen(levelNumber));
+        }
+
+        private IEnumerator LoadLevelAsync_COR()
+        {
+            var operation = SceneManager.LoadSceneAsync(SelectedLevelNumber);
+            while (!operation.isDone)
+            {
+                //levelsSectionView.SetLoadingBarInfo(menuLocalization.GetLoadBarText(), operation.progress);
+                yield return null;
+            }
         }
     }
 }

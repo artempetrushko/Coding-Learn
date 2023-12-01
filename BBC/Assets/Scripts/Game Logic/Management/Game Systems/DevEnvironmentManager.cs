@@ -1,6 +1,7 @@
 using RoslynCSharp;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -33,7 +34,7 @@ namespace Scripts
 
         public void ExecuteCode()
         {
-            ScriptDomain domain = ScriptDomain.CreateDomain("MyDomain");
+            ScriptDomain domain = ScriptDomain.CreateDomain("MyDomain", true);
             try
             {
                 var robotManagementCode = currentTaskTestCode.Replace("//<playerCode>", padDevEnvironmentView.CodeFieldContent);
@@ -44,18 +45,19 @@ namespace Scripts
             catch
             {
                 Debug.Log("There are compilation errors in runtime code!");
-                padDevEnvironmentView.SetAndShowCompilationErrorsInfo(domain.GetErrors());
+                var errorMessages = domain.CompileResult.Errors.Select(error => (error.SourceLine - 5, error.SourceColumn, error.Message)).ToList();
+                padDevEnvironmentView.SetAndShowCompilationErrorsInfo(errorMessages);
             }
         }
 
         private void Start()
         {
-           // LaunchCompiler();
+           //LaunchCompiler();
         }
 
         private void LaunchCompiler()
         {
-            ScriptDomain domain = ScriptDomain.CreateDomain("MyDomain");
+            ScriptDomain domain = ScriptDomain.CreateDomain("MyDomain", true);
             ScriptType type = domain.CompileAndLoadMainSource(@"
 using UnityEngine;
 using System;
