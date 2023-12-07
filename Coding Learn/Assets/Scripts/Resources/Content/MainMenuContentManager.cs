@@ -17,13 +17,20 @@ namespace Scripts
 
         public static LevelInfo GetLevelInfo(int levelNumber) => levelInfos[levelNumber - 1];
 
+        public static LevelInfo[] GetAvailableLevelInfos(int availableLevelsCount) => levelInfos.Take(availableLevelsCount).ToArray();
+
         public static Sprite GetLoadingScreen(int levelNumber) => loadingScreens[levelNumber - 1];
 
         public void LoadContentFromResources(int availableLevelsCount)
         {
             levelInfos = LoadDatasFromFile<LevelInfo>(LocalizedContentFolderPath + "/Main Menu/Level Infos").Take(availableLevelsCount).ToArray();
-            taskInfos = LoadDatasFromFiles<TaskInfo>(LocalizedContentFolderPath + "/Game/Tasks Level ", availableLevelsCount);
-            loadingScreens = Resources.LoadAll<Sprite>("Loading Screens").Take(availableLevelsCount).ToArray();          
+            taskInfos = LoadDatasFromFiles<TaskInfo>(LocalizedContentFolderPath + "/Game/Tasks/Tasks Level ", availableLevelsCount);
+
+            loadingScreens = new Sprite[availableLevelsCount];
+            for (var i = 1; i <= availableLevelsCount; i++)
+            {
+                loadingScreens[i - 1] = Resources.Load<Sprite>($"Loading Screens/Loading Screen (Level {i})");
+            }       
         }
     }
 }

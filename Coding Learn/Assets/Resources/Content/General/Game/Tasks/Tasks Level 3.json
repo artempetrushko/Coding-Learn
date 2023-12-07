@@ -1,0 +1,170 @@
+[
+  {
+    "ID": "Task_L3_T1",
+    "StartCode": "public string ChooseTurn(int leftPathDifficulty, int rightPathDifficulty)\n{\n    \n    return \"left\";\n    \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\n\n\npublic class Level2Task1\n{\n//<playerCode>\n    public bool isTaskCompleted()\n    {\n        var firstCheck = ChooseTurn(1, 2) == \"right\";\n        var secondCheck = ChooseTurn(100, 99) == \"left\";\n        var thirdCheck = ChooseTurn(5, 25) == \"right\";\n        var fourthCheck = ChooseTurn(50, 25) == \"left\";\n        var fifthCheckResult = ChooseTurn(25, 25);\n        var fifthCheck= fifthCheckResult == \"left\"||fifthCheckResult == \"right\";\n        return firstCheck&&secondCheck&&thirdCheck&&fourthCheck&&fifthCheck;\n    } \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L3_T2",
+    "StartCode": "public void MakeDecision(int logLength)\n{\n    \n    \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\n\n\npublic class Level2Task2\n{\n//<playerCode>\n    private bool _isLogSkipped;\n    private bool _isLogPut;\n    private bool _isLogChopped;\n    public void SkipLog()\n    {\n        _isLogSkipped = true;\n    }\n    public void PutLogInCart()\n    {\n        _isLogPut = true;\n    }\n    public void ChopLog()\n    {\n        _isLogChopped = true;\n    }\n    public bool isTaskCompleted()\n    {\n        MakeDecision(3);\n        var firstCheck = _isLogSkipped && !_isLogPut && !_isLogChopped;\n        _isLogSkipped = false;\n        MakeDecision(5);\n        var secondCheck = !_isLogSkipped && _isLogPut && !_isLogChopped;\n        _isLogPut=false;\n        MakeDecision(7);\n        var thirdCheck = !_isLogSkipped && !_isLogPut &&_isLogChopped;\n        _isLogChopped=false;\n        MakeDecision(2);\n        var fourthCheck = _isLogSkipped && !_isLogPut && !_isLogChopped;\n        _isLogSkipped = false;\n        MakeDecision(8);\n        var fifthCheck = !_isLogSkipped && !_isLogPut && _isLogChopped;\n        _isLogChopped = false;\n        return firstCheck&&secondCheck&&thirdCheck&&fourthCheck&&fifthCheck;\n    }  \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L3_T3",
+    "StartCode": "public int ChooseIdealMushroom(int fitsAge, int secondAge, int thirdAge)\n{\n    \n    \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\n\n\npublic class Level2Task3\n{\n//<playerCode>\n    public bool isTaskCompleted()\n    {\n        var firstCheck = ChooseIdealMushroom(1, 2, 3);\n        var secondCheck = ChooseIdealMushroom(4, 4, 20);\n        var thirdCheck= ChooseIdealMushroom(2020,2021, 00);\n        return firstCheck==2&&secondCheck==4&&thirdCheck==2020;\n    } \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L3_T4",
+    "StartCode": "public void MakeDecision(bool isBusketFull)\n{\n    \n    \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\n\n\npublic class Level2Task4\n{\n//<playerCode>\n    private bool _isBusketFull;\n    private bool _isFirePutOut;\n    public void PutOutFire()\n    {\n        if (_isBusketFull)\n        {\n            _isFirePutOut = true;\n            _isBusketFull = false;\n        }\n    }\n    public void FillBucket()\n    {\n        if(!_isBusketFull)\n            _isBusketFull = true;\n    }\n    public bool isTaskCompleted()\n    {\n        MakeDecision(false);\n        var firstCheck = _isBusketFull && !_isFirePutOut;\n        MakeDecision(true);\n        var secondCheck = !_isBusketFull && _isFirePutOut;\n        return firstCheck&&secondCheck;\n    }\n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L3_T5",
+    "StartCode": " public bool MoveAcrossBridge(bool brogeState, int brigeLength, int firstLogLength, int secondLogLength, int thirdLogLength)\n{\n    \n    \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\n\n\npublic class Level2Task5\n{\n//<playerCode>\n    private int _logLength=-1;\n    public void UseLog(int logLength)\n    {\n        _logLength = logLength;\n    }\n    public bool isTaskCompleted()\n    {\n        var firstCheck = MoveAcrossBridge(true, 5, 3, 5, 7);\n        var secondCheck = _logLength == -1;\n        var thirdCheck = MoveAcrossBridge(false,4,3,5,10);\n        var fourhCheck= _logLength == 5;\n        var fifthCheck = MoveAcrossBridge(false,9,3,5,10);\n        var sixthCheck= _logLength == 10;\n        var seventhCheck = MoveAcrossBridge(false,3,4,5,10);\n        var eigthCheck= _logLength == 4;\n        return firstCheck&&secondCheck&&thirdCheck&&fourhCheck&&fifthCheck&&sixthCheck&&seventhCheck&&eigthCheck;\n    }  \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L3_T6",
+    "StartCode": "public int ChoosePath(int stonesNumber)\n{\n    \n    \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\n\n\npublic class Level2Task6\n{\n//<playerCode>\n    public bool isTaskCompleted()\n    {\n        var check = new bool[]\n        {\n           ChoosePath(1)==8,\n           ChoosePath(2)==3,\n           ChoosePath(3)==5,\n           ChoosePath(4)==2,\n           ChoosePath(5)==9,\n           ChoosePath(6)==10,\n           ChoosePath(7)==6,\n           ChoosePath(8)==12,\n           ChoosePath(15)==1,\n        };\n        return !check.Any(x=>!x);\n    }  \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L3_T7",
+    "StartCode": "public int ChoosePath(string cipher)\n{\n    \n    \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\n\n\npublic class Level2Task7\n{\n//<playerCode>\n    public bool isTaskCompleted()\n    {\n        var check = new bool[]\n        {\n           ChoosePath(\"nagibator228\")==6,\n           ChoosePath(\"urfu\")==2,\n           ChoosePath(\"coding\")==5,\n           ChoosePath(\"learn\")==4,\n           ChoosePath(\"not\")==1,\n           \n        };\n        return !check.Any(x => !x);\n    }   \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  }
+]

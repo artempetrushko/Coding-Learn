@@ -1,0 +1,146 @@
+[
+  {
+    "ID": "Task_L8_T1",
+    "StartCode": "public List<int> PowAndTake(double value, int pow)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Linq;\nusing System.Collections.Generic;\n\npublic class Level8Task1\n{\n//<playerCode>\n    double Pow(double value, int pow)\n    {\n        if (pow == 0)\n            return 1;\n        if (pow > 0)\n            return Pow(value, pow - 1) * value;\n        return 1.0 / Pow(value, -pow);\n    }\n    public bool isTaskCompleted()\n    {\n        var random=new Random();\n        var value=random.NextDouble()+random.Next(10);\n        var pow=random.Next(-20,20);\n        var result=Pow(value, pow);;\n        var finalresult=result.ToString().Split('.')[1].Take(4).Select(x=>int.Parse($\"{x}\")).ToList();\n        var testedResult = PowAndTake(value, pow);\n        return IntListEquals(finalresult,testedResult);\n    }\n\n\n    private bool IntListEquals(List<int> arr1, List<int> arr2)\n    {\n        if (arr1.Count != arr2.Count)\n            return false;\n        for (int i = 0; i < arr1.Count; i++)\n            if (arr1[i] != arr2[i])\n                return false;\n        return true;\n    }   \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L8_T2",
+    "StartCode": "public BigInteger Factorial(BigInteger n)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\nusing System.Numerics;\n\npublic class Level8Task2\n{\n//<playerCode>\n    public bool isTaskCompleted()\n    {\n        var random = new Random();\n        var maxSize = 15;\n        return Check(random, maxSize)&& Check(random, maxSize);\n    }\n\n    private bool Check(Random random, int maxSize)\n    {\n        var n=random.Next(maxSize);\n        var result = Fact(n);\n        var testedResult = Factorial(n);\n        return result==testedResult;\n    }\n\n\n    private static string CreateArray(Random random,int maxSize)\n    {\n        var str = new string('1',random.Next(maxSize));\n        return str;\n    }\n    public static BigInteger Fact(BigInteger n)\n    {\n        if (n == 0)\n            return 1;\n        else\n            return n * Fact(n - 1);\n    }  \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L8_T3",
+    "StartCode": "public BigInteger Fibonacci(BigInteger n)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\nusing System.Numerics;\n\npublic class Level8Task3\n{\n//<playerCode>\n    public bool isTaskCompleted()\n    {\n        var random = new Random();\n        var maxSize = 20;\n        return Check(random, maxSize)&& Check(random, maxSize);\n    }\n\n    private bool Check(Random random, int maxSize)\n    {\n        var n = random.Next(maxSize);\n        var fib=GetFib(n);\n        var testedFib = Fibonacci(n);\n        return fib==testedFib;\n    }\n\n\n    private static BigInteger GetFib(BigInteger n)\n    {\n        return n > 1 ? GetFib(n - 1) + GetFib(n - 2) : n;\n    } \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L8_T4",
+    "StartCode": "public bool IsPrime(uint number)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\n\n\npublic class Level8Task4\n{\n//<playerCode>\n    public bool isTaskCompleted()\n    {\n        var random = new Random();\n        var maxSize = 10000;\n        return Check(random, maxSize)&& Check(random, maxSize)&& Check(random, maxSize)&& Check(random, maxSize)&& Check(random, maxSize)&& Check(random, maxSize)&& Check(random, maxSize);\n    }\n\n    private bool Check(Random random, int maxSize)\n    {\n        var number=(uint)random.Next(maxSize);\n\n        return IsPrimeCorrect(number)==IsPrime(number);\n    }\n\n\n\n    static bool IsPrimeCorrect(uint n, uint k = 2)\n    {\n        if (k * k > n) return true;\n        if (n % k == 0) return false;\n        return IsPrimeCorrect(n, k + 1);\n    }\n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L8_T5",
+    "StartCode": "public bool Palindrom(string word)(string[] text)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\nusing System.Linq;\n\npublic class Level8Task1\n{\n//<playerCode>\n    public string[] Palindroms = new string[]\n    {\n        \"лёшанаполкеклопанашёл\",\n\"арозаупаланалапуазора\",\n\"аргентинаманитнегра\",\n\"яидусъмечемъсудия\",\n\"яаркакрая\",\n\"молебеноконебелом\"\n    };\n\n    public string[] Words = new string[]\n    {\n        \"яблоко\",\n        \"урфу\",\n        \"президент\"\n    };\n    \n    public bool isTaskCompleted()\n    {\n        var random = new Random();\n        return Check(random)&& Check(random) && Check(random) && Check(random) && Check(random) && Check(random) && Check(random);\n    }\n\n    private bool Check(Random random)\n    {\n        var isPalindrom = random.Next(2) == 1;\n        if (isPalindrom)\n        {\n            var word=Palindroms[random.Next(Palindroms.Length-1)];\n            return Palindrom(word);\n        }\n        else\n        {\n            var word =Words[random.Next(Words.Length - 1)];\n            return !Palindrom(word);\n        }\n    } \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L8_T6",
+    "StartCode": "public List<int> GetSequence(int n)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Linq;\nusing System.Collections.Generic;\n\npublic class Level8Task1\n{\n//<playerCode>\n    public bool isTaskCompleted()\n    {\n        var random = new Random();\n        var maxSize = 25;\n        return Check(random, maxSize)&& Check(random, maxSize);\n    }\n\n    private bool Check(Random random, int maxSize)\n    {\n        var n = random.Next(maxSize);\n        List<int> list = GetSequence(n);\n        return list.GroupBy(x => x).Where(x => x.Key != x.Count()).Count() == 0;\n\n    }\n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  }
+]

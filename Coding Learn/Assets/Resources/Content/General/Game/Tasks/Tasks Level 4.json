@@ -1,0 +1,194 @@
+[
+  {
+    "ID": "Task_L4_T1",
+    "StartCode": "public int OpenAndCountContainer(int boxesCount)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\n\n\npublic class Level3Task1\n{\n//<playerCode>\n    private List<bool> _isBoxesOpened = new List<bool>();\n    public bool OpenContainer(int boxNumber) => _isBoxesOpened[boxNumber];\n    \n    public bool isTaskCompleted()\n    {\n        _isBoxesOpened = new List<bool>()\n        {\n            true,false, false, false, false,true,true,false\n        };\n        var firstTest = OpenAndCountContainer(_isBoxesOpened.Count) == 3;\n        _isBoxesOpened = new List<bool>()\n        {\n            true,false, false, false, false,true,true,false,true,false,true\n        };\n        var secondTest = OpenAndCountContainer(_isBoxesOpened.Count) == 3;\n        var maxCount = 1000;\n        var random = new Random();\n        var result=FillData(maxCount, random);\n        var thirdTest = OpenAndCountContainer(_isBoxesOpened.Count) == result;\n        result = FillData(maxCount, random);\n        var fourthTest=OpenAndCountContainer(_isBoxesOpened.Count)== result;\n        return firstTest && secondTest && thirdTest && fourthTest;\n    }\n\n    private int FillData(int maxCount, Random random)\n    {\n        _isBoxesOpened = new List<bool>();\n        var result = 0;\n        for (var i = 0; i < random.Next(1,maxCount); i++)\n        {\n            var total = random.Next(2) == 1;\n            if (total)\n                result++;\n            _isBoxesOpened.Add(total);\n        }\n        _isBoxesOpened[_isBoxesOpened.Count - 1] = true;\n        return result;\n    }   \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L4_T2",
+    "StartCode": "public void FindNeededTool(int toolsCount)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\n\n\npublic class Level3Task2\n{\n//<playerCode>\n    private List<Tools> _tools;\n    private int _number=-1;\n    public bool IsSaw(int toolNumber) => _tools[toolNumber] == Tools.Saw;\n    public bool IsAxe(int toolNumber) => _tools[toolNumber] == Tools.Axe;\n    public void PickUp(int toolNumber)=>_number=toolNumber;\n    public bool isTaskCompleted()\n    {\n        var maxCount = 1000;\n        var random = new Random();\n        FillTools(maxCount, random);\n        var result = Math.Min(_tools.IndexOf(Tools.Axe), _tools.IndexOf(Tools.Saw));\n        FindNeededTool(_tools.Count);\n        var firstTest = _number == result;\n        _number = -1;\n        FillTools(maxCount, random);\n        result = Math.Min(_tools.IndexOf(Tools.Axe), _tools.IndexOf(Tools.Saw));\n        FindNeededTool(_tools.Count);\n        var secondTest = _number == result;\n        _number = -1;\n        FillTools(maxCount, random);\n        result = Math.Min(_tools.IndexOf(Tools.Axe), _tools.IndexOf(Tools.Saw));\n        FindNeededTool(_tools.Count);\n        var thirdTest = _number == result;\n        _number = -1;\n        FillTools(maxCount, random);\n        result = Math.Min(_tools.IndexOf(Tools.Axe), _tools.IndexOf(Tools.Saw));\n        FindNeededTool(_tools.Count);\n        var fourthTest = _number == result;\n        return firstTest && secondTest && thirdTest && fourthTest;\n    }\n\n    private void FillTools(int maxCount, Random random)\n    {\n        _tools = new List<Tools>();\n        for (int i = 0; i < random.Next(1, maxCount); i++)\n        {\n            _tools.Add((Tools)random.Next(3));\n        }\n        _tools[_tools.Count - 1] = Tools.Axe;\n    }\n    \n}\npublic enum Tools\n{\n    Axe,\n    Saw,\n    Another\n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L4_T3",
+    "StartCode": "public void ClearPath()\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\n\n\npublic class Level3Task3\n{\n//<playerCode>\n    private int _totalStepsCount;\n    private int _neededStepsCount;\n\n    public bool IsPathClear() => _totalStepsCount == _neededStepsCount;\n    public void UseTool() => _totalStepsCount++;\n\n    public bool isTaskCompleted()\n    {\n        var maxCount = 100;\n        var random = new Random();\n        UpdateTestData(maxCount, random);\n        ClearPath();\n        var firstTest=IsPathClear();\n        UpdateTestData(maxCount, random);\n        ClearPath();\n        var secondTest=IsPathClear();\n        UpdateTestData(maxCount, random);\n        ClearPath();\n        var thirdTest=IsPathClear();\n        UpdateTestData(maxCount, random);\n        ClearPath();\n        var fourthTest=IsPathClear();\n        return firstTest && secondTest && thirdTest && fourthTest;\n    }\n\n    private void UpdateTestData(int maxCount, Random random)\n    {\n        _totalStepsCount = 0;\n        _neededStepsCount = random.Next(maxCount);\n\n    }  \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L4_T4",
+    "StartCode": "public int GetNeededTree(int neededLogsCount)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\n\n\npublic class Level3Task4\n{\n//<playerCode>\n    private int _usesCount;\n    private int _tallTreeCount;\n    private readonly Random _random=new Random();\n    private bool _isTall = false;\n    private void UseTool()\n    {\n        var isTall = _random.Next(2) == 0;\n        if (isTall)\n            _tallTreeCount++;\n        _isTall = isTall;\n        _usesCount++;\n    }\n    public bool IsTreeTall() => _isTall;\n    public bool isTaskCompleted()\n    {\n        var maxCount = 20;\n        var logCount = _random.Next(maxCount);\n        var playerResult= GetNeededTreeCount(logCount);\n        var result = _tallTreeCount+logCount/2;\n        var firstTest = result == playerResult && playerResult == _usesCount;\n        _usesCount = 0;\n        _tallTreeCount = 0;\n        logCount = _random.Next(maxCount);\n        playerResult= GetNeededTreeCount(logCount);\n        result = _tallTreeCount+logCount/2;\n        var secondTest = result == playerResult && playerResult == _usesCount;\n        _usesCount = 0;\n        _tallTreeCount = 0;\n        logCount = _random.Next(maxCount);\n        playerResult= GetNeededTreeCount(logCount);\n        result = _tallTreeCount+logCount/2;\n        var thirdTest = result == playerResult && playerResult == _usesCount;\n        _usesCount = 0;\n        _tallTreeCount = 0;\n        logCount = _random.Next(maxCount);\n        playerResult= GetNeededTreeCount(logCount);\n        result = _tallTreeCount+logCount/2;\n        var fourthTest = result == playerResult && playerResult == _usesCount;\n        _usesCount = 0;\n        _tallTreeCount = 0;\n        return firstTest && secondTest && thirdTest && fourthTest;\n    }   \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L4_T5",
+    "StartCode": "public void RepairBrige(int partsCount)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\nusing System.Linq;\n\npublic class Level3Task5\n{\n//<playerCode>\n    private List<bool> _isPartsBroken;\n    public bool IsBroken(int partNumber)\n    {\n        return _isPartsBroken[partNumber];\n    }\n    public void SetUpBoard(int pantNumber)\n    {\n        _isPartsBroken[pantNumber] = !_isPartsBroken[pantNumber];\n    }\n    public bool isTaskCompleted()\n    {\n        var maxCount = 500;\n        var random=new Random();\n        FillData(maxCount, random);\n        RepairBrige(_isPartsBroken.Count);\n        var firstCheck = !_isPartsBroken.Any(x=>x);\n        FillData(maxCount, random);\n        RepairBrige(_isPartsBroken.Count);\n        var secondCheck = !_isPartsBroken.Any(x=>x);\n        FillData(maxCount, random);\n        RepairBrige(_isPartsBroken.Count);\n        var thirdCheck = !_isPartsBroken.Any(x=>x);\n        FillData(maxCount, random);\n        RepairBrige(_isPartsBroken.Count);\n        var fourthCheck = !_isPartsBroken.Any(x=>x);\n        return true;\n    }\n    private void FillData(int maxCount, Random random)\n    {\n        _isPartsBroken = new List<bool>();\n        for (var i = 0; i < random.Next(1, maxCount); i++)\n        {\n            var total = random.Next(2) == 1;\n            _isPartsBroken.Add(total);\n        }\n        _isPartsBroken[_isPartsBroken.Count - 1] = true;\n    }   \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L4_T6",
+    "StartCode": "public void FoundKey(int plasesCount)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\n\n\npublic class Level3Task6\n{\n//<playerCode>\n    private bool[] _places;\n    private int _keyIndex=-1;\n    public bool TryFoundKey(int placeNumber)\n    {   if(_places[placeNumber])\n            _keyIndex = placeNumber;\n        return _places[placeNumber];\n    }\n    public bool isTaskCompleted()\n    {   var random = new Random();\n        var maxCount = 50;\n        FillData(maxCount, random);\n        FoundKey(_places.Length);\n        var firstCheck = _places[_keyIndex];\n        _keyIndex = -1;\n        FillData(maxCount, random);\n        FoundKey(_places.Length);\n        var secondCheck = _places[_keyIndex];\n        _keyIndex = -1;\n        FillData(maxCount, random);\n        FoundKey(_places.Length);\n        var thirdCheck = _places[_keyIndex];\n        _keyIndex = -1;\n        FillData(maxCount, random);\n        FoundKey(_places.Length);\n        var fourthCheck = _places[_keyIndex];\n        _keyIndex = -1;\n        return firstCheck && secondCheck && thirdCheck && fourthCheck;\n    }\n    private void FillData(int maxCount, Random random)\n    {\n        _places = new bool[random.Next(1,maxCount)];\n        var index = random.Next(0, _places.Length);\n        _places[random.Next(0,_places.Length)] = true;\n        if(index < _places.Length - 1)\n        {\n            _places[random.Next(index, _places.Length)] = true;\n        }\n    }   \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L4_T7",
+    "StartCode": "public void FoundKey(int chestsCount)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\n\n\npublic class Level3Task7\n{\n//<playerCode>\n    private IEnumerator<bool> _enumerator;\n    private int _index=0;\n    private static Random random = new Random();\n    public void ChooseNextItem()\n    {\n        _enumerator.MoveNext();\n        if (_enumerator.Current)\n            _index++;\n    }\n    public bool IsKeyFound()\n    {\n        if( _enumerator.Current)\n            _index++;\n        return _enumerator.Current;\n    }\n    public bool isTaskCompleted()\n    {\n        Init();\n        var maxCount = 100;\n        FoundKey(random.Next(1, maxCount));\n        var firstCheck = (_enumerator.Current&&_index==1)||(!_enumerator.Current&&_index==0);\n        _index = 0;\n        FoundKey(random.Next(1, maxCount));\n        var secondCheck = (_enumerator.Current && _index == 1) || (!_enumerator.Current && _index == 0);\n        _index = 0;\n        FoundKey(random.Next(1, maxCount));\n        var thirdCheck = (_enumerator.Current && _index == 1) || (!_enumerator.Current && _index == 0);\n        _index = 0;\n        FoundKey(random.Next(1, maxCount));\n        var fourthCheck = (_enumerator.Current && _index == 1) || (!_enumerator.Current && _index == 0);\n        return firstCheck && secondCheck && thirdCheck && fourthCheck;\n    }\n    public void Init() => _enumerator = GetGenerator().GetEnumerator();\n    public static IEnumerable<bool> GetGenerator()\n    {\n        yield return random.Next(100)<10;\n    }    \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L4_T8",
+    "StartCode": "public void FoundKeyInSand(int placesCount)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\n\n\npublic class Level3Task8\n{\n//<playerCode>\n    private List<bool> _plases;\n    private int _index=-1;\n    private int _digCount;\n    public void Dig(int repeatCount)\n    {\n        _index= repeatCount-1;\n        _digCount+=repeatCount;\n    }\n    public bool IsKeyFound()\n    {\n        return _plases[_index];\n    }\n    public bool isTaskCompleted()\n    {\n        var random=new Random();\n        var maxCount = 100;\n        var testRes = 0;\n        FillData(maxCount, random);\n        FoundKeyInSand(_plases.Count);\n        for (int i = 1; i <= _index; i++)\n            testRes += i+1;\n        var firstCheck = testRes == _digCount;\n        testRes = 0;\n        _index = -1;\n        _digCount = 0;FillData(maxCount, random);\n        FoundKeyInSand(_plases.Count);\n        for (int i = 1; i <= _index; i++)\n            testRes += i+1;\n        var secondCheck = testRes == _digCount;\n        testRes = 0;\n        _index = -1;\n        _digCount = 0;\n        FillData(maxCount, random);\n        FoundKeyInSand(_plases.Count);\n        for (int i = 1; i <= _index; i++)\n            testRes += i+1;\n        var thirdCheck = testRes == _digCount;\n        testRes = 0;\n        _index = -1;\n        _digCount = 0;\n        FillData(maxCount, random);\n        FoundKeyInSand(_plases.Count);\n        for (int i = 1; i <= _index; i++)\n            testRes += i+1;\n        var fourthCheck = testRes == _digCount;\n        return firstCheck && secondCheck && thirdCheck && fourthCheck;\n    }\n    private int FillData(int maxCount, Random random)\n    {\n        _plases = new List<bool>();\n        var result = 0;\n        for (var i = 0; i < random.Next(1, maxCount); i++)\n        {\n            var total = random.Next(2) == 1;\n            if (total)\n                result++;\n            _plases.Add(total);\n        }\n        _plases[_plases.Count - 1] = true;\n        return result;\n    }   \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  }
+]

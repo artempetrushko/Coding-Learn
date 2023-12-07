@@ -8,12 +8,12 @@ namespace Scripts
     [Serializable]
     public class LevelChallengesResults
     {
-        public TaskChallengesResults[] TasksChallengesResults;
+        public List<TaskChallengesResults> TasksChallengesResults = new List<TaskChallengesResults>();
     }
 
     [Serializable]
     public class TaskChallengesResults
     {
-        public bool[] ChallengeCompletingStatuses;
+        public List<bool> ChallengeCompletingStatuses = new List<bool>();
     }
 }

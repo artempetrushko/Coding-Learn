@@ -8,8 +8,6 @@ namespace Scripts
 {
     public class RewardingSectionView : MonoBehaviour
     {
-        [SerializeField]
-        private TMP_Text headerText;
         [SerializeField] 
         private Button closeRewardingSectionButton;
         [Space, SerializeField]

@@ -21,10 +21,5 @@ namespace Scripts
         {
             StartCoroutine(animator.ChangeVisibility_COR(true));
         }
-
-        private void OnDestroy()
-        {
-            StartCoroutine(animator.ChangeVisibility_COR(false));
-        }
     }
 }

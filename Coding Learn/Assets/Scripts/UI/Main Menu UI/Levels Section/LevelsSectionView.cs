@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.Localization.Components;
+using UnityEngine.Localization.Settings;
 
 namespace Scripts
 {
@@ -32,16 +34,22 @@ namespace Scripts
             yield return StartCoroutine(animator.ChangeContentVisibility_COR(isVisible));
         }
 
-        public void CreateLevelButtons(int totalLevelsCount, int availableLevelsCount, Action<int> buttonPressedAction)
+        public void CreateLevelButtons(int totalLevelsCount, string[] availableLevelDescriptions, Action<int> buttonPressedAction)
         {
             for (var i = 1; i <= totalLevelsCount; i++)
             {
                 var currentLevelNumber = i;
 
-                var chooseLevelButton = Instantiate(levelButtonPrefab, levelButtonsContainer.transform);
-                chooseLevelButton.SetInfo(currentLevelNumber, "Здесь передаётся описание уровня");
-                chooseLevelButton.SetButtonParams(currentLevelNumber == 1 || currentLevelNumber <= availableLevelsCount,  
-                                                    () => buttonPressedAction(currentLevelNumber));
+                var levelButton = Instantiate(levelButtonPrefab, levelButtonsContainer.transform);
+                levelButton.SetBasicParams(currentLevelNumber);
+                if (currentLevelNumber <= availableLevelDescriptions.Length)
+                {
+                    levelButton.SetActiveButtonParams(availableLevelDescriptions[i - 1], () => buttonPressedAction(currentLevelNumber));
+                }
+                else
+                {
+                    levelButton.Deactivate();
+                }
             }
         }
 
@@ -50,10 +58,15 @@ namespace Scripts
             levelTitleLabel.text = levelTitle;
         }
 
-        public void SetLoadingBarInfo(string loadingLabelText, float loadingOperationProgress)
+        public IEnumerator ShowLoadingScreenContent_COR()
+        {
+            yield return StartCoroutine(animator.ShowLoadingScreen_COR());
+        }
+
+        public void SetLoadingBarInfo(float loadingOperationProgress)
         {
             loadingBar.fillAmount = loadingOperationProgress;
-            loadingBarText.text = string.Format(@"{0}... {1}%", loadingLabelText, Mathf.Round(loadingOperationProgress * 100));
+            loadingBarText.text = loadingBarText.GetComponent<LocalizeStringEvent>().StringReference.GetLocalizedString(Mathf.Round(loadingOperationProgress * 100));
         }
 
         public void SetLevelThumbnail(Sprite newThumbnail)
@@ -67,7 +80,7 @@ namespace Scripts
             
         }
 
-        public void MakeLevelButtonSelected(int buttonNumber) => levelButtonsContainer.transform.GetChild(buttonNumber - 1).GetComponent<LevelButton>().Select();
+        public void MakeLevelButtonSelected(int buttonNumber) => levelButtonsContainer.transform.GetChild(buttonNumber - 1).GetComponent<LevelButton>().ClickForce();
 
         private IEnumerator UpdateLevelThumbnail_COR()
         {

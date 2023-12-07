@@ -16,14 +16,15 @@ namespace Scripts
         [Space, SerializeField]
         private MainMenuSectionAnimator animator;
 
-        public void CreateButtons(List<MainMenuButtonData> buttonDatas, Action<MainMenuSectionManager> mainMenuButtonClickedAction)
+        public void CreateButtons(List<MainMenuButtonData> buttonDatas)
         {
             for (var i = 0; i < buttonDatas.Count; i++)
             {
                 var newButton = Instantiate(mainMenuButtonPrefab, buttonsContainer.transform);
                 var currentIndex = i;
-                newButton.GetComponentInChildren<LocalizeStringEvent>().StringReference.SetReference("Main Menu UI", buttonDatas[currentIndex].LocalizedTextReference);
-                newButton.onClick.AddListener(() => mainMenuButtonClickedAction(buttonDatas[currentIndex].LinkedSection));
+                var buttonLocalizedString = buttonDatas[currentIndex].LocalizedString;
+                newButton.GetComponentInChildren<LocalizeStringEvent>().StringReference.SetReference(buttonLocalizedString.TableReference, buttonLocalizedString.TableEntryReference);
+                newButton.onClick.AddListener(buttonDatas[currentIndex].onButtonPressed.Invoke);
             }
         }
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Localization;
 
 namespace Scripts
@@ -10,7 +11,6 @@ namespace Scripts
     public class MainMenuButtonData
     {
         public LocalizedString LocalizedString;
-        public string LocalizedTextReference;
-        public MainMenuSectionManager LinkedSection;
+        public UnityEvent onButtonPressed;
     }
 }

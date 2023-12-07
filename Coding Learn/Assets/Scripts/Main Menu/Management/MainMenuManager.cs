@@ -15,9 +15,13 @@ namespace Scripts
         [SerializeField]
         private StatsManager statsManager;
         [SerializeField]
+        private SettingsManager settingsManager;
+        [SerializeField]
         private MainMenuSaveManager saveManager;
         [SerializeField]
         private MainMenuContentManager contentManager;
+        [Space, SerializeField]
+        private GameData gameData;
 
         private MainMenuSectionManager currentMainMenuSection;
 
@@ -43,14 +47,19 @@ namespace Scripts
 
         private void Awake()
         {
-            saveManager.LoadOrCreateSaveData(levelsManager.LevelsCount);
-            contentManager.LoadContentFromResources(levelsManager.LevelsCount);
+            saveManager.Initialize();
+            saveManager.LoadOrCreateGameProgressData(gameData.LevelsCount);
+            saveManager.LoadOrCreateSettingsData();
+            contentManager.LoadContentFromResources(gameData.LevelsCount);
         }
 
         private void Start()
         {
+            levelsManager.CreateLevelButtons(gameData.LevelsCount);
             statsManager.CreateLevelStatsCards();
-            mainMenuSectionView.CreateButtons(buttonDatas, ShowSelectedSection);
+            settingsManager.CreateSettingsViews();
+
+            mainMenuSectionView.CreateButtons(buttonDatas);
             StartCoroutine(mainMenuSectionView.PlayStartAnimation_COR());
         }
     }

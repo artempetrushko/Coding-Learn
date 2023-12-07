@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: en
   m_SharedData: {fileID: 11400000, guid: 02abbeed9d2c7a04f832fac58efa559e, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 3312930909802987522
   m_TableData:
   - m_Id: 1060588281856
     m_Localized: Play
@@ -66,6 +67,23 @@ MonoBehaviour:
     m_Localized: Music Volume
     m_Metadata:
       m_Items: []
+  - m_Id: 5118366680170496
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5118459017773056
+    m_Localized: Apply
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5118553519636480
+    m_Localized: Loading... {0}%
+    m_Metadata:
+      m_Items:
+      - rid: 3312930909802987522
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 3312930909802987522
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00404d1c4c2f1200

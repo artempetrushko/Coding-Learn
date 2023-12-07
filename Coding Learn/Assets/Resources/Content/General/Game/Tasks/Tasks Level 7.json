@@ -1,0 +1,194 @@
+[
+  {
+    "ID": "Task_L7_T1",
+    "StartCode": "public List<int> InitList(int v1, int v2, int v3)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\n\n\npublic class Level7Task1\n{\n//<playerCode>\n    public bool isTaskCompleted()\n    {\n        var random = new Random();\n        var max = 100;\n        return Check(random, max)&& Check(random, max);\n    }\n\n    private bool Check(Random random, int max)\n    {\n        var v1 = random.Next(max);\n        var v2 = random.Next(max);\n        var v3 = random.Next(max);\n        List<int> list = InitList(v1, v2, v3);\n        return list.Count == 3 && list.Contains(v1) && list.Contains(v2) && list.Contains(v3);\n    }   \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L7_T2",
+    "StartCode": "public void RemoveFirst(List<string> list)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\n\n\npublic class Level7Task2\n{\n//<playerCode>\n    public bool isTaskCompleted()\n    {\n        var random = new Random();\n        return Check(random)&&Check(random);\n    }\n\n    private bool Check(Random random)\n    {\n        var firstValue = \"firstValue\";\n        var list = new List<string>();\n        list.Add(firstValue);\n        var maxCount = 100;\n        var max = 1000;\n        var count = random.Next(10, maxCount);\n        for (var i = 0; i < count; i++)\n        {\n            list.Add($\"{random.Next(max)}\");\n        }\n        RemoveFirst(list);\n        return !list.Contains(firstValue)&&list.Count==count;\n    }  \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L7_T3",
+    "StartCode": "public void CopyAndAdd(List<Point> list, List<Point> newList, Point addedPoint)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\n\n\npublic class Level7Task3\n{\n//<playerCode>\n    public class Point\n    {\n        public int X;\n        public int Y;\n\n        public Point(int x, int y)\n        {\n            X = x;\n            Y = y;\n        }\n\n        public override bool Equals(object obj)\n        {\n            var point=obj as Point;\n            return X==point.X&&Y==point.Y;\n        }\n    }\n    public bool isTaskCompleted()\n    {\n        var random = new Random();\n        var maxCount = 100;\n        var maxSize = 100;\n        return Check(random, maxCount, maxSize)&& Check(random, maxCount, maxSize);\n    }\n\n    private bool Check(Random random, int maxCount, int maxSize)\n    {\n        var list=new List<Point>();\n        for (int i = 0; i < random.Next(10,maxCount); i++)\n        {\n            list.Add(new Point(random.Next(maxSize), random.Next(maxSize)));\n        }\n        var addedPoint=new Point(random.Next(maxSize,2*maxSize), random.Next(maxSize, 2 * maxSize));\n        var newList=new List<Point>();\n        CopyAndAdd(list, newList, addedPoint);\n        return newList.Count==list.Count+1&&ContainsRange(newList,list)&&newList.Contains(addedPoint);\n    }\n    public bool ContainsRange(List<Point> list,IEnumerable<Point> range)\n    {\n        foreach(var point in range)\n        {\n            if(!list.Contains(point))\n                return false;\n        }\n        return true;\n    }\n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L7_T4",
+    "StartCode": "public int SortAndSearch(List<int> list,int valueToSearch)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\nusing System.Linq;\n\npublic class Level5Task4\n{\n//<playerCode>\n    public bool isTaskCompleted()\n    {\n        var random = new Random();\n        var maxCount = 1000;\n        var maxSize = 10000;\n        return Check(random, maxCount, maxSize)&& Check(random, maxCount, maxSize);\n    }\n\n    private bool Check(Random random, int maxCount, int maxSize)\n    {\n        var list =CreateList(random,maxCount,maxSize) ;\n        var testedVal=random.Next(maxSize);\n        while (list.Contains(testedVal))\n        {\n            testedVal=random.Next(maxSize);\n        }\n        list.Add(testedVal);\n        Shuffle(list);\n        var count=list.Count;\n        var index=SortAndSearch(list,testedVal);\n        return list.Count==count&&SortCheck(list)&&list[index]==testedVal;\n    }\n\n    private bool SortCheck(List<int> list)\n    {\n        var val = list.First();\n        foreach(var item in list)\n        {\n            if (val > item)\n            {\n                return false;\n            }\n        }\n        return true;\n    }\n\n\n    private static Random rng = new Random((int)DateTime.Now.Ticks & 0x0000FFFF);\n\n\n    public static void Shuffle<T>(IList<T> list)\n    {\n        int n = list.Count;\n        while (n > 1)\n        {\n            n--;\n            int k = rng.Next(n + 1);\n            T value = list[k];\n            list[k] = list[n];\n            list[n] = value;\n        }\n    }\n    private static List<int> CreateList(Random random, int maxCount, int maxSize)\n    {\n        var array = new List<int>();\n        for (int i = 0; i < random.Next(10, maxCount); i++)\n        {\n            var val=random.Next(maxSize);\n            while (array.Contains(val))\n            {\n                val= random.Next(maxSize);\n            }\n            array.Add(val);\n        }\n        \n        return array;\n    } \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L7_T5",
+    "StartCode": "public List<string> GetReversedList(string[] array)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\nusing System.Linq;\n\npublic class Level7Task1\n{\n//<playerCode>\n    public bool isTaskCompleted()\n    {\n        var random = new Random();\n        var maxCount = 1000;\n        var maxSize = 10000;\n        return Check(random, maxCount, maxSize)&& Check(random, maxCount, maxSize);\n    }\n\n    private bool Check(Random random, int maxCount, int maxSize)\n    {\n        var array = CreateArray(random, maxCount, maxSize);\n        var firstCheck = array.Reverse().ToList();\n        firstCheck.Reverse();\n        var testedList = GetReversedList(array);\n        return StringListEquals(firstCheck,testedList) ;\n    }\n\n\n    private bool StringListEquals(List<string> arr1, List<string> arr2)\n    {\n        if (arr1.Count != arr2.Count)\n            return false;\n        for (int i = 0; i < arr1.Count; i++)\n            if (arr1[i] != arr2[i])\n                return false;\n        return true;\n    }\n    private static string[] CreateArray(Random random, int maxCount, int maxSize)\n    {\n        var array = new string[random.Next(maxCount)];\n        for (int i = 0; i < array.Length; i++)\n        {\n            array[i] =$\"{random.Next(10,maxSize)}\";\n        }\n        return array;\n    }  \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L7_T6",
+    "StartCode": " public Dictionary<int,string> CreateAndAdd(int key, string value)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\n\n\npublic class Level7Task1\n{\n//<playerCode>\n    public bool isTaskCompleted()\n    {\n        var random = new Random();\n        var maxCount = 1000;\n        var maxSize = 10000;\n        return Check(random, maxCount, maxSize)&& Check(random, maxCount, maxSize);\n    }\n\n    private bool Check(Random random, int maxCount, int maxSize)\n    {\n        var key=random.Next(maxSize);\n        var value=$\"{random.Next(maxSize)}\";\n        var dict = CreateAndAdd(key, value);\n        return dict.ContainsKey(key)&&dict[key]==value;\n    }   \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L7_T7",
+    "StartCode": "public List<string> CreateListFromDict(Dictionary<int, string> dict)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\nusing System.Linq;\n\npublic class Level7Task1\n{\n//<playerCode>\n    public bool isTaskCompleted()\n    {\n        var random = new Random();\n        var maxCount = 1000;\n        var maxSize = 10000;\n        return Check(random, maxCount, maxSize)&& Check(random, maxCount, maxSize);\n    }\n\n    private bool Check(Random random, int maxCount, int maxSize)\n    {\n        var list = CreateArray(random, maxCount, maxSize).ToList();\n        Shuffle(list);\n        var dict=new Dictionary<int ,string>();\n        for(int i = 0; i < list.Count; i++)\n        {\n            dict.Add(i, list[i]);\n        }\n        var testedList=CreateListFromDict(dict);\n        return StringListEquals(list,testedList);\n    }\n    private bool StringListEquals(List<string> arr1, List<string> arr2)\n    {\n        if (arr1.Count != arr2.Count)\n            return false;\n        for (int i = 0; i < arr1.Count; i++)\n            if (arr1[i] != arr2[i])\n                return false;\n        return true;\n    }\n    private static Random rng = new Random((int)DateTime.Now.Ticks & 0x0000FFFF);\n    public static void Shuffle<T>(IList<T> list)\n    {\n        int n = list.Count;\n        while (n > 1)\n        {\n            n--;\n            int k = rng.Next(n + 1);\n            T value = list[k];\n            list[k] = list[n];\n            list[n] = value;\n        }\n    }\n\n\n    private static string[] CreateArray(Random random, int maxCount, int maxSize)\n    {\n        var array = new string[random.Next(maxCount)];\n        for (int i = 0; i < array.Length; i++)\n        {\n            var val = $\"{random.Next(maxSize)}\";\n            while (array.Contains(val))\n            {\n                val = $\"{random.Next(maxSize)}\";\n            }\n            array[i] = $\"{random.Next(maxSize)}\";\n        }\n\n        return array;\n    }  \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L7_T8",
+    "StartCode": "public List<string> GetMostFrequent(string text)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\nusing System.Linq;\n\npublic class Level7Task1\n{\n//<playerCode>\n    public List<string> data=new List<string>()\n    {\"lorem\",\n\"ipsum\",\n\"dolor\",\n\"sit\",\n\"amet\",\n\"consectetur\",\n\"adipiscing\",\n\"elit\",\n\"sed\",\n\"do\",\n\"eiusmod\",\n\"tempor\",\n\"incididunt\",\n\"ut\",\n\"labore\",\n\"et\",\n\"dolore\",\n\"magna\",\n\"aliqua\",\n\"enim\",\n\"ad\",\n\"minim\",\n\"veniam\",\n\"quis\",\n\"nostrud\",\n\"exercitation\",\n\"ullamco\",\n\"laboris\",\n\"nisi\",\n\"aliquip\",\n\"ex\",\n\"ea\",\n\"commodo\",\n\"consequat\"\n    };\n    public bool isTaskCompleted()\n    {\n        var random = new Random();\n        var maxCount = 1000;\n        var maxSize = 10000;\n        return Check(random, maxCount, maxSize)&& Check(random, maxCount, maxSize);\n    }\n\n    private bool Check(Random random, int maxCount, int maxSize)\n    {\n        var set=new List<string>();\n        foreach(var item in data)\n        {\n            if(!set.Contains(item))\n                set.Add(item);\n        }\n        var array = CreateArray(random, maxCount,set);\n        var text = string.Join(\" \", array);\n        var testedArray = GetMostFrequent(text);\n        var test=array.GroupBy(x=>x).Select(x=>Tuple.Create(x.Key, x.Count())).OrderByDescending(x=>x.Item2).Take(5).Select(x=>x.Item1).ToList();\n        \n        return StringListEquals(testedArray,test);\n    }\n\n\n    private bool StringListEquals(List<string> arr1, List<string> arr2)\n    {\n        if (arr1.Count != arr2.Count)\n            return false;\n        for (int i = 0; i < arr1.Count; i++)\n            if (arr1[i] != arr2[i])\n                return false;\n        return true;\n    }\n    private static string[] CreateArray(Random random, int maxCount,List<string> data)\n    {\n        var array = new string[random.Next(maxCount)];\n        for (int i = 0; i < array.Length; i++)\n        {\n            array[i] = data[random.Next(0, data.Count - 1)]; ;\n        }\n\n        return array;\n    }  \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  }
+]

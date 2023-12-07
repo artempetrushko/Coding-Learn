@@ -1,0 +1,94 @@
+{
+  "LinkedThemeID": "Collections",
+  "Title": "Collections",
+  "SubThemes": [
+    {
+      "LinkedSubThemeID": "Introduction to List",
+      "Title": "Introduction to List",
+      "Infos": [
+        {
+          "LinkedTrainingInfoID": "Initializing a List Collection",
+          "Title": "Initializing a List Collection",
+          "Info": "Although there are arrays in the C# language that store sets of objects of the same type, it is not always convenient to work with them. For example, an array stores a fixed number of objects, but what if we do not know in advance how many objects we need. And in this case, it is much more convenient to use collections.Another advantage of collections is that some of them implement standard data structures, such as stack, queue, dictionary, which can be useful for solving various special tasks.Most of the collection classes are contained in the namespace System.Collections.Generic.\n\nThe List<T> class from the System.Collections.Generic namespace represents the simplest list of objects of the same type.The List class is typed by the type whose objects will be stored in the list.\n\nAn instance of the List class can be created as follows :\nList<variable type> list_name = new List<variable type>();\n\nThis creates an empty collection, but you can immediately fill it with the necessary set elements by specifying them in curly braces, or by passing another list or array as a parameter."
+        }
+      ]
+    },
+    {
+      "LinkedSubThemeID": "Removing from the list",
+      "Title": "Removing from the list",
+      "Infos": [
+        {
+          "LinkedTrainingInfoID": "Removing from the list",
+          "Title": "Removing from the list",
+          "Info": "You can remove elements from the list in various ways, let's get acquainted with some of them:\n* RemoveAt() removes an element by its index\n* Remove() removes an element by its value\n* RemoveRange() removes elements by indexes in the given range\n* people.Clear() completely clears the list"
+        }
+      ]
+    },
+    {
+      "LinkedSubThemeID": "Adding elements",
+      "Title": "Adding elements",
+      "Infos": [
+        {
+          "LinkedTrainingInfoID": "Adding elements",
+          "Title": "Adding elements",
+          "Info": "New elements can be added to the created list. One way to do this is with the Add() method. This adds the element to the end of the list."
+        }
+      ]
+    },
+    {
+      "LinkedSubThemeID": "Search in the list and sort it",
+      "Title": "Search in the list and sort it",
+      "Infos": [
+        {
+          "LinkedTrainingInfoID": "Search in the list and sort it",
+          "Title": "Search in the list and sort it",
+          "Info": "A list provides the ability to binary search for elements. How it differs from the usual search in the form of a simple enumeration, we will consider in one of the following topics. For now, we will just try to use it to find elements. \nImportant clarification: for binary search to work , the list must be sorted.\n\nSorting can be done with the Sort() method, and binary search with the BinarySearch() method."
+        }
+      ]
+    },
+    {
+      "LinkedSubThemeID": "Reverse order",
+      "Title": "Reverse order",
+      "Infos": [
+        {
+          "LinkedTrainingInfoID": "Reverse order",
+          "Title": "Reverse order",
+          "Info": "The List class has a Reverse() method that reverses the order of all elements."
+        }
+      ]
+    },
+    {
+      "LinkedSubThemeID": "Introduction to Dictionary",
+      "Title": "Introduction to Dictionary",
+      "Infos": [
+        {
+          "LinkedTrainingInfoID": "Dictionary initialization",
+          "Title": "Dictionary initialization",
+          "Info": "Dictionaries are another common collection type. A dictionary stores objects that represent a key-value pair. The Dictionary<K, V> dictionary class is typed with two types: the K parameter represents the key type, and the V parameter provides the value type. \n \n If we draw a rough analogy, we can say that a dictionary is a list, but instead of its indices, it can be anything and in any order.Agree, this is convenient if you need to store pairs of data together, for example, a word and its translation Then the key can be a word in your native language, and the value can be the translation of this word, or vice versa. store in a very inconvenient format."
+        }
+      ]
+    },
+    {
+      "LinkedSubThemeID": "Access to dictionary elements",
+      "Title": "Access to dictionary elements",
+      "Infos": [
+        {
+          "LinkedTrainingInfoID": "Access to dictionary elements",
+          "Title": "Access to dictionary elements",
+          "Info": "Note that each element in the dictionary represents a KeyValuePair<TKey, TValue> structure, where the TKey parameter represents the key type and the TValue parameter represents the element's value type. This structure provides Key and Value properties that can be used to get respectively, the key and value of an element in a dictionary.\n\nYou can get the value of a dictionary element by its key using square brackets, as in arrays and lists, or you can use a foreach loop to iterate. hardly suitable, since indexes can be not only numbers, and the dictionary itself is not an ordered collection.\n\nTo get the key and value of the dictionary element, the Key and Value properties are used, respectively."
+        }
+      ]
+    },
+    {
+      "LinkedSubThemeID": "ContainsKey method",
+      "Title": "ContainsKey method",
+      "Infos": [
+        {
+          "LinkedTrainingInfoID": "Hint",
+          "Title": "Hint",
+          "Info": "In order to find the most frequent words, you have to count how many times each word occurs in the text. A dictionary is great for storing this information. Keep in mind that a dictionary only stores items with unique keys. To check , whether there is already an element in the dictionary with a specific key, you can use the ContainsKey() method"
+        }
+      ]
+    }
+  ]
+}

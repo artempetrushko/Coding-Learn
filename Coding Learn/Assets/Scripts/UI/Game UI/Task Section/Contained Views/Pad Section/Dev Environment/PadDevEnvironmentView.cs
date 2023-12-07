@@ -33,7 +33,7 @@ namespace Scripts
 
         public void SetAndShowCompilationErrorsInfo(List<(int line, int column, string message)> errors)
         {
-            var errorsMessage = string.Join("\n", errors.Select(error => string.Format("<color=red>Error</color> ({0}, {1}): {2}", error.line - 5, error.column, error.message)));
+            var errorsMessage = string.Join("\n", errors.Select(error => string.Format("<color=red>Error</color> ({0}, {1}): {2}", error.line, error.column, error.message)));
             StartCoroutine(ShowErrors_COR(errorsMessage));
         }
 

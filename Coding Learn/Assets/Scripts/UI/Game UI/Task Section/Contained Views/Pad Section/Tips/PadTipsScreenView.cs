@@ -44,8 +44,7 @@ namespace Scripts
         {
             var buttonTextReference = skipTaskButton.GetComponentInChildren<LocalizeStringEvent>().StringReference;
             buttonTextReference.SetReference(localizationTableReference, localizedTextReference);
-            var buttonLocalizedText = buttonTextReference.GetLocalizedString(formattedTimerText);
-            //Localization
+            buttonTextReference.GetLocalizedString(formattedTimerText);
         }
 
         public void SetTipStatusText(string localizationTableReference, string localizedTextReference)
@@ -53,7 +52,9 @@ namespace Scripts
 
         public void SetTipStatusTextWithTimer(string localizationTableReference, string localizedTextReference, string formattedTimerText)
         {
-            
+            var textReference = skipTaskButton.GetComponentInChildren<LocalizeStringEvent>().StringReference;
+            textReference.SetReference(localizationTableReference, localizedTextReference);
+            textReference.GetLocalizedString(formattedTimerText);
         }
 
         public void ClearTipText()

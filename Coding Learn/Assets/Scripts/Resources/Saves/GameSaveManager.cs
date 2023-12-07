@@ -8,19 +8,23 @@ namespace Scripts
     {
         public static TaskChallengesResults GetCurrentTaskChallengesResults(int currentTaskNumber)
         {
-            saveData.AllChallengeStatuses[GameManager.CurrentLevelNumber - 1].TasksChallengesResults[currentTaskNumber - 1] ??= new TaskChallengesResults();
-            return saveData.AllChallengeStatuses[GameManager.CurrentLevelNumber - 1].TasksChallengesResults[currentTaskNumber - 1];
-        }
-
-        public void SaveProgress(int currentLevelNumber)
-        {
-            if (currentLevelNumber > saveData.LastAvailableLevelNumber)
+            var tasksChallengesResults = gameProgressData.AllChallengeStatuses[GameManager.CurrentLevelNumber - 1].TasksChallengesResults;
+            if (currentTaskNumber > tasksChallengesResults.Count)
             {
-                saveData.LastAvailableLevelNumber = Mathf.Clamp(currentLevelNumber + 1, 1, saveData.TotalLevelsCount);
+                tasksChallengesResults.Add(new TaskChallengesResults());
             }
-            SerializeAndSaveData(saveData);
+            return tasksChallengesResults[currentTaskNumber - 1];
         }
 
-        public void LoadSaveData() => saveData = LoadSavedData();
+        public void SaveProgress(int lastAvailableNumber)
+        {
+            if (lastAvailableNumber > gameProgressData.LastAvailableLevelNumber)
+            {
+                gameProgressData.LastAvailableLevelNumber = lastAvailableNumber;
+            }          
+            SerializeAndSaveData(gameProgressData);
+        }
+
+        public void LoadSaveData() => gameProgressData = LoadSavedData<GameProgressData>();
     }
 }

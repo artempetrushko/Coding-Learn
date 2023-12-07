@@ -13,6 +13,8 @@ namespace Scripts
     public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
     {
         [SerializeField]
+        private Button buttonComponent;
+        [SerializeField]
         private GameObject buttonView;
         [SerializeField]
         private TMP_Text levelNumberLabel;
@@ -30,22 +32,22 @@ namespace Scripts
         private Transform levelDescriptionViewContainer;
 
         private string levelDescription;
-        private Button buttonComponent;
         private LevelDescriptionView currentLevelDescriptionView;
 
-        public void SetInfo(int levelNumber, string levelDescription)
+        public void SetBasicParams(int levelNumber)
         {
             levelNumberLabel.text = levelNumber.ToString();
-            this.levelDescription = levelDescription;
         }
 
-        public void SetButtonParams(bool isInteractable, UnityAction buttonPressedAction)
-        {
-            buttonComponent.interactable = isInteractable;
+        public void SetActiveButtonParams(string levelDescription, UnityAction buttonPressedAction)
+        {           
+            this.levelDescription = levelDescription;
             buttonComponent.onClick.AddListener(buttonPressedAction);
         }
 
-        public void Select() => buttonComponent.Select();
+        public void ClickForce() => buttonComponent.onClick.Invoke();
+
+        public void Deactivate() => buttonComponent.interactable = false;
 
         public void OnPointerEnter(PointerEventData eventData)
         {
@@ -73,11 +75,6 @@ namespace Scripts
         public void OnSelect(BaseEventData eventData) => innerArea.color = buttonNormalColor;
 
         public void OnDeselect(BaseEventData eventData) => innerArea.color = buttonSelectedColor;
-
-        private void OnEnable()
-        {
-            buttonComponent = GetComponent<Button>();
-        }
 
         private void ScaleButtonView(float addedScale) => buttonView.transform.localScale += new Vector3(addedScale, addedScale, addedScale);
     }

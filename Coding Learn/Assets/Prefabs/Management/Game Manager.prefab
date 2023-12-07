@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: -4741594969527248707}
   - component: {fileID: 5976149445434311918}
   - component: {fileID: 7955842500387971599}
+  - component: {fileID: 7006385447273250321}
+  - component: {fileID: 424633537551515677}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -96,6 +98,30 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 6539088680678338312}
@@ -112,9 +138,9 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: Scripts.StoryPanelBehaviour, Assembly-CSharp
-          m_MethodName: ShowStoryText
+        - m_Target: {fileID: 5363064862126088373}
+          m_TargetAssemblyTypeName: Scripts.StorytellingManager, Assembly-CSharp
+          m_MethodName: ShowNextStoryPart
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -126,9 +152,9 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: Scripts.TaskPanelBehaviour, Assembly-CSharp
-          m_MethodName: StartNewTask
+        - m_Target: {fileID: -4564359685168556614}
+          m_TargetAssemblyTypeName: Scripts.GameTaskManager, Assembly-CSharp
+          m_MethodName: LoadNewTask
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -152,9 +178,9 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: Scripts.StoryPanelBehaviour, Assembly-CSharp
-          m_MethodName: ShowFirstStoryText
+        - m_Target: {fileID: 5363064862126088373}
+          m_TargetAssemblyTypeName: Scripts.StorytellingManager, Assembly-CSharp
+          m_MethodName: ShowFirstStoryPart
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -166,9 +192,9 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: Scripts.LoadLevel, Assembly-CSharp
-          m_MethodName: LoadLevelAsync
+        - m_Target: {fileID: 1521588603279411650}
+          m_TargetAssemblyTypeName: Scripts.GameManager, Assembly-CSharp
+          m_MethodName: LoadNextScene
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -289,6 +315,8 @@ MonoBehaviour:
   saveManager: {fileID: 1521588603279411649}
   contentManager: {fileID: 5888913198164409973}
   storytellingManager: {fileID: 5363064862126088373}
+  sceneLoadingManager: {fileID: 7006385447273250321}
+  gameData: {fileID: 11400000, guid: 6e77e1bf9771e7048bd228115f25dbf2, type: 2}
 --- !u!114 &1521588603279411649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,3 +502,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padChallengesScreenView: {fileID: 0}
   rewardingSectionView: {fileID: 0}
+  onChallengesCompletingChecked:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5363064862126088373}
+        m_TargetAssemblyTypeName: Scripts.StorytellingManager, Assembly-CSharp
+        m_MethodName: PlayNextCutscene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7006385447273250321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521588603279411648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32db82b45746f694681d3c116231093f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingScreenView: {fileID: 0}
+--- !u!114 &424633537551515677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521588603279411648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ae1e41ba124184cb76bdfbf02047c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exitToMenuSectionView: {fileID: 0}
+  onBlackScreenShown:
+    m_PersistentCalls:
+      m_Calls: []

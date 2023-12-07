@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -8,27 +9,39 @@ namespace Scripts
 {
     public abstract class SaveManager : MonoBehaviour
     {
-        protected static SaveData saveData;
+        protected static GameProgressData gameProgressData;
+        protected static SettingsData settingsData;
 
-        protected string SaveFilePath => Application.persistentDataPath + "/save.json";
+        private Dictionary<Type, string> savedDataFilePaths;
 
-        protected void SerializeAndSaveData(SaveData data)
+        public void Initialize()
         {
-            var serializedData = JsonConvert.SerializeObject(data);
-            File.WriteAllText(SaveFilePath, serializedData);
-            Debug.Log("Данные сохранены в " + SaveFilePath);
+            savedDataFilePaths = new Dictionary<Type, string>()
+            {
+                { typeof(GameProgressData), Application.persistentDataPath + "/save.json" },
+                { typeof(SettingsData),     Application.persistentDataPath + "/config.json" }
+            };
         }
 
-        protected SaveData LoadSavedData()
+        protected void SerializeAndSaveData<T>(T data) where T : SavedData
         {
+            var serializedData = JsonConvert.SerializeObject(data, Formatting.Indented);
+            var dataFilePath = savedDataFilePaths[typeof(T)];
+            File.WriteAllText(dataFilePath, serializedData);
+            Debug.Log("Data was saved in " + dataFilePath);
+        }
+
+        protected T LoadSavedData<T>() where T: SavedData
+        {
+            var dataFilePath = savedDataFilePaths[typeof(T)];
             try
             {
-                var serializedData = File.ReadAllText(SaveFilePath);
-                return JsonConvert.DeserializeObject<SaveData>(serializedData);
+                var serializedData = File.ReadAllText(dataFilePath);
+                return JsonConvert.DeserializeObject<T>(serializedData);
             }
             catch
             {
-                Debug.Log(string.Format("Файл {0} не был загружен!", SaveFilePath));
+                Debug.LogWarning($"File {dataFilePath} could not loaded!");
                 return null;
             }
         }

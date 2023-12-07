@@ -1,0 +1,114 @@
+{
+  "LinkedThemeID": "Loops",
+  "Title": "Loops",
+  "SubThemes": [
+    {
+      "LinkedSubThemeID": "Introduction to loops. The for loop",
+      "Title": "Introduction to loops. The for loop",
+      "Infos": [
+        {
+          "LinkedTrainingInfoID": "Introducing Cycles",
+          "Title": "Introducing Cycles",
+          "Info": "Now we will touch on an important topic of programming - <color=green>loops</color>. Loops in programming languages ​​are designed to build a structure that executes a given block of code a certain number of times, which is determined by one or another condition. "
+        },
+        {
+          "LinkedTrainingInfoID": "The for loop. Its construction",
+          "Title": "The for loop. Its construction",
+          "Info": " Let's consider one of the loop construction options - <color=green>for loop</color>. It can be used in situations where the number of iterations (loop repetitions) is known before entering the loop. It has the following form:\n for (<initialization>; <condition>; <execution order>) \n {\n <actions>\n }\n <color=green>Initialization</color> — setting the initial parameters of the counter;\n <color=green> Condition</color> is a condition for exiting the loop, as soon as it returns false, the loop will exit;\n <color=green>Execution order</color> is a command to increase the counter.\n Actions performed cyclically are called the loop body ."
+        },
+        {
+          "LinkedTrainingInfoID": "For Loop Example",
+          "Title": "For Loop Example",
+          "Info": " Consider the standard loop for:\n In it, we initialize the local variable with the value 0, then check that the variable is less than ten, execute the body of the loop - add the variable i to the variable sum. At each iteration, add the value to the variable, check again condition and execute the loop body, and so on, until the condition (i < 10) is true. "
+        }
+      ]
+    },
+    {
+      "LinkedSubThemeID": "Break operator",
+      "Title": "Break operator",
+      "Infos": [
+        {
+          "LinkedTrainingInfoID": "For loop with break statement",
+          "Title": "For loop with break statement",
+          "Info": "Let's continue with the for loop. Sometimes there is a situation when we need to exit the loop without waiting for it to complete. In this case, we can use the <color=green>break statement</color>. So, <color=green >statement break</color> is used to break the execution of the loop.Consider the previous problem.Now let the loop break when the sum of the numbers becomes greater than 30."
+        }
+      ]
+    },
+    {
+      "LinkedSubThemeID": "Introduction to while. The while construct",
+      "Title": "Introduction to while. The while construct",
+      "Infos": [
+        {
+          "LinkedTrainingInfoID": "Introduction to while. The while construct",
+          "Title": "Introduction to while. The while construct",
+          "Info": "Now let's move on to another version of the loop construction - <color=green>while loop</color>. In this case, the actions of the loop are repeated until the specified condition is met. This loop functions according to the principle: First, we think after doing. In general, it looks like this:\n while(<Condition>)\n {\n <Actions>\n } "
+        },
+        {
+          "LinkedTrainingInfoID": "Variable naming rules. Language",
+          "Title": "Variable naming rules. Language",
+          "Info": " In this loop, the condition is checked, and if it is true, then a set of statements inside the loop body is executed. Be sure to <color=green>change the variable</color> on which the condition depends, otherwise the loop will become infinite. An example of working with a while loop: "
+        }
+      ]
+    },
+    {
+      "LinkedSubThemeID": "Loop with another method condition",
+      "Title": "Loop with another method condition",
+      "Infos": [
+        {
+          "LinkedTrainingInfoID": "Loop with another method condition",
+          "Title": "Loop with another method condition",
+          "Info": " We can also add <color=green>methods</color> to loops. For example, let's add a condition to the previous task that numbers must be prime, and the IsPrime method will check this: "
+        }
+      ]
+    },
+    {
+      "LinkedSubThemeID": "The continue operator",
+      "Title": "The continue operator",
+      "Infos": [
+        {
+          "LinkedTrainingInfoID": "The for loop with continue",
+          "Title": "The for loop with continue",
+          "Info": "Let's get acquainted with one more loop operator. Now let's set ourselves another task. What if we want the loop to not end when checking, but simply skip the current iteration. To do this, we can use the <color=green>continue< operator /color> So the <color=green>continue </color> operator is used to go to the next iteration of the loop.Example: "
+        }
+      ]
+    },
+    {
+      "LinkedSubThemeID": "Repetition 1",
+      "Title": "Repetition",
+      "Infos": [
+        {
+          "LinkedTrainingInfoID": "Repetition",
+          "Title": "Repetition",
+          "Info": "We learned a lot about cyclic constructions, so it's time to practice! Let's solve one more problem."
+        }
+      ]
+    },
+    {
+      "LinkedSubThemeID": "Nested Loops",
+      "Title": "Nested Loops",
+      "Infos": [
+        {
+          "LinkedTrainingInfoID": "Nested Loops",
+          "Title": "Nested Loops",
+          "Info": "I think it's time to get familiar with <color=green>Nested Loops</color>. <color=green>Nested Loops</color> are loops organized within the body of another loop. A nested loop within the body of another loop , is called an inner loop, and a loop that contains a nested loop is called an outer loop."
+        },
+        {
+          "LinkedTrainingInfoID": "Iterations of inner loops",
+          "Title": "Iterations of inner loops",
+          "Info": " The total number of <color=green>executions</color> of the inner loop is always equal to the product of the number of iterations of the inner loop and the product of the number of iterations of all outer loops, for example, if the outer loop has 5 iterations and the inner loop has 10, then the total the number of iterations of the inner loop will be 5 * 10 = 50 iterations.\n <color=red>Note</color>: counter variables are also subject to scope rules, so you cannot re-create i as a counter variable in the nested loop - if you try creation will be an error!"
+        }
+      ]
+    },
+    {
+      "LinkedSubThemeID": "Repetition 2",
+      "Title": "Repetition",
+      "Infos": [
+        {
+          "LinkedTrainingInfoID": "Repetition",
+          "Title": "Repetition",
+          "Info": "For now, our knowledge of cycles will be enough to solve a lot of problems. Take at least the following one - it should definitely be tough for you!"
+        }
+      ]
+    }
+  ]
+}

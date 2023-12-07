@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Scripts
 {
-    [CreateAssetMenu(fileName = "C# Keywords Data", menuName = "Game Data/Dev Environment/C# Keywords Data")]
+    [CreateAssetMenu(fileName = "C# Keywords Data", menuName = "Game Data/Game/UI/Dev Environment/C# Keywords Data")]
     public class ProgrammingWordsHighlightData : ScriptableObject
     {
         [SerializeField]

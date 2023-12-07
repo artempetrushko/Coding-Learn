@@ -8,9 +8,10 @@ namespace Scripts
 {
     public abstract class ContentManager : MonoBehaviour
     {
-        protected string contentRootFolderPath = "Data/";
+        protected static string contentRootFolderPath = "Content";
 
-        protected string LocalizedContentFolderPath => contentRootFolderPath + LocalizationSettings.SelectedLocale.Identifier.Code;
+        protected static string GeneralContentFolderPath => contentRootFolderPath + "/General";
+        protected static string LocalizedContentFolderPath => contentRootFolderPath + "/Localized Content/" + LocalizationSettings.SelectedLocale.Identifier.Code;
 
         protected T[] LoadDatasFromFile<T>(string resourcePath)
         {
@@ -24,7 +25,7 @@ namespace Scripts
             for (var i = 1; i <= filesCount; i++)
             {
                 var file = Resources.Load<TextAsset>(commonFilePath + i);
-                datas[i] = DeserializeData<T[]>(file);
+                datas[i - 1] = DeserializeData<T[]>(file);
             }
             return datas;
         }
@@ -37,7 +38,7 @@ namespace Scripts
             }
             catch
             {
-                Debug.LogError("Некорректный текст JSON в файле " + serializedData.name);
+                Debug.LogError($"File {serializedData.name} contains incorrect JSON text");
                 return default;
             }
         }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Localization.Tables;
 
 namespace Scripts
 {
@@ -28,14 +29,14 @@ namespace Scripts
             yield return StartCoroutine(animator.ChangeVisibility_COR(isVisible));
         }
 
-        public SettingsOptionView CreateOptionView(string localizedTitleReference, SettingViewType viewType)
+        public SettingsOptionView CreateOptionView((TableReference table, TableEntryReference entry) localizedString, SettingViewType viewType)
         {
             SettingsOptionView optionView = (SettingsOptionView)Instantiate(viewType switch
             {
                 SettingViewType.Switches => switchesOptionViewPrefab,
                 SettingViewType.Slider => sliderOptionViewPrefab
             }, settingsContainer.transform);
-            optionView.SetTitleReference(localizedTitleReference);
+            optionView.SetTitleReference(localizedString);
             return optionView;
         }
 

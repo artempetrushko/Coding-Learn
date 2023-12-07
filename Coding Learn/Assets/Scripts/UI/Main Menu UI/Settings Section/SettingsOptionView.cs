@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Components;
+using UnityEngine.Localization.Tables;
 
 namespace Scripts
 {
@@ -16,9 +17,9 @@ namespace Scripts
 
         public abstract void SetValueChangedAction(Action<int> optionValueChangedAction);
 
-        public void SetTitleReference(string localizedTitleReference)
+        public void SetTitleReference((TableReference table, TableEntryReference entry) localizedString)
         {
-            optionTitleText.GetComponent<LocalizeStringEvent>().StringReference.SetReference("Main Menu UI", localizedTitleReference);
+            optionTitleText.GetComponent<LocalizeStringEvent>().StringReference.SetReference(localizedString.table, localizedString.entry);
         }
 
         public void SetOptionValue(string optionValue) => optionValueText.text = optionValue;

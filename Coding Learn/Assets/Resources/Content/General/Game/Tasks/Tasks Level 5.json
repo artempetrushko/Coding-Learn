@@ -1,0 +1,170 @@
+[
+  {
+    "ID": "Task_L5_T1",
+    "StartCode": "public int[] CopyAppleSizesArray(int[] sizeArray)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\n\n\npublic class Level5Task1\n{\n//<playerCode>\n    public bool isTaskCompleted()\n    {\n        var random = new Random();\n        var maxCount = 1000;\n        var maxSize = 10000;\n        return Check(random, maxCount, maxSize)&& Check(random, maxCount, maxSize);\n    }\n\n    private bool Check(Random random, int maxCount, int maxSize)\n    {\n        var array = CreateArray(random, maxCount, maxSize);\n        var testedArray = CopyAppleSizesArray(array);\n        var firstCheck = !testedArray.Equals(array);\n        var secondCheck = true;\n        for (int i = 0; i < testedArray.Length; i++)\n        {\n            if (testedArray[i] != array[i])\n                secondCheck = false;\n        }\n        return firstCheck && secondCheck;\n    }\n\n    private static int[] CreateArray(Random random, int maxCount, int maxSize)\n    {\n        var array = new int[random.Next(maxCount)];\n        for (int i = 0; i < array.Length; i++)\n        {\n            array[i] = random.Next(maxSize);\n        }\n\n        return array;\n    }   \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L5_T2",
+    "StartCode": "public bool[] SelectSuitableLogs(int neededLogSize, int[] logSizes)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\nusing System.Linq;\n\npublic class Level5Task2\n{\n//<playerCode>\n    public bool isTaskCompleted()\n    {\n        var random = new Random();\n        var maxCount = 1000;\n        var maxSize = 100;\n        return Check(random, maxCount, maxSize) && Check(random, maxCount, maxSize);\n    }\n\n    private bool Check(Random random, int maxCount, int maxSize)\n    {\n        var array = CreateArray(random, maxCount, maxSize);\n        var size = random.Next(maxSize);\n        var testedArray = SelectSuitableLogs(size, array);\n        var controlArray=array.Select(x => x<=size).ToArray();\n        var secondCheck = true;\n        for (int i = 0; i < testedArray.Length; i++)\n        {\n            if (testedArray[i] != controlArray[i])\n                secondCheck = false;\n        }\n        return secondCheck;\n    }\n    private static int[] CreateArray(Random random, int maxCount, int maxSize)\n    {\n        var array = new int[random.Next(maxCount)];\n        for (int i = 0; i < array.Length; i++)\n        {\n            array[i] = random.Next(maxSize);\n        }\n\n        return array;\n    }    \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L5_T3",
+    "StartCode": "public int MakeMove(int[] cards,int enemyMove)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\nusing System.Linq;\n\npublic class Level5Task3\n{\n//<playerCode>\n    public bool isTaskCompleted()\n    {\n        var random = new Random();\n        var maxCount = 52;\n        var maxSize = 14;\n        return Check(random, maxCount, maxSize) && Check(random, maxCount, maxSize);\n    }\n\n    private bool Check(Random random, int maxCount, int maxSize)\n    {\n        var array = CreateArray(random, maxCount, maxSize);\n        var size = random.Next(maxSize);\n        var tested= MakeMove(array, size);\n        var controled = -1;\n        if (size != 1)\n        {\n            foreach (var item in array)\n            {\n                if (item > size && item < controled)\n                    controled = item;\n            }\n            if (controled == -1 && array.Contains(1))\n                controled = 1;\n        }\n        return tested==controled;\n    }\n\n    private static int[] CreateArray(Random random, int maxCount, int maxSize)\n    {\n        var array = new int[random.Next(maxCount)];\n        for (int i = 0; i < array.Length; i++)\n        {\n            array[i] = random.Next(1,maxSize);\n        }\n\n        return array;\n    }   \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L5_T4",
+    "StartCode": "public int[] TranslateDirection(Direction[] directions)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\nusing System.Linq;\n\npublic class Level5Task4\n{   \n//<playerCode>\n    public enum Direction\n    {\n        West, Nort, South, East\n    }\n    public bool isTaskCompleted()\n    {\n        var random = new Random();\n        var maxCount = 1000;\n        var maxSize = 4;\n        return Check(random, maxCount, maxSize) && Check(random, maxCount, maxSize);\n    }\n\n    private bool Check(Random random, int maxCount, int maxSize)\n    {\n        var array = CreateArray(random, maxCount, maxSize);\n        var testedArray = TranslateDirection(array.Select(x=>(Direction)x).ToArray());\n        var secondCheck = true;\n        for (int i = 0; i < testedArray.Length; i++)\n        {\n            if (testedArray[i] != array[i])\n                secondCheck = false;\n        }\n        return secondCheck;\n    }\n\n    private static int[] CreateArray(Random random, int maxCount, int maxSize)\n    {\n        var array = new int[random.Next(maxCount)];\n        for (int i = 0; i < array.Length; i++)\n        {\n            array[i] = random.Next( maxSize);\n        }\n\n        return array;\n    }  \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L5_T5",
+    "StartCode": "public bool CheckFirstElemen(int[] array)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\n\n\npublic class Level5Task5\n{\n//<playerCode>\n    public bool isTaskCompleted()\n    {\n        int[] array = null;\n        var firstCheck=CheckFirstElemen(array);\n        array= new int[0];\n        var secondCheck = CheckFirstElemen(array);\n        array = new int[] {0,1};\n        var thirdCheck = CheckFirstElemen(array);\n        array = new int[] {10,0};\n        var fourthCheck = CheckFirstElemen(array);\n\n        return !firstCheck&&!secondCheck&&!thirdCheck&&fourthCheck;\n    }  \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L5_T6",
+    "StartCode": "public int GetArray(int[,] array,Color color,Form form)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\n\n\npublic class Level5Task6\n{\n//<playerCode>\n    public enum Color { Red, White, Grey }\n    public enum Form { Gear, Triangle, Square }\n\n    public bool isTaskCompleted()\n    {\n        var random = new Random();\n        var maxCount = 3;\n        var maxSize = 1000;\n        return Check(random, maxCount, maxSize) && Check(random, maxCount, maxSize);\n    }\n\n    private bool Check(Random random, int maxCount, int maxSize)\n    {\n        var array = CreateArray(random, maxCount, maxSize);\n        var color = random.Next(maxCount);\n        var form = random.Next(maxCount);\n        var tested=GetArray(array,(Color)color,(Form) form) ;\n        var controled=array[color,form];\n        return tested==controled;\n    }\n\n    private static int[,] CreateArray(Random random, int maxCount, int maxSize)\n    {\n        var array = new int[random.Next(maxCount), random.Next(maxCount)];\n        for (int i = 0; i < array.GetLength(0); i++)\n            for (int j = 0; j < array.GetLength(1); j++)\n            {\n                array[i, j] = random.Next(maxSize);\n            }\n\n        return array;\n    }  \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  },
+  {
+    "ID": "Task_L5_T7",
+    "StartCode": "public int[] ProcessArray(int[] array, int weight)\n{\n \n \n}\n",
+    "TestInfo": {
+      "TestCode": "using System;\nusing System.Collections.Generic;\nusing System.Linq;\n\npublic class Level5Task7\n{\n//<playerCode>\n    public bool isTaskCompleted()\n    {\n        var random = new Random();\n        var maxCount = 1000;\n        var maxSize = 100;\n        return Check(random, maxCount, maxSize) && Check(random, maxCount, maxSize);\n    }\n    private bool Check(Random random, int maxCount, int maxSize)\n    {\n        var array = CreateArray(random, maxCount, maxSize);\n        var weight = random.Next(maxSize);\n        var testedArray = ProcessArray(array,weight);\n        var controlArray = array.Select(x => (x>weight)?-1:x).ToArray();\n        var firstCheck=!array.Equals(testedArray);\n        var secondCheck = true;\n        for (int i = 0; i < testedArray.Length; i++)\n        {\n            if (testedArray[i] != controlArray[i])\n                secondCheck = false;\n        }\n        return secondCheck&&firstCheck;\n    }\n    private static int[] CreateArray(Random random, int maxCount, int maxSize)\n    {\n        var array = new int[random.Next(maxCount)];\n        for (int i = 0; i < array.Length; i++)\n        {\n            array[i] = random.Next(maxSize);\n        }\n\n        return array;\n    } \n}",
+      "TestMethodName": "isTaskCompleted",
+      "PlayerCodePlaceholder": "//<playerCode>",
+      "PlayerCodeStartRowNumber": 7
+    },
+    "ChallengeInfos": [
+      {
+        "Type": "SolveTask",
+        "CheckValue": true
+      },
+      {
+        "Type": "NoTips",
+        "CheckValue": false
+      },
+      {
+        "Type": "CompletingTimeLessThan",
+        "CheckValue": 300
+      }
+    ]
+  }
+]

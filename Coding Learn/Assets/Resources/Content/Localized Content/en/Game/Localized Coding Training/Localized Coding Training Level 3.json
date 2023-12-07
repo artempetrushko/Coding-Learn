@@ -1,0 +1,133 @@
+{
+  "LinkedThemeID": "Branches",
+  "Title": "Branches",
+  "SubThemes": [
+    {
+      "LinkedSubThemeID": "Introduction to branches",
+      "Title": "Introduction to branches",
+      "Infos": [
+        {
+          "LinkedTrainingInfoID": "Branches",
+          "Title": "Branches",
+          "Info": "     You've gotten really good at writing simple programs! It's time to learn something more complex.\n If you remember what your solutions were, you might notice their general similarity - all the commands in them were executed by <color =green>sequentially</color>, one after another. \"But you can't make all programs like this!\" - you will say, and you will be right. Therefore, it's time to tell you about <color=green>branching</color>."
+        },
+        {
+          "LinkedTrainingInfoID": "Branches. If, else constructs",
+          "Title": "Branches. If, else constructs",
+          "Info": "     color=green>Branches</color> make it possible to execute <color=green>different</color> code depending on some <color=green>condition</color>. To do this, in many languages, including C#, have special <color=green>if</color> and <color=green>else</color> conditionals.\n How can they be interpreted? It's simple: if (<color=green>if< /color>) some condition is true, then the code following the if in curly braces is executed; otherwise (<color=green>else</color>) the other part of the code following the if in curly braces is executed."
+        },
+        {
+          "LinkedTrainingInfoID": "Logical operators and expressions",
+          "Title": "Logical operators and expressions",
+          "Info": "     Well, what kind of conditions should be met and how to write them in code? In fact, there are a lot of variations of them, but we will start with simple and well-known - mathematical ones.\n Of course, you know such conditions, like <, >, <=, >=. These are <color=green>logical operators</color>, and with their help we will create conditions.For example, in parentheses after if, you can check whether the number A is greater than the number B or No. If so, the code in the if section will be executed, otherwise, the code in the else section will be executed.\n Well, since we can compare numbers, you can also compare the <color=green>variables</color> that store them."
+        }
+      ]
+    },
+    {
+      "LinkedSubThemeID": "Branches (continuation)",
+      "Title": "Branches (continuation)",
+      "Infos": [
+        {
+          "LinkedTrainingInfoID": "Branches (continued)",
+          "Title": "Branches (continued)",
+          "Info": "     Not bad, now we can write more complex programs. But still there is a problem: so far we can only implement 2 scenarios. And how to make sure that we have <color=green>many</color > conditions and also many options for further actions?\n"
+        },
+        {
+          "LinkedTrainingInfoID": "else if construct",
+          "Title": "else if construct",
+          "Info": "    Of course, we could try to write another if and else in the if and else, and sometimes it is possible and necessary to do so. But not always.\n The <color=green>else if</color construction is much more useful > (\"else if\"). It allows you to execute some code if the condition in the if is false, but <color=green>another condition</color> (which is written in brackets after the else if) is true. If it is also false, then the else if code will be executed.\n It is worth noting that we can write <color=green>as many as we like</color> and thus make the program very flexible."
+        },
+        {
+          "LinkedTrainingInfoID": "Multiple conditions",
+          "Title": "Multiple conditions",
+          "Info": "     While the else if allows many conditions to be met, it can sometimes lead to bloat and code duplication, which should be avoided. Especially when a different approach can be used.\n In conditional constructs, you can specify more than one, but <color=green >multiple</color> conditions This can be done using conditional operators such as <color=green>&&</color> (boolean <color=green>AND</color>) and <color=green>||</ color> (boolean <color=green>OR</color>).\n If there is && between two conditions, then the expression will be true when <color=green>both conditions are true</color>.If it is || , for the expression to be true, <color=green>at least one of the conditions</color> is true."
+        },
+        {
+          "LinkedTrainingInfoID": "And some more operators",
+          "Title": "And some more operators",
+          "Info": "     Before starting the quest, we wanted to talk about some more useful operators.\n In addition to those we mentioned earlier, there are also <color=green>==</color> and <color=green>! =</color> The first one is the equality operator, it can be used to check if the left side (or <color=green>operand</color> as it is commonly called) is equal to the right side. The second works exactly the opposite: the expression will be true if the left operand is not equal to the right."
+        }
+      ]
+    },
+    {
+      "LinkedSubThemeID": "Repetition 1",
+      "Title": "Repetition",
+      "Infos": [
+        {
+          "LinkedTrainingInfoID": "Repetition",
+          "Title": "Repetition",
+          "Info": "     Let's take a short break from theory, and instead practice again using what we've learned so far. Use whatever conditionals and operators you see fit!"
+        }
+      ]
+    },
+    {
+      "LinkedSubThemeID": "Boolean type bool",
+      "Title": "Boolean type bool",
+      "Infos": [
+        {
+          "LinkedTrainingInfoID": "Boolean type bool 1",
+          "Title": "Boolean type bool",
+          "Info": "We already know a lot of conditional expressions that are extremely useful in programming. What they all have in common is that they can have two states be true and be false. Therefore, they are a Boolean data type bool."
+        },
+        {
+          "LinkedTrainingInfoID": "Boolean type bool 2",
+          "Title": "Boolean type bool",
+          "Info": "Variables of type bool can take two values - true (true) false (false). "
+        },
+        {
+          "LinkedTrainingInfoID": "Logic constructs and code-style 1",
+          "Title": "Logic constructs and code-style",
+          "Info": "A few coding guidelines for booleans and bool - Boolean variable names should be given as a question that can be answered with yes or no"
+        },
+        {
+          "LinkedTrainingInfoID": "Logic constructs and code-style 2",
+          "Title": "Logic constructs and code-style",
+          "Info": "If you only return true or false in the if block and in the else block, then it is better to replace this whole construction with return."
+        }
+      ]
+    },
+    {
+      "LinkedSubThemeID": "Repetition 2",
+      "Title": "Repetition",
+      "Infos": [
+        {
+          "LinkedTrainingInfoID": "Repetition",
+          "Title": "Repetition",
+          "Info": "     Now that we've got acquainted with all the concepts and constructions of branching, it's time to practice. Moreover, on those tasks where everything that we studied earlier is required. Go ahead!"
+        }
+      ]
+    },
+    {
+      "LinkedSubThemeID": "Switch-case construction",
+      "Title": "Switch-case construction",
+      "Infos": [
+        {
+          "LinkedTrainingInfoID": "Switch-case construction",
+          "Title": "Switch-case construction",
+          "Info": "     While the if, else and else if constructs are great, sometimes you can do things in a more elegant way."
+        },
+        {
+          "LinkedTrainingInfoID": "End case",
+          "Title": "End case",
+          "Info": "     Each case ends with some <color=green>word-operator</color>."
+        },
+        {
+          "LinkedTrainingInfoID": "Operator default",
+          "Title": "Operator default",
+          "Info": "     In addition to case, you can use the useful <color=green>default</color> statement in the switch construct."
+        }
+      ]
+    },
+    {
+      "LinkedSubThemeID": "Repetition 3",
+      "Title": "Repetition",
+      "Infos": [
+        {
+          "LinkedTrainingInfoID": "Repetition",
+          "Title": "Repetition",
+          "Info": "     Great! Our arsenal of conditionals has been replenished with a powerful <color=green>switch</color>, which means that now you can handle many tasks! Of course, we have not analyzed all the possibilities and aspects of branching, but even those studied by you will be quite enough. Finally, to consolidate the material covered, we will solve one more problem!"
+        }
+      ]
+    }
+  ]
+}

@@ -40,27 +40,24 @@ namespace Scripts
 
         public void CreateTrainingTextPage(string trainingTheme, string trainingContent, TrainingShowingMode trainingShowingMode)
         {
-            DeletePreviousTrainingPage();
-            SetHeaderContent(trainingTheme, trainingShowingMode);
-
-            var trainingTextPage = Instantiate(trainingTextPageViewPrefab, trainingPagesContainer.transform);
-            trainingTextPage.SetContent(trainingContent);
+            var trainingPage = CreateTrainingPage(trainingTheme, trainingShowingMode, trainingTextPageViewPrefab);
+            trainingPage.SetContent(trainingContent);
         }
 
         public void CreateTrainingTextVideoPage(string trainingTheme, string trainingContent, VideoClip trainingVideo, TrainingShowingMode trainingShowingMode)
         {
-            DeletePreviousTrainingPage();
-            SetHeaderContent(trainingTheme, trainingShowingMode);
-
-            var trainingTextPage = Instantiate(trainingTextVideoPageViewPrefab, trainingPagesContainer.transform);
-            trainingTextPage.SetContent(trainingContent, trainingVideo);
+            var trainingPage = CreateTrainingPage(trainingTheme, trainingShowingMode, trainingTextVideoPageViewPrefab);
+            trainingPage.SetContent(trainingContent, trainingVideo);
         }
 
-        private void SetHeaderContent(string trainingTheme, TrainingShowingMode trainingShowingMode)
+        private T CreateTrainingPage<T>(string trainingTheme, TrainingShowingMode trainingShowingMode, T trainingPageViewPrefab) where T : CodingTrainingTextPageView
         {
+            DeletePreviousTrainingPage();
+
             trainingThemeLabel.text = trainingTheme;
-            previousPageButton.gameObject.SetActive(trainingShowingMode == TrainingShowingMode.Normal || trainingShowingMode == TrainingShowingMode.LastPart);
-            nextPageButton.gameObject.SetActive(trainingShowingMode == TrainingShowingMode.Normal || trainingShowingMode == TrainingShowingMode.FirstPart);
+            previousPageButton.gameObject.SetActive(trainingShowingMode != TrainingShowingMode.FirstPart);
+            nextPageButton.gameObject.SetActive(trainingShowingMode != TrainingShowingMode.LastPart);
+            return Instantiate(trainingPageViewPrefab, trainingPagesContainer.transform);
         }
 
         private void DeletePreviousTrainingPage()

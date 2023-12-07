@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,14 +9,10 @@ namespace Scripts
     public class LevelsManager : MainMenuSectionManager
     {
         [SerializeField]
-        private int levelsCount;
-        [Space, SerializeField]
         private LevelsSectionView levelsSectionView;
 
-        private bool isLevelButtonsCreated = false;
         private int selectedLevelNumber;
 
-        public int LevelsCount => levelsCount;
         private int SelectedLevelNumber
         {
             get => selectedLevelNumber;
@@ -42,15 +39,17 @@ namespace Scripts
             levelsSectionView.gameObject.SetActive(false);
         }
 
+        public void CreateLevelButtons(int totalLevelsCount)
+        {
+            var availableLevelsDescriptions = MainMenuContentManager.GetAvailableLevelInfos(MainMenuSaveManager.GameProgressData.LastAvailableLevelNumber)
+                .Select(levelInfo => levelInfo.Description)
+                .ToArray();
+            levelsSectionView.CreateLevelButtons(totalLevelsCount, availableLevelsDescriptions, ChangeLevelInfo);
+        }
+
         public void SetLevelsSectionStartState()
         {
-            var lastAvailableLevelNumber = MainMenuSaveManager.SaveData.LastAvailableLevelNumber;
-            if (!isLevelButtonsCreated)
-            {
-                levelsSectionView.CreateLevelButtons(levelsCount, lastAvailableLevelNumber, ChangeLevelInfo);
-                isLevelButtonsCreated = true;
-            }
-            //SetLevelInfo(selectedLevelNumber);
+            var lastAvailableLevelNumber = MainMenuSaveManager.GameProgressData.LastAvailableLevelNumber;
             levelsSectionView.MakeLevelButtonSelected(lastAvailableLevelNumber);
         }
 
@@ -67,10 +66,12 @@ namespace Scripts
 
         private IEnumerator LoadLevelAsync_COR()
         {
+            yield return StartCoroutine(levelsSectionView.ShowLoadingScreenContent_COR());
+
             var operation = SceneManager.LoadSceneAsync(SelectedLevelNumber);
             while (!operation.isDone)
             {
-                //levelsSectionView.SetLoadingBarInfo(menuLocalization.GetLoadBarText(), operation.progress);
+                levelsSectionView.SetLoadingBarInfo(operation.progress);
                 yield return null;
             }
         }

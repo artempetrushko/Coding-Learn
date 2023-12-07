@@ -1,0 +1,71 @@
+[
+  {
+    "LinkedTaskID": "Task_L4_T1",
+    "Title": "Black boxes",
+    "Description": "You need to implement a method that opens boxes and counts the number of successfully opened ones. The total number of boxes is passed as input. You need to return the number of successfully opened boxes.\n To open a box, use the OpenContainer method, which takes the serial number of the box, starting from scratch to be opened and returns true/false if the drawer succeeded/failed to open.",
+    "Tips": [
+      "You can't do without cycles.",
+      "Create your own variable before the loop and write there the number of boxes you were able to open."
+    ]
+  },
+  {
+    "LinkedTaskID": "Task_L4_T2",
+    "Title": "Good find",
+    "Description": "You need to implement a method that finds an ax or saw in a crate and signals that the current tool needs to be picked up.\n The number of tools is passed as input. To check a tool, use the IsSaw and IsAxe methods. To pick up a tool , use the PickUp method.\n All three methods accept the number of the checked box, starting from zero.",
+    "Tips": [
+      "Cycles are rushing to the rescue again :)",
+      "Use the IsSaw and IsAxe methods as conditions - they return true or false."
+    ]
+  },
+  {
+    "LinkedTaskID": "Task_L4_T3",
+    "Title": "The way is clear!",
+    "Description": "You need to implement a method that clears the path until it is free.\n To check that the path is clear, use the IsPathClear method. To clear the current section of the path, use the UseTool method",
+    "Tips": [
+      "The for cycle will not work here.",
+      "Use the IsPathClear method as a condition."
+    ]
+  },
+  {
+    "LinkedTaskID": "Task_L4_T4",
+    "Title": "Logging",
+    "Description": "You need to implement a method that determines how many trees to cut down and sends a signal that a tool should be used to split the log.\n The required number of logs is passed as input, and the required number of trees is returned as output.\n A simple tree produces 2 logs, a tall tree yields 4. To determine if a tree is long, use the IsTreeTall method.To split the current tree, use the UseTool method.",
+    "Tips": [
+      "A possible algorithm is that while we need logs, we chop the tree and decrease the number of logs we need. Think about what kind of cycle would work here.",
+      "Definitely, we need somewhere to store the number of trees that need to be cut down.",
+      "Use the IsTreeTall method as a condition."
+    ]
+  },
+  {
+    "LinkedTaskID": "Task_L4_T5",
+    "Title": "Building Bridges: Part Two",
+    "Description": " You need to implement a method that repairs the bridge piecemeal (if necessary).\n The number of bridge pieces is passed as input. To determine if the current piece needs to be repaired, use the IsBroken method. To repair a bridge piece, use the method SetUpBoard.\n Both methods accept the ordinal number of the bridge part, starting from 0.",
+    "Tips": [
+      "We know the number of parts of the bridge-that is, the number of iterations of our cycle. Think about which of the ones you studied will fit here."
+    ]
+  },
+  {
+    "LinkedTaskID": "Task_L4_T6",
+    "Title": "Careful Inspection",
+    "Description": " You need to implement a method that looks up the key.\n The input is the number of places where the key can be.\n To look for a key in a search location, use the TryFoundKey method, which takes the ordinal number of the search location and returns true/false if found/not found the key.",
+    "Tips": [
+      "Use the TryFoundKey method as a condition."
+    ]
+  },
+  {
+    "LinkedTaskID": "Task_L4_T7",
+    "Title": "Lottery",
+    "Description": " You need to implement a method that looks for a key in chests.\n The number of chests is passed as input.\n To select the next chest, use the ChooseNextItem method. To check if a key is in a chest, use the IsKeyFound method.",
+    "Tips": [
+      "Use the ChooseNextItem method as a condition."
+    ]
+  },
+  {
+    "LinkedTaskID": "Task_L4_T8",
+    "Title": "Little Helper",
+    "Description": "You need to implement a method that looks for a key in the sand.\n The input is the number of places where the key can be.\n To dig, use the Dig method, which takes the number of dig operations.\n To see if there is If there is a key in the excavated place, use the IsKeyFound method.\n The number of digs is 1 higher than the ordinal number of the place, starting from 1.",
+    "Tips": [
+      "Don't forget to increase the value of the argument passed to the Dig method by 1 each iteration."
+    ]
+  }
+]

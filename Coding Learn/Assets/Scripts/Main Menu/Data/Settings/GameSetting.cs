@@ -5,28 +5,20 @@ using UnityEngine;
 
 namespace Scripts
 {
-    public enum SettingType
-    {
-        Resolution,
-        ScreenMode,
-        GraphicsQuality,
-        Language,
-        SoundsVolume,
-        MusicVolume
-    }
-
     public class GameSetting
     {
         private SettingsOptionView optionView;
         private List<string> formattedSettingValues = new List<string>();
         private int currentValueOrderNumber;
-        private Action<string> applySettingValueAction;
+        private Func<string> getCurrentValueFunction;
+        private Action<string> applyValueAction;
 
-        public GameSetting(SettingsOptionView view, List<string> formattedSettingValues, Action<string> applySettingValueAction)
+        public GameSetting(SettingsOptionView view, List<string> formattedSettingValues, Func<string> getCurrentValueFunction, Action<string> applyValueAction)
         {
             optionView = view;
             this.formattedSettingValues = formattedSettingValues;
-            this.applySettingValueAction = applySettingValueAction;
+            this.getCurrentValueFunction = getCurrentValueFunction;
+            this.applyValueAction = applyValueAction;
 
             optionView.SetValueChangedAction(optionView switch
             {
@@ -35,7 +27,13 @@ namespace Scripts
             });
         }
 
-        public void ApplySetting() => applySettingValueAction.Invoke(formattedSettingValues[currentValueOrderNumber - 1]);
+        public void SetCurrentValue()
+        {
+            var formattedCurrentValue = getCurrentValueFunction();
+            SetNewValue(formattedSettingValues.IndexOf(formattedCurrentValue) + 1);
+        }
+
+        public void ApplyValue() => applyValueAction.Invoke(formattedSettingValues[currentValueOrderNumber - 1]);
 
         private void SetNewValue(int valueOrderNumber)
         {
