@@ -1,78 +1,78 @@
 {
-  "LinkedThemeID": "Strings",
+  "LinkedContentID": "Strings",
   "Title": "Strings",
   "SubThemes": [
     {
-      "LinkedSubThemeID": "Introduction to strings",
+      "LinkedContentID": "Introduction to strings",
       "Title": "Introduction to strings",
       "Infos": [
         {
-          "LinkedTrainingInfoID": "Introduction to strings",
+          "LinkedContentID": "Introduction to strings",
           "Title": "Introduction to strings",
           "Info": "In the C# language, string values are of type string. A string is an object of type String whose value is text. Text, in turn, is stored internally as a set of characters, for which there is their own type Char. We can say that a string is like a regular array, the elements of which are single characters.\n\nStrings are created very simply, here is one of the most intuitive ways: string <variable name> = “<text>”;\nPlease note that the text must be enclosed in double quotes, while single quotes enclose single characters.It follows that variables of type Char use single quotes, and double quotes for String.A string variable can consist of a single character, but a character variable of several characters cannot ."
         }
       ]
     },
     {
-      "LinkedSubThemeID": "String length",
+      "LinkedContentID": "String length",
       "Title": "String length",
       "Infos": [
         {
-          "LinkedTrainingInfoID": "String length",
+          "LinkedContentID": "String length",
           "Title": "String length",
           "Info": "Using the Length property, as in a normal array, you can get the length of a string."
         }
       ]
     },
     {
-      "LinkedSubThemeID": "String as character set",
+      "LinkedContentID": "String as character set",
       "Title": "String as character set",
       "Infos": [
         {
-          "LinkedTrainingInfoID": "String as character set",
+          "LinkedContentID": "String as character set",
           "Title": "String as character set",
           "Info": "Because a string stores a collection of characters, it defines an indexer to access those characters. By using an indexer, we can refer to a string as an array of characters and get any of its characters by index.\\n\\nEach character is then has its own case: lowercase or uppercase. If the letter is capitalized, then its case is uppercase, and if not, it is lowercase.Digits and special characters can only have lowercase.\\nIt can be checked by calling the IsUpper() method on char.\\n  What else can you do with strings? For example, add them. Visually this is done in exactly the same way as adding numeric variables through \"+\" sign. The result of the addition will be a new string"
         }
       ]
     },
     {
-      "LinkedSubThemeID": "String Separation",
+      "LinkedContentID": "String Separation",
       "Title": "String Separation",
       "Infos": [
         {
-          "LinkedTrainingInfoID": "String Separation",
+          "LinkedContentID": "String Separation",
           "Title": "String Separation",
           "Info": "Using the Split function, we can split a string into an array of substrings. As a parameter, the Split function takes an array of delimiters. For example, let's count the number of words in a string by dividing it by the specified characters:"
         }
       ]
     },
     {
-      "LinkedSubThemeID": "Concatenation of strings",
+      "LinkedContentID": "Concatenation of strings",
       "Title": "Concatenation of strings",
       "Infos": [
         {
-          "LinkedTrainingInfoID": "Concatenation of strings",
+          "LinkedContentID": "Concatenation of strings",
           "Title": "Concatenation of strings",
           "Info": "In addition to the ‘+’ operation, the string.Join() method can also be used to join strings. It takes a delimiter string as parameters, through which all other strings passed in the second argument will be joined."
         }
       ]
     },
     {
-      "LinkedSubThemeID": "StringBuilder class",
+      "LinkedContentID": "StringBuilder class",
       "Title": "StringBuilder class",
       "Infos": [
         {
-          "LinkedTrainingInfoID": "StringBuilder class",
+          "LinkedContentID": "StringBuilder class",
           "Title": "StringBuilder class",
           "Info": "Although the System.String class provides us with a lot of functionality for working with strings, it still has its drawbacks. First of all, the String object is an immutable string. When we execute any method of the String class, the system creates a new object in memory with sufficient space allocated to it.For example, deleting the first character is not the most expensive operation.However, when there are many such operations, and the amount of text for which these operations must be performed is also not the smallest, then the performance loss becomes more significant. \nThe same applies to string addition, which we did earlier.\n\nTo overcome this situation, a new StringBuilder class has been added to C#."
         },
         {
-          "LinkedTrainingInfoID": "Creating a StringBuilder",
+          "LinkedContentID": "Creating a StringBuilder",
           "Title": "Creating a StringBuilder",
           "Info": "You can think of a StringBuilder as a string constructor. To use it, you first need to create it and pass it the string you want to work with.\n\nLike strings, it has a Length property to get length and possibility of indexing."
         },
         {
-          "LinkedTrainingInfoID": "String Operations in StringBuilder",
+          "LinkedContentID": "String Operations in StringBuilder",
           "Title": "String Operations in StringBuilder",
           "Info": "For operations on strings, the StringBuilder class defines a number of methods. Note that although its functionality is similar to that of strings, it is much faster on large amounts of data:\n\n * Append: appends a substring to a StringBuilder\n\n * Insert: Inserts a substring into the StringBuilder object, starting at a specific index\n\n * Remove: Removes a specific number of characters, starting at a specific index\n\n * Replace: Replaces all occurrences of a specific character or substring with another character, or substring\n\n * AppendFormat: Appends a substring to the end of the StringBuilder object"
         }

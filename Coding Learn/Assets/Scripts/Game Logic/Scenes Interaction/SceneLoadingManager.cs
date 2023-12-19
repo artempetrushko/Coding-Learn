@@ -21,7 +21,7 @@ namespace Scripts
                 var operation = SceneManager.LoadSceneAsync(sceneIndex);
                 while (!operation.isDone)
                 {
-                    loadingScreenView.SetLoadingBarAppearance(operation.progress, string.Format(@"Загрузка... {0}%", Mathf.Round(operation.progress * 100)));
+                    loadingScreenView.SetLoadingBarState(operation.progress);
                     yield return null;
                 }
             }

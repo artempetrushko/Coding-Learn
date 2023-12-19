@@ -15,5 +15,12 @@ namespace Scripts
         {
             slider.onValueChanged.AddListener((value) => optionValueChangedAction((int)value));
         }
+
+        public void SetDefaultSliderValues(int minValue, int maxValue, int currentValue)
+        {
+            slider.minValue = minValue;
+            slider.maxValue = maxValue;
+            slider.value = currentValue;
+        }
     }
 }

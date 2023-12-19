@@ -40,7 +40,6 @@ namespace Scripts
 
         public IEnumerator PlayStartAnimation_COR()
         {
-            animator.InitializeTweens();
             yield return StartCoroutine(animator.HideBlackScreen_COR());
             yield return StartCoroutine(animator.ChangeMainMenuVisibility_COR(true));
         }

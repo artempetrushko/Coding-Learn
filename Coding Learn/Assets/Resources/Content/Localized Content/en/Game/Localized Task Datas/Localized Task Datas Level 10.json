@@ -1,6 +1,6 @@
 [
   {
-    "LinkedTaskID": "Task_L10_T1",
+    "LinkedContentID": "Task_L10_T1",
     "Title": "Balistic",
     "Description": "It is necessary to implement a method that calculates what initial velocity a stone needs to give in order for it to hit the target. The target's coordinates and throw angle are passed to the method. The constant g (gravitational acceleration) has already been declared.",
     "Tips": [
@@ -8,7 +8,7 @@
     ]
   },
   {
-    "LinkedTaskID": "Task_L10_T2",
+    "LinkedContentID": "Task_L10_T2",
     "Title": "Do parentheses close",
     "Description": "Need to check if parentheses are closed in a string. Each type of parenthesis must be closed with a pair of the same type. The parentheses can be:(){}[]<>.",
     "Tips": [
@@ -16,7 +16,7 @@
     ]
   },
   {
-    "LinkedTaskID": "Task_L10_T3",
+    "LinkedContentID": "Task_L10_T3",
     "Title": "Chess game",
     "Description": "It is necessary to check if the white king is checkmated. Pieces are designated: <first letter of the color><first letter of the name><last letter of the name>.\n Names: White - white Black - black King - king Queen (queen) - queen rook - rook bishop - bishop knight - knight pawn - pawn",
     "Tips": [
@@ -24,7 +24,7 @@
     ]
   },
   {
-    "LinkedTaskID": "Task_L10_T4",
+    "LinkedContentID": "Task_L10_T4",
     "Title": "Deathmatch",
     "Description": "Need to find the most probable direction of attack. The input is the last direction of attack (Direction -- enum, can be Up,Down,Right,Left) , as well as a list of previous enemy attacks in the form of a tuple<last hit, current hit,number of similar sequences>\n To get an element of a tuple, you need to refer to the field Item<element number> for example Item1.",
     "Tips": [
@@ -32,7 +32,7 @@
     ]
   },
   {
-    "LinkedTaskID": "Task_L10_T5",
+    "LinkedContentID": "Task_L10_T5",
     "Title": "Merge Sort",
     "Description": "You need to sort disk and ring arrays by doing a recursive merge sort.",
     "Tips": [

@@ -1,205 +1,205 @@
 {
-  "LinkedThemeID": "Basics (part 1)",
+  "LinkedContentID": "Basics (part 1)",
   "Title": "Basics (part 1)",
   "SubThemes": [
     {
-      "LinkedSubThemeID": "Tutorial",
+      "LinkedContentID": "Tutorial",
       "Title": "Tutorial",
       "Infos": [
         {
-          "LinkedTrainingInfoID": "Beginning",
+          "LinkedContentID": "Beginning",
           "Title": "Beginning",
           "Info": "     Hello! Welcome to <color=green>the game</color> where you can learn the basics of programming in one of the most popular languages.\n You have to solve problems by writing code to help the main character - the Robot  - overcome obstacles in his path and continue his story.\n Now let's tell you a little more."
         },
         {
-          "LinkedTrainingInfoID": "Instruction. Task",
+          "LinkedContentID": "Instruction. Task",
           "Title": "Instruction. Task",
           "Info": "     During the task, you can see its description in the upper left corner. In addition, by clicking on the gray button in the corner, you can again get additional information that appears before the task."
         },
         {
-          "LinkedTrainingInfoID": "Instruction. Pad",
+          "LinkedContentID": "Instruction. Pad",
           "Title": "Instruction. Pad",
           "Info": "     We need some kind of tool for programming, so a multifunctional pad is available to you. To turn it on, just click on it."
         },
         {
-          "LinkedTrainingInfoID": "Learning. Writing Code",
+          "LinkedContentID": "Learning. Writing Code",
           "Title": "Learning. Writing Code",
           "Info": " Most of the tablet screen is occupied by the code field, where the most important thing happens - <color=green>programming</color>."
         },
         {
-          "LinkedTrainingInfoID": "Learning. Code Reset",
+          "LinkedContentID": "Learning. Code Reset",
           "Title": "Learning. Code Reset",
           "Info": " If it suddenly seems to you that the solution to the problem has gone somewhere wrong, you can quickly return to the initial code using the <color=green>Reset code</color> button."
         },
         {
-          "LinkedTrainingInfoID": "Tutorial. Hints",
+          "LinkedContentID": "Tutorial. Hints",
           "Title": "Tutorial. Hints",
           "Info": " In case you don't understand how to solve a problem, you can get a <color=green>hint</color>. Each hint becomes available after a few minutes, so it's best to try to solve the problem yourself. Plus, it's easy more interesting!)"
         },
         {
-          "LinkedTrainingInfoID": "Learning Handbook",
+          "LinkedContentID": "Learning Handbook",
           "Title": "Learning Handbook",
           "Info": " While solving problems, you will learn a lot about the programming language. In order not to forget anything, you can read a special <color=green>reference</color>, which collects everything that you have learned before."
         },
         {
-          "LinkedTrainingInfoID": "Training. Tests",
+          "LinkedContentID": "Training. Tests",
           "Title": "Training. Tests",
           "Info": "To make the tasks more interesting, <color=green>challenge</color> is available for each of them. For completing each one you will get <color=green>stars</color>. Try to get them all!"
         },
         {
-          "LinkedTrainingInfoID": "Training. Errors",
+          "LinkedContentID": "Training. Errors",
           "Title": "Training. Errors",
           "Info": "If you happen to make a <color=green>error</color> in your code, the IDE will let you know by displaying a <color=green>message</color> at the bottom of the screen."
         },
         {
-          "LinkedTrainingInfoID": "First task",
+          "LinkedContentID": "First task",
           "Title": "First task",
           "Info": "Well, now it's time to program! We have prepared the first task for you, but don't be afraid - it is, of course, very simple."
         }
       ]
     },
     {
-      "LinkedSubThemeID": "Introduction to C#",
+      "LinkedContentID": "Introduction to C#",
       "Title": "Introduction to C#",
       "Infos": [
         {
-          "LinkedTrainingInfoID": "Introduction to C#. Instructions, Methods",
+          "LinkedContentID": "Introduction to C#. Instructions, Methods",
           "Title": "Introduction to C#. Instructions, Methods",
           "Info": "     Congratulations, you've written your first program that works! But what actually happened? Why did we write what we wrote? Now we will begin to get acquainted with the <color=green>syntax</color> of the language and find out what can be written, how to write it, and most importantly, why."
         },
         {
-          "LinkedTrainingInfoID": "Program Structure",
+          "LinkedContentID": "Program Structure",
           "Title": "Program Structure",
           "Info": "     Let's take a look at the structure of the program when we first created the <color=green>project</color> of the C# application. It can be seen that the starting template is quite complex, there are many different words, brackets, etc. All this, of course, makes sense, but it will become clear only later, when we gain experience.\n In our programs, all code that is not yet interesting to us will be hidden, but if you are extremely curious, you can find <color=green> on the Internet See the C# documentation</color> and learn it yourself."
         },
         {
-          "LinkedTrainingInfoID": "Instructions and Methods",
+          "LinkedContentID": "Instructions and Methods",
           "Title": "Instructions and Methods",
           "Info": "     Our first programs will be limited to one <color=green>method</color>. Methods in C# are called functions that exist in other languages ​​and execute a set of <color=green>instructions</color> written in them. The instructions, in turn, are different commands, whether it's to add two numbers, multiply them, or <color=green>call</color> another method, i.e. cause another set of instructions to be executed. Each statement must end with a semicolon.\n All C# programs start with the Main method, this is the <color=green>entry point</color> of the program. We will write auxiliary methods that will be called, including from Main."
         },
         {
-          "LinkedTrainingInfoID": "Method Arguments",
+          "LinkedContentID": "Method Arguments",
           "Title": "Method Arguments",
           "Info": "     Have you noticed that when you called the method in the last task, you wrote empty brackets? Why are they needed?\n You can pass <color=green>arguments</color> in brackets to the method - some data that can be used in the instructions of this method. Since the method didn't need any arguments in the previous task, we left them <color=green>empty</color>.\n"
         },
         {
-          "LinkedTrainingInfoID": "Method with arguments. Console",
+          "LinkedContentID": "Method with arguments. Console",
           "Title": "Method with arguments. Console",
           "Info": "     Now let's practice calling <color=green>methods with arguments</color>. To do this, we will write, almost, an iconic output program to <color=green>console</color> of the phrase \"Hello, world!\".\n <color=green>Console</color> is, in fact, a window , in which the user can interact with the program, send data to it or receive it. In C#, you can call console methods by writing Console. followed by the name of some method. Unfortunately, our tablet does not support working with more than one window, so the output of the phrase will be somewhat <color=yellow>conditional</color> - we will not see the console, but we will practice programming!)"
         }
       ]
     },
     {
-      "LinkedSubThemeID": "Data types. Variables",
+      "LinkedContentID": "Data types. Variables",
       "Title": "Data types. Variables",
       "Infos": [
         {
-          "LinkedTrainingInfoID": "Data types. Variables",
+          "LinkedContentID": "Data types. Variables",
           "Title": "Data types. Variables",
           "Info": "Great! We've successfully called the method with an argument. It's time to figure out what we passed as an argument - data, or rather, <color=green>data types</color>, and where they are stored - <color=green>variables</color>"
         },
         {
-          "LinkedTrainingInfoID": "Variables",
+          "LinkedContentID": "Variables",
           "Title": "Variables",
           "Info": "In general, any <color=green>variable</color> is some <color=green>named</color>area in the computer's memory that stores data at some address. Since it is named, using the name we can access this area of ​​memory and get the necessary data.\n By the way, data can be of different types."
         },
         {
-          "LinkedTrainingInfoID": "Data types. Variable declaration",
+          "LinkedContentID": "Data types. Variable declaration",
           "Title": "Data types. Variable declaration",
           "Info": " <color=green>Data types</color> are different, depending on what we want to store in a variable - a number, a string, an object, or something else. For now, let's get acquainted with <color=green >integer</color> type - <color=green>int</color> that stores integers (both positive and negative) from some range.\n To <color=green>declaring</color> a variable (t .i.e. assign a name to some memory cell), you need to specify the data type, and then, separated by a space, the name of the variable."
         },
         {
-          "LinkedTrainingInfoID": "Assigning a value to a variable",
+          "LinkedContentID": "Assigning a value to a variable",
           "Title": "Assigning a value to a variable",
           "Info": "We have declared a variable, but so far it is useless - it simply does not store anything. We need to <color=green>set</color> to it some <color=green>value</color>, which we will store in To do this, on the next line after declaring a variable, you need to specify its name, put <color=green>assignment operator</color> = and write the value corresponding to the type of this variable."
         },
         {
-          "LinkedTrainingInfoID": "Variable initialization",
+          "LinkedContentID": "Variable initialization",
           "Title": "Variable initialization",
           "Info": "Now we know how to declare a variable and assign a value to it, but this requires two lines of code each time. It would be great to perform these operations <color=green>at the same time</color>...\n And so you can do it! Assigning a value to a variable when it is declared is called <color=green>initialization</color> and it is done as follows: the variable is declared and immediately after the name comes the = operator and the value.\n Now you can practice! Although ... there is more something important!"
         },
         {
-          "LinkedTrainingInfoID": "Comments",
+          "LinkedContentID": "Comments",
           "Title": "Comments",
           "Info": "In some problems and our videos, you may have noticed <color=green>green words</color> after <color=green>double slash</color>. These are <color=green>comments</color>, with their help, you can leave marks on the code to make it easier for other developers to understand.Or, for example, if you need to remove the code from the program, but not erase it, you can put a double slash in front of it.Or (if the text is multiline) frame it with <color characters =green>/*</color> and <color=green>*/</color>."
         }
       ]
     },
     {
-      "LinkedSubThemeID": "Data types (continuation)",
+      "LinkedContentID": "Data types (continuation)",
       "Title": "Data types (continuation)",
       "Infos": [
         {
-          "LinkedTrainingInfoID": "Types float and double",
+          "LinkedContentID": "Types float and double",
           "Title": "Types float and double",
           "Info": "Great, we learned how to store integers in variables! But what if we need to store fractional numbers (or, as they are also called, floating point numbers)?\n Other data types will come to the rescue - < color=green>float</color> and <color=green>double</color> They can be written as a number with or without a fractional part."
         },
         {
-          "LinkedTrainingInfoID": "Value range and size in memory",
+          "LinkedContentID": "Value range and size in memory",
           "Title": "Value range and size in memory",
           "Info": "You might be wondering - why do we need to use different numeric types if they are intended for the same data?\n There are quite a few data types for storing integers and floating point numbers. Each of them has its own <color=green>value range</color>. For example, double represents a double precision number and can store many more decimal places than float (we are talking about hundreds of characters!). Some types, on the contrary, can store numbers from a smaller range than, for example, an int.\n This depends on the <color=green>amount of memory</color> allocated for the variable.For example, each variable of type int or float occupies 4 bytes, and double is already 8 bytes!Because computer memory is a resource <color=red>limited</color>,when writing a large program, you should think carefully about where and what data types will fit best."
         },
         {
-          "LinkedTrainingInfoID": "Keyword var",
+          "LinkedContentID": "Keyword var",
           "Title": "Keyword var",
           "Info": "Now - a minute of useful life hacks! If you initialize a variable, you can specify the keyword <color=green>var</color> instead of the data type. Then <color=green>compiler</color> (the program that which builds and runs the code we write) will determine the type of the variable <color=green>automatically</color>! This is a very useful feature of the C# language, which is not at all shameful to use - using var is considered one of the good practices when writing code!"
         }
       ]
     },
     {
-      "LinkedSubThemeID": "Repetition 1",
+      "LinkedContentID": "Repetition 1",
       "Title": "Repetition 1",
       "Infos": [
         {
-          "LinkedTrainingInfoID": "Repetition",
+          "LinkedContentID": "Repetition",
           "Title": "Repetition",
           "Info": " Since you now know both the numeric data types and their operations, it's time to practice!\n The following tasks will use all the knowledge gained. Good luck!"
         }
       ]
     },
     {
-      "LinkedSubThemeID": "Repetition 2",
+      "LinkedContentID": "Repetition 2",
       "Title": "Repetition 2",
       "Infos": [
         {
-          "LinkedTrainingInfoID": "Repetition",
+          "LinkedContentID": "Repetition",
           "Title": "Repetition",
           "Info": "Our practical part continues!\n A new task is next. It is not much more difficult than the previous one, and with your experience it will not be difficult to solve it. Go ahead!"
         }
       ]
     },
     {
-      "LinkedSubThemeID": "Shortcut Operations",
+      "LinkedContentID": "Shortcut Operations",
       "Title": "Shortcut Operations",
       "Infos": [
         {
-          "LinkedTrainingInfoID": "Shortcut Operations",
+          "LinkedContentID": "Shortcut Operations",
           "Title": "Shortcut Operations",
           "Info": "We have mastered arithmetic in C#, and that's good! But there is a problem: sometimes it may be necessary, for example, to add some number to an already initialized variable. Such an instruction will be quite <color=red>long</color=red> color> due to the fact that <color=red>duplicate</color> is the name of the variable, which is not good."
         },
         {
-          "LinkedTrainingInfoID": "Shortcut Operations",
+          "LinkedContentID": "Shortcut Operations",
           "Title": "Shortcut Operations",
           "Info": " But there is a more elegant way to do this - using <color=green>abbreviated</color> arithmetic operations. For example, you can use the operator <color=green>+=</color> and thus add to variable some number.Similar operators for subtraction (<color=green>-=</color>), multiplication (<color=green>*=</color>) and division (<color=green>/= </color>)."
         },
         {
-          "LinkedTrainingInfoID": "Increment and decrement",
+          "LinkedContentID": "Increment and decrement",
           "Title": "Increment and decrement",
           "Info": " And if we need to add or subtract one from a variable, there is an even cooler way - use the <color=green>increment</color> (<color=green>++</color>) or <color=green>decrements</color> (<color=green>--</color>) Although they are very easy to use, there are some nuances."
         },
         {
-          "LinkedTrainingInfoID": "Prefix and postfix operators",
+          "LinkedContentID": "Prefix and postfix operators",
           "Title": "Prefix and postfix operators",
           "Info": "There are two ways to apply increment and decrement - write it <color=green>before the variable</color> or <color=green>after it</color>. This does not affect the result that will end up in the variable, but it affects the <color=green>order of execution</color> of the program in some cases.For example, when passing a variable with an increment to the method, two scenarios are possible:\n 1) If the increment is <color=green>prefix</color>, first the variable will increase its value, then it will be passed to the method;\n 2) If the increment is <color=green>postfix</color>, first the variable will be passed with the old value, then the increment will work.\n Output: when using ++ or -- <color=green>be careful</color>!"
         }
       ]
     },
     {
-      "LinkedSubThemeID": "Remainder Operator",
+      "LinkedContentID": "Remainder Operator",
       "Title": "Remainder Operator",
       "Infos": [
         {
-          "LinkedTrainingInfoID": "Remainder",
+          "LinkedContentID": "Remainder",
           "Title": "Remainder",
           "Info": "In addition to the classical arithmetic operations, another one can be useful when writing programs - <color=green>getting the remainder of a division</color>, this operation is denoted by <color=green>%</color>.\n Applies it is the same as a simple division of one integer by another, however, the result will be exactly the remainder, and not the quotient."
         }

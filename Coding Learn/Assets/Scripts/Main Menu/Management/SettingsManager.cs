@@ -13,6 +13,8 @@ namespace Scripts
         [SerializeField]
         private SettingsSectionView settingsSectionView;
         [Space, SerializeField]
+        private AudioManager audioManager;
+        [Space, SerializeField]
         private UnityEvent onSettingsApplied;
 
         private List<GameSetting> gameSettings = new List<GameSetting>();
@@ -28,7 +30,7 @@ namespace Scripts
             yield return StartCoroutine(settingsSectionView.ChangeVisibility_COR(false));
         }
 
-        public void CreateSettingsViews()
+        public void InitializeSettings()
         {
             gameSettings.Add(new GameSetting(settingsSectionView.CreateOptionView(("Main Menu UI", "Resolution Setting Label"), SettingViewType.Switches), 
                 GetFormattedResolutions(),
@@ -39,6 +41,7 @@ namespace Scripts
                     Screen.SetResolution(resolutionParams[0], resolutionParams[1], Screen.fullScreen);
                     MainMenuSaveManager.SettingsData.Resolution = formattedValue;
                 }));
+
             gameSettings.Add(new GameSetting(settingsSectionView.CreateOptionView(("Main Menu UI", "Screen Mode Setting Label"), SettingViewType.Switches), 
                 Enum.GetNames(typeof(FullScreenMode)).ToList(),
                 () => MainMenuSaveManager.SettingsData.FullScreenMode.ToString(),
@@ -47,6 +50,7 @@ namespace Scripts
                     Screen.fullScreenMode = (FullScreenMode)Enum.Parse(typeof(FullScreenMode), formattedValue);
                     MainMenuSaveManager.SettingsData.FullScreenMode = Screen.fullScreenMode;
                 }));
+
             gameSettings.Add(new GameSetting(settingsSectionView.CreateOptionView(("Main Menu UI", "Graphics Quality Setting Label"), SettingViewType.Switches), 
                 QualitySettings.names.ToList(),
                 () => MainMenuSaveManager.SettingsData.GraphicsQuality,
@@ -55,30 +59,45 @@ namespace Scripts
                     QualitySettings.SetQualityLevel(QualitySettings.names.ToList().IndexOf(formattedValue));
                     MainMenuSaveManager.SettingsData.GraphicsQuality = QualitySettings.names[QualitySettings.GetQualityLevel()];
                 }));
+
             gameSettings.Add(new GameSetting(settingsSectionView.CreateOptionView(("Main Menu UI", "Language Setting Label"), SettingViewType.Switches), 
-                LocalizationSettings.AvailableLocales.Locales
-                    .Select(locale => locale.Identifier.CultureInfo.ToString())
-                    .ToList(),
-                () => MainMenuSaveManager.SettingsData.LanguageCode,
+                GetLanguageNames(),
+                () => GetLanguageNames()
+                        .Where(language => language == MainMenuSaveManager.SettingsData.Language)
+                        .First(),
                 (string formattedValue) =>
                 {
-                   
+                    var selectedLocale = LocalizationSettings.AvailableLocales.Locales
+                        .Where(locale => locale.LocaleName.Split()[0] == formattedValue)
+                        .FirstOrDefault();
+                    if (selectedLocale != null)
+                    {
+                        LocalizationSettings.SelectedLocale = selectedLocale;
+                        MainMenuSaveManager.SettingsData.Language = selectedLocale.LocaleName.Split()[0];
+                    }
                 }));
+
             gameSettings.Add(new GameSetting(settingsSectionView.CreateOptionView(("Main Menu UI", "Sounds Volume Setting Label"), SettingViewType.Slider), 
-                Enumerable.Range(1, 100).Select(value => value.ToString()).ToList(),
+                GetFormattedNumbersRange(0, 100),
                 () => MainMenuSaveManager.SettingsData.SoundsVolume.ToString(),
                 (string formattedValue) =>
                 {
-                    
+                    var soundsVolume = int.Parse(formattedValue);
+                    audioManager.SetSoundsVolume(soundsVolume);
+                    MainMenuSaveManager.SettingsData.SoundsVolume = soundsVolume;
                 }));
-            gameSettings.Add(new GameSetting(settingsSectionView.CreateOptionView(("Main Menu UI", "Music Volume Setting Label"), SettingViewType.Slider), 
-                Enumerable.Range(1, 100).Select(value => value.ToString()).ToList(),
+
+            gameSettings.Add(new GameSetting(settingsSectionView.CreateOptionView(("Main Menu UI", "Music Volume Setting Label"), SettingViewType.Slider),
+                GetFormattedNumbersRange(0, 100),
                 () => MainMenuSaveManager.SettingsData.MusicVolume.ToString(),
                 (string formattedValue) =>
                 {
-                    
+                    var musicVolume = int.Parse(formattedValue);
+                    audioManager.SetMusicVolume(musicVolume);
+                    MainMenuSaveManager.SettingsData.MusicVolume = musicVolume;
                 }));
-            SetSettingsCurrentValues();
+
+            ApplySettings();
         }
 
         public void SetSettingsCurrentValues()
@@ -97,6 +116,20 @@ namespace Scripts
             return Screen.resolutions
                 .Where(resolution => Mathf.Abs(((float)resolution.width / resolution.height) - (16f / 9)) < 1e-5)
                 .Select(resolution => string.Format(@"{0} x {1}", resolution.width, resolution.height))
+                .ToList();
+        }
+
+        private List<string> GetLanguageNames()
+        {
+            return LocalizationSettings.AvailableLocales.Locales
+                    .Select(locale => locale.LocaleName.Split()[0])
+                    .ToList();
+        }
+
+        private List<string> GetFormattedNumbersRange(int minValue, int maxValue)
+        {
+            return Enumerable.Range(minValue, maxValue - minValue + 1)
+                .Select(value => value.ToString())
                 .ToList();
         }
     }

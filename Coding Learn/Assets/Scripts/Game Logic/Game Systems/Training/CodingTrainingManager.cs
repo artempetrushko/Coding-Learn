@@ -12,8 +12,6 @@ namespace Scripts
         [Space, SerializeField]
         private UnityEvent codingTrainingSectionDisabled;
 
-        private int currentThemeNumber;
-        private int currentSubThemeNumber;
         private CodingTrainingInfo[] currentCodingTrainingInfos;
         private int currentCodingTrainingInfoNumber;
 
@@ -36,11 +34,11 @@ namespace Scripts
                                                        ? TrainingShowingMode.LastPart
                                                        : TrainingShowingMode.Normal;
 
-        public void ShowTrainingContent(int themeNumber, int subThemeNumber)
+        public void ShowTrainingContent(int themeNumber, int subThemeNumber) => ShowTrainingContent(GameContentManager.GetCodingTrainingInfos(themeNumber, subThemeNumber));
+
+        public void ShowTrainingContent(CodingTrainingInfo[] codingTrainingInfos)
         {
-            currentThemeNumber = themeNumber;
-            currentSubThemeNumber = subThemeNumber;
-            currentCodingTrainingInfos = GameContentManager.GetCodingTrainingTheme(currentThemeNumber).SubThemes[currentSubThemeNumber - 1].Infos;
+            currentCodingTrainingInfos = codingTrainingInfos;
             CurrentCodingTrainingInfoNumber = 1;
             codingTrainingSectionView.Show();
         }
@@ -55,7 +53,7 @@ namespace Scripts
             if (!string.IsNullOrEmpty(selectedCodingTrainingPart.VideoTitle))
             {
                 codingTrainingSectionView.CreateTrainingTextVideoPage(selectedCodingTrainingPart.Title, selectedCodingTrainingPart.Info, 
-                    GameContentManager.GetTrainingVideo(currentThemeNumber, currentSubThemeNumber, selectedCodingTrainingPart.VideoTitle), ShowingMode);
+                    GameContentManager.GetTrainingVideo(selectedCodingTrainingPart.VideoTitle), ShowingMode);
             }
             else
             {

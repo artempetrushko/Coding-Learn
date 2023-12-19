@@ -29,6 +29,7 @@ namespace Scripts
 
         public IEnumerator ChangeMainMenuVisibility_COR(bool isVisible)
         {
+            mainMenuShowingTween ??= CreateMainMenuShowingTween();
             if (isVisible)
             {
                 content.transform.localPosition = new Vector3(0, content.GetComponent<RectTransform>().rect.height, 0);  
@@ -39,11 +40,6 @@ namespace Scripts
                 mainMenuShowingTween.PlayBackwards();
             }
             yield return mainMenuShowingTween.WaitForRewind();
-        }
-
-        public void InitializeTweens()
-        {
-            mainMenuShowingTween = CreateMainMenuShowingTween();
         }
 
         private Sequence CreateMainMenuShowingTween()

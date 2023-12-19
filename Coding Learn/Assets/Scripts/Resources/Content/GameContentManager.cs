@@ -2,93 +2,103 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Timeline;
 using UnityEngine.Video;
 
 namespace Scripts
 {
     public class GameContentManager : ContentManager
     {
-        private static StoryInfo[] storyParts;
-        private static TrainingTheme[] codingTrainingInfos;
-        private static TaskInfo[] taskInfos;   
+        private static StoryInfo[] storyInfos;
+        private static TrainingMainTheme[] trainingThemes;
+        private static TaskInfo[] taskInfos;
 
-        public static StoryInfo GetStoryInfo(int cutsceneNumber) => storyParts[cutsceneNumber - 1];
-
-        public static TrainingTheme GetCodingTrainingTheme(int themeNumber) => codingTrainingInfos[themeNumber - 1];
-
-        public static TrainingTheme[] GetFirstCodingTrainingThemes(int themesCount) => codingTrainingInfos.Take(themesCount).ToArray();
+        public static (TimelineAsset, string[]) GetStoryPart(int levelNumber, int storyPartNumber)
+        {
+            var storyInfo = storyInfos[storyPartNumber - 1];
+            var cutscene = Resources.Load<TimelineAsset>($"Timelines/Cutscenes/Level {levelNumber}/{storyInfo.CutsceneTitle}");
+            return (cutscene, storyInfo.Articles);
+        }
 
         public static TaskInfo GetTaskInfo(int taskNumber) => taskInfos[taskNumber - 1];
 
-        public static VideoClip GetTrainingVideo(int themeNumber, int subThemeNumber, string videoTitle)
+        public static TrainingMainTheme GetCodingTrainingTheme(int themeNumber) => trainingThemes[themeNumber - 1];
+
+        public static CodingTrainingInfo[] GetCodingTrainingInfos(int themeNumber, int subThemeNumber) => trainingThemes[themeNumber - 1].SubThemes[subThemeNumber - 1].Infos;
+
+        public static TrainingMainTheme[] GetHandbookTrainingThemes(int lastAvailableThemeNumber)
         {
-            var currentTrainingTheme = GetCodingTrainingTheme(themeNumber);
-            var currentTrainingSubTheme = currentTrainingTheme.SubThemes[subThemeNumber - 1];
-            return Resources.Load<VideoClip>(GeneralContentFolderPath + "/Game/Training Video/" + $"{currentTrainingTheme.ThemeID}/{currentTrainingSubTheme.SubThemeID}/{videoTitle}");
+            return trainingThemes
+                .Take(lastAvailableThemeNumber)
+                .Where(trainingTheme => FilterHandbookTrainingSubThemes(trainingTheme.SubThemes).Length > 0)
+                .ToArray();
         }
 
-        public static Sprite GetLoadingScreenBackground(int levelNumber) => Resources.Load<Sprite>(string.Format(@"Loading Screens/Loading Screen (Level {0})", levelNumber));
-
-        public void LoadContentFromResources(int currentLevelNumber)
+        public static TrainingSubTheme[] GetHandbookTrainingSubThemes(TrainingMainTheme mainTheme, int? lastAvailableSubThemeNumber = null)
         {
-            storyParts = LoadDatasFromFile<StoryInfo>(LocalizedContentFolderPath + "/Game/Story/Story Level " + currentLevelNumber);
-            taskInfos = LoadTaskInfos(currentLevelNumber);
-
-            codingTrainingInfos = LoadCodingTrainingInfos(currentLevelNumber);
-            /*codingTrainingInfos = new TrainingTheme[currentLevelNumber];
-            for (var i = 1; i <= codingTrainingInfos.Length; i++)
+            var subThemes = mainTheme.SubThemes;
+            if (lastAvailableSubThemeNumber != null)
             {
-                var file = Resources.Load<TextAsset>(LocalizedContentFolderPath + "/Game/Coding Training/Coding Training Level " + i);
-                codingTrainingInfos[i - 1] = DeserializeData<TrainingTheme>(file);
-            }*/
-        }
-
-        private TaskInfo[] LoadTaskInfos(int currentLevelNumber)
-        {
-            var generalTaskInfos = LoadDatasFromFile<TaskInfo>(GeneralContentFolderPath + "/Game/Tasks/Tasks Level " + currentLevelNumber);
-            var localizedTaskInfos = LoadDatasFromFile<LocalizedTaskInfo>(LocalizedContentFolderPath + "/Game/Localized Task Datas/Localized Task Datas Level " + currentLevelNumber);
-            foreach (var generalTaskInfo in generalTaskInfos)
-            {
-                var accordingLocalizedTaskInfo = localizedTaskInfos.Where(localizedTaskInfo => localizedTaskInfo.LinkedTaskID == generalTaskInfo.ID).First();
-                generalTaskInfo.Title = accordingLocalizedTaskInfo.Title;
-                generalTaskInfo.Description = accordingLocalizedTaskInfo.Description;
-                generalTaskInfo.Tips = accordingLocalizedTaskInfo.Tips;
+                subThemes = subThemes.Take(lastAvailableSubThemeNumber.Value).ToArray();
             }
-            return generalTaskInfos;
+            return FilterHandbookTrainingSubThemes(subThemes);
         }
 
-        private TrainingTheme[] LoadCodingTrainingInfos(int currentLevelNumber)
+        public static CodingTrainingInfo[] GetHandbookCodingTrainingInfos(TrainingSubTheme subTheme)
         {
-            codingTrainingInfos = new TrainingTheme[currentLevelNumber];
-            for (var i = 1; i <= codingTrainingInfos.Length; i++)
+            return subTheme.Infos.Where(info => info.IsTrainingContent).ToArray();
+        }
+
+        public static VideoClip GetTrainingVideo(string videoTitle)
+        {
+            foreach (var trainingTheme in trainingThemes)
             {
-                var trainingThemeData = DeserializeData<TrainingTheme>(Resources.Load<TextAsset>(GeneralContentFolderPath + "/Game/Coding Training/Coding Training Level " + i));
+                foreach (var subTheme in trainingTheme.SubThemes)
+                {
+                    if (subTheme.Infos.Any(info => info.VideoTitle == videoTitle && info.IsTrainingContent))
+                    {
+                        return Resources.Load<VideoClip>(GeneralContentFolderPath + "/Game/Training Video/" + $"{trainingTheme.ID}/{subTheme.ID}/{videoTitle}");
+                    }
+                }
+            }
+            return null;
+        }
+
+        public static Sprite GetLoadingScreenBackground(int levelNumber) => Resources.Load<Sprite>($"Loading Screens/Loading Screen (Level {levelNumber})");
+
+        public void LoadContentFromResources(int levelNumber)
+        {
+            storyInfos = LoadContentWithLocalizedData<StoryInfo, LocalizedStoryInfo>(levelNumber, ("/Game/Story/", "Story Level "), ("/Game/Story/", "Story Level "));
+            taskInfos = LoadTaskInfos(levelNumber);
+            trainingThemes = LoadTrainingThemes(levelNumber);
+        }
+
+        private static TrainingSubTheme[] FilterHandbookTrainingSubThemes(TrainingSubTheme[] subThemes)
+        {
+            return subThemes.Where(subTheme => GetHandbookCodingTrainingInfos(subTheme).Length > 0).ToArray();
+        }
+
+        private TrainingMainTheme[] LoadTrainingThemes(int levelNumber)
+        {
+            trainingThemes = new TrainingMainTheme[levelNumber];
+            for (var i = 1; i <= trainingThemes.Length; i++)
+            {
+                var trainingThemeData = DeserializeData<TrainingMainTheme>(Resources.Load<TextAsset>(GeneralContentFolderPath + "/Game/Coding Training/Coding Training Level " + i));
                 var localizedTrainingThemeData = DeserializeData<LocalizedTrainingTheme>(Resources.Load<TextAsset>(LocalizedContentFolderPath + "/Game/Localized Coding Training/Localized Coding Training Level " + i));
+
                 trainingThemeData.Title = localizedTrainingThemeData.Title;
                 foreach (var subTheme in trainingThemeData.SubThemes)
                 {
-                    var accordingLocalizedSubThemeData = localizedTrainingThemeData.SubThemes
-                        .Where(localizedSubTheme => localizedSubTheme.LinkedSubThemeID == subTheme.SubThemeID)
-                        .FirstOrDefault();
+                    var accordingLocalizedSubThemeData = localizedTrainingThemeData.SubThemes.Where(localizedSubTheme => localizedSubTheme.LinkedContentID == subTheme.ID).FirstOrDefault();
                     if (accordingLocalizedSubThemeData != null)
                     {
                         subTheme.Title = accordingLocalizedSubThemeData.Title;
-                        foreach (var codingTrainingInfo in subTheme.Infos)
-                        {
-                            var accordingLocalizedTrainingInfoData = accordingLocalizedSubThemeData.Infos
-                                .Where(localizedTrainingInfo => localizedTrainingInfo.LinkedTrainingInfoID == codingTrainingInfo.TrainingInfoID)
-                                .FirstOrDefault();
-                            if (accordingLocalizedTrainingInfoData != null)
-                            {
-                                codingTrainingInfo.Title = accordingLocalizedTrainingInfoData.Title;
-                                codingTrainingInfo.Info = accordingLocalizedTrainingInfoData.Info;
-                            }
-                        }
+                        PopulateGeneralContentWithLocalizedData(subTheme.Infos, accordingLocalizedSubThemeData.Infos);
                     }
                 }
-                codingTrainingInfos[i - 1] = trainingThemeData;
+                trainingThemes[i - 1] = trainingThemeData;
             }
-            return codingTrainingInfos;
+            return trainingThemes;
         }
     }
 }

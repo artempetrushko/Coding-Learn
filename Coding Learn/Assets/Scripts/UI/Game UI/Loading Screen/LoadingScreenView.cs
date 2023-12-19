@@ -25,10 +25,6 @@ namespace Scripts
             background.sprite = backgroundImage;
         }
 
-        public void SetLoadingBarAppearance(float loadingProgress, string loadingText)
-        {
-            loadingBar.InnerArea.fillAmount = loadingProgress;
-            loadingBar.LoadingText.text = loadingText;
-        }
+        public void SetLoadingBarState(float loadingProgress) => loadingBar.SetInfo(loadingProgress);
     }
 }

@@ -1,6 +1,6 @@
 [
   {
-    "LinkedTaskID": "Task_L2_T1",
+    "LinkedContentID": "Task_L2_T1",
     "Title": "Flower counting",
     "Description": " - You need to implement a method for counting the number of colors.\n The number of colors is passed as input - the result of previous calculations. You need to return this value increased by one.",
     "Tips": [
@@ -8,7 +8,7 @@
     ]
   },
   {
-    "LinkedTaskID": "Task_L2_T2",
+    "LinkedContentID": "Task_L2_T2",
     "Title": "Correct title",
     "Description": " - You are given 4 variables with different names. You must select and return the value of the variable with the most correct (in terms of C# code-style) name.",
     "Tips": [
@@ -16,7 +16,7 @@
     ]
   },
   {
-    "LinkedTaskID": "Task_L2_T3",
+    "LinkedContentID": "Task_L2_T3",
     "Title": "Round",
     "Description": " - You need to count the number of apples in the baskets.\n There are very small fruits among the fruits that would be correctly counted as part of an apple, but unfortunately, the module you use for calculations only accepts whole numbers. Round up the value to an integer with Math.Round() and cast it to an integer using (int).\n Use CountModule.Count(int count) to populate the results. ",
     "Tips": [
@@ -27,7 +27,7 @@
     ]
   },
   {
-    "LinkedTaskID": "Task_L2_T4",
+    "LinkedContentID": "Task_L2_T4",
     "Title": "Binary to decimal.",
     "Description": " - You need to implement a method that processes the current digit of a binary number to convert it to decimal. You are given a digit of a binary number (digit) and its ordinal number (number).",
     "Tips": [
@@ -35,7 +35,7 @@
     ]
   },
   {
-    "LinkedTaskID": "Task_L2_T5",
+    "LinkedContentID": "Task_L2_T5",
     "Title": "Get rid of the log",
     "Description": " - You have to implement a method that removes an obstacle in the form of a log. You can do this using the methods of sequential use of the TakeLog, MoveLog, PutLog methods.\n Each of them accepts an object (log) that needs to be manipulated.",
     "Tips": [

@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Scripts
@@ -20,7 +19,7 @@ namespace Scripts
         public void SetInfo(LevelStatsCardData data)
         {
             levelThumbnail.sprite = data.Thumbnail;
-            starsCounterText.text = string.Format(@"{0}/{1}", data.StarsCurrentCount, data.StarsTotalCount);
+            starsCounterText.text = $"{data.StarsCurrentCount}/{data.StarsTotalCount}";
             showDetailedStatsButton.onClick.AddListener(data.CardPressedAction);
         }
     }

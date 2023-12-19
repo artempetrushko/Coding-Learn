@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 namespace Scripts
@@ -29,6 +30,17 @@ namespace Scripts
             var dataFilePath = savedDataFilePaths[typeof(T)];
             File.WriteAllText(dataFilePath, serializedData);
             Debug.Log("Data was saved in " + dataFilePath);
+        }
+
+        protected T LoadOrCreateSavedData<T>(T defaultSavedData) where T : SavedData
+        {
+            var savedData = LoadSavedData<T>();
+            if (savedData != null)
+            {
+                return savedData;
+            }
+            SerializeAndSaveData(defaultSavedData);
+            return defaultSavedData;
         }
 
         protected T LoadSavedData<T>() where T: SavedData

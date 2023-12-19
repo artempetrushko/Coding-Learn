@@ -13,17 +13,15 @@ namespace Scripts
         private StorytellingSectionView storytellingSectionView;
         [SerializeField]
         private PlayableDirector playableDirector;
-        [SerializeField]
-        private List<TimelineAsset> cutscenes = new List<TimelineAsset>();
 
-        private StoryInfo storyPart;
-        private int currentCutsceneNumber;
+        private (TimelineAsset cutscene, string[] storyArticles) currentStoryPart;
         private int currentStoryPartNumber;
+        private int currentStoryPartArticleNumber;
         private double correctiveTimeOffset = 0.2;
 
         public void PlayFirstCutscene() => PlayCutscene(1);
 
-        public void PlayNextCutscene() => PlayCutscene(++currentCutsceneNumber);    
+        public void PlayNextCutscene() => PlayCutscene(++currentStoryPartNumber);    
 
         public void ResumeCutscene()
         {
@@ -32,9 +30,9 @@ namespace Scripts
             storytellingSectionView.SetNextStoryPartButtonActive(false);
         }
 
-        public void ShowFirstStoryPart() => ShowNewStoryPart(1);
+        public void ShowFirstStoryPartArticle() => ShowNewStoryPartArticle(1);
 
-        public void ShowNextStoryPart() => ShowNewStoryPart(++currentStoryPartNumber);     
+        public void ShowNextStoryPartArticle() => ShowNewStoryPartArticle(++currentStoryPartArticleNumber);     
 
         public void SkipCurrentStoryPart()
         {
@@ -42,34 +40,33 @@ namespace Scripts
             playableDirector.time = GetCurrentClipStopTime();
         }
 
-        private void PlayCutscene(int cutsceneNumber)
-        {
-            currentCutsceneNumber = cutsceneNumber;
-            storyPart = GameContentManager.GetStoryInfo(currentCutsceneNumber);
-            playableDirector.time = 0;
-            playableDirector.Play(cutscenes[currentCutsceneNumber - 1]);
-        }
-
-        private void ShowNewStoryPart(int storyPartNumber)
+        private void PlayCutscene(int storyPartNumber)
         {
             currentStoryPartNumber = storyPartNumber;
+            currentStoryPart = GameContentManager.GetStoryPart(GameManager.CurrentLevelNumber, currentStoryPartNumber);
+            playableDirector.time = 0;
+            playableDirector.Play(currentStoryPart.cutscene);
+        }
+
+        private void ShowNewStoryPartArticle(int storyPartArticleNumber)
+        {
+            currentStoryPartArticleNumber = storyPartArticleNumber;
             var totalTextAppearingTime = (float)(GetCurrentClipStopTime() - playableDirector.time);
-            //storytellingSectionView.ShowStoryText(storyPart.Articles[currentStoryPartNumber - 1], totalTextAppearingTime);
-            storytellingSectionView.ShowStoryText(storyPart.GetArticle(currentStoryPartNumber), totalTextAppearingTime);
+            storytellingSectionView.ShowStoryText(currentStoryPart.storyArticles[currentStoryPartArticleNumber - 1], totalTextAppearingTime);
         }
 
         private double GetCurrentClipStopTime()
         {
-            var currentCameraClip = GetCurrentCutsceneTrackClips(1)[currentStoryPartNumber - 1];
+            var currentCameraClip = GetCurrentCutsceneTrackClips(1)[currentStoryPartArticleNumber - 1];
             var blackScreenClips = GetCurrentCutsceneTrackClips(2);
-            if (currentStoryPartNumber * 2 < blackScreenClips.Count)
+            if (currentStoryPartArticleNumber * 2 < blackScreenClips.Count)
             {
-                var blackScreenShowDuration = blackScreenClips[currentStoryPartNumber * 2 - 1].duration;
+                var blackScreenShowDuration = blackScreenClips[currentStoryPartArticleNumber * 2 - 1].duration;
                 return currentCameraClip.end - blackScreenShowDuration - correctiveTimeOffset;
             }
             return currentCameraClip.end - currentCameraClip.blendOutDuration - correctiveTimeOffset;
         }
 
-        private List<TimelineClip> GetCurrentCutsceneTrackClips(int trackIndex) => cutscenes[currentCutsceneNumber - 1].GetOutputTrack(trackIndex).GetClips().ToList();
+        private List<TimelineClip> GetCurrentCutsceneTrackClips(int trackIndex) => currentStoryPart.cutscene.GetOutputTrack(trackIndex).GetClips().ToList();
     }
 }

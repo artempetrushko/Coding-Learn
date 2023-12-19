@@ -41,8 +41,8 @@ namespace Scripts
 
             var tweenSequence = DOTween.Sequence();
             tweenSequence
-                .Append(taskCompletingIndicator.DOColor(indicatorEndColor, 1.5f))
-                .Append(taskCompletingIndicator.DOColor(indicatorStartColor, 1.5f));
+                .Append(taskCompletingIndicator.DOColor(indicatorEndColor, 0.7f))
+                .Append(taskCompletingIndicator.DOColor(indicatorStartColor, 0.7f));
             tweenSequence.Play();
             yield return tweenSequence.WaitForCompletion();
             taskCompletingIndicator.gameObject.SetActive(false);

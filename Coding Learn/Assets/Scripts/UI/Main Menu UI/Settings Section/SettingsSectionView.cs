@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.Localization.Tables;
 
 namespace Scripts
@@ -31,7 +29,7 @@ namespace Scripts
 
         public SettingsOptionView CreateOptionView((TableReference table, TableEntryReference entry) localizedString, SettingViewType viewType)
         {
-            SettingsOptionView optionView = (SettingsOptionView)Instantiate(viewType switch
+            var optionView = (SettingsOptionView)Instantiate(viewType switch
             {
                 SettingViewType.Switches => switchesOptionViewPrefab,
                 SettingViewType.Slider => sliderOptionViewPrefab
@@ -39,21 +37,5 @@ namespace Scripts
             optionView.SetTitleReference(localizedString);
             return optionView;
         }
-
-        /*public SliderOptionView CreateSliderOption() => Instantiate(sliderOptionViewPrefab, settingsContainer.transform);
-
-        public SwitchesOptionView CreateSwitchesOption() => Instantiate(switchesOptionViewPrefab, settingsContainer.transform);
-
-        public void CreateSliderOption(string optionTitle, UnityAction<float> sliderValueChangedAction)
-        {
-            var sliderOptionView = Instantiate(sliderOptionViewPrefab, settingsContainer.transform);
-            sliderOptionView.SetParams(optionTitle, sliderValueChangedAction);
-        }
-
-        public void CreateSwitchesOption(string optionTitle, UnityAction previousValueButtonPressedAction, UnityAction nextValueButtonPressedAction)
-        {
-            var switchesOption = Instantiate(switchesOptionViewPrefab, settingsContainer.transform);
-            switchesOption.SetParams(optionTitle, previousValueButtonPressedAction, nextValueButtonPressedAction);
-        }*/
     }
 }

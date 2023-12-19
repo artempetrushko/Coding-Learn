@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -9,7 +8,6 @@ using UnityEngine.UI;
 
 namespace Scripts
 {
-    [RequireComponent(typeof(Button))]
     public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
     {
         [SerializeField]
@@ -45,9 +43,9 @@ namespace Scripts
             buttonComponent.onClick.AddListener(buttonPressedAction);
         }
 
-        public void ClickForce() => buttonComponent.onClick.Invoke();
+        public void ClickForce() => buttonComponent.Select();
 
-        public void Deactivate() => buttonComponent.interactable = false;
+        public void SetInteractivity(bool isInteractable) => buttonComponent.interactable = isInteractable;
 
         public void OnPointerEnter(PointerEventData eventData)
         {
@@ -72,9 +70,9 @@ namespace Scripts
             }
         }
 
-        public void OnSelect(BaseEventData eventData) => innerArea.color = buttonNormalColor;
+        public void OnSelect(BaseEventData eventData) => innerArea.color = buttonSelectedColor;
 
-        public void OnDeselect(BaseEventData eventData) => innerArea.color = buttonSelectedColor;
+        public void OnDeselect(BaseEventData eventData) => innerArea.color = buttonNormalColor;
 
         private void ScaleButtonView(float addedScale) => buttonView.transform.localScale += new Vector3(addedScale, addedScale, addedScale);
     }

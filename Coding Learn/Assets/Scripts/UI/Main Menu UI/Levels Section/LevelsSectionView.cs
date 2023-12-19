@@ -1,12 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System;
 using UnityEngine.Localization.Components;
-using UnityEngine.Localization.Settings;
+using TMPro;
 
 namespace Scripts
 {
@@ -34,22 +32,24 @@ namespace Scripts
             yield return StartCoroutine(animator.ChangeContentVisibility_COR(isVisible));
         }
 
-        public void CreateLevelButtons(int totalLevelsCount, string[] availableLevelDescriptions, Action<int> buttonPressedAction)
+        public void CreateLevelButtons(int totalLevelsCount)
         {
             for (var i = 1; i <= totalLevelsCount; i++)
             {
-                var currentLevelNumber = i;
-
                 var levelButton = Instantiate(levelButtonPrefab, levelButtonsContainer.transform);
-                levelButton.SetBasicParams(currentLevelNumber);
-                if (currentLevelNumber <= availableLevelDescriptions.Length)
-                {
-                    levelButton.SetActiveButtonParams(availableLevelDescriptions[i - 1], () => buttonPressedAction(currentLevelNumber));
-                }
-                else
-                {
-                    levelButton.Deactivate();
-                }
+                levelButton.SetInteractivity(false);
+                levelButton.SetBasicParams(i);
+            }
+        }
+
+        public void SetActiveLevelButtonsParams(string[] availableLevelDescriptions, Action<int> buttonPressedAction)
+        {
+            for (var i = 1; i <= availableLevelDescriptions.Length; i++)
+            {
+                var levelNumber = i;
+                var levelButton = levelButtonsContainer.transform.GetChild(levelNumber - 1).GetComponent<LevelButton>();
+                levelButton.SetInteractivity(true);
+                levelButton.SetActiveButtonParams(availableLevelDescriptions[levelNumber - 1], () => buttonPressedAction(levelNumber));
             }
         }
 
@@ -76,8 +76,7 @@ namespace Scripts
             if (levelThumbnailContainer.transform.childCount > 1)
             {
                 StartCoroutine(UpdateLevelThumbnail_COR());
-            }           
-            
+            }            
         }
 
         public void MakeLevelButtonSelected(int buttonNumber) => levelButtonsContainer.transform.GetChild(buttonNumber - 1).GetComponent<LevelButton>().ClickForce();

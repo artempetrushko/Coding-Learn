@@ -1,6 +1,6 @@
 [
   {
-    "LinkedTaskID": "Task_L1_T1",
+    "LinkedContentID": "Task_L1_T1",
     "Title": "MoveCube",
     "Description": "  - Write MoveCube(); (with a semicolon, this is important!).",
     "Tips": [
@@ -8,7 +8,7 @@
     ]
   },
   {
-    "LinkedTaskID": "Task_L1_T2",
+    "LinkedContentID": "Task_L1_T2",
     "Title": "Write Hello World!",
     "Description": "  - You need to call the WriteLine() method of the Console(Console.WriteLine) class and pass the Hello World!",
     "Tips": [
@@ -17,7 +17,7 @@
     ]
   },
   {
-    "LinkedTaskID": "Task_L1_T3",
+    "LinkedContentID": "Task_L1_T3",
     "Title": "Opening the door",
     "Description": "  - Declare a keyNumber variable of type int with value 55. The variable is declared like this:\n type name = value;",
     "Tips": [
@@ -27,7 +27,7 @@
     ]
   },
   {
-    "LinkedTaskID": "Task_L1_T4",
+    "LinkedContentID": "Task_L1_T4",
     "Title": "Take Feed",
     "Description": "  - Correct a typo in the code to take a package of food by weight in kilograms.\nYou need to take a box weighing 0.5 kg.\nWhen a variable is declared with the var keyword, its type is determined automatically, based on the data assigned during initialization. \nWhen an integer is divided by an integer, the result is an integer without a remainder\n5-integer\n5.0f,float (float)\n5.0 fraction(double)",
     "Tips": [
@@ -35,7 +35,7 @@
     ]
   },
   {
-    "LinkedTaskID": "Task_L1_T5",
+    "LinkedContentID": "Task_L1_T5",
     "Title": "How many days will the food last",
     "Description": "  - In this task, you have to calculate how many days (not counting today) you will have enough food, provided that you feed the fish today.\nThe method is passed the number of 2 types of fish, the daily norm for them and the amount of food. You need to return the number of days the food will last (excluding today's feeding).\n To convert a double to an int when assigning or passing to a method, precede the value with (int)",
     "Tips": [
@@ -45,7 +45,7 @@
     ]
   },
   {
-    "LinkedTaskID": "Task_L1_T6",
+    "LinkedContentID": "Task_L1_T6",
     "Title": "Count the number of glasses",
     "Description": "  - You need to calculate the number of glasses needed to cook the dish.\n You are given the required volumes of flour and water, as well as the volume of the glass.\nTo round up, use the Math.Ceiling() method.\n",
     "Tips": [
@@ -53,7 +53,7 @@
     ]
   },
   {
-    "LinkedTaskID": "Task_L1_T7",
+    "LinkedContentID": "Task_L1_T7",
     "Title": "Add/Reduce Temperature",
     "Description": "  - You need to implement two methods to add and subtract the temperature.\n You can do this by manipulating the variable T.\n Consider that the variable is already declared outside of the method (we'll discuss how to do this later).",
     "Tips": [
@@ -62,7 +62,7 @@
     ]
   },
   {
-    "LinkedTaskID": "Task_L1_T8",
+    "LinkedContentID": "Task_L1_T8",
     "Title": "Shared or not",
     "Description": "  - You need to determine whether the transferred amount is divisible by 4 and return the remainder of the division (if the remainder is 0).\n Remainder of the division: divisible%quotient",
     "Tips": [

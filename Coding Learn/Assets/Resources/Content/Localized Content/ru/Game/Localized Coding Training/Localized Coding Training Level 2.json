@@ -1,102 +1,102 @@
 {
-  "LinkedThemeID": "Basics (part 2)",
+  "LinkedContentID": "Basics (part 2)",
   "Title": "Основы (часть 2)",
   "SubThemes": [
     {
-      "LinkedSubThemeID": "Repetion 1",
+      "LinkedContentID": "Repetion 1",
       "Title": "Повторение",
       "Infos": [
         {
-          "LinkedTrainingInfoID": "Repetition of topics covered",
+          "LinkedContentID": "Repetition of topics covered",
           "Title": "Повторение пройденных тем",
           "Info": "     Итак, мы с вами вкратце разобрались с переменными, какие их типы бывают и даже разобрали арифметические действия с ними. Разумеется, это ещё не всё, и мы хотели бы рассказать чуть больше о числовых типах. А в качестве разминки - небольшая <color=green>задачка</color> на <color=green>повторение</color>!"
         }
       ]
     },
     {
-      "LinkedSubThemeID": "Code-style",
+      "LinkedContentID": "Code-style",
       "Title": "Code-style",
       "Infos": [
         {
-          "LinkedTrainingInfoID": "The concept of code-style",
+          "LinkedContentID": "The concept of code-style",
           "Title": "Понятие code-style",
           "Info": "     Поскольку мы с вами уже освоили некоторые конструкции языка, и вы даже можете пробовать программировать самостоятельно, будет правильным рассказать ещё и о <color=green>стиле кода</color> (code-style).\n     В наше время, когда программирование получило серьёзное развитие, мало просто писать рабочий код. Важно чтобы он также был <color=green>красивым</color>, <color=green>лаконичным</color> и <color=green>понятным</color> для других разработчиков. Поэтому в дальнейшем мы будем рассказывать не только о том, что можно использовать при написании кода, но и как это делать наилучшим образом.\n     И начать мы бы хотели с <color=green>названий переменных</color>."
         },
         {
-          "LinkedTrainingInfoID": "Variable naming rules. Language",
+          "LinkedContentID": "Variable naming rules. Language",
           "Title": "Правила наименования переменных. Язык",
           "Info": "     Начнём с того, что все названия должны быть на <color=green>английском</color> языке. Причём недостаточно написать слово, но английскими буквами - оно должно быть взято прямиком из английского языка. Если перевод на английский вызывает у вас трудности, не стесняйтесь пользоваться переводчиком. Ваш код должен быть понятен любому человеку из любой точки мира!"
         },
         {
-          "LinkedTrainingInfoID": "Variable naming rules. Symbols",
+          "LinkedContentID": "Variable naming rules. Symbols",
           "Title": "Правила наименования переменных. Символы",
           "Info": "     Имя переменной должно начинаться с <color=green>маленькой буквы</color> и быть записано в т.н. <color=green>нижнем \"верблюжьем\"</color> стиле (в англ. lowerCamelCase): все слова в имени пишутся слитно и начинаются с заглавной буквы, кроме самой первой."
         },
         {
-          "LinkedTrainingInfoID": "Variable naming rules. Words",
+          "LinkedContentID": "Variable naming rules. Words",
           "Title": "Правила наименования переменных. Слова",
           "Info": "     Имя переменной может состоять из одного или нескольких слов. Здесь главный критерий - <color=green>осмысленность</color>: имя должно чётко говорить, что за значение хранит переменная. Именно поэтому считается дурным тоном давать имена вроде a, b, cd, xyz и т.д. Однако <color=red>слишком длинное</color> имя тоже плохо, т.к. оно также будет тяжело восприниматься разработчиком. Поэтому одна из рекомендаций - не использовать в именах предлоги навроде of.\n     Вывод: старайтесь давать переменным в меру длинные осмысленные имена, чтобы ваш код и ваши намерения были понятны каждому!"
         },
         {
-          "LinkedTrainingInfoID": "Finally about code-style",
+          "LinkedContentID": "Finally about code-style",
           "Title": "Напоследок про code-style",
           "Info": "     Разумеется, это далеко не все правила написания хорошего кода. По мере изучения нового материала мы ещё не раз будем говорить о лучших практиках в программировании!"
         }
       ]
     },
     {
-      "LinkedSubThemeID": "Math Library and Type Casting",
+      "LinkedContentID": "Math Library and Type Casting",
       "Title": "Библиотека Math. Приведение типов",
       "Infos": [
         {
-          "LinkedTrainingInfoID": "Math Library and Type Casting",
+          "LinkedContentID": "Math Library and Type Casting",
           "Title": "Библиотека Math и приведение типов",
           "Info": "     Порой для решения задачи требуется провести операции над числами, куда более сложные, чем, скажем, сложение или умножение. Что если нужно округлить число, возвести в n-ю степень или найти синус угла?\n     Для таких случаев в стандартной библиотеке <color=green>System</color> (которая в нашем планшете подключена по умолчанию) есть специальная библиотека <color=green>Math</color>. Она содержит множество полезных <color=green>математических</color> функций и констант, которые порой оказываются крайне полезны."
         },
         {
-          "LinkedTrainingInfoID": "Round() function",
+          "LinkedContentID": "Round() function",
           "Title": "Функция Round()",
           "Info": "     Разумеется, мы не можем не продемонстрировать вам парочку функций из этой библиотеки!\n     Одна из них - функция <color=green>округления</color> Math.Round(). У неё есть несколько режимов работы (о них можно прочитать в документации по C#), однако нам будет достаточно базового, когда функция работает по правилам математики: если число <color=green>больше или равно 0.5</color>, число округляется в <color=green>бОльшую</color> сторону, в противном случае - в меньшую."
         },
         {
-          "LinkedTrainingInfoID": "Arguments and output of the Round function",
+          "LinkedContentID": "Arguments and output of the Round function",
           "Title": "Аргументы и выход функции Round",
           "Info": "     В качестве аргумента функция Round принимает переменные типа <color=green>double</color>. Однако и возвращает она результат типа double. А порой нам хотелось бы получить int - как быть?"
         },
         {
-          "LinkedTrainingInfoID": "Type casting - cast",
+          "LinkedContentID": "Type casting - cast",
           "Title": "Приведение типов - cast",
           "Info": "     Тут нам поможет такая возможность языка, как <color=green>приведение</color> (преобразование) типов (по англ. <color=green>cast</color>). Любой тип данных можно привести к какому-то другому (но не к любому!), причём это может происходить <color=green>явно</color> и <color=green>неявно</color>.\n     <color=green>Неявное</color> приведение язык выполнит сам, это возможно, когда новый тип принимает <color=green>бОльший диапазон/color> значений (например, так можно привести int к double). Если, наоборот, новый тип принимает <color=green>меньший</color> диапазон значений, то нужно в скобках указать, к какому типу мы хотим привести."
         },
         {
-          "LinkedTrainingInfoID": "Danger cast",
+          "LinkedContentID": "Danger cast",
           "Title": "Опасность cast'a",
           "Info": "     Если неявный cast довольно прозрачен и понятен, то явное приведение порой выполнять <color=red>опасно</color>!\n     Дело в том, что во время приведения, когда диапазон значений нового типа сузится, мы можем потерять часть данных. Например, если переменная типа double хранит число с дробной частью, то при cast-е к int дробная часть просто пропадёт, поскольку int хранит только целую часть!\n     В нашей игре вы можете спокойно выполнять приведение типов, где оно требуется, но в реальных задачах, используя явный cast, будьте предельно аккуратны!"
         }
       ]
     },
     {
-      "LinkedSubThemeID": "Math functions",
+      "LinkedContentID": "Math functions",
       "Title": "Библиотека Math (продолжение)",
       "Infos": [
         {
-          "LinkedTrainingInfoID": "Math functions. Exponentiation",
+          "LinkedContentID": "Math functions. Exponentiation",
           "Title": "Функции Math. Возведение в степень",
           "Info": "     Разберём ещё одну полезную функцию из библиотеки Math - <color=green>Math.Pow()</color>. Она позволяет возвести некоторое число x в некоторую степень y, а её название - это сокращение от <color=green>power()</color> (в англ. языке это слово обозначает также и возведение в степень).\n     В качестве аргументов функция принимает числа типа double (или неявно приводит их к double), а на выходе мы также получаем double."
         },
         {
-          "LinkedTrainingInfoID": "Usage example",
+          "LinkedContentID": "Usage example",
           "Title": "Пример использования",
           "Info": "     Функция Math.Pow() будет незаменима для решения различных расчётных задач. К примеру, для довольно популярной задачи <color=green>перевода числа</color> из <color=green>двоичной</color> системы счисления в <color=green>десятичную</color>.\n     Напомним алгоритм решения. Для каждой цифры двоичного числа нужно узнать его порядковый номер (цифры нумеруются <color=green>справа налево</color> и начиная с <color=green>нуля</color>). Затем возвести <color=green>основание СС</color> (в нашем случае 2, т.к. система двоичная) в степень, равную порядковому номеру цифры, и затем умножить на эту самую цифру.\n     Эти действия необходимо проделать для <color=green>каждой</color> цифры в числе, а затем сложить все полученные результаты. В итоге получим привычное нам десятичное число."
         }
       ]
     },
     {
-      "LinkedSubThemeID": "Repetition 2",
+      "LinkedContentID": "Repetition 2",
       "Title": "Повторение",
       "Infos": [
         {
-          "LinkedTrainingInfoID": "Repetition and End",
+          "LinkedContentID": "Repetition and End",
           "Title": "Повторение и завершение",
           "Info": "     Отлично! Мы с вами научились не только пользоваться <color=green>математическими функциями</color> и <color=green>приведением типов</color>, но и писать чуть более <color=green>красивый</color> код - наши <color=green>имена переменных</color> стали более осмысленными и будут понятны даже другим программистам!\n     Напоследок, нас ждёт ещё одна несложная задачка - вперёд!"
         }

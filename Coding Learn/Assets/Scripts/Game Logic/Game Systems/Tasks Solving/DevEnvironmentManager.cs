@@ -40,13 +40,14 @@ namespace Scripts
                 var testingCode = currentTaskTestInfo.TestCode.Replace(currentTaskTestInfo.PlayerCodePlaceholder, padDevEnvironmentView.CodeFieldContent);
                 var compiledCode = domain.CompileAndLoadMainSource(testingCode);
                 var proxy = compiledCode.CreateInstance(gameObject);
-                StartCoroutine(ShowExecutingProcess_COR(proxy));
+                var isTaskCompleted = (bool)proxy.Call(currentTaskTestInfo.TestMethodName);
+                StartCoroutine(ShowExecutingProcess_COR(isTaskCompleted));
             }
             catch
             {
                 Debug.LogError("There are compilation errors in runtime code!");
                 var errorMessages = domain.CompileResult.Errors
-                    .Select(error => (error.SourceLine /*- (currentTaskTestInfo.PlayerCodeStartRowNumber - 1)*/, error.SourceColumn, error.Message))
+                    .Select(error => (error.SourceLine - (currentTaskTestInfo.PlayerCodeStartRowNumber - 2), error.SourceColumn, error.Message))
                     .ToList();
                 padDevEnvironmentView.SetAndShowCompilationErrorsInfo(errorMessages);
             }
@@ -64,17 +65,16 @@ namespace Scripts
 using UnityEngine;
 using System;
 
-public class LaunchClass : MonoBehaviour
+public class InitializingClass : MonoBehaviour
 {
-    public void LaunchCompiler() => Debug.Log(""Compiler was initialized!"");
+    public void InitializeCompiler() => Debug.Log(""Compiler was initialized!"");
 }");
             var proxy = compiledCode.CreateInstance(gameObject);
-            proxy.Call("LaunchCompiler");
+            proxy.Call("InitializeCompiler");
         }
 
-        private IEnumerator ShowExecutingProcess_COR(ScriptProxy proxy)
+        private IEnumerator ShowExecutingProcess_COR(bool isTaskCompleted)
         {
-            var isTaskCompleted = (bool)proxy.Call(currentTaskTestInfo.TestMethodName);
             yield return StartCoroutine(padDevEnvironmentView.ShowExecutingProcess_COR(isTaskCompleted));
             if (isTaskCompleted)
             {

@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace Scripts
 {
-    public class TipsManager : MonoBehaviour
+    public class TipsManager : PadFunctionManager
     {
         [SerializeField]
         private int timeToNextTipInSeconds;
@@ -20,7 +20,7 @@ namespace Scripts
         private string[] currentTaskTips;
         private int nextTipIndex;
 
-        public void SetDefaultState(int currentTaskNumber)
+        public override void Initialize(int currentTaskNumber)
         {
             currentTaskTips = GameContentManager.GetTaskInfo(currentTaskNumber).Tips;
             nextTipIndex = 0;
@@ -29,9 +29,9 @@ namespace Scripts
             WaitUntilTaskSkipping();
         }
 
-        public void ShowTipsScreen() => padTipsScreenView.ChangeVisibility(true);
+        public override void ShowModalWindow() => padTipsScreenView.SetVisibility(true);
 
-        public void HideTipsScreen() => padTipsScreenView.ChangeVisibility(false);
+        public override void HideModalWindow() => padTipsScreenView.SetVisibility(false);
 
         public void ShowTip()
         {
@@ -56,7 +56,6 @@ namespace Scripts
         },
         ((int minutes, int seconds) countdownCurrentTime) =>
         {
-
             padTipsScreenView.SetTipStatusTextWithTimer("Game UI (Pad)", "Tip Waiting Label", string.Format("{0:d2}:{1:d2}", countdownCurrentTime.minutes, countdownCurrentTime.seconds));
         },
         () =>
@@ -65,7 +64,7 @@ namespace Scripts
             padTipsScreenView.SetShowTipButtonState(true);
         }));
 
-        public void WaitUntilTaskSkipping() => StartCoroutine(MakeCountdownToActionButtonUnlocking_COR(timeToNextTipInSeconds,
+        public void WaitUntilTaskSkipping() => StartCoroutine(MakeCountdownToActionButtonUnlocking_COR(timeToSkipTaskInSeconds,
         () =>
         {
             padTipsScreenView.SetSkipTaskButtonState(false);

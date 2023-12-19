@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Game UI Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Game UI
+  m_TableCollectionNameGuidString: 4c2fe7ebc803a074fa8fbee82dd3c382
+  m_Entries:
+  - m_Id: 66765799424
+    m_Key: Rewarding Section Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 191454068736
+    m_Key: Rewarding Section Next Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1036501467136
+    m_Key: Storytelling Section Next Story Part Button Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1168076783616
+    m_Key: Storytelling Section Skip Story Part Button Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1709783728128
+    m_Key: Exit To Menu Section Caution Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1842919325696
+    m_Key: Exit To Menu Section Submit Button Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1972233912320
+    m_Key: Exit To Menu Section Cancel Button Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3111285243904
+    m_Key: Loading Progress Label
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 3312931111004536834
+  references:
+    version: 2
+    RefIds:
+    - rid: 3312931111004536834
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1702552744118

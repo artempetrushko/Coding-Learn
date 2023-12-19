@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using UnityEngine.Events;
 
 namespace Scripts
 {
-    public class ChallengesManager : MonoBehaviour
+    public class ChallengesManager : PadFunctionManager
     {
         [SerializeField]
         private PadChallengesScreenView padChallengesScreenView;
@@ -20,7 +21,7 @@ namespace Scripts
         private int challengeCompletingTime;
         private int usedTipsCount;
 
-        public void SetChallengeInfos(int currentTaskNumber)
+        public override void Initialize(int currentTaskNumber)
         {
             var challengeInfos = GameContentManager.GetTaskInfo(currentTaskNumber).ChallengeInfos;
             var challengeDescriptions = challengeInfos.Select(challenge => challenge.Description).ToList();
@@ -31,9 +32,9 @@ namespace Scripts
             usedTipsCount = 0;
         }
 
-        public void ShowChallengesScreen() => padChallengesScreenView.ChangeVisibility(true);
+        public override void ShowModalWindow() => padChallengesScreenView.SetVisibility(true);
 
-        public void HideChallengesScreen() => padChallengesScreenView.ChangeVisibility(false);
+        public override void HideModalWindow() => padChallengesScreenView.SetVisibility(false);
 
         public void CheckChallengesCompleting(int currentTaskNumber, bool isTaskSkipped)
         {
@@ -75,7 +76,7 @@ namespace Scripts
             {
                 ChallengeType.SolveTask => true,
                 ChallengeType.NoTips => usedTipsCount == 0,
-                ChallengeType.CompletingTimeLessThan => challengeCompletingTime < (int)challenge.CheckValue
+                ChallengeType.CompletingTimeLessThan => challengeCompletingTime < Convert.ToInt32(challenge.CheckValue)
             };
         }
 

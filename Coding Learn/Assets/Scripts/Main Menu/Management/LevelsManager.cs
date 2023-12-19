@@ -39,18 +39,24 @@ namespace Scripts
             levelsSectionView.gameObject.SetActive(false);
         }
 
-        public void CreateLevelButtons(int totalLevelsCount)
-        {
-            var availableLevelsDescriptions = MainMenuContentManager.GetAvailableLevelInfos(MainMenuSaveManager.GameProgressData.LastAvailableLevelNumber)
-                .Select(levelInfo => levelInfo.Description)
-                .ToArray();
-            levelsSectionView.CreateLevelButtons(totalLevelsCount, availableLevelsDescriptions, ChangeLevelInfo);
-        }
+        public void CreateLevelButtons(int totalLevelsCount) => levelsSectionView.CreateLevelButtons(totalLevelsCount);
 
         public void SetLevelsSectionStartState()
         {
             var lastAvailableLevelNumber = MainMenuSaveManager.GameProgressData.LastAvailableLevelNumber;
+            var availableLevelsDescriptions = MainMenuContentManager.GetAvailableLevelInfos(lastAvailableLevelNumber)
+                .Select(levelInfo => levelInfo.Description)
+                .ToArray();
+            levelsSectionView.SetActiveLevelButtonsParams(availableLevelsDescriptions, ChangeLevelInfo);
             levelsSectionView.MakeLevelButtonSelected(lastAvailableLevelNumber);
+            if (SelectedLevelNumber != lastAvailableLevelNumber)
+            {
+                SelectedLevelNumber = lastAvailableLevelNumber;
+            }
+            else
+            {
+                SetLevelInfo(lastAvailableLevelNumber);
+            }
         }
 
         public void LoadSelectedLevel() => StartCoroutine(LoadLevelAsync_COR());

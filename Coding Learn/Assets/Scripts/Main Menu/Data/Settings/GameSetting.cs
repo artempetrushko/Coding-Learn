@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Scripts
 {
@@ -25,6 +24,12 @@ namespace Scripts
                 SwitchesOptionView => SetNeighboringValue,
                 SliderOptionView => SetNewValue
             });
+            SetCurrentValue();
+            if (optionView is SliderOptionView sliderOptionView)
+            {
+                sliderOptionView.SetDefaultSliderValues(int.Parse(formattedSettingValues[0]), int.Parse(formattedSettingValues[^1]), 
+                    int.Parse(formattedSettingValues[currentValueOrderNumber - 1]));
+            }
         }
 
         public void SetCurrentValue()
@@ -41,6 +46,20 @@ namespace Scripts
             optionView.SetOptionValue(formattedSettingValues[currentValueOrderNumber - 1]);
         }
 
-        private void SetNeighboringValue(int orderNumberOffset) => SetNewValue(currentValueOrderNumber + orderNumberOffset);
+        private void SetNeighboringValue(int orderNumberOffset)
+        {
+            if (currentValueOrderNumber + orderNumberOffset > formattedSettingValues.Count)
+            {
+                SetNewValue(1);
+            }
+            else if (currentValueOrderNumber + orderNumberOffset <= 0)
+            {
+                SetNewValue(formattedSettingValues.Count);
+            }
+            else
+            {
+                SetNewValue(currentValueOrderNumber + orderNumberOffset);
+            }  
+        }
     }
 }

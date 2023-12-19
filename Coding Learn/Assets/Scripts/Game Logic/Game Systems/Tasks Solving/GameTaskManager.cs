@@ -11,9 +11,11 @@ namespace Scripts
         [SerializeField]
         private DevEnvironmentManager devEnvironmentManager;
         [SerializeField]
-        private HandbookManager handbookManager;
-        [SerializeField]
         private ChallengesManager challengesManager;
+        [SerializeField]
+        private TipsManager tipsManager;
+        [SerializeField]
+        private HandbookManager handbookManager;
         [Space, SerializeField]
         private TaskSectionView taskSectionView;
         [SerializeField]
@@ -26,8 +28,9 @@ namespace Scripts
         {
             currentTaskNumber++;
             SetTaskInfo();
-            handbookManager.SetData(currentTaskNumber);
-            challengesManager.SetChallengeInfos(currentTaskNumber);
+            challengesManager.Initialize(currentTaskNumber);
+            tipsManager.Initialize(currentTaskNumber);
+            handbookManager.Initialize(currentTaskNumber);
             codingTrainingManager.ShowTrainingContent(GameManager.CurrentLevelNumber, currentTaskNumber);
         }
 
@@ -41,7 +44,7 @@ namespace Scripts
             StartCoroutine(taskSectionView.ChangeMainContentVisibility_COR(true));
         }
 
-        public void ReturnToCodingTraining(int levelNumber, int taskNumber) => StartCoroutine(ReturnToCodingTraining_COR(levelNumber, taskNumber));
+        public void ReturnToCodingTraining(CodingTrainingInfo[] codingTrainingInfos) => StartCoroutine(ReturnToCodingTraining_COR(codingTrainingInfos));
 
         public void FinishTask() => StartCoroutine(ProcessTaskResults_COR(false));
 
@@ -61,10 +64,10 @@ namespace Scripts
             devEnvironmentManager.SetCurrentTaskInfo(currentTaskInfo.StartCode, currentTaskInfo.TestInfo);
         }
 
-        private IEnumerator ReturnToCodingTraining_COR(int levelNumber, int taskNumber)
+        private IEnumerator ReturnToCodingTraining_COR(CodingTrainingInfo[] codingTrainingInfos)
         {
             yield return StartCoroutine(taskSectionView.ChangeMainContentVisibility_COR(false));
-            codingTrainingManager.ShowTrainingContent(levelNumber, taskNumber);
+            codingTrainingManager.ShowTrainingContent(codingTrainingInfos);
         }
     }
 }

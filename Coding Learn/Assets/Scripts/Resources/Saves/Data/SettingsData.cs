@@ -12,7 +12,7 @@ namespace Scripts
         [JsonConverter(typeof(StringEnumConverter))]
         public FullScreenMode FullScreenMode;
         public string GraphicsQuality;
-        public string LanguageCode;
+        public string Language;
         public int SoundsVolume;
         public int MusicVolume;
     }

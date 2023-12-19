@@ -140,7 +140,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 5363064862126088373}
           m_TargetAssemblyTypeName: Scripts.StorytellingManager, Assembly-CSharp
-          m_MethodName: ShowNextStoryPart
+          m_MethodName: ShowNextStoryPartArticle
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -180,7 +180,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 5363064862126088373}
           m_TargetAssemblyTypeName: Scripts.StorytellingManager, Assembly-CSharp
-          m_MethodName: ShowFirstStoryPart
+          m_MethodName: ShowFirstStoryPartArticle
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -355,7 +355,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storytellingSectionView: {fileID: 0}
   playableDirector: {fileID: 6539088680678338312}
-  cutscenes: []
 --- !u!114 &-4564359685168556614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,8 +369,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   codingTrainingManager: {fileID: -5739413121893373772}
   devEnvironmentManager: {fileID: -2679990804237974468}
-  handbookManager: {fileID: -4741594969527248707}
   challengesManager: {fileID: 7955842500387971599}
+  tipsManager: {fileID: 5976149445434311918}
+  handbookManager: {fileID: -4741594969527248707}
   taskSectionView: {fileID: 0}
   taskDescriptionSectionView: {fileID: 0}
 --- !u!114 &-5739413121893373772
@@ -545,4 +545,16 @@ MonoBehaviour:
   exitToMenuSectionView: {fileID: 0}
   onBlackScreenShown:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7006385447273250321}
+        m_TargetAssemblyTypeName: Scripts.SceneLoadingManager, Assembly-CSharp
+        m_MethodName: LoadMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

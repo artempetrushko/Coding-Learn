@@ -15,7 +15,7 @@ namespace Scripts
         public void SetInfo(TaskStatsData data)
         {
             taskTitleText.text = data.TaskTitle;
-            starsCounterText.text = string.Format(@"{0}/{1}", data.CompletedChallengesCount, data.TotalChallengesCount);
+            starsCounterText.text = $"{data.CompletedChallengesCount}/{data.TotalChallengesCount}";
         }
     }
 }

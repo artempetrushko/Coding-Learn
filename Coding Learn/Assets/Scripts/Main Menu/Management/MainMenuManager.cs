@@ -45,19 +45,20 @@ namespace Scripts
 
         public void Exit() => Application.Quit();
 
+        public void RequestTextContentReload() => contentManager.LoadTextContent(MainMenuSaveManager.GameProgressData.LastAvailableLevelNumber);
+
         private void Awake()
         {
             saveManager.Initialize();
-            saveManager.LoadOrCreateGameProgressData(gameData.LevelsCount);
-            saveManager.LoadOrCreateSettingsData();
-            contentManager.LoadContentFromResources(gameData.LevelsCount);
+            saveManager.LoadOrCreateAllSavedData(gameData.LevelsCount);
+            settingsManager.InitializeSettings();
+            contentManager.LoadContentFromResources(MainMenuSaveManager.GameProgressData.LastAvailableLevelNumber);
         }
 
         private void Start()
         {
             levelsManager.CreateLevelButtons(gameData.LevelsCount);
-            statsManager.CreateLevelStatsCards();
-            settingsManager.CreateSettingsViews();
+            statsManager.CreateLevelStatsCards();          
 
             mainMenuSectionView.CreateButtons(buttonDatas);
             StartCoroutine(mainMenuSectionView.PlayStartAnimation_COR());
