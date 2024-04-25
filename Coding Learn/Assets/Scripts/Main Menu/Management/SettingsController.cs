@@ -1,5 +1,5 @@
+using Cysharp.Threading.Tasks;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,7 +8,7 @@ using UnityEngine.Localization.Settings;
 
 namespace Scripts
 {
-    public class SettingsManager : MainMenuSectionManager
+    public class SettingsController : IMainMenuSectionController
     {
         [SerializeField]
         private SettingsSectionView settingsSectionView;
@@ -17,17 +17,23 @@ namespace Scripts
         [Space, SerializeField]
         private UnityEvent onSettingsApplied;
 
-        private List<GameSetting> gameSettings = new List<GameSetting>();
+        private List<GameSetting> gameSettings = new();
 
-        public override IEnumerator ShowSectionView_COR()
+        public SettingsController(SettingsSectionView settingsSectionView, AudioManager audioManager)
         {
-            SetSettingsCurrentValues();
-            yield return StartCoroutine(settingsSectionView.ChangeVisibility_COR(true));
+            this.settingsSectionView = settingsSectionView;
+            this.audioManager = audioManager;
         }
 
-        public override IEnumerator HideSectionView_COR()
+        public async UniTask ShowSectionViewAsync()
         {
-            yield return StartCoroutine(settingsSectionView.ChangeVisibility_COR(false));
+            SetSettingsCurrentValues();
+            await settingsSectionView.ChangeVisibilityAsync(true);
+        }
+
+        public async UniTask HideSectionViewAsync()
+        {
+            await settingsSectionView.ChangeVisibilityAsync(false);
         }
 
         public void InitializeSettings()
@@ -108,7 +114,7 @@ namespace Scripts
         public void ApplySettings()
         {
             gameSettings.ForEach(setting => setting.ApplyValue());
-            onSettingsApplied.Invoke();
+            onSettingsApplied?.Invoke();
         }
 
         private List<string> GetFormattedResolutions()

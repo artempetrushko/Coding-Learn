@@ -1,24 +1,28 @@
-using System;
-using System.Collections;
+using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace Scripts
 {
-    public class StatsManager : MainMenuSectionManager
+    public class StatsController : IMainMenuSectionController
     {
         [SerializeField]
         private StatsSectionView statsSectionView;
 
-        public override IEnumerator ShowSectionView_COR()
+        public StatsController(StatsSectionView statsSectionView)
         {
-            yield return StartCoroutine(statsSectionView.ChangeVisibility_COR(true));
+            this.statsSectionView = statsSectionView;
         }
 
-        public override IEnumerator HideSectionView_COR()
+        public async UniTask ShowSectionViewAsync()
         {
-            yield return StartCoroutine(statsSectionView.ChangeVisibility_COR(false));
+            await statsSectionView.ChangeVisibilityAsync(true);
+        }
+
+        public async UniTask HideSectionViewAsync()
+        {
+            await statsSectionView.ChangeVisibilityAsync(false);
         }
 
         public void CreateLevelStatsCards()

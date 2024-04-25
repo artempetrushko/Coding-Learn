@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Scripts
@@ -41,19 +40,26 @@ namespace Scripts
                 isTaskStarted = true;
                 challengesManager.StartChallengeTimer();
             }
-            StartCoroutine(taskSectionView.ChangeMainContentVisibility_COR(true));
+            _ = taskSectionView.ChangeMainContentVisibilityAsync(true);
         }
 
-        public void ReturnToCodingTraining(CodingTrainingInfo[] codingTrainingInfos) => StartCoroutine(ReturnToCodingTraining_COR(codingTrainingInfos));
+        public void ReturnToCodingTraining(CodingTrainingInfo[] codingTrainingInfos)
+        {
+            UniTask.Void(async () =>
+            {
+                await taskSectionView.ChangeMainContentVisibilityAsync(false);
+                codingTrainingManager.ShowTrainingContent(codingTrainingInfos);
+            });
+        }
 
-        public void FinishTask() => StartCoroutine(ProcessTaskResults_COR(false));
+        public void FinishTask() => _ = ProcessTaskResultsAsync(false);
 
-        public void SkipTask() => StartCoroutine(ProcessTaskResults_COR(true));
+        public void SkipTask() => _ = ProcessTaskResultsAsync(true);
 
-        private IEnumerator ProcessTaskResults_COR(bool isTaskSkipped)
+        private async UniTask ProcessTaskResultsAsync(bool isTaskSkipped)
         {
             isTaskStarted = false;
-            yield return StartCoroutine(taskSectionView.ChangeMainContentVisibility_COR(false));
+            await taskSectionView.ChangeMainContentVisibilityAsync(false);
             challengesManager.CheckChallengesCompleting(currentTaskNumber, isTaskSkipped);
         }
 
@@ -62,12 +68,6 @@ namespace Scripts
             var currentTaskInfo = GameContentManager.GetTaskInfo(currentTaskNumber);
             taskDescriptionSectionView.SetContent(currentTaskInfo.Title, currentTaskInfo.Description);
             devEnvironmentManager.SetCurrentTaskInfo(currentTaskInfo.StartCode, currentTaskInfo.TestInfo);
-        }
-
-        private IEnumerator ReturnToCodingTraining_COR(CodingTrainingInfo[] codingTrainingInfos)
-        {
-            yield return StartCoroutine(taskSectionView.ChangeMainContentVisibility_COR(false));
-            codingTrainingManager.ShowTrainingContent(codingTrainingInfos);
         }
     }
 }

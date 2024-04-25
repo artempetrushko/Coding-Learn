@@ -1,10 +1,9 @@
+using Cysharp.Threading.Tasks;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Localization.Components;
 using TMPro;
+using UnityEngine;
+using UnityEngine.Localization.Components;
+using UnityEngine.UI;
 
 namespace Scripts
 {
@@ -27,9 +26,9 @@ namespace Scripts
         [Space, SerializeField]
         private LevelsSectionAnimator animator;
 
-        public IEnumerator ChangeVisibility_COR(bool isVisible)
+        public async UniTask ChangeVisibility_COR(bool isVisible)
         {
-            yield return StartCoroutine(animator.ChangeContentVisibility_COR(isVisible));
+            await animator.ChangeContentVisibilityAsync(isVisible);
         }
 
         public void CreateLevelButtons(int totalLevelsCount)
@@ -58,10 +57,7 @@ namespace Scripts
             levelTitleLabel.text = levelTitle;
         }
 
-        public IEnumerator ShowLoadingScreenContent_COR()
-        {
-            yield return StartCoroutine(animator.ShowLoadingScreen_COR());
-        }
+        public async UniTask ShowLoadingScreenContentAsync() => await animator.ShowLoadingScreenAsync();
 
         public void SetLoadingBarInfo(float loadingOperationProgress)
         {
@@ -75,18 +71,17 @@ namespace Scripts
             newLevelThumbnail.SetContent(newThumbnail);
             if (levelThumbnailContainer.transform.childCount > 1)
             {
-                StartCoroutine(UpdateLevelThumbnail_COR());
+                UpdateLevelThumbnailAsync();
             }            
         }
 
         public void MakeLevelButtonSelected(int buttonNumber) => levelButtonsContainer.transform.GetChild(buttonNumber - 1).GetComponent<LevelButton>().ClickForce();
 
-        private IEnumerator UpdateLevelThumbnail_COR()
+        private async UniTask UpdateLevelThumbnailAsync()
         {
-            var previousLevelThumbnail = levelThumbnailContainer.transform.GetChild(0).GetComponent<LevelThumbnail>();
-            var newLevelThumbnail = levelThumbnailContainer.transform.GetChild(1).GetComponent<LevelThumbnail>();
-            yield return animator.ChangeLevelThumbnail_COR(previousLevelThumbnail, newLevelThumbnail);
-            Destroy(previousLevelThumbnail.gameObject);
+            var levelThumbnails = levelThumbnailContainer.GetComponentsInChildren<LevelThumbnail>();
+            await animator.ChangeLevelThumbnailAsync(levelThumbnails[0], levelThumbnails[1]);
+            Destroy(levelThumbnails[0].gameObject);
         }
     }
 }

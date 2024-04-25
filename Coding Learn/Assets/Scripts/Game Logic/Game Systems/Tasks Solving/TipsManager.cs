@@ -1,6 +1,5 @@
+using Cysharp.Threading.Tasks;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -49,7 +48,7 @@ namespace Scripts
             }
         }
 
-        public void WaitUntilNextTip() => StartCoroutine(MakeCountdownToActionButtonUnlocking_COR(timeToNextTipInSeconds, 
+        public void WaitUntilNextTip() => _ = MakeCountdownToActionButtonUnlockingAsync(timeToNextTipInSeconds, 
         () =>
         {
             padTipsScreenView.SetShowTipButtonState(false);
@@ -62,9 +61,9 @@ namespace Scripts
         {
             padTipsScreenView.SetTipStatusText("Game UI (Pad)", "Tip Available Label");
             padTipsScreenView.SetShowTipButtonState(true);
-        }));
+        });
 
-        public void WaitUntilTaskSkipping() => StartCoroutine(MakeCountdownToActionButtonUnlocking_COR(timeToSkipTaskInSeconds,
+        public void WaitUntilTaskSkipping() => _ = MakeCountdownToActionButtonUnlockingAsync(timeToSkipTaskInSeconds,
         () =>
         {
             padTipsScreenView.SetSkipTaskButtonState(false);
@@ -77,9 +76,9 @@ namespace Scripts
         {
             padTipsScreenView.SetSkipTaskButtonState(true);
             padTipsScreenView.SetSkipTaskButtonLabelText("Game UI (Pad)", "Skip Task Label");
-        }));
+        });
 
-        private IEnumerator MakeCountdownToActionButtonUnlocking_COR(int countdownTimeInSeconds, Action beforeCountdownAction, Action<(int minutes, int seconds)> duringCountdownAction, Action afterCountdownAction)
+        private async UniTask MakeCountdownToActionButtonUnlockingAsync(int countdownTimeInSeconds, Action beforeCountdownAction, Action<(int minutes, int seconds)> duringCountdownAction, Action afterCountdownAction)
         {
             beforeCountdownAction();
             var timer = countdownTimeInSeconds;
@@ -88,7 +87,7 @@ namespace Scripts
                 var minutes = timer / 60;
                 var seconds = timer - minutes * 60;
                 duringCountdownAction((minutes, seconds));
-                yield return new WaitForSeconds(1f);
+                await UniTask.Delay(TimeSpan.FromSeconds(1));
                 timer--;
             }
             afterCountdownAction();

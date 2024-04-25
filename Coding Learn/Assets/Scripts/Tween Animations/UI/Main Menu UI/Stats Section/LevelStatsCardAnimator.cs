@@ -1,6 +1,6 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,23 +15,20 @@ namespace Scripts
 
         private float? starsCounterStartPositionY;
 
-        public void ShowStarsCounter() => StartCoroutine(ChangeStarsCounterVisibility_COR(true));
+        public async UniTask ShowStarsCounter() => await ChangeStarsCounterVisibilityAsync(true);
 
-        public void HideStarsCounter() => StartCoroutine(ChangeStarsCounterVisibility_COR(false));
+        public async UniTask HideStarsCounter() => await ChangeStarsCounterVisibilityAsync(false);
 
-        private IEnumerator ChangeStarsCounterVisibility_COR(bool isVisible)
+        private async UniTask ChangeStarsCounterVisibilityAsync(bool isVisible)
         {
-            if (starsCounterStartPositionY == null)
-            {
-                starsCounterStartPositionY = starsCounter.transform.localPosition.y;
-            }
+            starsCounterStartPositionY ??= starsCounter.transform.localPosition.y;
             var foregroundEndAlpha = isVisible ? 0.8f : 0f;
             var starsCounterEndPositionY = isVisible ? 0f : starsCounterStartPositionY;
             var visibilityChangeDuration = 0.2f;
 
             foreground.DOFade(foregroundEndAlpha, visibilityChangeDuration);
             starsCounter.transform.DOLocalMoveY(starsCounterEndPositionY.Value, visibilityChangeDuration);
-            yield return new WaitForSeconds(visibilityChangeDuration);
+            await UniTask.Delay(TimeSpan.FromSeconds(visibilityChangeDuration));
         }
     }
 }

@@ -1,6 +1,5 @@
+using Cysharp.Threading.Tasks;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -48,27 +47,35 @@ namespace Scripts
                     currentTaskChallengesResults.ChallengeCompletingStatuses[i] = challengeDatas[i].isCompleted;
                 }             
             }
-            StartCoroutine(rewardingSectionView.ShowChallengesResults_COR(challengeDatas));  
+            _ = rewardingSectionView.ShowChallengesResultsAsync(challengeDatas);  
         }
 
-        public void HideRewardingSection() => StartCoroutine(HideRewardingSection_COR());
+        public void HideRewardingSection()
+        {
+            UniTask.Void(async () =>
+            {
+                await rewardingSectionView.HideChallengesResultsAsync();
+                onChallengesCompletingChecked.Invoke();
+            });
+        }
 
-        public void StartChallengeTimer() => StartCoroutine(StartChallengeTimer_COR());
+        public void StartChallengeTimer()
+        {
+            UniTask.Void(async () =>
+            {
+                challengeCompletingTime = 0;
+                isTimerStopped = false;
+                while (!isTimerStopped)
+                {
+                    await UniTask.Delay(TimeSpan.FromSeconds(1));
+                    challengeCompletingTime++;
+                }
+            });
+        }
 
         public void StopChallengeTimer() => isTimerStopped = true;
 
         public void IncreaseUsedTipsCountByOne() => usedTipsCount++;
-
-        private IEnumerator StartChallengeTimer_COR()
-        {
-            challengeCompletingTime = 0;
-            isTimerStopped = false;
-            while (!isTimerStopped)
-            {
-                yield return new WaitForSeconds(1f);
-                challengeCompletingTime++;
-            }
-        }
 
         private bool IsChallengeCompleting(ChallengeInfo challenge)
         {
@@ -78,12 +85,6 @@ namespace Scripts
                 ChallengeType.NoTips => usedTipsCount == 0,
                 ChallengeType.CompletingTimeLessThan => challengeCompletingTime < Convert.ToInt32(challenge.CheckValue)
             };
-        }
-
-        private IEnumerator HideRewardingSection_COR()
-        {
-            yield return StartCoroutine(rewardingSectionView.HideChallengesResults_COR());
-            onChallengesCompletingChecked.Invoke();
         }
     }
 }

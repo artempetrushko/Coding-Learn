@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Scripts
@@ -25,7 +23,7 @@ namespace Scripts
             saveManager.SaveProgress(Mathf.Clamp(CurrentLevelNumber + 1, 1, gameData.LevelsCount));
 
             var nextSceneIndex = (CurrentLevelNumber + 1) % (gameData.LevelsCount + 1);
-            StartCoroutine(sceneLoadingManager.LoadNextSceneAsync_COR(nextSceneIndex));
+            _ = sceneLoadingManager.LoadNextSceneAsync(nextSceneIndex);
         }
 
         private void Awake()

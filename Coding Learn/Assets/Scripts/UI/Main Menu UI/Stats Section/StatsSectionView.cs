@@ -1,4 +1,4 @@
-using System.Collections;
+using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,10 +20,10 @@ namespace Scripts
         [Space, SerializeField]
         private StatsSectionAnimator animator;
 
-        public IEnumerator ChangeVisibility_COR(bool isVisible)
+        public async UniTask ChangeVisibilityAsync(bool isVisible)
         {
             backToPreviousPageButton.gameObject.SetActive(false);
-            yield return StartCoroutine(animator.ChangeVisibility_COR(isVisible));
+            await animator.ChangeVisibilityAsync(isVisible);
         }
 
         public void CreateLevelStatsCards(List<LevelStatsCardData> cardDatas)
@@ -39,13 +39,13 @@ namespace Scripts
         {
             CreateDetalizedLevelStats(taskStatsDatas);
             backToPreviousPageButton.gameObject.SetActive(true);
-            StartCoroutine(animator.ShowDetailedLevelStats_COR());
+            animator.ShowDetailedLevelStatsAsync();
         }
 
         public void ReturnToLevelStatsCards()
         {
             backToPreviousPageButton.gameObject.SetActive(false);
-            StartCoroutine(animator.ReturnToLevelCards_COR());
+            animator.ReturnToLevelCardsAsync();
         }
 
         private void CreateDetalizedLevelStats(List<TaskStatsData> taskStatsDatas)

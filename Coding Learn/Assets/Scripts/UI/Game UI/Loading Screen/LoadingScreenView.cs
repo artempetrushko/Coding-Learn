@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,9 +13,9 @@ namespace Scripts
         [Space, SerializeField]
         private LoadingScreenAnimator animator;
 
-        public IEnumerator Show_COR()
+        public async UniTask ShowAsync()
         {
-            yield return StartCoroutine(animator.ShowBackground_COR());
+            await animator.ShowBackgroundAsync();
             loadingBar.gameObject.SetActive(true);
         }
 

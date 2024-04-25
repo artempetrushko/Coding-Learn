@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,19 +18,19 @@ namespace Scripts
         private Color progressBarSuccessColor = Color.green;
         private Color progressBarFailureColor = Color.red;
 
-        public IEnumerator ShowTaskSolutionChecking_COR(bool isTaskCompleted)
+        public async UniTask ShowTaskSolutionCheckingAsync(bool isTaskCompleted)
         {
             programExecutingProgressBar.color = progressBarNormalColor;
             var progressBarFillingTween = programExecutingProgressBar.DOFillAmount(1f, 3f);
-            yield return progressBarFillingTween.WaitForCompletion();
+            await progressBarFillingTween.AsyncWaitForCompletion();
             if (isTaskCompleted)
             {
                 programExecutingProgressBar.color = progressBarSuccessColor;
-                yield return StartCoroutine(ShowTaskCompletingIndicator_COR(isTaskCompleted));
+                await ShowTaskCompletingIndicatorAsync(isTaskCompleted);
             }
             programExecutingProgressBar.fillAmount = 0f;
         }
-        public IEnumerator ShowTaskCompletingIndicator_COR(bool isTaskCompleted)
+        public async UniTask ShowTaskCompletingIndicatorAsync(bool isTaskCompleted)
         {
             var indicatorEndColor = isTaskCompleted ? progressBarSuccessColor : progressBarFailureColor;
             var indicatorStartColor = indicatorEndColor;
@@ -43,8 +44,7 @@ namespace Scripts
             tweenSequence
                 .Append(taskCompletingIndicator.DOColor(indicatorEndColor, 0.7f))
                 .Append(taskCompletingIndicator.DOColor(indicatorStartColor, 0.7f));
-            tweenSequence.Play();
-            yield return tweenSequence.WaitForCompletion();
+            await tweenSequence.Play().AsyncWaitForCompletion();
             taskCompletingIndicator.gameObject.SetActive(false);
         }
     }

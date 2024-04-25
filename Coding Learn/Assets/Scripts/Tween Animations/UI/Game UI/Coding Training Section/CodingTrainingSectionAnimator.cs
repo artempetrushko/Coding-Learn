@@ -1,5 +1,5 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,7 +15,7 @@ namespace Scripts
 
         private Sequence visibilityChangeTween;
 
-        public IEnumerator ChangeVisibility_COR(bool isVisible)
+        public async UniTask ChangeVisibilityAsync(bool isVisible)
         {
             visibilityChangeTween ??= CreateVisibilityChangeTween();
             if (isVisible)
@@ -26,7 +26,7 @@ namespace Scripts
             {
                 visibilityChangeTween.PlayBackwards();
             }
-            yield return visibilityChangeTween.WaitForRewind();
+            await visibilityChangeTween.AsyncWaitForRewind();
         }
 
         private Sequence CreateVisibilityChangeTween()

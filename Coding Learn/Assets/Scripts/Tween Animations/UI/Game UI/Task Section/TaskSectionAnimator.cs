@@ -1,6 +1,6 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 namespace Scripts
@@ -12,14 +12,14 @@ namespace Scripts
         [SerializeField]
         private GameObject padSectionView;
 
-        public IEnumerator ChangeMainContentVisibility_COR(bool isVisible)
+        public async UniTask ChangeMainContentVisibilityAsync(bool isVisible)
         {
             var movementOffsetXSign = isVisible ? 1f : -1f;
             var padViewRightMargin = 20;
 
             taskDescriptionSectionView.transform.DOLocalMoveX(taskDescriptionSectionView.transform.localPosition.x + taskDescriptionSectionView.GetComponent<RectTransform>().sizeDelta.x * movementOffsetXSign, 1f);
             padSectionView.transform.DOLocalMoveX(padSectionView.transform.localPosition.x - (padSectionView.GetComponent<RectTransform>().sizeDelta.x + padViewRightMargin) * movementOffsetXSign, 1f);
-            yield return new WaitForSeconds(1f);
+            await UniTask.Delay(TimeSpan.FromSeconds(1));
         }
     }
 }

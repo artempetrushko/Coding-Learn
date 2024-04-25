@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Localization.Tables;
 
@@ -22,10 +21,7 @@ namespace Scripts
         [Space, SerializeField]
         private SettingsSectionAnimator animator;
 
-        public IEnumerator ChangeVisibility_COR(bool isVisible)
-        {
-            yield return StartCoroutine(animator.ChangeVisibility_COR(isVisible));
-        }
+        public async UniTask ChangeVisibilityAsync(bool isVisible) => await animator.ChangeVisibilityAsync(isVisible);
 
         public SettingsOptionView CreateOptionView((TableReference table, TableEntryReference entry) localizedString, SettingViewType viewType)
         {

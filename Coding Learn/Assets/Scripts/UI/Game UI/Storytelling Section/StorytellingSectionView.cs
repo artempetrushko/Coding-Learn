@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Cysharp.Threading.Tasks;
+using System;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Scripts
@@ -17,15 +17,7 @@ namespace Scripts
 
         private bool isSkipButtonPressed = false;
 
-        public void ShowStoryText(string storyText, float textShowingTime) => StartCoroutine(ShowStoryText_COR(storyText, textShowingTime));
-
-        public void SkipStoryTextShowing() => isSkipButtonPressed = true;
-
-        public void ClearStoryTextArea() => storyTextArea.text = "";
-
-        public void SetNextStoryPartButtonActive(bool isActive) => nextStoryPartButton.gameObject.SetActive(isActive);
-
-        private IEnumerator ShowStoryText_COR(string storyText, float textShowingTime)
+        public async UniTask ShowStoryTextAsync(string storyText, float textShowingTime)
         {
             skipStoryPartButton.gameObject.SetActive(true);
             var latency = textShowingTime / storyText.Length;
@@ -38,10 +30,16 @@ namespace Scripts
                     break;
                 }
                 storyTextArea.text += storyText[i];
-                yield return new WaitForSeconds(latency);
+                await UniTask.Delay(TimeSpan.FromSeconds(latency));
             }
             skipStoryPartButton.gameObject.SetActive(false);
             SetNextStoryPartButtonActive(true);
         }
+
+        public void SkipStoryTextShowing() => isSkipButtonPressed = true;
+
+        public void ClearStoryTextArea() => storyTextArea.text = "";
+
+        public void SetNextStoryPartButtonActive(bool isActive) => nextStoryPartButton.gameObject.SetActive(isActive);
     }
 }

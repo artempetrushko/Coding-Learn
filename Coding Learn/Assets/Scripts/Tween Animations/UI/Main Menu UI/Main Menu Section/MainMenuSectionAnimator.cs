@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,22 +13,22 @@ namespace Scripts
         [SerializeField]
         private GameObject content;
         [SerializeField]
-        private List<Image> backgroundParts = new List<Image>();
+        private List<Image> backgroundParts = new();
         [SerializeField]
         private Image blackScreen;
 
         private Sequence mainMenuShowingTween;
 
-        public IEnumerator HideBlackScreen_COR()
+        public async UniTask HideBlackScreenAsync()
         {
             blackScreen.gameObject.SetActive(true);
-            var blackScreenFadeOutTween = blackScreen.DOColor(new Color(0, 0, 0, 0), 2f);
-            blackScreenFadeOutTween.Play();
-            yield return blackScreenFadeOutTween.WaitForCompletion();
+            await blackScreen
+                .DOColor(new Color(0, 0, 0, 0), 2f)
+                .AsyncWaitForCompletion();
             blackScreen.gameObject.SetActive(false);
         }
 
-        public IEnumerator ChangeMainMenuVisibility_COR(bool isVisible)
+        public async UniTask ChangeMainMenuVisibilityAsync(bool isVisible)
         {
             mainMenuShowingTween ??= CreateMainMenuShowingTween();
             if (isVisible)
@@ -39,7 +40,7 @@ namespace Scripts
             {
                 mainMenuShowingTween.PlayBackwards();
             }
-            yield return mainMenuShowingTween.WaitForRewind();
+            await mainMenuShowingTween.AsyncWaitForRewind();
         }
 
         private Sequence CreateMainMenuShowingTween()

@@ -1,6 +1,6 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,14 +14,14 @@ namespace Scripts
         [SerializeField]
         private TMP_Text descriptionText;
 
-        public IEnumerator ChangeVisibility_COR(bool isVisible)
+        public async UniTask ChangeVisibilityAsync(bool isVisible)
         {
             var backgroundShowingTime = 0.3f;
             foreach (var part in backgroundParts)
             {
                 part.DOFillAmount(isVisible ? 1f : 0f, backgroundShowingTime);
             }
-            yield return new WaitForSeconds(backgroundShowingTime);
+            await UniTask.Delay(TimeSpan.FromSeconds(backgroundShowingTime));
             descriptionText.DOFade(1, 0.15f);
         }
     }

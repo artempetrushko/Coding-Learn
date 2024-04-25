@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
@@ -14,9 +13,6 @@ namespace Scripts
 
         public void SetChallengeDescription(string challengeDescription) => challengeDescriptionText.text = challengeDescription;
 
-        public IEnumerator PlayChallengeCompletedAnimation_COR()
-        {
-            yield return StartCoroutine(animator.PlayChallengeCompletingAnimation_COR());
-        }
+        public async UniTask PlayChallengeCompletedAnimationAsync() => await animator.PlayChallengeCompletingAnimationAsync();
     }
 }

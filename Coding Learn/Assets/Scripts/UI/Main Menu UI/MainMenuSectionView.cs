@@ -1,5 +1,4 @@
-using System;
-using System.Collections;
+using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization.Components;
@@ -28,20 +27,20 @@ namespace Scripts
             }
         }
 
-        public IEnumerator ShowContent_COR()
+        public async UniTask ShowContentAsync()
         {
-            yield return StartCoroutine(animator.ChangeMainMenuVisibility_COR(true));
+            await animator.ChangeMainMenuVisibilityAsync(true);
         }
 
-        public IEnumerator HideContent_COR()
+        public async UniTask HideContentAsync()
         {
-            yield return StartCoroutine(animator.ChangeMainMenuVisibility_COR(false));
+            await animator.ChangeMainMenuVisibilityAsync(false);
         }
 
-        public IEnumerator PlayStartAnimation_COR()
+        public async UniTask PlayStartAnimationAsync()
         {
-            yield return StartCoroutine(animator.HideBlackScreen_COR());
-            yield return StartCoroutine(animator.ChangeMainMenuVisibility_COR(true));
+            await animator.HideBlackScreenAsync();
+            await animator.ChangeMainMenuVisibilityAsync(true);
         }
     }
 }

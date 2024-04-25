@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,13 +13,13 @@ namespace Scripts
         [SerializeField]
         private UnityEvent<bool> onMainContentDisablingFinished;
 
-        public IEnumerator ChangeMainContentVisibility_COR(bool isVisible)
+        public async UniTask ChangeMainContentVisibilityAsync(bool isVisible)
         {
             if (isVisible)
             {
                 onMainContentEnablingStarted.Invoke(isVisible);
             }
-            yield return StartCoroutine(animator.ChangeMainContentVisibility_COR(isVisible));
+            await animator.ChangeMainContentVisibilityAsync(isVisible);
             if (!isVisible)
             {
                 onMainContentDisablingFinished.Invoke(isVisible);

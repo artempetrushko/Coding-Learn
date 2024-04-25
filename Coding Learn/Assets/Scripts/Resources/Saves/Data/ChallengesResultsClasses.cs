@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Scripts
@@ -7,12 +6,12 @@ namespace Scripts
     [Serializable]
     public class LevelChallengesResults
     {
-        public List<TaskChallengesResults> TasksChallengesResults = new List<TaskChallengesResults>();
+        public List<TaskChallengesResults> TasksChallengesResults = new();
     }
 
     [Serializable]
     public class TaskChallengesResults
     {
-        public List<bool> ChallengeCompletingStatuses = new List<bool>();
+        public List<bool> ChallengeCompletingStatuses = new();
     }
 }

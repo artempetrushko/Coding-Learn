@@ -1,6 +1,5 @@
+using Cysharp.Threading.Tasks;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,26 +24,26 @@ namespace Scripts
             {
                 previousHandbookPageButton.gameObject.SetActive(false);
                 SetContainerScrollbarDefaultValue(mainThemeButtonsContainer);
-                StartCoroutine(animator.ChangeVisibility_COR(true));
+                animator.ChangeVisibilityAsync(true);
             }
             else
             {
-                StartCoroutine(animator.ChangeVisibility_COR(false));
+                animator.ChangeVisibilityAsync(false);
             }
         }
 
-        public IEnumerator ShowSubThemeButtons_COR()
+        public async UniTask ShowSubThemeButtonsAsync()
         {
             SetContainerScrollbarDefaultValue(subThemeButtonsContainer);
-            yield return StartCoroutine(animator.GoToSubThemeButtons_COR());
+            await animator.GoToSubThemeButtonsAsync();
             previousHandbookPageButton.gameObject.SetActive(true);
         }
 
-        public IEnumerator ReturnToMainThemeButtons_COR()
+        public async UniTask ReturnToMainThemeButtonsAsync()
         {
             previousHandbookPageButton.gameObject.SetActive(false);
             SetContainerScrollbarDefaultValue(mainThemeButtonsContainer);
-            yield return StartCoroutine(animator.ReturnToMainThemeButtons_COR());          
+            await animator.ReturnToMainThemeButtonsAsync();          
         }
 
         public void CreateThemeButtons<T>(T[] themes, Action<T> themeButtonPressedAction) where T : TrainingTheme

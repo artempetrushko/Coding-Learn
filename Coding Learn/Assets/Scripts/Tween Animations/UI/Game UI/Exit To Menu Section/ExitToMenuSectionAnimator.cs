@@ -1,6 +1,5 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +14,7 @@ namespace Scripts
         [SerializeField]
         private Image blackScreen;
 
-        public IEnumerator ChangeContentVisibility_COR(bool isVisible)
+        public async UniTask ChangeContentVisibilityAsync(bool isVisible)
         {
             var backgroundEndOpacity = isVisible ? 0.9f : 0;
             var contentOpacity = isVisible ? 1 : 0;
@@ -33,13 +32,15 @@ namespace Scripts
             {
                 tweenSequence.PlayBackwards();
             }
-            yield return tweenSequence.WaitForCompletion();
+            await tweenSequence.AsyncWaitForCompletion();
         }
 
-        public IEnumerator ShowBlackScreen_COR()
+        public async UniTask ShowBlackScreenAsync()
         {
-            var blackScreenShowingTween = blackScreen.DOFade(1f, 2f).SetUpdate(true);
-            yield return blackScreenShowingTween.WaitForCompletion();
+            await blackScreen
+                .DOFade(1f, 2f)
+                .SetUpdate(true)
+                .AsyncWaitForCompletion();
         }
     }
 }

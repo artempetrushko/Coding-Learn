@@ -1,6 +1,5 @@
+using Cysharp.Threading.Tasks;
 using RoslynCSharp;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -41,7 +40,7 @@ namespace Scripts
                 var compiledCode = domain.CompileAndLoadMainSource(testingCode);
                 var proxy = compiledCode.CreateInstance(gameObject);
                 var isTaskCompleted = (bool)proxy.Call(currentTaskTestInfo.TestMethodName);
-                StartCoroutine(ShowExecutingProcess_COR(isTaskCompleted));
+                _ = ShowExecutingProcessAsync(isTaskCompleted);
             }
             catch
             {
@@ -73,9 +72,9 @@ public class InitializingClass : MonoBehaviour
             proxy.Call("InitializeCompiler");
         }
 
-        private IEnumerator ShowExecutingProcess_COR(bool isTaskCompleted)
+        private async UniTask ShowExecutingProcessAsync(bool isTaskCompleted)
         {
-            yield return StartCoroutine(padDevEnvironmentView.ShowExecutingProcess_COR(isTaskCompleted));
+            await padDevEnvironmentView.ShowExecutingProcessAsync(isTaskCompleted);
             if (isTaskCompleted)
             {
                 onTaskCompleted.Invoke();

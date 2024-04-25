@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,19 +9,19 @@ namespace Scripts
         [SerializeField] 
         private LoadingScreenView loadingScreenView;
 
-        public IEnumerator LoadNextSceneAsync_COR(int sceneIndex)
+        public async UniTask LoadNextSceneAsync(int sceneIndex)
         {
             if (sceneIndex > 0)
             {
                 loadingScreenView.gameObject.SetActive(true);
                 loadingScreenView.SetBackground(GameContentManager.GetLoadingScreenBackground(sceneIndex + 1));
-                yield return StartCoroutine(loadingScreenView.Show_COR());
+                await loadingScreenView.ShowAsync();
 
                 var operation = SceneManager.LoadSceneAsync(sceneIndex);
                 while (!operation.isDone)
                 {
                     loadingScreenView.SetLoadingBarState(operation.progress);
-                    yield return null;
+                    await UniTask.Yield();
                 }
             }
             else

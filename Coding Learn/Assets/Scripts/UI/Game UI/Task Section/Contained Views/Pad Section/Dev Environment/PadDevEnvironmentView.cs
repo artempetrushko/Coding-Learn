@@ -1,4 +1,4 @@
-using System.Collections;
+using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -26,28 +26,28 @@ namespace Scripts
         public void SetAndShowCompilationErrorsInfo(List<(int line, int column, string message)> errors)
         {
             var errorsMessage = string.Join("\n", errors.Select(error => $"<color=red>Error</color> ({error.line}, {error.column}): {error.message}"));
-            StartCoroutine(ShowErrors_COR(errorsMessage));
+            ShowErrorsAsync(errorsMessage);
         }
 
-        public IEnumerator ShowExecutingProcess_COR(bool isTaskCompleted)
+        public async UniTask ShowExecutingProcessAsync(bool isTaskCompleted)
         {
             buttonsClickBlocker.SetActive(true);
             errorsButton.interactable = false;
-            yield return StartCoroutine(errorsSectionView.ChangeVisibility_COR(false));
-            yield return StartCoroutine(animator.ShowTaskSolutionChecking_COR(isTaskCompleted));
+            await errorsSectionView.ChangeVisibilityAsync(false);
+            await animator.ShowTaskSolutionCheckingAsync(isTaskCompleted);
             if (!isTaskCompleted)
             {
-                yield return StartCoroutine(ShowErrors_COR("Some of tests were failed! Try again!"));
+                await ShowErrorsAsync("Some of tests were failed! Try again!");
             }
             buttonsClickBlocker.SetActive(true);
         }
 
-        private IEnumerator ShowErrors_COR(string errorsMessage)
+        private async UniTask ShowErrorsAsync(string errorsMessage)
         {
-            yield return StartCoroutine(animator.ShowTaskCompletingIndicator_COR(false));
+            await animator.ShowTaskCompletingIndicatorAsync(false);
             errorsButton.interactable = true;
             errorsSectionView.SetContent(errorsMessage);
-            StartCoroutine(errorsSectionView.ChangeVisibility_COR(true));
+            errorsSectionView.ChangeVisibilityAsync(true);
         }
     }
 }

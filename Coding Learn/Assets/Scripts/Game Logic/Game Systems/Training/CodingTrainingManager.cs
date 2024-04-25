@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -43,7 +42,14 @@ namespace Scripts
             codingTrainingSectionView.Show();
         }
 
-        public void HideTrainingContent() => StartCoroutine(HideTrainingContent_COR());
+        public void HideTrainingContent()
+        {
+            UniTask.Void(async () =>
+            {
+                await codingTrainingSectionView.HideAsync();
+                codingTrainingSectionDisabled.Invoke();
+            });
+        }
 
         public void ChangeTrainingContentPart(int offset) => CurrentCodingTrainingInfoNumber += offset;
 
@@ -59,12 +65,6 @@ namespace Scripts
             {
                 codingTrainingSectionView.CreateTrainingTextPage(selectedCodingTrainingPart.Title, selectedCodingTrainingPart.Info, ShowingMode);
             }
-        }
-
-        private IEnumerator HideTrainingContent_COR()
-        { 
-            yield return StartCoroutine(codingTrainingSectionView.Hide_COR());
-            codingTrainingSectionDisabled.Invoke();
         }
     }
 }

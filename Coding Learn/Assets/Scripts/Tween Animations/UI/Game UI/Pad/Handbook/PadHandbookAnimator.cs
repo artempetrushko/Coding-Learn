@@ -1,6 +1,5 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Scripts
@@ -12,42 +11,37 @@ namespace Scripts
         [SerializeField]
         private GameObject subThemeButtonsContainer;
 
-        public override IEnumerator ChangeVisibility_COR(bool isVisible)
+        public override async UniTask ChangeVisibilityAsync(bool isVisible)
         {
             windowVisibilityChangeTween ??= CreateWindowVisibilityChangeTween();
             if (isVisible)
             {
                 windowVisibilityChangeTween.PlayForward();
-                yield return windowVisibilityChangeTween.WaitForCompletion();
-                yield return StartCoroutine(MoveButtonsContainer_COR(mainThemeButtonsContainer, -1));
+                await windowVisibilityChangeTween.AsyncWaitForCompletion();
+                await MoveButtonsContainerAsync(mainThemeButtonsContainer, -1);
             }
             else
             {
                 windowVisibilityChangeTween.PlayBackwards();
-                yield return windowVisibilityChangeTween.WaitForCompletion();
+                await windowVisibilityChangeTween.AsyncWaitForCompletion();
             }
         }
 
-        public IEnumerator GoToSubThemeButtons_COR()
+        public async UniTask GoToSubThemeButtonsAsync() => await ChangeThemeButtonsContainerAsync(mainThemeButtonsContainer, subThemeButtonsContainer, -1);
+
+        public async UniTask ReturnToMainThemeButtonsAsync() => await ChangeThemeButtonsContainerAsync(subThemeButtonsContainer, mainThemeButtonsContainer, 1);
+
+        private async UniTask ChangeThemeButtonsContainerAsync(GameObject previousContainer, GameObject newContainer, int movementOffsetXSign)
         {
-            yield return StartCoroutine(ChangeThemeButtonsContainer_COR(mainThemeButtonsContainer, subThemeButtonsContainer, -1));
+            await MoveButtonsContainerAsync(previousContainer, movementOffsetXSign);
+            await MoveButtonsContainerAsync(newContainer, movementOffsetXSign);
         }
 
-        public IEnumerator ReturnToMainThemeButtons_COR()
+        private async UniTask MoveButtonsContainerAsync(GameObject container, int movementOffsetXSign)
         {
-            yield return StartCoroutine(ChangeThemeButtonsContainer_COR(subThemeButtonsContainer, mainThemeButtonsContainer, 1));
-        }
-
-        private IEnumerator ChangeThemeButtonsContainer_COR(GameObject previousContainer, GameObject newContainer, int movementOffsetXSign)
-        {
-            yield return StartCoroutine(MoveButtonsContainer_COR(previousContainer, movementOffsetXSign));
-            yield return StartCoroutine(MoveButtonsContainer_COR(newContainer, movementOffsetXSign));
-        }
-
-        private IEnumerator MoveButtonsContainer_COR(GameObject container, int movementOffsetXSign)
-        {
-            var movementTween = container.transform.DOLocalMoveX(container.transform.localPosition.x + container.GetComponent<RectTransform>().rect.width * movementOffsetXSign, 0.75f);
-            yield return movementTween.WaitForCompletion();
+            await container.transform
+                .DOLocalMoveX(container.transform.localPosition.x + container.GetComponent<RectTransform>().rect.width * movementOffsetXSign, 0.75f)
+                .AsyncWaitForCompletion();
         }
     }
 }

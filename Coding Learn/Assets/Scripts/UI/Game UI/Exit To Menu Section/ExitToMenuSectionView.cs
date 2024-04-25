@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Scripts
@@ -10,14 +8,8 @@ namespace Scripts
         [SerializeField]
         private ExitToMenuSectionAnimator animator;
         
-        public IEnumerator ChangeVisibility_COR(bool isVisible)
-        {
-            yield return StartCoroutine(animator.ChangeContentVisibility_COR(isVisible));
-        }
+        public async UniTask ChangeVisibilityAsync(bool isVisible) => await animator.ChangeContentVisibilityAsync(isVisible);
 
-        public IEnumerator ShowBlackScreen_COR()
-        {
-            yield return StartCoroutine(animator.ShowBlackScreen_COR());
-        }
+        public async UniTask ShowBlackScreenAsync() => await animator.ShowBlackScreenAsync();
     }
 }

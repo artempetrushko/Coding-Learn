@@ -1,6 +1,5 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,10 +10,11 @@ namespace Scripts
         [SerializeField]
         private Image background;
 
-        public IEnumerator ShowBackground_COR()
+        public async UniTask ShowBackgroundAsync()
         {
-            var backgroundShowingTween = background.DOFade(1f, 1.5f);
-            yield return backgroundShowingTween.WaitForCompletion();    
+            await background
+                .DOFade(1f, 1.5f);
+                //.AsyncWaitForCompletion();    
         }
     }
 }

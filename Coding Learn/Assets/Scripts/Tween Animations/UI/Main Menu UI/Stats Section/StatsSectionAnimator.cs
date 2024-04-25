@@ -1,8 +1,6 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Scripts
 {
@@ -13,35 +11,29 @@ namespace Scripts
         [SerializeField]
         private GameObject detailedLevelStatsContainer;
 
-        public IEnumerator ChangeVisibility_COR(bool isVisible)
+        public async UniTask ChangeVisibilityAsync(bool isVisible)
         {
             if (isVisible)
             {
                 levelCardsContainer.transform.localPosition = Vector3.zero;
                 detailedLevelStatsContainer.transform.localPosition = new Vector3(detailedLevelStatsContainer.GetComponent<RectTransform>().rect.width, 0, 0);
             }
-            var visibilityChangeTween = transform.DOLocalMoveY(isVisible ? 0 : GetComponent<RectTransform>().rect.height, 0.75f);
-            yield return visibilityChangeTween.WaitForCompletion();
+            await transform
+                .DOLocalMoveY(isVisible ? 0 : GetComponent<RectTransform>().rect.height, 0.75f)
+                .AsyncWaitForCompletion();
         }
 
-        public IEnumerator ShowDetailedLevelStats_COR()
+        public async UniTask ShowDetailedLevelStatsAsync() => await ShowNewStatsContentAsync(levelCardsContainer, detailedLevelStatsContainer, -1);
+
+        public async UniTask ReturnToLevelCardsAsync() => await ShowNewStatsContentAsync(detailedLevelStatsContainer, levelCardsContainer, 1);
+
+        private async UniTask ShowNewStatsContentAsync(GameObject previousStatsContent, GameObject newStatsContent, int movementSign)
         {
             var tweenSequence = DOTween.Sequence();
             tweenSequence
-                .Append(levelCardsContainer.transform.DOLocalMoveX(-levelCardsContainer.GetComponent<RectTransform>().rect.width, 0.75f))
-                .Append(detailedLevelStatsContainer.transform.DOLocalMoveX(0, 0.75f));
-            tweenSequence.Play();
-            yield return tweenSequence.WaitForCompletion();
-        }
-
-        public IEnumerator ReturnToLevelCards_COR()
-        {
-            var tweenSequence = DOTween.Sequence();
-            tweenSequence
-                .Append(detailedLevelStatsContainer.transform.DOLocalMoveX(detailedLevelStatsContainer.GetComponent<RectTransform>().rect.width, 0.75f))
-                .Append(levelCardsContainer.transform.DOLocalMoveX(0, 0.75f));
-            tweenSequence.Play();
-            yield return tweenSequence.WaitForCompletion();
+                .Append(previousStatsContent.transform.DOLocalMoveX(previousStatsContent.GetComponent<RectTransform>().rect.width * movementSign, 0.75f))
+                .Append(newStatsContent.transform.DOLocalMoveX(0, 0.75f));
+            await tweenSequence.Play().AsyncWaitForCompletion();
         }
     }
 }

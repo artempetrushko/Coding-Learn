@@ -1,6 +1,5 @@
+using Cysharp.Threading.Tasks;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,42 +15,42 @@ namespace Scripts
         private bool isMenuEnabled;
         private bool isMenuAnimationPlaying;
 
-        public void HideExitToMenuView() => StartCoroutine(HideExitToMenuView_COR());
+        public void HideExitToMenuView() => _ = HideExitToMenuViewAsync();
 
-        public void ExitToMenu() => StartCoroutine(ExitToMenu_COR());
+        public void ExitToMenu() => _ = ExitToMenuAsync();
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape) && !isMenuAnimationPlaying)
             {
-                StartCoroutine(PlayMenuAnimation_COR(isMenuEnabled ? HideExitToMenuView_COR : ShowExitToMenuView_COR));
+                _ = PlayMenuAnimationAsync(isMenuEnabled ? HideExitToMenuViewAsync : ShowExitToMenuViewAsync);
             }
         }
 
-        private IEnumerator ShowExitToMenuView_COR()
+        private async UniTask ShowExitToMenuViewAsync()
         {
             Time.timeScale = 0f;
             exitToMenuSectionView.gameObject.SetActive(true);
-            yield return StartCoroutine(exitToMenuSectionView.ChangeVisibility_COR(true));
+            await exitToMenuSectionView.ChangeVisibilityAsync(true);
         }
 
-        private IEnumerator HideExitToMenuView_COR()
+        private async UniTask HideExitToMenuViewAsync()
         {
-            yield return StartCoroutine(exitToMenuSectionView.ChangeVisibility_COR(false));
+            await exitToMenuSectionView.ChangeVisibilityAsync(false);
             exitToMenuSectionView.gameObject.SetActive(false);
             Time.timeScale = 1f;
         }
 
-        private IEnumerator PlayMenuAnimation_COR(Func<IEnumerator> animation)
+        private async UniTask PlayMenuAnimationAsync(Func<UniTask> animation)
         {
             isMenuAnimationPlaying = true;
-            yield return StartCoroutine(animation());
+            await animation();
             isMenuAnimationPlaying = false;
         }
 
-        private IEnumerator ExitToMenu_COR()
+        private async UniTask ExitToMenuAsync()
         {
-            yield return StartCoroutine(exitToMenuSectionView.ShowBlackScreen_COR());
+            await exitToMenuSectionView.ShowBlackScreenAsync();
             onBlackScreenShown.Invoke();
         }
     }

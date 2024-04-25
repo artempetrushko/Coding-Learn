@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -19,7 +17,7 @@ namespace Scripts
 
         private void OnEnable()
         {
-            StartCoroutine(animator.ChangeVisibility_COR(true));
+            animator.ChangeVisibilityAsync(true);
         }
     }
 }

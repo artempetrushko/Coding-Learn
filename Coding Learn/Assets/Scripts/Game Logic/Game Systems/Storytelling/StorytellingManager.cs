@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -52,7 +51,7 @@ namespace Scripts
         {
             currentStoryPartArticleNumber = storyPartArticleNumber;
             var totalTextAppearingTime = (float)(GetCurrentClipStopTime() - playableDirector.time);
-            storytellingSectionView.ShowStoryText(currentStoryPart.storyArticles[currentStoryPartArticleNumber - 1], totalTextAppearingTime);
+            _ = storytellingSectionView.ShowStoryTextAsync(currentStoryPart.storyArticles[currentStoryPartArticleNumber - 1], totalTextAppearingTime);
         }
 
         private double GetCurrentClipStopTime()

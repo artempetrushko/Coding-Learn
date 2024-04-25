@@ -1,7 +1,5 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Scripts

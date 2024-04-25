@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,19 +16,19 @@ namespace Scripts
 
         private bool isVisible = false;
 
-        public IEnumerator ChangeVisibility_COR(bool isVisible)
+        public async UniTask ChangeVisibilityAsync(bool isVisible)
         {
             if (this.isVisible != isVisible)
             {
                 this.isVisible = isVisible;
-                yield return StartCoroutine(animator.ChangeVisibility_COR(isVisible));
+                await animator.ChangeVisibilityAsync(isVisible);
             }          
         }
 
         public void ToggleVisibility()
         {
             isVisible = !isVisible;
-            StartCoroutine(animator.ChangeVisibility_COR(isVisible));
+            animator.ChangeVisibilityAsync(isVisible);
         }
 
         public void SetContent(string errorsMessage)

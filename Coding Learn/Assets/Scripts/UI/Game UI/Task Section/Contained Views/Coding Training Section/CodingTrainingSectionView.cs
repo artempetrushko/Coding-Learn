@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,12 +30,9 @@ namespace Scripts
         [Space, SerializeField]
         private CodingTrainingSectionAnimator animator;
 
-        public void Show() => StartCoroutine(animator.ChangeVisibility_COR(true));
+        public void Show() => animator.ChangeVisibilityAsync(true);
 
-        public IEnumerator Hide_COR()
-        {
-            yield return StartCoroutine(animator.ChangeVisibility_COR(false));
-        }
+        public async UniTask HideAsync() => await animator.ChangeVisibilityAsync(false);
 
         public void CreateTrainingTextPage(string trainingTheme, string trainingContent, TrainingShowingMode trainingShowingMode)
         {

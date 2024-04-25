@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Scripts
 {
-    public class LevelsManager : MainMenuSectionManager
+    public class LevelsController : IMainMenuSectionController
     {
         [SerializeField]
         private LevelsSectionView levelsSectionView;
@@ -26,16 +25,21 @@ namespace Scripts
             }
         }
 
-        public override IEnumerator ShowSectionView_COR()
+        public LevelsController(LevelsSectionView levelsSectionView)
+        {
+            this.levelsSectionView = levelsSectionView;
+        }
+
+        public async UniTask ShowSectionViewAsync()
         {
             levelsSectionView.gameObject.SetActive(true);
             SetLevelsSectionStartState();
-            yield return StartCoroutine(levelsSectionView.ChangeVisibility_COR(true));
+            await levelsSectionView.ChangeVisibility_COR(true);
         }
 
-        public override IEnumerator HideSectionView_COR()
+        public async UniTask HideSectionViewAsync()
         {
-            yield return StartCoroutine(levelsSectionView.ChangeVisibility_COR(false));
+            await levelsSectionView.ChangeVisibility_COR(false);
             levelsSectionView.gameObject.SetActive(false);
         }
 
@@ -59,7 +63,20 @@ namespace Scripts
             }
         }
 
-        public void LoadSelectedLevel() => StartCoroutine(LoadLevelAsync_COR());
+        public void LoadSelectedLevel()
+        {
+            UniTask.Void(async () =>
+            {
+                await levelsSectionView.ShowLoadingScreenContentAsync();
+
+                var operation = SceneManager.LoadSceneAsync(SelectedLevelNumber);
+                while (!operation.isDone)
+                {
+                    levelsSectionView.SetLoadingBarInfo(operation.progress);
+                    await UniTask.Yield();
+                }
+            });
+        }
 
         private void ChangeLevelInfo(int levelNumber) => SelectedLevelNumber = levelNumber;
 
@@ -68,18 +85,6 @@ namespace Scripts
             var selectedLevelTitle = MainMenuContentManager.GetLevelInfo(levelNumber).LevelTitle;
             levelsSectionView.SetLevelInfo(selectedLevelTitle);
             levelsSectionView.SetLevelThumbnail(MainMenuContentManager.GetLoadingScreen(levelNumber));
-        }
-
-        private IEnumerator LoadLevelAsync_COR()
-        {
-            yield return StartCoroutine(levelsSectionView.ShowLoadingScreenContent_COR());
-
-            var operation = SceneManager.LoadSceneAsync(SelectedLevelNumber);
-            while (!operation.isDone)
-            {
-                levelsSectionView.SetLoadingBarInfo(operation.progress);
-                yield return null;
-            }
         }
     }
 }

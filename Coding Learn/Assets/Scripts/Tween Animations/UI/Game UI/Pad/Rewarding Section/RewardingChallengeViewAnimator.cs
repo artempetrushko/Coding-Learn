@@ -1,6 +1,5 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,13 +13,14 @@ namespace Scripts
         [SerializeField]
         private Image starFillingImage;
 
-        public IEnumerator PlayChallengeCompletingAnimation_COR()
+        public async UniTask PlayChallengeCompletingAnimationAsync()
         {
             starFillingImage.gameObject.SetActive(true);
             starFillingImage.transform.localScale = new Vector3(3f, 3f, 3f);
 
-            var scalingTween = starFillingImage.transform.DOScale(1, 0.75f);
-            yield return scalingTween.WaitForCompletion();
+            await starFillingImage.transform
+                .DOScale(1, 0.75f)
+                .AsyncWaitForCompletion();
             challengeDescriptionText.color = Color.green;
         }
     }
