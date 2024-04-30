@@ -14,9 +14,9 @@ namespace Scripts
         private UnityEvent onTaskCompleted;
 
         private string currentTaskStartCode;
-        private TestInfo currentTaskTestInfo;
+        private TaskTestData currentTaskTestInfo;
 
-        public void SetCurrentTaskInfo(string startCode, TestInfo testInfo)
+        public void SetCurrentTaskInfo(string startCode, TaskTestData testInfo)
         {
             currentTaskStartCode = startCode;
             currentTaskTestInfo = testInfo;

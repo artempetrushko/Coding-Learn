@@ -21,7 +21,7 @@ namespace Scripts
 
         public override void Initialize(int currentTaskNumber)
         {
-            currentTaskTips = GameContentManager.GetTaskInfo(currentTaskNumber).Tips;
+            //currentTaskTips = GameContentManager.GetTaskInfo(currentTaskNumber).Tips;
             nextTipIndex = 0;
             padTipsScreenView.ClearTipText();
             WaitUntilNextTip();

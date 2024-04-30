@@ -5,17 +5,17 @@ namespace Scripts
 {
     public class MainMenuContentManager : ContentManager
     {
-        private static TaskInfo[][] availableLevelsTaskInfos;
-        private static LevelInfo[] levelInfos;
+        private static TaskContent[][] availableLevelsTaskInfos;
+        private static MainMenuLevelInfo[] levelInfos;
         private static Sprite[] loadingScreens;
 
-        public static TaskInfo GetTaskInfo(int levelNumber, int taskNumber) => availableLevelsTaskInfos[levelNumber - 1][taskNumber -  1];
+        public static TaskContent GetTaskInfo(int levelNumber, int taskNumber) => availableLevelsTaskInfos[levelNumber - 1][taskNumber -  1];
 
-        public static TaskInfo[] GetLevelTaskInfos(int levelNumber) => availableLevelsTaskInfos[levelNumber - 1];
+        public static TaskContent[] GetLevelTaskInfos(int levelNumber) => availableLevelsTaskInfos[levelNumber - 1];
 
-        public static LevelInfo GetLevelInfo(int levelNumber) => levelInfos[levelNumber - 1];
+        public static MainMenuLevelInfo GetLevelInfo(int levelNumber) => levelInfos[levelNumber - 1];
 
-        public static LevelInfo[] GetAvailableLevelInfos(int availableLevelsCount) => levelInfos.Take(availableLevelsCount).ToArray();
+        public static MainMenuLevelInfo[] GetAvailableLevelInfos(int availableLevelsCount) => levelInfos.Take(availableLevelsCount).ToArray();
 
         public static Sprite GetLoadingScreen(int levelNumber) => loadingScreens[levelNumber - 1];
 
@@ -32,13 +32,13 @@ namespace Scripts
 
         public void LoadTextContent(int availableLevelsCount)
         {
-            levelInfos = LoadDatasFromFile<LevelInfo>(LocalizedContentFolderPath + "/Main Menu/Level Infos").Take(availableLevelsCount).ToArray();
+            /*levelInfos = LoadDatasFromFile<LevelInfo>(LocalizedContentFolderPath + "/Main Menu/Level Infos").Take(availableLevelsCount).ToArray();
 
-            availableLevelsTaskInfos = new TaskInfo[availableLevelsCount][];
+            availableLevelsTaskInfos = new TaskContent[availableLevelsCount][];
             for (var i = 0; i < availableLevelsTaskInfos.Length; i++)
             {
                 availableLevelsTaskInfos[i] = LoadTaskInfos(i + 1);
-            }
+            }*/
         }
     }
 }

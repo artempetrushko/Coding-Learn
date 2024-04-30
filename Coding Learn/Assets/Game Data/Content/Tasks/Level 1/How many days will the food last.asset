@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 204f7232bb70d634c8c913e9d9dbea0a, type: 3}
+  m_Name: How many days will the food last
+  m_EditorClassIdentifier: 
+  <Title>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <Description>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <StartCode>k__BackingField: private int CountFishFeed(int fishType1Count, int fishType2Count,
+    double fishType1Norm, double fishType2Norm, double feedCount)\n{\n    \n}
+  <TestData>k__BackingField:
+    <TestCode>k__BackingField: using System;\nusing System.Collections.Generic;\n\npublic
+      class Level0Task5\n{\n//<playerCode>\n   public bool isTaskCompleted()\n  
+      {\n       var result =false;\n       result =CountFishFeed(2, 1, 0.01, 0.02,
+      0.5)==11;\n       result =result &&CountFishFeed(2, 1, 0.01, 0.02, 0.04)==0;\n      
+      return result;\n   } \n}
+    <TestMethodName>k__BackingField: isTaskCompleted
+    <PlayerCodePlaceholder>k__BackingField: //<playerCode>
+    <PlayerCodeStartRowNumber>k__BackingField: 6
+  <Tips>k__BackingField: []
+  <Challenges>k__BackingField: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []

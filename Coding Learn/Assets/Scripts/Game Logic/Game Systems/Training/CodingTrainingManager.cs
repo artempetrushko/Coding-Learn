@@ -11,7 +11,7 @@ namespace Scripts
         [Space, SerializeField]
         private UnityEvent codingTrainingSectionDisabled;
 
-        private CodingTrainingInfo[] currentCodingTrainingInfos;
+        private CodingTrainingData[] currentCodingTrainingInfos;
         private int currentCodingTrainingInfoNumber;
 
         private int CurrentCodingTrainingInfoNumber
@@ -35,7 +35,7 @@ namespace Scripts
 
         public void ShowTrainingContent(int themeNumber, int subThemeNumber) => ShowTrainingContent(GameContentManager.GetCodingTrainingInfos(themeNumber, subThemeNumber));
 
-        public void ShowTrainingContent(CodingTrainingInfo[] codingTrainingInfos)
+        public void ShowTrainingContent(CodingTrainingData[] codingTrainingInfos)
         {
             currentCodingTrainingInfos = codingTrainingInfos;
             CurrentCodingTrainingInfoNumber = 1;
@@ -55,7 +55,7 @@ namespace Scripts
 
         private void ShowTrainingContentPart(int trainingPartNumber)
         {
-            var selectedCodingTrainingPart = currentCodingTrainingInfos[trainingPartNumber - 1];
+            /*var selectedCodingTrainingPart = currentCodingTrainingInfos[trainingPartNumber - 1];
             if (!string.IsNullOrEmpty(selectedCodingTrainingPart.VideoTitle))
             {
                 codingTrainingSectionView.CreateTrainingTextVideoPage(selectedCodingTrainingPart.Title, selectedCodingTrainingPart.Info, 
@@ -64,7 +64,7 @@ namespace Scripts
             else
             {
                 codingTrainingSectionView.CreateTrainingTextPage(selectedCodingTrainingPart.Title, selectedCodingTrainingPart.Info, ShowingMode);
-            }
+            }*/
         }
     }
 }

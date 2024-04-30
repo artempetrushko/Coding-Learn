@@ -22,12 +22,12 @@ namespace Scripts
 
         public override void Initialize(int currentTaskNumber)
         {
-            var challengeInfos = GameContentManager.GetTaskInfo(currentTaskNumber).ChallengeInfos;
-            var challengeDescriptions = challengeInfos.Select(challenge => challenge.Description).ToList();
-            padChallengesScreenView.CreateNewChallengeViews(challengeDescriptions);
+            var challengeInfos = GameContentManager.GetTaskInfo(currentTaskNumber).Challenges;
+            var challengeDescriptions = challengeInfos.Challenges.Select(challenge => challenge.Description).ToList();
+            //padChallengesScreenView.CreateNewChallengeViews(challengeDescriptions);
 
             currentTaskChallengesResults = GameSaveManager.GetCurrentTaskChallengesResults(currentTaskNumber);
-            currentTaskChallengesResults.ChallengeCompletingStatuses ??= new bool[challengeInfos.Length].ToList();
+            currentTaskChallengesResults.ChallengeCompletingStatuses ??= new bool[challengeInfos.Challenges.Length].ToList();
             usedTipsCount = 0;
         }
 
@@ -37,7 +37,7 @@ namespace Scripts
 
         public void CheckChallengesCompleting(int currentTaskNumber, bool isTaskSkipped)
         {
-            var challengeDatas = GameContentManager.GetTaskInfo(currentTaskNumber).ChallengeInfos
+            var challengeDatas = GameContentManager.GetTaskInfo(currentTaskNumber).Challenges.Challenges
                                     .Select(challenge => (description: challenge.Description, isCompleted: !isTaskSkipped && IsChallengeCompleting(challenge)))
                                     .ToList();
             for (var i = 0; i < currentTaskChallengesResults.ChallengeCompletingStatuses.Count; i++)
@@ -47,7 +47,7 @@ namespace Scripts
                     currentTaskChallengesResults.ChallengeCompletingStatuses[i] = challengeDatas[i].isCompleted;
                 }             
             }
-            _ = rewardingSectionView.ShowChallengesResultsAsync(challengeDatas);  
+            //_ = rewardingSectionView.ShowChallengesResultsAsync(challengeDatas);  
         }
 
         public void HideRewardingSection()
@@ -77,7 +77,7 @@ namespace Scripts
 
         public void IncreaseUsedTipsCountByOne() => usedTipsCount++;
 
-        private bool IsChallengeCompleting(ChallengeInfo challenge)
+        private bool IsChallengeCompleting(Challenge challenge)
         {
             return challenge.Type switch
             {

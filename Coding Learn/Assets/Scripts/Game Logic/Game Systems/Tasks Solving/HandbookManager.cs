@@ -7,8 +7,8 @@ namespace Scripts
     {
         [SerializeField]
         private PadHandbookView padHandbookView; 
-        [Space, SerializeField]
-        private UnityEvent<CodingTrainingInfo[]> onSubThemeButtonPressed;
+        /*[Space, SerializeField]
+        private UnityEvent<CodingTrainingInfo[]> onSubThemeButtonPressed;*/
 
         private int currentSubThemeNumber;
         private bool areMainThemeButtonsCreated = false;   
@@ -18,7 +18,7 @@ namespace Scripts
             this.currentSubThemeNumber = currentSubThemeNumber;
             if (!areMainThemeButtonsCreated)
             {
-                CreateMainThemeButtons();
+               // CreateMainThemeButtons();
                 areMainThemeButtonsCreated = true;
             }
         }
@@ -29,7 +29,7 @@ namespace Scripts
 
         public void ReturnToMainThemeButtons() => _ = padHandbookView.ReturnToMainThemeButtonsAsync();
 
-        private void CreateMainThemeButtons()
+        /*private void CreateMainThemeButtons()
         {
             var handbookMainThemes = GameContentManager.GetHandbookTrainingThemes(GameManager.CurrentLevelNumber);
             padHandbookView.CreateThemeButtons(handbookMainThemes, GoToSubThemeButtons);
@@ -49,6 +49,6 @@ namespace Scripts
         {
             var codingTrainingInfos = GameContentManager.GetHandbookCodingTrainingInfos(trainingSubTheme);
             onSubThemeButtonPressed.Invoke(codingTrainingInfos);
-        }
+        }*/
     }
 }

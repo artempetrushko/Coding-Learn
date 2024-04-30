@@ -31,7 +31,6 @@ namespace Scripts
             CurrentLevelNumber = SceneManager.GetActiveScene().buildIndex;
             saveManager.Initialize();
             saveManager.LoadSaveData();
-            contentManager.LoadContentFromResources(CurrentLevelNumber);
         }
 
         private void Start()

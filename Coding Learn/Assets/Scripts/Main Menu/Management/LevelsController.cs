@@ -49,7 +49,7 @@ namespace Scripts
         {
             var lastAvailableLevelNumber = MainMenuSaveManager.GameProgressData.LastAvailableLevelNumber;
             var availableLevelsDescriptions = MainMenuContentManager.GetAvailableLevelInfos(lastAvailableLevelNumber)
-                .Select(levelInfo => levelInfo.Description)
+                .Select(levelInfo => levelInfo.Description.GetLocalizedString())
                 .ToArray();
             levelsSectionView.SetActiveLevelButtonsParams(availableLevelsDescriptions, ChangeLevelInfo);
             levelsSectionView.MakeLevelButtonSelected(lastAvailableLevelNumber);
@@ -82,7 +82,7 @@ namespace Scripts
 
         private void SetLevelInfo(int levelNumber)
         {
-            var selectedLevelTitle = MainMenuContentManager.GetLevelInfo(levelNumber).LevelTitle;
+            var selectedLevelTitle = MainMenuContentManager.GetLevelInfo(levelNumber).Title.GetLocalizedString();
             levelsSectionView.SetLevelInfo(selectedLevelTitle);
             levelsSectionView.SetLevelThumbnail(MainMenuContentManager.GetLoadingScreen(levelNumber));
         }

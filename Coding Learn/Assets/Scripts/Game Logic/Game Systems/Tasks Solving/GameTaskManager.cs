@@ -43,14 +43,14 @@ namespace Scripts
             _ = taskSectionView.ChangeMainContentVisibilityAsync(true);
         }
 
-        public void ReturnToCodingTraining(CodingTrainingInfo[] codingTrainingInfos)
+        /*public void ReturnToCodingTraining(CodingTrainingInfo[] codingTrainingInfos)
         {
             UniTask.Void(async () =>
             {
                 await taskSectionView.ChangeMainContentVisibilityAsync(false);
                 codingTrainingManager.ShowTrainingContent(codingTrainingInfos);
             });
-        }
+        }*/
 
         public void FinishTask() => _ = ProcessTaskResultsAsync(false);
 
@@ -66,8 +66,8 @@ namespace Scripts
         private void SetTaskInfo()
         {
             var currentTaskInfo = GameContentManager.GetTaskInfo(currentTaskNumber);
-            taskDescriptionSectionView.SetContent(currentTaskInfo.Title, currentTaskInfo.Description);
-            devEnvironmentManager.SetCurrentTaskInfo(currentTaskInfo.StartCode, currentTaskInfo.TestInfo);
+            //taskDescriptionSectionView.SetContent(currentTaskInfo.Title, currentTaskInfo.Description);
+            devEnvironmentManager.SetCurrentTaskInfo(currentTaskInfo.StartCode, currentTaskInfo.TestData);
         }
     }
 }

@@ -47,7 +47,7 @@ namespace Scripts
 
         private (int totalChallengesCount, int completedChallengesCount) GetLevelChallengesData(int levelNumber)
         {
-            var totalChallengesCount = MainMenuContentManager.GetLevelTaskInfos(levelNumber).Sum(task => task.ChallengeInfos.Length);
+            var totalChallengesCount = MainMenuContentManager.GetLevelTaskInfos(levelNumber).Sum(task => task.Challenges.Challenges.Length);
             var completedChallengesCount = 0;
             var tasksChallengesResults = MainMenuSaveManager.GameProgressData.AllChallengeStatuses[levelNumber - 1].TasksChallengesResults;
             if (tasksChallengesResults != null && tasksChallengesResults.Count > 0)
@@ -66,7 +66,7 @@ namespace Scripts
                 for (var i = 1; i <= taskChallengesInfos.TasksChallengesResults.Count; i++)
                 {
                     var (totalChallengesCount, completedChallengesCount) = GetTaskChallengesData(levelNumber, i);
-                    taskStatsDatas.Add(new TaskStatsData(MainMenuContentManager.GetTaskInfo(levelNumber, i).Title, completedChallengesCount, totalChallengesCount));
+                    //taskStatsDatas.Add(new TaskStatsData(MainMenuContentManager.GetTaskInfo(levelNumber, i).Title, completedChallengesCount, totalChallengesCount));
                 }
             }           
             return taskStatsDatas;
@@ -74,7 +74,7 @@ namespace Scripts
 
         private (int totalChallengesCount, int completedChallengesCount) GetTaskChallengesData(int levelNumber, int taskNumber)
         {
-            var totalChallengesCount = MainMenuContentManager.GetTaskInfo(levelNumber, taskNumber).ChallengeInfos.Length;
+            var totalChallengesCount = 0;// MainMenuContentManager.GetTaskInfo(levelNumber, taskNumber).ChallengeInfos.Length;
             var completedChallengesCount = MainMenuSaveManager.GameProgressData.AllChallengeStatuses[levelNumber - 1].TasksChallengesResults[taskNumber - 1].ChallengeCompletingStatuses.Count(status => status);
             return (totalChallengesCount, completedChallengesCount);
         }

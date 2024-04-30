@@ -7,32 +7,30 @@ namespace Scripts
 {
     public class GameContentManager : ContentManager
     {
-        private static StoryInfo[] storyInfos;
-        private static TrainingMainTheme[] trainingThemes;
-        private static TaskInfo[] taskInfos;
+        private static LevelContent levelContent;
 
-        public static (TimelineAsset, string[]) GetStoryPart(int levelNumber, int storyPartNumber)
+        public static (TimelineAsset, string[]) GetStoryPart(int questNumber)
         {
-            var storyInfo = storyInfos[storyPartNumber - 1];
-            var cutscene = Resources.Load<TimelineAsset>($"Timelines/Cutscenes/Level {levelNumber}/{storyInfo.CutsceneTitle}");
-            return (cutscene, storyInfo.Articles);
+            var questStory = levelContent.Quests[questNumber - 1].Story;
+            var storyParts = questStory.CutsceneScenarioParts.Select(part => part.GetLocalizedString()).ToArray();
+            return (questStory.Cutscene, storyParts);
         }
 
-        public static TaskInfo GetTaskInfo(int taskNumber) => taskInfos[taskNumber - 1];
+        public static TaskContent GetTaskInfo(int taskNumber) => levelContent.Quests[taskNumber - 1].Task;
 
-        public static TrainingMainTheme GetCodingTrainingTheme(int themeNumber) => trainingThemes[themeNumber - 1];
+        public static TrainingTheme GetCodingTrainingTheme(int themeNumber) => null;//trainingThemes[themeNumber - 1];
 
-        public static CodingTrainingInfo[] GetCodingTrainingInfos(int themeNumber, int subThemeNumber) => trainingThemes[themeNumber - 1].SubThemes[subThemeNumber - 1].Infos;
+        public static CodingTrainingData[] GetCodingTrainingInfos(int themeNumber, int subThemeNumber) => null;//trainingThemes[themeNumber - 1].SubThemes[subThemeNumber - 1].TrainingDatas;
 
-        public static TrainingMainTheme[] GetHandbookTrainingThemes(int lastAvailableThemeNumber)
+        public static TrainingTheme[] GetHandbookTrainingThemes(int lastAvailableThemeNumber)
         {
-            return trainingThemes
+            return null;/*trainingThemes
                 .Take(lastAvailableThemeNumber)
                 .Where(trainingTheme => FilterHandbookTrainingSubThemes(trainingTheme.SubThemes).Length > 0)
-                .ToArray();
+                .ToArray();*/
         }
 
-        public static TrainingSubTheme[] GetHandbookTrainingSubThemes(TrainingMainTheme mainTheme, int? lastAvailableSubThemeNumber = null)
+        public static TrainingSubTheme[] GetHandbookTrainingSubThemes(TrainingTheme mainTheme, int? lastAvailableSubThemeNumber = null)
         {
             var subThemes = mainTheme.SubThemes;
             if (lastAvailableSubThemeNumber != null)
@@ -42,61 +40,31 @@ namespace Scripts
             return FilterHandbookTrainingSubThemes(subThemes);
         }
 
-        public static CodingTrainingInfo[] GetHandbookCodingTrainingInfos(TrainingSubTheme subTheme)
+        public static CodingTrainingData[] GetHandbookCodingTrainingInfos(TrainingSubTheme subTheme)
         {
-            return subTheme.Infos.Where(info => info.IsTrainingContent).ToArray();
+            return subTheme.TrainingDatas.Where(info => info.WillAddToHandbook).ToArray();
         }
 
         public static VideoClip GetTrainingVideo(string videoTitle)
         {
-            foreach (var trainingTheme in trainingThemes)
+            /*foreach (var trainingTheme in trainingThemes)
             {
                 foreach (var subTheme in trainingTheme.SubThemes)
                 {
-                    if (subTheme.Infos.Any(info => info.VideoTitle == videoTitle && info.IsTrainingContent))
+                    if (subTheme.TrainingDatas.Any(info => info.VideoTitle == videoTitle && info.IsTrainingContent))
                     {
                         return Resources.Load<VideoClip>(GeneralContentFolderPath + "/Game/Training Video/" + $"{trainingTheme.ID}/{subTheme.ID}/{videoTitle}");
                     }
                 }
-            }
+            }*/
             return null;
         }
 
         public static Sprite GetLoadingScreenBackground(int levelNumber) => Resources.Load<Sprite>($"Loading Screens/Loading Screen (Level {levelNumber})");
 
-        public void LoadContentFromResources(int levelNumber)
-        {
-            storyInfos = LoadContentWithLocalizedData<StoryInfo, LocalizedStoryInfo>(levelNumber, ("/Game/Story/", "Story Level "), ("/Game/Story/", "Story Level "));
-            taskInfos = LoadTaskInfos(levelNumber);
-            trainingThemes = LoadTrainingThemes(levelNumber);
-        }
-
         private static TrainingSubTheme[] FilterHandbookTrainingSubThemes(TrainingSubTheme[] subThemes)
         {
             return subThemes.Where(subTheme => GetHandbookCodingTrainingInfos(subTheme).Length > 0).ToArray();
-        }
-
-        private TrainingMainTheme[] LoadTrainingThemes(int levelNumber)
-        {
-            trainingThemes = new TrainingMainTheme[levelNumber];
-            for (var i = 1; i <= trainingThemes.Length; i++)
-            {
-                var trainingThemeData = DeserializeData<TrainingMainTheme>(Resources.Load<TextAsset>(GeneralContentFolderPath + "/Game/Coding Training/Coding Training Level " + i));
-                var localizedTrainingThemeData = DeserializeData<LocalizedTrainingTheme>(Resources.Load<TextAsset>(LocalizedContentFolderPath + "/Game/Localized Coding Training/Localized Coding Training Level " + i));
-
-                trainingThemeData.Title = localizedTrainingThemeData.Title;
-                foreach (var subTheme in trainingThemeData.SubThemes)
-                {
-                    var accordingLocalizedSubThemeData = localizedTrainingThemeData.SubThemes.Where(localizedSubTheme => localizedSubTheme.LinkedContentID == subTheme.ID).FirstOrDefault();
-                    if (accordingLocalizedSubThemeData != null)
-                    {
-                        subTheme.Title = accordingLocalizedSubThemeData.Title;
-                        PopulateGeneralContentWithLocalizedData(subTheme.Infos, accordingLocalizedSubThemeData.Infos);
-                    }
-                }
-                trainingThemes[i - 1] = trainingThemeData;
-            }
-            return trainingThemes;
         }
     }
 }

@@ -42,7 +42,7 @@ namespace Scripts
         private void PlayCutscene(int storyPartNumber)
         {
             currentStoryPartNumber = storyPartNumber;
-            currentStoryPart = GameContentManager.GetStoryPart(GameManager.CurrentLevelNumber, currentStoryPartNumber);
+            currentStoryPart = GameContentManager.GetStoryPart(currentStoryPartNumber);
             playableDirector.time = 0;
             playableDirector.Play(currentStoryPart.cutscene);
         }
