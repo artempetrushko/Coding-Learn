@@ -18,9 +18,7 @@ namespace Scripts
         [SerializeField]
         private SettingsController settingsManager;
         [SerializeField]
-        private MainMenuSaveManager saveManager;
-        [SerializeField]
-        private MainMenuContentManager contentManager;
+        private MainMenuSaveController saveManager;
         [Space, SerializeField]
         private GameData gameData;
 
@@ -63,19 +61,17 @@ namespace Scripts
 
         public void Exit() => Application.Quit();
 
-        public void RequestTextContentReload() => contentManager.LoadTextContent(MainMenuSaveManager.GameProgressData.LastAvailableLevelNumber);
+        //public void RequestTextContentReload() => contentManager.LoadTextContent(saveManager.GameProgressData.LastAvailableLevelNumber);
 
         private void Awake()
         {
-            saveManager.Initialize();
-            saveManager.LoadOrCreateAllSavedData(gameData.LevelsCount);
+            saveManager.LoadOrCreateAllSavedData(gameData.LevelDatas.Length);
             settingsManager.InitializeSettings();
-            contentManager.LoadContentFromResources(MainMenuSaveManager.GameProgressData.LastAvailableLevelNumber);
         }
 
         private async void Start()
         {
-            levelsManager.CreateLevelButtons(gameData.LevelsCount);
+            levelsManager.CreateLevelButtons(gameData.LevelDatas.Length);
             statsManager.CreateLevelStatsCards();          
 
             mainMenuSectionView.CreateButtons(buttonDatas);

@@ -45,11 +45,9 @@ MonoBehaviour:
       250);\n        CountGlassCount(550, 220, 250);\n        CountGlassCount(0,
       220, 250);\n        CountGlassCount(500, 0, 250);\n        return _task1Marker
       && _task2Marker && _task3Marker && _task4Marker;\n    }\n}
-    <TestMethodName>k__BackingField: isTaskCompleted
-    <PlayerCodePlaceholder>k__BackingField: //<playerCode>
-    <PlayerCodeStartRowNumber>k__BackingField: 6
+    <TestSettings>k__BackingField: {fileID: 11400000, guid: db8d7be98c2fe8d4487298176efef010, type: 2}
   <Tips>k__BackingField: []
-  <Challenges>k__BackingField: {fileID: 0}
+  <Challenges>k__BackingField: {fileID: 11400000, guid: d743f68061c8a32419f677686c10b2e7, type: 2}
   references:
     version: 2
     RefIds: []

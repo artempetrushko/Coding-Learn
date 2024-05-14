@@ -14,18 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Title>k__BackingField:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:7e0dec96937356b47a6c14dc2ee2b7d8
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 19872407552
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
   <Description>k__BackingField:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:7e0dec96937356b47a6c14dc2ee2b7d8
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 19901767680
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -36,11 +36,17 @@ MonoBehaviour:
       class Level0Task1\n{  \n//<playerCode>\n\n    public bool IsMoved=false;\n\n   
       private void MoveCube()=>IsMoved=true;\n\n    public bool isTaskCompleted()\n   
       {\n        Execute(); \n        return IsMoved;\n    }\n}
-    <TestMethodName>k__BackingField: isTaskCompleted
-    <PlayerCodePlaceholder>k__BackingField: //<playerCode>
-    <PlayerCodeStartRowNumber>k__BackingField: 7
-  <Tips>k__BackingField: []
-  <Challenges>k__BackingField: {fileID: 0}
+    <TestSettings>k__BackingField: {fileID: 11400000, guid: db8d7be98c2fe8d4487298176efef010, type: 2}
+  <Tips>k__BackingField:
+  - m_TableReference:
+      m_TableCollectionName: GUID:7e0dec96937356b47a6c14dc2ee2b7d8
+    m_TableEntryReference:
+      m_KeyId: 19901767681
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <Challenges>k__BackingField: {fileID: 11400000, guid: d743f68061c8a32419f677686c10b2e7, type: 2}
   references:
     version: 2
     RefIds: []

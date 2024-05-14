@@ -31,7 +31,7 @@ namespace Scripts
             foreach (var cardData in cardDatas) 
             {
                 var levelCard = Instantiate(levelStatsCardPrefab, levelStatsCards.transform);
-                levelCard.SetInfo(cardData);
+                levelCard.SetContent(cardData);
             }
         }
 
@@ -39,13 +39,13 @@ namespace Scripts
         {
             CreateDetalizedLevelStats(taskStatsDatas);
             backToPreviousPageButton.gameObject.SetActive(true);
-            animator.ShowDetailedLevelStatsAsync();
+            _ = animator.ShowDetailedLevelStatsAsync();
         }
 
         public void ReturnToLevelStatsCards()
         {
             backToPreviousPageButton.gameObject.SetActive(false);
-            animator.ReturnToLevelCardsAsync();
+            _ = animator.ReturnToLevelCardsAsync();
         }
 
         private void CreateDetalizedLevelStats(List<TaskStatsData> taskStatsDatas)
@@ -54,7 +54,7 @@ namespace Scripts
             foreach (var taskStatsData in taskStatsDatas)
             {
                 var taskStats = Instantiate(taskStatsPrefab, detalizedLevelStats.transform);
-                taskStats.SetInfo(taskStatsData);
+                taskStats.SetContent(taskStatsData);
             }
         }
 

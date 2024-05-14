@@ -1,0 +1,128 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Training Theme (Collections) Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Training Theme (Collections)
+  m_TableCollectionNameGuidString: 24e3944520ad67747991cdb67f6b45f8
+  m_Entries:
+  - m_Id: 92526141440
+    m_Key: Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307264
+    m_Key: SubTheme.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307265
+    m_Key: SubTheme.0.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307266
+    m_Key: SubTheme.0.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307267
+    m_Key: SubTheme.1.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307268
+    m_Key: SubTheme.1.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307269
+    m_Key: SubTheme.1.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307270
+    m_Key: SubTheme.2.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307271
+    m_Key: SubTheme.2.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307272
+    m_Key: SubTheme.2.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307273
+    m_Key: SubTheme.3.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307274
+    m_Key: SubTheme.3.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307275
+    m_Key: SubTheme.3.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307276
+    m_Key: SubTheme.4.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307277
+    m_Key: SubTheme.4.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307278
+    m_Key: SubTheme.4.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307279
+    m_Key: SubTheme.5.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307280
+    m_Key: SubTheme.5.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307281
+    m_Key: SubTheme.5.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307282
+    m_Key: SubTheme.6.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307283
+    m_Key: SubTheme.6.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307284
+    m_Key: SubTheme.6.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307285
+    m_Key: SubTheme.7.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307286
+    m_Key: SubTheme.7.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307287
+    m_Key: SubTheme.7.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5744031335168081936
+  references:
+    version: 2
+    RefIds:
+    - rid: 5744031335168081936
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1714719418803

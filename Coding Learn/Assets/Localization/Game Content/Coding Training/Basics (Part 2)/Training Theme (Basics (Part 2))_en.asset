@@ -1,0 +1,232 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Training Theme (Basics (Part 2))_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 1208a0c44a8f95a4d89683ae40b1a23e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 573256294400
+    m_Localized: Basics (part 2)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071616
+    m_Localized: Repetition
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071617
+    m_Localized: Repetition of topics covered
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071618
+    m_Localized: So, we briefly figured out the variables, what types they are, and
+      even sorted out the arithmetic operations with them. Of course, that's not
+      all, and we'd like to talk a little more about numeric types. And as a warm-up
+      - a small <color=green>task</color> for <color=green>repetition</color>!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071619
+    m_Localized: Code-style
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071620
+    m_Localized: The concept of code-style
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071621
+    m_Localized: "Since you and I have already mastered some of the language constructs,
+      and you can even try programming on your own, it would be right to tell you
+      more about <color=green>code style</color> (code-style).\n  In our In a time
+      when programming was taking off, it's not enough just to write working code,
+      it's also important that it's also <color=green>beautiful</color>, <color=green>concise</color>
+      and <color=green>understandable</color > for other developers. Therefore, in
+      the future we will talk not only about what can be used when writing code,
+      but also how to do it in the best way.\n  And we would like to start with <color=green>variable
+      names</color> ."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071622
+    m_Localized: Variable naming rules. Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071623
+    m_Localized: Let's start with the fact that all names must be in <color=green>English</color>.
+      Moreover, it is not enough to write a word, but in English letters - it must
+      be taken straight from the English language. If the translation into English
+      causes if you're having trouble, feel free to use a translator. Your code should
+      be understandable by anyone from anywhere in the world!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071624
+    m_Localized: Variable naming rules. Symbols
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071625
+    m_Localized: 'The variable name must start with <color=green>small letter</color>
+      and be written in the so-called <color=green>lower "camel"</color> style (in
+      English lowerCamelCase ): all words in the name are written together and begin
+      with a capital letter, except for the very first.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071626
+    m_Localized: Variable naming rules. Words
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071627
+    m_Localized: "A variable name can consist of one or more words. The main criterion
+      here is <color=green>meaningfulness</color>: the name must clearly say what
+      value the variable stores. That is why it is considered bad form to give names
+      like a , b, cd, xyz, etc. However, the <color=red>too long</color> name is
+      also bad, because it will also be difficult for the developer to understand.Therefore,
+      one of the recommendations is not to use prepositions like of in names .\n 
+      Conclusion: try to give variables moderately long meaningful names so that
+      your code and your intentions are clear to everyone!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071628
+    m_Localized: Finally about code-style
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071629
+    m_Localized: Of course, these are not all the rules for writing good code. As
+      we study new material, we will talk more than once about the best practices
+      in programming!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071630
+    m_Localized: Math Library and Type Casting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071631
+    m_Localized: Math Library and Type Casting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071632
+    m_Localized: "Sometimes, to solve a problem, you need to perform operations on
+      numbers that are much more complex than, say, addition or multiplication. What
+      if you need to round a number, raise it to the nth power, or find the sine
+      of an angle?\n  For such cases, in The standard library <color=green>System</color>
+      (which is included in our tablet by default) has a special library <color=green>Math</color>
+      that contains many useful <color=green>math</color> functions and constants,
+      which are sometimes extremely useful."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071633
+    m_Localized: Round() function
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071634
+    m_Localized: "Of course, we can't help but show you a couple of functions from
+      this library!\n  One of them is the <color=green>Rounding</color> Math.Round()
+      function. It has several modes of operation (about you can read them in the
+      C# documentation), but the basics will be enough for us when the function works
+      according to the rules of mathematics: if the number <color=green>is greater
+      than or equal to 0.5</color>, the number is rounded up to <color=green>greater</color
+      > side, otherwise - to a smaller one."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071635
+    m_Localized: Arguments and output of the Round function
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071636
+    m_Localized: As an argument, the Round function accepts variables of type <color=green>double</color>.
+      However, it also returns a result of type double. And sometimes we would like
+      to get an int - what to do?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071637
+    m_Localized: Type casting - cast
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071638
+    m_Localized: "Here we will be helped by such language feature as <color=green>cast</color>
+      (conversion) of types (in English <color=green>cast</color>). Any data type
+      can be cast to what -something else (but not to anyone!), and this can happen
+      <color=green>explicitly</color> and <color=green>implicitly</color>.\n  <color=green>Implicit</color>
+      casting the language will do this on its own, this is possible when the new
+      type accepts a <color=green>greater range/color> of values (for example, you
+      can cast an int to a double this way.) If, on the contrary, the new type accepts
+      a <color=green>smaller</color> range of values, then you need to indicate in
+      brackets what type we want to cast."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071639
+    m_Localized: Danger cast
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071640
+    m_Localized: "While an implicit cast is fairly transparent and understandable,
+      an explicit cast is sometimes <color=red>dangerous</color>!\n  The fact is
+      that during the cast, when the range of values of the new type narrows, we
+      can lose a piece of data, for example, if a variable of type double stores
+      a number with a fractional part, then when cast to int, the fractional part
+      will simply disappear, since int stores only the integer part!\n  In our game,
+      you can safely perform type casting where it is required, but in real problems,
+      when using an explicit cast, be extremely careful!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071641
+    m_Localized: Math functions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071642
+    m_Localized: Math functions. Exponentiation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071643
+    m_Localized: "Let's look at another useful function from the Math library - <color=green>Math.Pow()</color>.
+      It allows you to raise a certain number x to a certain power y, and its name
+      is an abbreviation for <color= green>power()</color> (in English, this word
+      also means exponentiation).\n  As arguments, the function takes numbers of
+      the double type (or implicitly casts them to double), and at the output we
+      also get double ."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071644
+    m_Localized: Usage example
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071645
+    m_Localized: "The Math.Pow() function will be indispensable for solving various
+      computational problems. For example, for the rather popular task of <color=green>translating
+      a number</color> from a <color=green>binary</color> number system to <color=green>decimal</color>.\n 
+      Recall the solution algorithm: For each digit of a binary number, you need
+      to find out its ordinal number (digits are numbered <color=green>from right
+      to left</color> and starting with <color=green> zero</color>). n These steps
+      must be done for <color=green>each</color> digit in the number, and then add
+      up all the results.As a result, we get the usual decimal number."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071646
+    m_Localized: Repetition
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071647
+    m_Localized: Repetition and End
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071648
+    m_Localized: "Excellent! You and I learned not only how to use <color=green>mathematical
+      functions</color> and <color=green>type casting</color>, but also how to write
+      a little more beautiful <color=green>beautiful< /color> code - our <color=green>variable
+      names</color> have become more meaningful and will be understandable even to
+      other programmers!\n  Finally, we have one more simple task waiting for us
+      - go ahead!"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

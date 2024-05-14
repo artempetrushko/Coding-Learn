@@ -1,26 +1,25 @@
 using Cysharp.Threading.Tasks;
 using System.Linq;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Scripts
 {
     public class LevelsController : IMainMenuSectionController
     {
-        [SerializeField]
         private LevelsSectionView levelsSectionView;
+        private LevelData selectedLevelData;
 
-        private int selectedLevelNumber;
-
-        private int SelectedLevelNumber
+        private LevelData SelectedLevelData
         {
-            get => selectedLevelNumber;
+            get => selectedLevelData;
             set
             {
-                if (selectedLevelNumber != value)
+                if (selectedLevelData != value)
                 {
-                    selectedLevelNumber = value;
-                    SetLevelInfo(selectedLevelNumber);
+                    selectedLevelData = value;
+                    if (selectedLevelData != null)
+                    {
+                        ShowLevelData(selectedLevelData);
+                    }                 
                 }
             }
         }
@@ -33,58 +32,40 @@ namespace Scripts
         public async UniTask ShowSectionViewAsync()
         {
             levelsSectionView.gameObject.SetActive(true);
-            SetLevelsSectionStartState();
-            await levelsSectionView.ChangeVisibility_COR(true);
+            await levelsSectionView.ChangeVisibilityAsync(true);
         }
 
         public async UniTask HideSectionViewAsync()
         {
-            await levelsSectionView.ChangeVisibility_COR(false);
+            await levelsSectionView.ChangeVisibilityAsync(false);
             levelsSectionView.gameObject.SetActive(false);
         }
 
         public void CreateLevelButtons(int totalLevelsCount) => levelsSectionView.CreateLevelButtons(totalLevelsCount);
 
-        public void SetLevelsSectionStartState()
+        public void InitializeLevelsSection(LevelData[] levelDatas, int lastAvailableLevelNumber)
         {
-            var lastAvailableLevelNumber = MainMenuSaveManager.GameProgressData.LastAvailableLevelNumber;
-            var availableLevelsDescriptions = MainMenuContentManager.GetAvailableLevelInfos(lastAvailableLevelNumber)
-                .Select(levelInfo => levelInfo.Description.GetLocalizedString())
+            var availableLevelsDatas = levelDatas
+                .Take(lastAvailableLevelNumber)
                 .ToArray();
-            levelsSectionView.SetActiveLevelButtonsParams(availableLevelsDescriptions, ChangeLevelInfo);
+            levelsSectionView.SetActiveLevelButtonsParams(availableLevelsDatas, SetLevelData);
             levelsSectionView.MakeLevelButtonSelected(lastAvailableLevelNumber);
-            if (SelectedLevelNumber != lastAvailableLevelNumber)
+            if (SelectedLevelData != levelDatas[lastAvailableLevelNumber - 1])
             {
-                SelectedLevelNumber = lastAvailableLevelNumber;
+                SelectedLevelData = levelDatas[lastAvailableLevelNumber - 1];
             }
             else
             {
-                SetLevelInfo(lastAvailableLevelNumber);
+                ShowLevelData(levelDatas[lastAvailableLevelNumber - 1]);
             }
         }
 
-        public void LoadSelectedLevel()
+        private void SetLevelData(LevelData levelData) => SelectedLevelData = levelData;
+
+        private void ShowLevelData(LevelData levelData)
         {
-            UniTask.Void(async () =>
-            {
-                await levelsSectionView.ShowLoadingScreenContentAsync();
-
-                var operation = SceneManager.LoadSceneAsync(SelectedLevelNumber);
-                while (!operation.isDone)
-                {
-                    levelsSectionView.SetLoadingBarInfo(operation.progress);
-                    await UniTask.Yield();
-                }
-            });
-        }
-
-        private void ChangeLevelInfo(int levelNumber) => SelectedLevelNumber = levelNumber;
-
-        private void SetLevelInfo(int levelNumber)
-        {
-            var selectedLevelTitle = MainMenuContentManager.GetLevelInfo(levelNumber).Title.GetLocalizedString();
-            levelsSectionView.SetLevelInfo(selectedLevelTitle);
-            levelsSectionView.SetLevelThumbnail(MainMenuContentManager.GetLoadingScreen(levelNumber));
+            levelsSectionView.SetLevelInfo(levelData.Title.GetLocalizedString());
+            //levelsSectionView.SetLevelThumbnail(levelData.LoadingScreen);
         }
     }
 }

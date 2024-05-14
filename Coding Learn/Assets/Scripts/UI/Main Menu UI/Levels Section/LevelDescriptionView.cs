@@ -10,14 +10,14 @@ namespace Scripts
         [Space, SerializeField]
         private LevelDescriptionAnimator animator;
 
-        public void SetInfo(string levelDescription)
+        public void SetContent(string levelDescription)
         {
             descriptionText.text = levelDescription;
         }
 
         private void OnEnable()
         {
-            animator.ChangeVisibilityAsync(true);
+            _ = animator.ChangeVisibilityAsync(true);
         }
     }
 }

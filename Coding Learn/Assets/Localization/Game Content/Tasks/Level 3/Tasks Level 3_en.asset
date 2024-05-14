@@ -1,0 +1,150 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Tasks Level 3_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 29d1b1a616531bd41857c2a0ec0ba34c, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 17682980864
+    m_Localized: Path Selection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17703952384
+    m_Localized: "- You need to implement a method that chooses a path. Their difficulty
+      levels are passed to you.\n  Decide which path is easier and return the desired
+      direction (left or right) as a string. \n If the difficulty is the same, either
+      path can be chosen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17703952385
+    m_Localized: Both if and else will help you here
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17703952386
+    m_Localized: The operator can be either > or < - it depends on the order in which
+      you compare values.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17703952387
+    m_Localized: What to do with the log?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17703952388
+    m_Localized: "- You need to implement a method that decides what to do with the
+      current log.\n  The length of the log is passed to the method. If the length
+      of the log is less than or equal to 3, nothing needs to be done with it.\n
+      If it is greater than 3, but less than 7, put it in the wagon.\n  If greater
+      than or equal to 7, cut the log.\n  Use SkipLog, PutLogInCart and \u0421hopLog
+      methods respectively"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17703952389
+    m_Localized: Everything comes in handy here - if, else and else if
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17703952390
+    m_Localized: In each of the branching blocks, call the desired method.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17703952391
+    m_Localized: Perfect Mushroom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17703952392
+    m_Localized: "- You need to implement a method that selects the perfect mushroom.\n 
+      A mushroom that is neither too young nor too old is considered ideal.\n  You
+      are given the age of 3 mushrooms. You need to return the age of the most suitable
+      of them."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17703952393
+    m_Localized: Logical AND this is where it definitely comes in handy.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17703952394
+    m_Localized: To flood or not to flood, that is the question.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17703952395
+    m_Localized: "- You need to implement a method that fills the fire if there is
+      water in the bucket, otherwise it fills the bucket with water.\n  The bool
+      state of the bucket is passed as a parameter.\n  To fill the fire or fill the
+      bucket, use the PutOutFire methods or FillBucket respectively."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17703952396
+    m_Localized: There's no catch, just use what you learned before.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17703952397
+    m_Localized: Go across the bridge.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17703952398
+    m_Localized: "- You need to implement a method that signals the start of movement
+      across the bridge.\n  However, if the bridge is broken, you must replace it
+      with the most suitable log, and only then signal the start of movement. It
+      is guaranteed that a suitable log exists\n The state of the bridge is passed
+      as input as a bool, the length of the account through which the bridge runs
+      and the lengths of 3 available logs.\n  To signal the start of movement, return
+      the current state of the bridge (if logs were used, then the state of the bridge
+      must be changed to slave). \n  To use the UseLog method, passing in the length
+      of a suitable log to use the desired log."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17703952399
+    m_Localized: First check if the bridge is intact. If not, choose a suitable log.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17703952400
+    m_Localized: One of many
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17703952401
+    m_Localized: '- You need to implement a method that will return 1 of a set of
+      paths, based on the number of stones passed. Here is a list of matches (number
+      of stones - path): 1-8,2-3,3-5,4-2, 5-9,6-10,7-6,8-12. In other cases, the
+      path number is 1.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17703952402
+    m_Localized: Switch will be very useful here.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17703952403
+    m_Localized: But you can also use other constructions that you learned earlier.
+      Both will work here.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17703952404
+    m_Localized: Stupid riddles!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17703952405
+    m_Localized: '- You need to implement a method that will return 1 paths, based
+      on the passed cipher as a string. Here is the correspondence of ciphers and
+      paths (cipher-path): nagibator228-6,urfu-2,coding-5,learn-4 .In other cases,
+      the path is 1.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17703952406
+    m_Localized: This task is similar to the previous one, you can definitely do
+      it yourself! :)
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

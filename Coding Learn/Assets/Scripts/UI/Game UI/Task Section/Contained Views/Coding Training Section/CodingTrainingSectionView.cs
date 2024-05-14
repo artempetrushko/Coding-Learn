@@ -1,6 +1,8 @@
 using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
@@ -30,20 +32,38 @@ namespace Scripts
         [Space, SerializeField]
         private CodingTrainingSectionAnimator animator;
 
-        public void Show() => animator.ChangeVisibilityAsync(true);
+        public void Show() => _ = animator.ChangeVisibilityAsync(true);
 
         public async UniTask HideAsync() => await animator.ChangeVisibilityAsync(false);
 
-        public void CreateTrainingTextPage(string trainingTheme, string trainingContent, TrainingShowingMode trainingShowingMode)
+        public void CreateTrainingPage(CodingTrainingData codingTrainingData, TrainingShowingMode trainingShowingMode)
         {
-            var trainingPage = CreateTrainingPage(trainingTheme, trainingShowingMode, trainingTextPageViewPrefab);
-            trainingPage.SetContent(trainingContent);
+            if (codingTrainingData.VideoGuideReference != null)
+            {
+                CreateTrainingTextPage(codingTrainingData, trainingShowingMode);
+            }
+            else
+            {
+                CreateTrainingTextVideoPage(codingTrainingData, trainingShowingMode);
+            }
         }
 
-        public void CreateTrainingTextVideoPage(string trainingTheme, string trainingContent, VideoClip trainingVideo, TrainingShowingMode trainingShowingMode)
+        private void CreateTrainingTextPage(CodingTrainingData codingTrainingData, TrainingShowingMode trainingShowingMode)
         {
-            var trainingPage = CreateTrainingPage(trainingTheme, trainingShowingMode, trainingTextVideoPageViewPrefab);
-            trainingPage.SetContent(trainingContent, trainingVideo);
+            var trainingPage = CreateTrainingPage(codingTrainingData.Title.GetLocalizedString(), trainingShowingMode, trainingTextPageViewPrefab);
+            trainingPage.SetContent(codingTrainingData.TrainingText.GetLocalizedString());
+        }
+
+        private async void CreateTrainingTextVideoPage(CodingTrainingData codingTrainingData, TrainingShowingMode trainingShowingMode)
+        {
+            var trainingPage = CreateTrainingPage(codingTrainingData.Title.GetLocalizedString(), trainingShowingMode, trainingTextVideoPageViewPrefab);
+            var videoGuideLoading = codingTrainingData.VideoGuideReference.LoadAssetAsync<VideoClip>();
+            await videoGuideLoading.Task;
+            if (videoGuideLoading.Status == AsyncOperationStatus.Succeeded)
+            {
+                trainingPage.SetContent(codingTrainingData.TrainingText.GetLocalizedString(), videoGuideLoading.Result);
+            }
+            Addressables.Release(videoGuideLoading);
         }
 
         private T CreateTrainingPage<T>(string trainingTheme, TrainingShowingMode trainingShowingMode, T trainingPageViewPrefab) where T : CodingTrainingTextPageView

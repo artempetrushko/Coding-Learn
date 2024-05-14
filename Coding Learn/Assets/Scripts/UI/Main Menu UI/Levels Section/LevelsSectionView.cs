@@ -26,9 +26,11 @@ namespace Scripts
         [Space, SerializeField]
         private LevelsSectionAnimator animator;
 
-        public async UniTask ChangeVisibility_COR(bool isVisible)
+        public async UniTask ChangeVisibilityAsync(bool isVisible) => await animator.ChangeContentVisibilityAsync(isVisible);
+
+        public void SetLevelInfo(string levelTitle)
         {
-            await animator.ChangeContentVisibilityAsync(isVisible);
+            levelTitleLabel.text = levelTitle;
         }
 
         public void CreateLevelButtons(int totalLevelsCount)
@@ -41,20 +43,16 @@ namespace Scripts
             }
         }
 
-        public void SetActiveLevelButtonsParams(string[] availableLevelDescriptions, Action<int> buttonPressedAction)
+        public void SetActiveLevelButtonsParams(LevelData[] levelDatas, Action<LevelData> buttonPressedAction)
         {
-            for (var i = 1; i <= availableLevelDescriptions.Length; i++)
+            for (var i = 1; i <= levelDatas.Length; i++)
             {
                 var levelNumber = i;
                 var levelButton = levelButtonsContainer.transform.GetChild(levelNumber - 1).GetComponent<LevelButton>();
+                var levelData = levelDatas[levelNumber - 1];
                 levelButton.SetInteractivity(true);
-                levelButton.SetActiveButtonParams(availableLevelDescriptions[levelNumber - 1], () => buttonPressedAction(levelNumber));
+                levelButton.SetActiveButtonParams(levelData.Description.GetLocalizedString(), () => buttonPressedAction(levelData));
             }
-        }
-
-        public void SetLevelInfo(string levelTitle)
-        {
-            levelTitleLabel.text = levelTitle;
         }
 
         public async UniTask ShowLoadingScreenContentAsync() => await animator.ShowLoadingScreenAsync();
@@ -71,7 +69,7 @@ namespace Scripts
             newLevelThumbnail.SetContent(newThumbnail);
             if (levelThumbnailContainer.transform.childCount > 1)
             {
-                UpdateLevelThumbnailAsync();
+                _ = UpdateLevelThumbnailAsync();
             }            
         }
 

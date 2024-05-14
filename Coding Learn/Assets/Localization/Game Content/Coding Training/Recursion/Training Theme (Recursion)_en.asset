@@ -1,0 +1,283 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Training Theme (Recursion)_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: eb06968af2d675340a56274d772be0a2, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 477718437888
+    m_Localized: Recursion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477731020800
+    m_Localized: Recursion (part 1)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477731020801
+    m_Localized: Recursion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477739409408
+    m_Localized: "In general terms, recursion is a phenomenon in which an object
+      is part of itself. It is very clearly demonstrated, for example, by fractal
+      shapes, matryoshka dolls, or an open window of a screen recording program that
+      captures its own image .\n  In the context of programming, recursion is a function
+      that calls itself in the course of its work.Like loops, recursive functions
+      are needed for multiple executions of some piece of code, while any recursive
+      algorithm can be represented as loops.Why then it is necessary? In some cases,
+      recursion is a good alternative to regular loops, since an algorithm written
+      recursively may be simpler, shorter, more elegant, faster, or not. It all depends
+      on the situation.\n  Consider the example code in Block #1, which calculates
+      the sum of all numbers from 1 to n inclusive:\n --IMAGE-- \n It is written
+      using a loop.Now consider code with the same functionality m, but written using
+      the recursive function in Block #2.\n \n  When creating a recursive function,
+      it must necessarily contain some basic version for which we know the answer.
+      In the case of the sum of all previous positive numbers, these are all numbers
+      less than 1, since we are well aware that there are no positive integers that
+      would be less than one, which means that their sum is zero. This will be the
+      answer for the base solution, and it is what the function returns in the if
+      block. \n  If the input of the function is a value that is different from the
+      base case, then it must eventually be reduced to the base case, otherwise we
+      will end up with an infinite recursion.\n \n Let's consider step by step what
+      will happen if Func(4) is called.\n \n  n\n  1. First, it checks if the number
+      is less than one:\n  if (n < 1) return 0;\n  \n  But first, n is 4, so this
+      condition is false, and the code is executed accordingly:\n  return n + Func(n
+      - 1);\n  \n  In fact, we have:\n  return 4 + Func(3);\n  \n \n  2. Next, the
+      expression is executed:\n  Func(3)\n  \n  Again but n is not less than 1, so
+      the code is executed\n  return n + Func(n - 1);\n  \n  In fact:\n  return 3
+      + Func(2);\n  \n \n  3. Next, the expression is executed :\n  Func(2)\n  \n 
+      Again, n is not less than 1, so the code is executed:\n  return n + Func(n
+      - 1);\n  \n  In fact:\n  return 2 + Func(1 );\n  \n \n  4. Next, the expression
+      is executed:\n  Func(1)\n  \n  Again, n is not less than 1, so the code is
+      executed:\n  return n + Func(n - 1);\n  \n  In fact:\n  return 1 + Func(0);\n 
+      \n \n  5. Next, the expression is executed:\n  Func(0)\n  \n  The base case
+      condition is already satisfied here, since n is less than one, so 0 is returned,
+      and the code is executed:\n  if (n < 1) return 0;\n  \n  As a result, the expression
+      Func(4) actually results in: 4 + 3 + 2 + 1 + Func(0). \n  And since we know
+      the answer for Func(0), we can calculate the entire expression: 4 + 3 + 2 +
+      1 + 0 = 10\n \n  It is convenient to represent the calculation of the result
+      in the form of function calls. First, the function recurses to the base case:\n
+      Func(4) = 4 + Func(3)\n Func(3) = 3 + Func(2)\n Func(2) = 2 + Func(1)\n Func(1)
+      = 1 + Func(0)\n Func(0) = 0\n \n \n Then the chain starts to reverse:\n Func(0)
+      = 0\n Func(1) = 1 + Func(0) = 1 + 0 = 1\n Func(2) = 2 + Func(1) = 2 + 1 = 3\n
+      Func(3) = 3 + Func(2) = 3 + 3 = 6\n Func(4) = 4 + Func(3) = 4 + 6 = 10\n \n 
+      Remember: if you want to get some end result, then\n any recursive function
+      must have a base case, and recursive calls must somehow lead to it. \n \n For
+      example, if we slightly change our function and replace the '<' sign with '==',
+      then at first glance, nothing will change, and the function will still work
+      correctly for positive numbers, however, if we now input is a negative number,
+      then the recursion will never be reduced to the base case, since we defined
+      it to be one.\n \n Thus, the call stack for the number -5 will look like this:
+      Func(-5), Func(-6), Func(- 7)... This shows that we will never reach the base
+      case n == 1 and eventually get the message: \u201CStack overflow\u201D, i.e.
+      Stack Full."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477739409409
+    m_Localized: Recursion (part 2)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477739409410
+    m_Localized: Recursion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477739409411
+    m_Localized: "In general terms, recursion is a phenomenon in which an object
+      is part of itself. It is very clearly demonstrated, for example, by fractal
+      shapes, matryoshka dolls, or an open window of a screen recording program that
+      captures its own image .\n  In the context of programming, recursion is a function
+      that calls itself in the course of its work.Like loops, recursive functions
+      are needed for multiple executions of some piece of code, while any recursive
+      algorithm can be represented as loops.Why then it is necessary? In some cases,
+      recursion is a good alternative to regular loops, since an algorithm written
+      recursively may be simpler, shorter, more elegant, faster, or not. It all depends
+      on the situation.\n  Consider the example code in Block #1, which calculates
+      the sum of all numbers from 1 to n inclusive:\n --IMAGE-- \n It is written
+      using a loop.Now consider code with the same functionality m, but written using
+      the recursive function in Block #2.\n \n  When creating a recursive function,
+      it must necessarily contain some basic version for which we know the answer.
+      In the case of the sum of all previous positive numbers, these are all numbers
+      less than 1, since we are well aware that there are no positive integers that
+      would be less than one, which means that their sum is zero. This will be the
+      answer for the base solution, and it is what the function returns in the if
+      block. \n  If the input of the function is a value that is different from the
+      base case, then it must eventually be reduced to the base case, otherwise we
+      will end up with an infinite recursion.\n \n Let's consider step by step what
+      will happen if Func(4) is called.\n \n  n\n  1. First, it checks if the number
+      is less than one:\n  if (n < 1) return 0;\n  \n  But first, n is 4, so this
+      condition is false, and the code is executed accordingly:\n  return n + Func(n
+      - 1);\n  \n  In fact, we have:\n  return 4 + Func(3);\n  \n \n  2. Next, the
+      expression is executed:\n  Func(3)\n  \n  Again but n is not less than 1, so
+      the code is executed\n  return n + Func(n - 1);\n  \n  In fact:\n  return 3
+      + Func(2);\n  \n \n  3. Next, the expression is executed :\n  Func(2)\n  \n 
+      Again, n is not less than 1, so the code is executed:\n  return n + Func(n
+      - 1);\n  \n  In fact:\n  return 2 + Func(1 );\n  \n \n  4. Next, the expression
+      is executed:\n  Func(1)\n  \n  Again, n is not less than 1, so the code is
+      executed:\n  return n + Func(n - 1);\n  \n  In fact:\n  return 1 + Func(0);\n 
+      \n \n  5. Next, the expression is executed:\n  Func(0)\n  \n  The base case
+      condition is already satisfied here, since n is less than one, so 0 is returned,
+      and the code is executed:\n  if (n < 1) return 0;\n  \n  As a result, the expression
+      Func(4) actually results in: 4 + 3 + 2 + 1 + Func(0). \n  And since we know
+      the answer for Func(0), we can calculate the entire expression: 4 + 3 + 2 +
+      1 + 0 = 10\n \n  It is convenient to represent the calculation of the result
+      in the form of function calls. First, the function recurses to the base case:\n
+      Func(4) = 4 + Func(3)\n Func(3) = 3 + Func(2)\n Func(2) = 2 + Func(1)\n Func(1)
+      = 1 + Func(0)\n Func(0) = 0\n \n \n Then the chain starts to reverse:\n Func(0)
+      = 0\n Func(1) = 1 + Func(0) = 1 + 0 = 1\n Func(2) = 2 + Func(1) = 2 + 1 = 3\n
+      Func(3) = 3 + Func(2) = 3 + 3 = 6\n Func(4) = 4 + Func(3) = 4 + 6 = 10\n \n 
+      Remember: if you want to get some end result, then\n any recursive function
+      must have a base case, and recursive calls must somehow lead to it. \n \n For
+      example, if we slightly change our function and replace the '<' sign with '==',
+      then at first glance, nothing will change, and the function will still work
+      correctly for positive numbers, however, if we now input is a negative number,
+      then the recursion will never be reduced to the base case, since we defined
+      it to be one.\n \n Thus, the call stack for the number -5 will look like this:
+      Func(-5), Func(-6), Func(- 7)... This shows that we will never reach the base
+      case n == 1 and eventually get the message: \u201CStack overflow\u201D, i.e.
+      Stack Full."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477739409412
+    m_Localized: Recursion (part 3)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477739409413
+    m_Localized: Recursion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477743603712
+    m_Localized: "In general terms, recursion is a phenomenon in which an object
+      is part of itself. It is very clearly demonstrated, for example, by fractal
+      shapes, matryoshka dolls, or an open window of a screen recording program that
+      captures its own image .\n  In the context of programming, recursion is a function
+      that calls itself in the course of its work.Like loops, recursive functions
+      are needed for multiple executions of some piece of code, while any recursive
+      algorithm can be represented as loops.Why then it is necessary? In some cases,
+      recursion is a good alternative to regular loops, since an algorithm written
+      recursively may be simpler, shorter, more elegant, faster, or not. It all depends
+      on the situation.\n  Consider the example code in Block #1, which calculates
+      the sum of all numbers from 1 to n inclusive:\n --IMAGE-- \n It is written
+      using a loop.Now consider code with the same functionality m, but written using
+      the recursive function in Block #2.\n \n  When creating a recursive function,
+      it must necessarily contain some basic version for which we know the answer.
+      In the case of the sum of all previous positive numbers, these are all numbers
+      less than 1, since we are well aware that there are no positive integers that
+      would be less than one, which means that their sum is zero. This will be the
+      answer for the base solution, and it is what the function returns in the if
+      block. \n  If the input of the function is a value that is different from the
+      base case, then it must eventually be reduced to the base case, otherwise we
+      will end up with an infinite recursion.\n \n Let's consider step by step what
+      will happen if Func(4) is called.\n \n  n\n  1. First, it checks if the number
+      is less than one:\n  if (n < 1) return 0;\n  \n  But first, n is 4, so this
+      condition is false, and the code is executed accordingly:\n  return n + Func(n
+      - 1);\n  \n  In fact, we have:\n  return 4 + Func(3);\n  \n \n  2. Next, the
+      expression is executed:\n  Func(3)\n  \n  Again but n is not less than 1, so
+      the code is executed\n  return n + Func(n - 1);\n  \n  In fact:\n  return 3
+      + Func(2);\n  \n \n  3. Next, the expression is executed :\n  Func(2)\n  \n 
+      Again, n is not less than 1, so the code is executed:\n  return n + Func(n
+      - 1);\n  \n  In fact:\n  return 2 + Func(1 );\n  \n \n  4. Next, the expression
+      is executed:\n  Func(1)\n  \n  Again, n is not less than 1, so the code is
+      executed:\n  return n + Func(n - 1);\n  \n  In fact:\n  return 1 + Func(0);\n 
+      \n \n  5. Next, the expression is executed:\n  Func(0)\n  \n  The base case
+      condition is already satisfied here, since n is less than one, so 0 is returned,
+      and the code is executed:\n  if (n < 1) return 0;\n  \n  As a result, the expression
+      Func(4) actually results in: 4 + 3 + 2 + 1 + Func(0). \n  And since we know
+      the answer for Func(0), we can calculate the entire expression: 4 + 3 + 2 +
+      1 + 0 = 10\n \n  It is convenient to represent the calculation of the result
+      in the form of function calls. First, the function recurses to the base case:\n
+      Func(4) = 4 + Func(3)\n Func(3) = 3 + Func(2)\n Func(2) = 2 + Func(1)\n Func(1)
+      = 1 + Func(0)\n Func(0) = 0\n \n \n Then the chain starts to reverse:\n Func(0)
+      = 0\n Func(1) = 1 + Func(0) = 1 + 0 = 1\n Func(2) = 2 + Func(1) = 2 + 1 = 3\n
+      Func(3) = 3 + Func(2) = 3 + 3 = 6\n Func(4) = 4 + Func(3) = 4 + 6 = 10\n \n 
+      Remember: if you want to get some end result, then\n any recursive function
+      must have a base case, and recursive calls must somehow lead to it. \n \n For
+      example, if we slightly change our function and replace the '<' sign with '==',
+      then at first glance, nothing will change, and the function will still work
+      correctly for positive numbers, however, if we now input is a negative number,
+      then the recursion will never be reduced to the base case, since we defined
+      it to be one.\n \n Thus, the call stack for the number -5 will look like this:
+      Func(-5), Func(-6), Func(- 7)... This shows that we will never reach the base
+      case n == 1 and eventually get the message: \u201CStack overflow\u201D, i.e.
+      Stack Full."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477743603713
+    m_Localized: Recursion (part 4)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477743603714
+    m_Localized: Recursion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477743603715
+    m_Localized: "In general terms, recursion is a phenomenon in which an object
+      is part of itself. It is very clearly demonstrated, for example, by fractal
+      shapes, matryoshka dolls, or an open window of a screen recording program that
+      captures its own image .\n  In the context of programming, recursion is a function
+      that calls itself in the course of its work.Like loops, recursive functions
+      are needed for multiple executions of some piece of code, while any recursive
+      algorithm can be represented as loops.Why then it is necessary? In some cases,
+      recursion is a good alternative to regular loops, since an algorithm written
+      recursively may be simpler, shorter, more elegant, faster, or not. It all depends
+      on the situation.\n  Consider the example code in Block #1, which calculates
+      the sum of all numbers from 1 to n inclusive:\n --IMAGE-- \n It is written
+      using a loop.Now consider code with the same functionality m, but written using
+      the recursive function in Block #2.\n \n  When creating a recursive function,
+      it must necessarily contain some basic version for which we know the answer.
+      In the case of the sum of all previous positive numbers, these are all numbers
+      less than 1, since we are well aware that there are no positive integers that
+      would be less than one, which means that their sum is zero. This will be the
+      answer for the base solution, and it is what the function returns in the if
+      block. \n  If the input of the function is a value that is different from the
+      base case, then it must eventually be reduced to the base case, otherwise we
+      will end up with an infinite recursion.\n \n Let's consider step by step what
+      will happen if Func(4) is called.\n \n  n\n  1. First, it checks if the number
+      is less than one:\n  if (n < 1) return 0;\n  \n  But first, n is 4, so this
+      condition is false, and the code is executed accordingly:\n  return n + Func(n
+      - 1);\n  \n  In fact, we have:\n  return 4 + Func(3);\n  \n \n  2. Next, the
+      expression is executed:\n  Func(3)\n  \n  Again but n is not less than 1, so
+      the code is executed\n  return n + Func(n - 1);\n  \n  In fact:\n  return 3
+      + Func(2);\n  \n \n  3. Next, the expression is executed :\n  Func(2)\n  \n 
+      Again, n is not less than 1, so the code is executed:\n  return n + Func(n
+      - 1);\n  \n  In fact:\n  return 2 + Func(1 );\n  \n \n  4. Next, the expression
+      is executed:\n  Func(1)\n  \n  Again, n is not less than 1, so the code is
+      executed:\n  return n + Func(n - 1);\n  \n  In fact:\n  return 1 + Func(0);\n 
+      \n \n  5. Next, the expression is executed:\n  Func(0)\n  \n  The base case
+      condition is already satisfied here, since n is less than one, so 0 is returned,
+      and the code is executed:\n  if (n < 1) return 0;\n  \n  As a result, the expression
+      Func(4) actually results in: 4 + 3 + 2 + 1 + Func(0). \n  And since we know
+      the answer for Func(0), we can calculate the entire expression: 4 + 3 + 2 +
+      1 + 0 = 10\n \n  It is convenient to represent the calculation of the result
+      in the form of function calls. First, the function recurses to the base case:\n
+      Func(4) = 4 + Func(3)\n Func(3) = 3 + Func(2)\n Func(2) = 2 + Func(1)\n Func(1)
+      = 1 + Func(0)\n Func(0) = 0\n \n \n Then the chain starts to reverse:\n Func(0)
+      = 0\n Func(1) = 1 + Func(0) = 1 + 0 = 1\n Func(2) = 2 + Func(1) = 2 + 1 = 3\n
+      Func(3) = 3 + Func(2) = 3 + 3 = 6\n Func(4) = 4 + Func(3) = 4 + 6 = 10\n \n 
+      Remember: if you want to get some end result, then\n any recursive function
+      must have a base case, and recursive calls must somehow lead to it. \n \n For
+      example, if we slightly change our function and replace the '<' sign with '==',
+      then at first glance, nothing will change, and the function will still work
+      correctly for positive numbers, however, if we now input is a negative number,
+      then the recursion will never be reduced to the base case, since we defined
+      it to be one.\n \n Thus, the call stack for the number -5 will look like this:
+      Func(-5), Func(-6), Func(- 7)... This shows that we will never reach the base
+      case n == 1 and eventually get the message: \u201CStack overflow\u201D, i.e.
+      Stack Full."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

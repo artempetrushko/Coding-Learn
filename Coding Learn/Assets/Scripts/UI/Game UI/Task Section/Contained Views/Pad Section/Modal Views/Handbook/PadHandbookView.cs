@@ -46,19 +46,19 @@ namespace Scripts
             await animator.ReturnToMainThemeButtonsAsync();          
         }
 
-        public void CreateThemeButtons<T>(T[] themes, Action<T> themeButtonPressedAction) where T : TrainingTheme
+        public void CreateThemeButtons<T>(T[] themes, Action<T> themeButtonPressedAction) where T : TrainingContent
         {
             var buttonsContainer = themes[0] switch
             {
                 TrainingTheme => mainThemeButtonsContainer,
-                //TrainingSubTheme => subThemeButtonsContainer
+                TrainingSubTheme => subThemeButtonsContainer
             };
             ClearButtonsContainer(buttonsContainer);
             for (var i = 1; i <= themes.Length; i++)
             {
                 var themeNumber = i;
                 var themeButton = Instantiate(themeButtonPrefab, buttonsContainer.transform);
-                //themeButton.SetInfo(themes[themeNumber - 1].Title, () => themeButtonPressedAction(themes[themeNumber - 1]));
+                themeButton.SetInfo(themes[themeNumber - 1].Title.GetLocalizedString(), () => themeButtonPressedAction(themes[themeNumber - 1]));
             }
             SetContainerScrollbarDefaultValue(buttonsContainer);
         }

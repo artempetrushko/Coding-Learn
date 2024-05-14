@@ -5,14 +5,12 @@ namespace Scripts
 {
     public class LevelThumbnail : MonoBehaviour
     {
-        [SerializeField]
-        private Image image;
-
-        public Image Image => image;
+        [field: SerializeField]
+        public Image Image { get; private set; }
 
         public void SetContent(Sprite content)
         {
-            image.sprite = content;
+            Image.sprite = content;
         }
     }
 }

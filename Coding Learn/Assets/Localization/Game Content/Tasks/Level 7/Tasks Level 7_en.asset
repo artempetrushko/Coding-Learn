@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Tasks Level 7_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 742dc06c6d6bdd549a189899976ba985, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 15745212416
+    m_Localized: Initialize sheet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15761989632
+    m_Localized: You need to create a sheet and add 3 variables passed in the method
+      parameters to it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15761989633
+    m_Localized: Delete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15761989634
+    m_Localized: You need to remove the first element from the list
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15761989635
+    m_Localized: Copy and Append
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15761989636
+    m_Localized: You need to copy the contents of the list (list) to another list
+      (newList) and add a new point to it, passed in the method parameter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15761989637
+    m_Localized: Sort and search
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15761989638
+    m_Localized: You need to sort the list and use binary search to find and return
+      the index of the element you are looking for
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15761989639
+    m_Localized: Return Reverse List
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15761989640
+    m_Localized: You need to move the contents of the array to the list in reverse
+      order.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15761989641
+    m_Localized: Dictionary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15766183936
+    m_Localized: You need to create a dictionary and add the passed key and value
+      to it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15766183937
+    m_Localized: Convert to List
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15766183938
+    m_Localized: It is necessary to convert the dictionary to a sheet. The key in
+      the dictionary is the serial number of the line in the list.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15766183939
+    m_Localized: Frequent words
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15766183940
+    m_Localized: We need to return the 5 most frequent words in the text. The text
+      uses only spaces as a separator and all words in lower case.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

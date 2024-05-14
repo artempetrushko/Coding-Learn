@@ -51,7 +51,7 @@ namespace Scripts
             {
                 ScaleButtonView(pointerEnterButtonAddedScale);
                 var levelDescriptionView = Instantiate(levelDescriptionViewPrefab, levelDescriptionViewContainer);
-                levelDescriptionView.SetInfo(levelDescription);
+                levelDescriptionView.SetContent(levelDescription);
                 currentLevelDescriptionView = levelDescriptionView;
             }
         }

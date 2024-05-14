@@ -1,0 +1,178 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Tasks Level 4_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: eaafaedbfea60a647ae6f258b8e1007a, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 15007014912
+    m_Localized: Black boxes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792128
+    m_Localized: "You need to implement a method that opens boxes and counts the
+      number of successfully opened ones. The total number of boxes is passed as
+      input. You need to return the number of successfully opened boxes.\n  To open
+      a box, use the OpenContainer method, which takes the serial number of the box,
+      starting from scratch to be opened and returns true/false if the drawer succeeded/failed
+      to open."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792129
+    m_Localized: You can't do without cycles.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792130
+    m_Localized: Create your own variable before the loop and write there the number
+      of boxes you were able to open.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792131
+    m_Localized: Good find
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792132
+    m_Localized: "You need to implement a method that finds an ax or saw in a crate
+      and signals that the current tool needs to be picked up.\n  The number of tools
+      is passed as input. To check a tool, use the IsSaw and IsAxe methods. To pick
+      up a tool , use the PickUp method.\n  All three methods accept the number of
+      the checked box, starting from zero."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792133
+    m_Localized: Cycles are rushing to the rescue again :)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792134
+    m_Localized: Use the IsSaw and IsAxe methods as conditions - they return true
+      or false.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792135
+    m_Localized: The way is clear!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792136
+    m_Localized: "You need to implement a method that clears the path until it is
+      free.\n  To check that the path is clear, use the IsPathClear method. To clear
+      the current section of the path, use the UseTool method"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792137
+    m_Localized: The for cycle will not work here.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792138
+    m_Localized: Use the IsPathClear method as a condition.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792139
+    m_Localized: Logging
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792140
+    m_Localized: "You need to implement a method that determines how many trees to
+      cut down and sends a signal that a tool should be used to split the log.\n 
+      The required number of logs is passed as input, and the required number of
+      trees is returned as output.\n  A simple tree produces 2 logs, a tall tree
+      yields 4. To determine if a tree is long, use the IsTreeTall method.To split
+      the current tree, use the UseTool method."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792141
+    m_Localized: A possible algorithm is that while we need logs, we chop the tree
+      and decrease the number of logs we need. Think about what kind of cycle would
+      work here.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792142
+    m_Localized: Definitely, we need somewhere to store the number of trees that
+      need to be cut down.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792143
+    m_Localized: Use the IsTreeTall method as a condition.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792144
+    m_Localized: 'Building Bridges: Part Two'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792145
+    m_Localized: "You need to implement a method that repairs the bridge piecemeal
+      (if necessary).\n  The number of bridge pieces is passed as input. To determine
+      if the current piece needs to be repaired, use the IsBroken method. To repair
+      a bridge piece, use the method SetUpBoard.\n  Both methods accept the ordinal
+      number of the bridge part, starting from 0."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792146
+    m_Localized: We know the number of parts of the bridge-that is, the number of
+      iterations of our cycle. Think about which of the ones you studied will fit
+      here.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792147
+    m_Localized: Careful Inspection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792148
+    m_Localized: "You need to implement a method that looks up the key.\n  The input
+      is the number of places where the key can be.\n  To look for a key in a search
+      location, use the TryFoundKey method, which takes the ordinal number of the
+      search location and returns true/false if found/not found the key."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792149
+    m_Localized: Use the TryFoundKey method as a condition.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792150
+    m_Localized: Lottery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792151
+    m_Localized: "You need to implement a method that looks for a key in chests.\n 
+      The number of chests is passed as input.\n  To select the next chest, use the
+      ChooseNextItem method. To check if a key is in a chest, use the IsKeyFound
+      method."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792152
+    m_Localized: Use the ChooseNextItem method as a condition.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792153
+    m_Localized: Little Helper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792154
+    m_Localized: "You need to implement a method that looks for a key in the sand.\n 
+      The input is the number of places where the key can be.\n  To dig, use the
+      Dig method, which takes the number of dig operations.\n  To see if there is
+      If there is a key in the excavated place, use the IsKeyFound method.\n  The
+      number of digs is 1 higher than the ordinal number of the place, starting from
+      1."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15023792155
+    m_Localized: Don't forget to increase the value of the argument passed to the
+      Dig method by 1 each iteration.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

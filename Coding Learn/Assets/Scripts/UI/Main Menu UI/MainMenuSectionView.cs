@@ -27,15 +27,9 @@ namespace Scripts
             }
         }
 
-        public async UniTask ShowContentAsync()
-        {
-            await animator.ChangeMainMenuVisibilityAsync(true);
-        }
+        public async UniTask ShowContentAsync() => await animator.ChangeMainMenuVisibilityAsync(true);
 
-        public async UniTask HideContentAsync()
-        {
-            await animator.ChangeMainMenuVisibilityAsync(false);
-        }
+        public async UniTask HideContentAsync() => await animator.ChangeMainMenuVisibilityAsync(false);
 
         public async UniTask PlayStartAnimationAsync()
         {

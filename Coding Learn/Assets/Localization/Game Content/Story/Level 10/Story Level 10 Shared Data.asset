@@ -1,0 +1,172 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Story Level 10 Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Story Level 10
+  m_TableCollectionNameGuidString: 179664684da1f6245933997ab01d93d4
+  m_Entries:
+  - m_Id: 328673845248
+    m_Key: Story_L10_P1_A1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816768
+    m_Key: Story_L10_P1_A2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816769
+    m_Key: Story_L10_P1_A3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816770
+    m_Key: Story_L10_P1_A4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816771
+    m_Key: Story_L10_P1_A5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816772
+    m_Key: Story_L10_P1_A6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816773
+    m_Key: Story_L10_P2_A1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816774
+    m_Key: Story_L10_P2_A2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816775
+    m_Key: Story_L10_P2_A3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816776
+    m_Key: Story_L10_P2_A4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816777
+    m_Key: Story_L10_P2_A5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816778
+    m_Key: Story_L10_P2_A6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816779
+    m_Key: Story_L10_P2_A7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816780
+    m_Key: Story_L10_P2_A8
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816781
+    m_Key: Story_L10_P2_A9
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816782
+    m_Key: Story_L10_P3_A1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816783
+    m_Key: Story_L10_P3_A2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816784
+    m_Key: Story_L10_P3_A3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816785
+    m_Key: Story_L10_P3_A4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816786
+    m_Key: Story_L10_P3_A5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816787
+    m_Key: Story_L10_P3_A6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816788
+    m_Key: Story_L10_P3_A7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816789
+    m_Key: Story_L10_P4_A1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816790
+    m_Key: Story_L10_P4_A2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816791
+    m_Key: Story_L10_P4_A3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816792
+    m_Key: Story_L10_P4_A4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816793
+    m_Key: Story_L10_P4_A5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328694816794
+    m_Key: Story_L10_P4_A6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328699011072
+    m_Key: Story_L10_P4_A7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328699011073
+    m_Key: Story_L10_P5_A1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328699011074
+    m_Key: Story_L10_P5_A2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328699011075
+    m_Key: Story_L10_P5_A3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328699011076
+    m_Key: Story_L10_P5_A4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328699011077
+    m_Key: Story_L10_P5_A5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328699011078
+    m_Key: Story_L10_P5_A6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328699011079
+    m_Key: Story_L10_P6_A1
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5744031316368687115
+  references:
+    version: 2
+    RefIds:
+    - rid: 5744031316368687115
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1714652114101

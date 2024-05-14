@@ -19,10 +19,10 @@ namespace Scripts
             var backgroundShowingTime = 0.3f;
             foreach (var part in backgroundParts)
             {
-                part.DOFillAmount(isVisible ? 1f : 0f, backgroundShowingTime);
+                _ = part.DOFillAmount(isVisible ? 1f : 0f, backgroundShowingTime);
             }
             await UniTask.Delay(TimeSpan.FromSeconds(backgroundShowingTime));
-            descriptionText.DOFade(1, 0.15f);
+            _ = descriptionText.DOFade(1, 0.15f);
         }
     }
 }

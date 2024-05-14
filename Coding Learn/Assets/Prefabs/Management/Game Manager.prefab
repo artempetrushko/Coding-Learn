@@ -1,5 +1,95 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &127076667874462003
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2002042499890635350}
+  - component: {fileID: 2622990033597405149}
+  m_Layer: 0
+  m_Name: Challenges Controller Installer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2002042499890635350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127076667874462003}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6680659547034900512}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2622990033597405149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127076667874462003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78441b14e0404474fb51d6e1dc7ff113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  padChallengesScreenView: {fileID: 0}
+--- !u!1 &607078629265460244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9218705614161603013}
+  - component: {fileID: 6073684018564357607}
+  m_Layer: 0
+  m_Name: Tips Controller Installer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9218705614161603013
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607078629265460244}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6680659547034900512}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6073684018564357607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607078629265460244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb4aa5c859c6124985aecbf979d6ddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  padTipsScreenView: {fileID: 0}
 --- !u!1 &1521588603279411648
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,18 +102,8 @@ GameObject:
   - component: {fileID: 6539088680678338312}
   - component: {fileID: 6046453696553118226}
   - component: {fileID: 5565944410986579315}
-  - component: {fileID: 1521588603279411650}
-  - component: {fileID: 1521588603279411649}
-  - component: {fileID: 5888913198164409973}
-  - component: {fileID: 5363064862126088373}
-  - component: {fileID: -4564359685168556614}
-  - component: {fileID: -5739413121893373772}
-  - component: {fileID: -2679990804237974468}
-  - component: {fileID: -4741594969527248707}
-  - component: {fileID: 5976149445434311918}
-  - component: {fileID: 7955842500387971599}
-  - component: {fileID: 7006385447273250321}
-  - component: {fileID: 424633537551515677}
+  - component: {fileID: 294496026704873513}
+  - component: {fileID: 8114746057012108821}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -43,7 +123,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 883135176377688676}
+  - {fileID: 6680659547034900512}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!320 &6539088680678338312
@@ -124,9 +206,9 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6539088680678338312}
-          m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
-          m_MethodName: Resume
+        - m_Target: {fileID: 8114746057012108821}
+          m_TargetAssemblyTypeName: Scripts.StorytellingController, Assembly-CSharp
+          m_MethodName: ResumeCutscene
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -138,8 +220,8 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 5363064862126088373}
-          m_TargetAssemblyTypeName: Scripts.StorytellingManager, Assembly-CSharp
+        - m_Target: {fileID: 8114746057012108821}
+          m_TargetAssemblyTypeName: Scripts.StorytellingController, Assembly-CSharp
           m_MethodName: ShowNextStoryPartArticle
           m_Mode: 1
           m_Arguments:
@@ -152,9 +234,9 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: -4564359685168556614}
-          m_TargetAssemblyTypeName: Scripts.GameTaskManager, Assembly-CSharp
-          m_MethodName: LoadNewTask
+        - m_Target: {fileID: 8114746057012108821}
+          m_TargetAssemblyTypeName: Scripts.StorytellingController, Assembly-CSharp
+          m_MethodName: FinishCutscene
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -178,9 +260,9 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 5363064862126088373}
-          m_TargetAssemblyTypeName: Scripts.StorytellingManager, Assembly-CSharp
-          m_MethodName: ShowFirstStoryPartArticle
+        - m_Target: {fileID: 8114746057012108821}
+          m_TargetAssemblyTypeName: Scripts.StorytellingController, Assembly-CSharp
+          m_MethodName: ShowNextStoryPartArticle
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -192,7 +274,7 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1521588603279411650}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: Scripts.GameManager, Assembly-CSharp
           m_MethodName: LoadNextScene
           m_Mode: 1
@@ -300,7 +382,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1521588603279411650
+--- !u!114 &294496026704873513
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -312,36 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 483ef20c2fd125c4fbace1f0eb19b695, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveManager: {fileID: 1521588603279411649}
-  contentManager: {fileID: 5888913198164409973}
-  storytellingManager: {fileID: 5363064862126088373}
-  sceneLoadingManager: {fileID: 7006385447273250321}
-  gameData: {fileID: 11400000, guid: 6e77e1bf9771e7048bd228115f25dbf2, type: 2}
---- !u!114 &1521588603279411649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1521588603279411648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcd17c20833140c42b09e7cc9330a5b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5888913198164409973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1521588603279411648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b0fa98c50bd74f4384bef816e069e0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5363064862126088373
+--- !u!114 &8114746057012108821
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -355,206 +408,477 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storytellingSectionView: {fileID: 0}
   playableDirector: {fileID: 6539088680678338312}
---- !u!114 &-4564359685168556614
+--- !u!1 &1864078265395012738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 883135176377688676}
+  - component: {fileID: 945635835586535806}
+  m_Layer: 0
+  m_Name: Scene Context
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &883135176377688676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864078265395012738}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1521588603279411651}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &945635835586535806
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1521588603279411648}
+  m_GameObject: {fileID: 1864078265395012738}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 063bd8c394e92d24198dbf05bd97d53d, type: 3}
+  m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  codingTrainingManager: {fileID: -5739413121893373772}
-  devEnvironmentManager: {fileID: -2679990804237974468}
-  challengesManager: {fileID: 7955842500387971599}
-  tipsManager: {fileID: 5976149445434311918}
-  handbookManager: {fileID: -4741594969527248707}
-  taskSectionView: {fileID: 0}
-  taskDescriptionSectionView: {fileID: 0}
---- !u!114 &-5739413121893373772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1521588603279411648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 382dbead17728044890fc05d202a6cf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  codingTrainingSectionView: {fileID: 0}
-  codingTrainingSectionDisabled:
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 2375573819847329310}
+  - {fileID: 5437248060570564250}
+  - {fileID: 4803147816132684063}
+  - {fileID: 2993328217037806973}
+  - {fileID: 3886382642167352766}
+  - {fileID: 962618702380560789}
+  - {fileID: 2316448661506955229}
+  - {fileID: 2622990033597405149}
+  - {fileID: 6073684018564357607}
+  - {fileID: 8954494030193051332}
+  _installerPrefabs: []
+  _autoRun: 1
+  OnPreInstall:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -4564359685168556614}
-        m_TargetAssemblyTypeName: Scripts.GameTaskManager, Assembly-CSharp
-        m_MethodName: ShowTaskContent
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &-2679990804237974468
+      m_Calls: []
+  OnPostInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPreResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  _parentNewObjectsUnderSceneContext: 0
+  _contractNames: []
+  _parentContractNames: []
+--- !u!1 &2511439864658809934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7864113919246335523}
+  - component: {fileID: 962618702380560789}
+  m_Layer: 0
+  m_Name: Dev Environment Controller Installer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7864113919246335523
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2511439864658809934}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6680659547034900512}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &962618702380560789
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1521588603279411648}
+  m_GameObject: {fileID: 2511439864658809934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2150ac4656f4d854d9da48799f27ea45, type: 3}
+  m_Script: {fileID: 11500000, guid: 3989d19d11ee36c4c8364ca33d75959c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   padDevEnvironmentView: {fileID: 0}
-  onTaskCompleted:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -4564359685168556614}
-        m_TargetAssemblyTypeName: Scripts.GameTaskManager, Assembly-CSharp
-        m_MethodName: FinishTask
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &-4741594969527248707
+--- !u!1 &2557399897193063851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3495381663438525628}
+  - component: {fileID: 2316448661506955229}
+  m_Layer: 0
+  m_Name: Handbook Controller Installer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3495381663438525628
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2557399897193063851}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6680659547034900512}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2316448661506955229
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1521588603279411648}
+  m_GameObject: {fileID: 2557399897193063851}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73e0e647c8c59ce49ae7742cb65978f8, type: 3}
+  m_Script: {fileID: 11500000, guid: f2bad9c8203438941ab54842f589ec0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   padHandbookView: {fileID: 0}
-  onSubThemeButtonPressed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -4564359685168556614}
-        m_TargetAssemblyTypeName: Scripts.GameTaskManager, Assembly-CSharp
-        m_MethodName: ReturnToCodingTraining
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &5976149445434311918
+--- !u!1 &3918163661140848877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9123660125161279297}
+  - component: {fileID: 2993328217037806973}
+  m_Layer: 0
+  m_Name: Pad Controller Installer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9123660125161279297
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3918163661140848877}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6680659547034900512}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2993328217037806973
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1521588603279411648}
+  m_GameObject: {fileID: 3918163661140848877}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d6611cc295aa543be8eed950178b52, type: 3}
+  m_Script: {fileID: 11500000, guid: a2b06fb70b642c54686c53a1901323e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToNextTipInSeconds: 180
-  timeToSkipTaskInSeconds: 720
-  padTipsScreenView: {fileID: 0}
-  onNewTipShowed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7955842500387971599}
-        m_TargetAssemblyTypeName: Scripts.ChallengesManager, Assembly-CSharp
-        m_MethodName: IncreaseUsedTipsCountByOne
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &7955842500387971599
+--- !u!1 &4370188530373447500
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8823581600508026891}
+  - component: {fileID: 4803147816132684063}
+  m_Layer: 0
+  m_Name: Game Task Controller Installer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8823581600508026891
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4370188530373447500}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6680659547034900512}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4803147816132684063
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1521588603279411648}
+  m_GameObject: {fileID: 4370188530373447500}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a0365e98e3cba443b256487c7f0d85e, type: 3}
+  m_Script: {fileID: 11500000, guid: f0aaf9c14977b7648aab6391ed709cb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  padChallengesScreenView: {fileID: 0}
-  rewardingSectionView: {fileID: 0}
-  onChallengesCompletingChecked:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5363064862126088373}
-        m_TargetAssemblyTypeName: Scripts.StorytellingManager, Assembly-CSharp
-        m_MethodName: PlayNextCutscene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &7006385447273250321
+  taskSectionView: {fileID: 0}
+  taskDescriptionSectionView: {fileID: 0}
+--- !u!1 &5503921594477459774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6680659547034900512}
+  m_Layer: 0
+  m_Name: Installers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6680659547034900512
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5503921594477459774}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2732436892723919262}
+  - {fileID: 5561684181524938734}
+  - {fileID: 8823581600508026891}
+  - {fileID: 9123660125161279297}
+  - {fileID: 5438497998926157063}
+  - {fileID: 7864113919246335523}
+  - {fileID: 3495381663438525628}
+  - {fileID: 2002042499890635350}
+  - {fileID: 9218705614161603013}
+  - {fileID: 2821938021585698915}
+  m_Father: {fileID: 1521588603279411651}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5746764065950610195
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2732436892723919262}
+  - component: {fileID: 2375573819847329310}
+  m_Layer: 0
+  m_Name: Game Startup Installer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2732436892723919262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5746764065950610195}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6680659547034900512}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2375573819847329310
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1521588603279411648}
+  m_GameObject: {fileID: 5746764065950610195}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32db82b45746f694681d3c116231093f, type: 3}
+  m_Script: {fileID: 11500000, guid: 48f538a46b7c0344197b449cd2f82e35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData: {fileID: 11400000, guid: 6e77e1bf9771e7048bd228115f25dbf2, type: 2}
+--- !u!1 &6904153988499925471
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5561684181524938734}
+  - component: {fileID: 5437248060570564250}
+  m_Layer: 0
+  m_Name: Quests Controller Installer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5561684181524938734
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6904153988499925471}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6680659547034900512}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5437248060570564250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6904153988499925471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abdc6432160983545867d6c954f27cfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storytellingController: {fileID: 8114746057012108821}
+--- !u!1 &7019256934148554202
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5438497998926157063}
+  - component: {fileID: 3886382642167352766}
+  m_Layer: 0
+  m_Name: Coding Training Controller Installer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5438497998926157063
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7019256934148554202}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6680659547034900512}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3886382642167352766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7019256934148554202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560d8203888666a4fb8569917ea8e00e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  codingTrainingSectionView: {fileID: 0}
+--- !u!1 &7162891485087858374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2821938021585698915}
+  - component: {fileID: 8954494030193051332}
+  m_Layer: 0
+  m_Name: Level Loading Controller Installer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2821938021585698915
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7162891485087858374}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6680659547034900512}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8954494030193051332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7162891485087858374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc07dea5a5cf1a04d97b51df81fee290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   loadingScreenView: {fileID: 0}
---- !u!114 &424633537551515677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1521588603279411648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07ae1e41ba124184cb76bdfbf02047c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  exitToMenuSectionView: {fileID: 0}
-  onBlackScreenShown:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7006385447273250321}
-        m_TargetAssemblyTypeName: Scripts.SceneLoadingManager, Assembly-CSharp
-        m_MethodName: LoadMainMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2

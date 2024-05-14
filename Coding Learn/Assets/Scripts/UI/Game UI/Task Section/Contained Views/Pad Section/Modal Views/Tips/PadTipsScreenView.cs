@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.Localization.Components;
 using UnityEngine.UI;
 
 namespace Scripts
@@ -31,29 +30,14 @@ namespace Scripts
 
         public void SetSkipTaskButtonState(bool isInteractable) => skipTaskButton.interactable = isInteractable;
 
-        public void SetSkipTaskButtonLabelText(string localizationTableReference, string localizedTextReference) 
-            => skipTaskButton.GetComponentInChildren<LocalizeStringEvent>().StringReference.SetReference(localizationTableReference, localizedTextReference);
+        public void SetTipStatusText(string statusText) => tipStatusText.text = statusText;
 
-        public void SetSkipTaskButtonLabelTextWithTimer(string localizationTableReference, string localizedTextReference, string formattedTimerText) 
-            => SetLocalizedTextWithTimer(skipTaskButton.GetComponentInChildren<TMP_Text>(), localizationTableReference, localizedTextReference, formattedTimerText);
-
-        public void SetTipStatusText(string localizationTableReference, string localizedTextReference)
-            => tipStatusText.GetComponent<LocalizeStringEvent>().StringReference.SetReference(localizationTableReference, localizedTextReference);
-
-        public void SetTipStatusTextWithTimer(string localizationTableReference, string localizedTextReference, string formattedTimerText) 
-            => SetLocalizedTextWithTimer(tipStatusText, localizationTableReference, localizedTextReference, formattedTimerText);
+        public void SetSkipTaskButtonLabelText(string labelText) => skipTaskButton.GetComponentInChildren<TMP_Text>().text = labelText;
 
         public void ClearTipText()
         {
             tipText.text = "";
             tipFiller.SetActive(true);
-        }
-
-        private void SetLocalizedTextWithTimer(TMP_Text textField, string localizationTableReference, string localizedTextReference, string formattedTimerText)
-        {
-            var localizedString = textField.GetComponent<LocalizeStringEvent>().StringReference;
-            localizedString.SetReference(localizationTableReference, localizedTextReference);
-            textField.text = localizedString.GetLocalizedString(formattedTimerText);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Scripts
         [SerializeField]
         private TMP_Text starsCounterText;
 
-        public void SetInfo(TaskStatsData data)
+        public void SetContent(TaskStatsData data)
         {
             taskTitleText.text = data.TaskTitle;
             starsCounterText.text = $"{data.CompletedChallengesCount}/{data.TotalChallengesCount}";

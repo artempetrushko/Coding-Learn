@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Story Level 5 Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Story Level 5
+  m_TableCollectionNameGuidString: 145b86e973c2c944cb4d1b3c09d28f29
+  m_Entries:
+  - m_Id: 417433706496
+    m_Key: Story_L5_P1_A1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 417450483712
+    m_Key: Story_L5_P1_A2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 417450483713
+    m_Key: Story_L5_P1_A3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 417450483714
+    m_Key: Story_L5_P2_A1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 417450483715
+    m_Key: Story_L5_P2_A2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 417450483716
+    m_Key: Story_L5_P3_A1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 417450483717
+    m_Key: Story_L5_P3_A2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 417450483718
+    m_Key: Story_L5_P3_A3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 417450483719
+    m_Key: Story_L5_P4_A1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 417450483720
+    m_Key: Story_L5_P4_A2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 417450483721
+    m_Key: Story_L5_P4_A3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 417450483722
+    m_Key: Story_L5_P5_A1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 417450483723
+    m_Key: Story_L5_P5_A2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 417450483724
+    m_Key: Story_L5_P5_A3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 417450483725
+    m_Key: Story_L5_P6_A1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 417450483726
+    m_Key: Story_L5_P6_A2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 417450483727
+    m_Key: Story_L5_P6_A3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 417450483728
+    m_Key: Story_L5_P7_A1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 417450483729
+    m_Key: Story_L5_P7_A2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 417454678016
+    m_Key: Story_L5_P8_A1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 417454678017
+    m_Key: Story_L5_P8_A2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 417454678018
+    m_Key: Story_L5_P8_A3
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5744031316368687110
+  references:
+    version: 2
+    RefIds:
+    - rid: 5744031316368687110
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1714651530323

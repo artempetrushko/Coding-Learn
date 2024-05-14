@@ -13,7 +13,7 @@ namespace Scripts
         [SerializeField]
         private TMP_Text starsCounterText;
 
-        public void SetInfo(LevelStatsCardData data)
+        public void SetContent(LevelStatsCardData data)
         {
             levelThumbnail.sprite = data.Thumbnail;
             starsCounterText.text = $"{data.StarsCurrentCount}/{data.StarsTotalCount}";

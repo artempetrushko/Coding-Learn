@@ -14,18 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Title>k__BackingField:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:7e0dec96937356b47a6c14dc2ee2b7d8
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 19901767682
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
   <Description>k__BackingField:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:7e0dec96937356b47a6c14dc2ee2b7d8
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 19901767683
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -38,11 +38,25 @@ MonoBehaviour:
       class Console\n{\n    public static string Text { get; private set; }\n   
       public static void WriteLine(string text)\n    {\n        Text = text;\n   
       }\n}
-    <TestMethodName>k__BackingField: isTaskCompleted
-    <PlayerCodePlaceholder>k__BackingField: //<playerCode>
-    <PlayerCodeStartRowNumber>k__BackingField: 5
-  <Tips>k__BackingField: []
-  <Challenges>k__BackingField: {fileID: 0}
+    <TestSettings>k__BackingField: {fileID: 11400000, guid: db8d7be98c2fe8d4487298176efef010, type: 2}
+  <Tips>k__BackingField:
+  - m_TableReference:
+      m_TableCollectionName: GUID:7e0dec96937356b47a6c14dc2ee2b7d8
+    m_TableEntryReference:
+      m_KeyId: 19901767684
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:7e0dec96937356b47a6c14dc2ee2b7d8
+    m_TableEntryReference:
+      m_KeyId: 19901767685
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <Challenges>k__BackingField: {fileID: 11400000, guid: d743f68061c8a32419f677686c10b2e7, type: 2}
   references:
     version: 2
     RefIds: []

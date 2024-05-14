@@ -1,0 +1,168 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Training Theme (Collections)_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 24e3944520ad67747991cdb67f6b45f8, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 92526141440
+    m_Localized: Collections
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307264
+    m_Localized: Introduction to List
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307265
+    m_Localized: Initializing a List Collection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307266
+    m_Localized: "Although there are arrays in the C# language that store sets of
+      objects of the same type, it is not always convenient to work with them. For
+      example, an array stores a fixed number of objects, but what if we do not know
+      in advance how many objects we need. And in this case, it is much more convenient
+      to use collections.Another advantage of collections is that some of them implement
+      standard data structures, such as stack, queue, dictionary, which can be useful
+      for solving various special tasks.Most of the collection classes are contained
+      in the namespace System.Collections.Generic.\n \n The List<T> class from the
+      System.Collections.Generic namespace represents the simplest list of objects
+      of the same type.The List class is typed by the type whose objects will be
+      stored in the list.\n \n An instance of the List class can be created as follows
+      :\n List<variable type> list_name = new List<variable type>();\n \n This creates
+      an empty collection, but you can immediately fill it with the necessary set
+      elements by specifying them in curly braces, or by passing another list or
+      array as a parameter."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307267
+    m_Localized: Removing from the list
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307268
+    m_Localized: Removing from the list
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307269
+    m_Localized: "You can remove elements from the list in various ways, let's get
+      acquainted with some of them:\n * RemoveAt() removes an element by its index\n
+      * Remove() removes an element by its value\n * RemoveRange() removes elements
+      by indexes in the given range\n * people.Clear() completely clears the list"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307270
+    m_Localized: Adding elements
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307271
+    m_Localized: Adding elements
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307272
+    m_Localized: New elements can be added to the created list. One way to do this
+      is with the Add() method. This adds the element to the end of the list.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307273
+    m_Localized: Search in the list and sort it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307274
+    m_Localized: Search in the list and sort it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307275
+    m_Localized: "A list provides the ability to binary search for elements. How
+      it differs from the usual search in the form of a simple enumeration, we will
+      consider in one of the following topics. For now, we will just try to use it
+      to find elements. \n Important clarification: for binary search to work , the
+      list must be sorted.\n \n Sorting can be done with the Sort() method, and binary
+      search with the BinarySearch() method."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307276
+    m_Localized: Reverse order
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307277
+    m_Localized: Reverse order
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307278
+    m_Localized: The List class has a Reverse() method that reverses the order of
+      all elements.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307279
+    m_Localized: Introduction to Dictionary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307280
+    m_Localized: Dictionary initialization
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307281
+    m_Localized: "Dictionaries are another common collection type. A dictionary stores
+      objects that represent a key-value pair. The Dictionary<K, V> dictionary class
+      is typed with two types: the K parameter represents the key type, and the V
+      parameter provides the value type. \n  \n  If we draw a rough analogy, we can
+      say that a dictionary is a list, but instead of its indices, it can be anything
+      and in any order.Agree, this is convenient if you need to store pairs of data
+      together, for example, a word and its translation Then the key can be a word
+      in your native language, and the value can be the translation of this word,
+      or vice versa. store in a very inconvenient format."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307282
+    m_Localized: Access to dictionary elements
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307283
+    m_Localized: Access to dictionary elements
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307284
+    m_Localized: "Note that each element in the dictionary represents a KeyValuePair<TKey,
+      TValue> structure, where the TKey parameter represents the key type and the
+      TValue parameter represents the element's value type. This structure provides
+      Key and Value properties that can be used to get respectively, the key and
+      value of an element in a dictionary.\n \n You can get the value of a dictionary
+      element by its key using square brackets, as in arrays and lists, or you can
+      use a foreach loop to iterate. hardly suitable, since indexes can be not only
+      numbers, and the dictionary itself is not an ordered collection.\n \n To get
+      the key and value of the dictionary element, the Key and Value properties are
+      used, respectively."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307285
+    m_Localized: ContainsKey method
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307286
+    m_Localized: Hint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92551307287
+    m_Localized: In order to find the most frequent words, you have to count how
+      many times each word occurs in the text. A dictionary is great for storing
+      this information. Keep in mind that a dictionary only stores items with unique
+      keys. To check , whether there is already an element in the dictionary with
+      a specific key, you can use the ContainsKey() method
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

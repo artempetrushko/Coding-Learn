@@ -12,7 +12,7 @@ namespace Scripts
         [SerializeField]
         private TMP_Text loadingText;
 
-        public void SetInfo(float loadingProgress)
+        public void SetContent(float loadingProgress)
         {
             innerArea.fillAmount = loadingProgress;
             loadingText.text = loadingText.GetComponent<LocalizeStringEvent>().StringReference.GetLocalizedString(Mathf.Round(loadingProgress * 100));

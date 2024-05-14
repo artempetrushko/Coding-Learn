@@ -1,7 +1,8 @@
 using Cysharp.Threading.Tasks;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 
 namespace Scripts
@@ -13,24 +14,29 @@ namespace Scripts
         [Space, SerializeField]
         private GameObject challengeViewsContainer;
         [SerializeField]
-        private ChallengeView challengeViewPrefab;
+        private AssetReference challengeViewPrefab;
         [Space, SerializeField]
         private RewardingSectionAnimator animator;
 
-        public async UniTask ShowChallengesResultsAsync(List<(string description, bool isCompleted)> challengeDatas)
+        public async UniTask ShowChallengesResultsAsync((string description, bool isCompleted)[] challengeDatas)
         {
             ClearChallengeViews();
 
             await animator.ChangeVisibilityAsync(true);
             foreach (var challengeData in challengeDatas)
             {
-                var challengeView = Instantiate(challengeViewPrefab, challengeViewsContainer.transform);
-                challengeView.SetChallengeDescription(challengeData.description);
-                if (challengeData.isCompleted)
+                var challengeViewLoadingTask = challengeViewPrefab.LoadAssetAsync<ChallengeView>();
+                await challengeViewLoadingTask.Task;
+                if (challengeViewLoadingTask.Status == AsyncOperationStatus.Succeeded)
                 {
-                    await challengeView.PlayChallengeCompletedAnimationAsync();
-                }
-                await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
+                    var challengeView = Instantiate(challengeViewLoadingTask.Result, challengeViewsContainer.transform);
+                    challengeView.SetChallengeDescription(challengeData.description);
+                    if (challengeData.isCompleted)
+                    {
+                        await challengeView.PlayChallengeCompletedAnimationAsync();
+                    }
+                    await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
+                }  
             }
             closeRewardingSectionButton.gameObject.SetActive(true);
         }

@@ -24,6 +24,6 @@ namespace Scripts
             background.sprite = backgroundImage;
         }
 
-        public void SetLoadingBarState(float loadingProgress) => loadingBar.SetInfo(loadingProgress);
+        public void SetLoadingBarState(float loadingProgress) => loadingBar.SetContent(loadingProgress);
     }
 }

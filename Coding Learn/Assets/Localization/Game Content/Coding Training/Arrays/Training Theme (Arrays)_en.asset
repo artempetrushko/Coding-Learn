@@ -1,0 +1,200 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Training Theme (Arrays)_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 9cd71294caf64e0448fe8462e75fa6cf, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 647902322688
+    m_Localized: Arrays
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647914905600
+    m_Localized: Introduction to arrays
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647914905601
+    m_Localized: Arrays in C#
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099904
+    m_Localized: So, at the moment we know what a variable is, how its type is set,
+      and how to initialize a variable. Now that we know what types of loops are
+      available in C # and how they differ, we can study in detail issues related
+      to using <color=green>arrays</color> C#.Suppose you need to store 10 integer
+      values in your program.On the one hand, if you are not too lazy, you can declare
+      10 int variables, initialize them and work.And what to do if you want 100 values
+      or 1000? You can make it simpler by declaring an array variable and storing
+      all the values in it.<color=green>Array</color> is a fixed size data structure
+      to hold an element of a particular type. array is produced by numeric index.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099905
+    m_Localized: Declaring arrays
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099906
+    m_Localized: "To declare an array, after specifying the type of its elements,
+      put <color=green>square brackets</color>:\n  int[] a1;\n  Before using the
+      array, you must first <color=green>initialize</ color>, this can be done immediately,
+      when it is declared. Examples of declaring arrays in the video."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099907
+    m_Localized: Accessing array elements. Traversing array elements.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099908
+    m_Localized: "<color=green>indexes</color> are used to refer to array elements.
+      Index represents the number of the element in the array, numbering starts from
+      zero, so the index of the first element will be 0, the index of the fourth
+      element will be 3. In this case, if you specify an index greater than the maximum
+      possible, an exception will be thrown.\n  Array elements can be traversed using
+      <color=green>for, foreach and while</color> loops, the last one is the most
+      inconvenient for working with arrays , we will not consider it.If you are working
+      with a for loop, then you can use the <color=green>Length</color> property
+      of the array to specify the upper bound of the variable being incremented.Each
+      array has a Length property that stores the length of the array.The advantage
+      of the loop for is that you can modify array elements in it."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099909
+    m_Localized: Condition in array
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099910
+    m_Localized: Condition in array
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099911
+    m_Localized: You can also add <color=green>conditions</color> to our array. Let's
+      try to add an additional condition and display the values of only elements
+      with even indexes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099912
+    m_Localized: The foreach loop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099913
+    m_Localized: Condition in array, foreach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099914
+    m_Localized: Let's get acquainted with another way to traverse the array. A more
+      convenient way to traverse the elements is the <color=green>foreach</color>
+      loop. Here, in the foreach loop, we specified the element type int, since our
+      array contains elements of this type and after the in keyword, they indicated
+      an array whose elements need to be iterated over. Let's look at an example.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099915
+    m_Localized: Enums
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099916
+    m_Localized: Enums
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099917
+    m_Localized: "In addition to primitive data types, the C# programming language
+      has such a type as <color=green>enum or enumeration</color>. Enumerations represent
+      a set of logically related constants. An enumeration is declared using the
+      enum operator:\n  enum enum_name\n  {\n  value1,\n  value2,\n  \u2026..\n 
+      valueN\n  }"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099918
+    m_Localized: Returning an array by condition
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099919
+    m_Localized: Returning an array by condition
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099920
+    m_Localized: Sometimes we need to return not indexes or values, but an entire
+      array. You can also specify conditions by which you can select the array we
+      need.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099921
+    m_Localized: Two-dimensional array
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099922
+    m_Localized: Two-dimensional array
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099923
+    m_Localized: "Now let's deal with <color=green>multidimensional arrays</color>.
+      Theoretically, we can define an array with any number of dimensions (which,
+      by the way, are called rank), but in practice, there are usually one-, two-,
+      and many less often - three-dimensional arrays. Figuratively, a two-dimensional
+      array can be represented as a regular table, and a three-dimensional array
+      - as a cube of variables. For example, to specify a two-dimensional array of
+      numbers (rank = 2), you need to make the following variable declaration:\n 
+      int[,] TwoDimArray ;"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099924
+    m_Localized: Two-dimensional array robot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099925
+    m_Localized: 'Pay attention to the comma in square brackets. In C#, there is
+      a simple rule: the rank of an array is always one more than the number of commas
+      in square brackets. Multidimensional arrays are initialized in the same way
+      as one-dimensional arrays - you need to specify the number of elements in each
+      dimension. Now to refer to as any element of the array, we need to specify
+      two indices - <color=green>row index and column index</color>.Also, to work
+      with multidimensional arrays, the <color=green>GetLength() function</ color>.GetLength
+      returns the length of a given dimension of a multidimensional array Length
+      returns the sum of the total number of elements in all dimensions For a two
+      dimensional array, length == method getlength(0) * method getlength(1)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099926
+    m_Localized: Condition in array
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099927
+    m_Localized: Condition in array
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099928
+    m_Localized: Repeat the previous topics on conditions in an array and solve this
+      problem. Now let's look at another problem on the topic of a condition in an
+      array. Let's solve the problem of finding the product of array elements that
+      are greater than a given number.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099929
+    m_Localized: Repetition
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099930
+    m_Localized: Task for *
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647919099931
+    m_Localized: This is a harder problem, repeat all the previous material to solve
+      the problem.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

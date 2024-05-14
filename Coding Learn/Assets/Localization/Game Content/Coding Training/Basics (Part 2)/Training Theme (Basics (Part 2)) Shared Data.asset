@@ -1,0 +1,164 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Training Theme (Basics (Part 2)) Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Training Theme (Basics (Part 2))
+  m_TableCollectionNameGuidString: 1208a0c44a8f95a4d89683ae40b1a23e
+  m_Entries:
+  - m_Id: 573256294400
+    m_Key: Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071616
+    m_Key: SubTheme.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071617
+    m_Key: SubTheme.0.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071618
+    m_Key: SubTheme.0.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071619
+    m_Key: SubTheme.1.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071620
+    m_Key: SubTheme.1.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071621
+    m_Key: SubTheme.1.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071622
+    m_Key: SubTheme.1.TrainingData.1.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071623
+    m_Key: SubTheme.1.TrainingData.1.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071624
+    m_Key: SubTheme.1.TrainingData.2.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071625
+    m_Key: SubTheme.1.TrainingData.2.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071626
+    m_Key: SubTheme.1.TrainingData.3.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071627
+    m_Key: SubTheme.1.TrainingData.3.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071628
+    m_Key: SubTheme.1.TrainingData.4.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071629
+    m_Key: SubTheme.1.TrainingData.4.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071630
+    m_Key: SubTheme.2.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071631
+    m_Key: SubTheme.2.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071632
+    m_Key: SubTheme.2.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071633
+    m_Key: SubTheme.2.TrainingData.1.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071634
+    m_Key: SubTheme.2.TrainingData.1.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071635
+    m_Key: SubTheme.2.TrainingData.2.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071636
+    m_Key: SubTheme.2.TrainingData.2.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071637
+    m_Key: SubTheme.2.TrainingData.3.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071638
+    m_Key: SubTheme.2.TrainingData.3.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071639
+    m_Key: SubTheme.2.TrainingData.4.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071640
+    m_Key: SubTheme.2.TrainingData.4.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071641
+    m_Key: SubTheme.3.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071642
+    m_Key: SubTheme.3.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071643
+    m_Key: SubTheme.3.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071644
+    m_Key: SubTheme.3.TrainingData.1.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071645
+    m_Key: SubTheme.3.TrainingData.1.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071646
+    m_Key: SubTheme.4.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071647
+    m_Key: SubTheme.4.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573273071648
+    m_Key: SubTheme.4.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5744031335168081931
+  references:
+    version: 2
+    RefIds:
+    - rid: 5744031335168081931
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1714717863580

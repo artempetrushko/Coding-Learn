@@ -35,11 +35,9 @@ MonoBehaviour:
     <TestCode>k__BackingField: using System;\nusing System.Collections.Generic;\n\n\npublic
       class Level0Task8\n{\n//<playerCode>\n    public bool isTaskCompleted()\n   
       {\n        return Check(4)==0 && !(Check(5)==0);\n    } \n}
-    <TestMethodName>k__BackingField: isTaskCompleted
-    <PlayerCodePlaceholder>k__BackingField: //<playerCode>
-    <PlayerCodeStartRowNumber>k__BackingField: 7
+    <TestSettings>k__BackingField: {fileID: 11400000, guid: db8d7be98c2fe8d4487298176efef010, type: 2}
   <Tips>k__BackingField: []
-  <Challenges>k__BackingField: {fileID: 0}
+  <Challenges>k__BackingField: {fileID: 11400000, guid: d743f68061c8a32419f677686c10b2e7, type: 2}
   references:
     version: 2
     RefIds: []
