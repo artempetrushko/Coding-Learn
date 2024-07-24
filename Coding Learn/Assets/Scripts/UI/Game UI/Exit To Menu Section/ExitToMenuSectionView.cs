@@ -1,15 +1,16 @@
-﻿using Cysharp.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace Scripts
 {
     public class ExitToMenuSectionView : MonoBehaviour
     {
-        [SerializeField]
-        private ExitToMenuSectionAnimator animator;
-        
-        public async UniTask ChangeVisibilityAsync(bool isVisible) => await animator.ChangeContentVisibilityAsync(isVisible);
+        [SerializeField] private Image _background;
+        [SerializeField] private CanvasGroup _contentCanvasGroup;
+        [SerializeField] private Image _blackScreen;
 
-        public async UniTask ShowBlackScreenAsync() => await animator.ShowBlackScreenAsync();
+        public Image Background => _background;
+        public CanvasGroup ContentCanvasGroup => _contentCanvasGroup;
+        public Image BlackScreen => _blackScreen;
     }
 }

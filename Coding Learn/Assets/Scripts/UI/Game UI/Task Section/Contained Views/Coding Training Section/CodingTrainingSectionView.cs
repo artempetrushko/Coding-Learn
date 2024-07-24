@@ -1,4 +1,6 @@
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -29,12 +31,10 @@ namespace Scripts
         private CodingTrainingTextPageView trainingTextPageViewPrefab;
         [SerializeField]
         private CodingTrainingTextVideoPageView trainingTextVideoPageViewPrefab;
-        [Space, SerializeField]
-        private CodingTrainingSectionAnimator animator;
 
-        public void Show() => _ = animator.ChangeVisibilityAsync(true);
+        public void Show() => _ = ChangeVisibilityAsync(true);
 
-        public async UniTask HideAsync() => await animator.ChangeVisibilityAsync(false);
+        public async UniTask HideAsync() => await ChangeVisibilityAsync(false);
 
         public void CreateTrainingPage(CodingTrainingData codingTrainingData, TrainingShowingMode trainingShowingMode)
         {
@@ -83,6 +83,43 @@ namespace Scripts
                 Destroy(trainingPagesContainer.transform.GetChild(0).gameObject);
             }
             trainingPagesContainer.transform.DetachChildren();
+        }
+
+
+        [SerializeField]
+        private GameObject content;
+        [SerializeField]
+        private List<Image> backgroundParts;
+
+        private Sequence visibilityChangeTween;
+
+        public async UniTask ChangeVisibilityAsync(bool isVisible)
+        {
+            visibilityChangeTween ??= CreateVisibilityChangeTween();
+            if (isVisible)
+            {
+                visibilityChangeTween.PlayForward();
+            }
+            else
+            {
+                visibilityChangeTween.PlayBackwards();
+            }
+            await visibilityChangeTween.AsyncWaitForRewind();
+        }
+
+        private Sequence CreateVisibilityChangeTween()
+        {
+            var fillingDuration = 1f;
+            var everyPartFillingDuration = fillingDuration / backgroundParts.Count;
+            var endFillAmount = 1f;
+            var contentEndPositionY = 0f;
+
+            var tweenSequence = DOTween.Sequence();
+            tweenSequence.Pause();
+            backgroundParts.ForEach(part => tweenSequence.Append(part.DOFillAmount(endFillAmount, everyPartFillingDuration)));
+            tweenSequence.Append(content.transform.DOLocalMoveY(contentEndPositionY, 0.5f));
+            tweenSequence.SetAutoKill(false);
+            return tweenSequence;
         }
     }
 }

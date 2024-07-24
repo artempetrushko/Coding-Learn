@@ -10,18 +10,18 @@ namespace Scripts
         [SerializeField]
         private AudioMixer audioMixer;
 
-        public void SetMusicVolume(int musicVolume)
+        public static void SetMusicVolume(int musicVolume)
         {
-            var musicVolumeInDb = -40 + 40f / 100 * musicVolume;
-            SetAudioMixerParamValue("MusicVolume", musicVolumeInDb);
+            SetAudioMixerParamValue("MusicVolume", GetVolumeInDb(musicVolume));
         }
 
-        public void SetSoundsVolume(int soundsVolume)
+        public static void SetSoundsVolume(int soundsVolume)
         {
-            var soundsVolumeInDb = -40 + 40f / 100 * soundsVolume;
-            SetAudioMixerParamValue("SoundsVolume", soundsVolumeInDb);
+            SetAudioMixerParamValue("SoundsVolume", GetVolumeInDb(soundsVolume));
         }
 
-        private void SetAudioMixerParamValue(string paramName, float paramValue) => audioMixer.SetFloat(paramName, paramValue);
+        private static void SetAudioMixerParamValue(string paramName, float paramValue) => audioMixer.SetFloat(paramName, paramValue);
+
+        private static float GetVolumeInDb(int volume) => -40 + 40f / 100 * volume;
     }
 }

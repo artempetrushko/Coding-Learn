@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,8 +12,6 @@ namespace Scripts
         private TMP_Text errorsText;
         [SerializeField]
         private Scrollbar scrollbar;
-        [Space, SerializeField]
-        private ErrorsSectionAnimator animator;
 
         private bool isVisible = false;
 
@@ -21,14 +20,12 @@ namespace Scripts
             if (this.isVisible != isVisible)
             {
                 this.isVisible = isVisible;
-                await animator.ChangeVisibilityAsync(isVisible);
-            }          
-        }
 
-        public void ToggleVisibility()
-        {
-            isVisible = !isVisible;
-            animator.ChangeVisibilityAsync(isVisible);
+                var movementSign = isVisible ? 1 : -1;
+                await transform
+                    .DOLocalMoveY(transform.localPosition.y + transform.GetComponent<RectTransform>().sizeDelta.y * movementSign, 1.5f)
+                    .AsyncWaitForCompletion();
+            }          
         }
 
         public void SetContent(string errorsMessage)

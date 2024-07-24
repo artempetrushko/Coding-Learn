@@ -6,21 +6,22 @@ namespace Scripts
 {
     public class LevelLoadingController
     {
-        private LoadingScreenView loadingScreenView;
+        private LoadingScreenController _loadingScreenController;
 
-        public LevelLoadingController(LoadingScreenView loadingScreenView)
+        public LevelLoadingController(LoadingScreenController loadingScreenController)
         {
-            this.loadingScreenView = loadingScreenView;
+            _loadingScreenController = loadingScreenController;
         }
 
         public async UniTask LoadLevelAsync(LevelData levelData)
         {
-            //await ShowLoadingScreenAsync(levelData.LoadingScreen);
+            var loadingScreenSprite = await Addressables.LoadAssetAsync<Sprite>(levelData.LoadingScreenReference);
+            await _loadingScreenController.ShowAsync(loadingScreenSprite);
 
             var sceneLoading = Addressables.LoadSceneAsync(levelData.SceneReference);
             while (!sceneLoading.IsDone)
             {
-                loadingScreenView.SetLoadingBarState(sceneLoading.PercentComplete);
+                _loadingScreenController.SetContent(sceneLoading.PercentComplete);
                 await UniTask.Yield();
             }
         }
@@ -29,9 +30,12 @@ namespace Scripts
 
         private async UniTask ShowLoadingScreenAsync(Sprite loadingScreen)
         {
-            loadingScreenView.gameObject.SetActive(true);
+            _loadingScreenController.gameObject.SetActive(true);
+            _loadingScreenController.SetBackgroundSprite(loadingScreen);
+            _loadingScreenController.
+
             loadingScreenView.SetBackground(loadingScreen);
-            await loadingScreenView.ShowAsync();
+            await _loadingScreenController.ShowAsync();
         }
     }
 }

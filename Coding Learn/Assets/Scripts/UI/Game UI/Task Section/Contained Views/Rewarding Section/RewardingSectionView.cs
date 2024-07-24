@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using System;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -15,14 +16,12 @@ namespace Scripts
         private GameObject challengeViewsContainer;
         [SerializeField]
         private AssetReference challengeViewPrefab;
-        [Space, SerializeField]
-        private RewardingSectionAnimator animator;
 
         public async UniTask ShowChallengesResultsAsync((string description, bool isCompleted)[] challengeDatas)
         {
             ClearChallengeViews();
 
-            await animator.ChangeVisibilityAsync(true);
+            await ChangeVisibilityAsync(true);
             foreach (var challengeData in challengeDatas)
             {
                 var challengeViewLoadingTask = challengeViewPrefab.LoadAssetAsync<ChallengeView>();
@@ -41,7 +40,7 @@ namespace Scripts
             closeRewardingSectionButton.gameObject.SetActive(true);
         }
 
-        public async UniTask HideChallengesResultsAsync() => await animator.ChangeVisibilityAsync(false);
+        public async UniTask HideChallengesResultsAsync() => await ChangeVisibilityAsync(false);
 
         private void ClearChallengeViews()
         {
@@ -50,6 +49,15 @@ namespace Scripts
                 Destroy(challengeViewsContainer.transform.GetChild(i).gameObject);
             }
             challengeViewsContainer.transform.DetachChildren();
+        }
+
+
+
+        public async UniTask ChangeVisibilityAsync(bool isVisible)
+        {
+            await transform
+                .DOScale(isVisible ? 1f : 0f, 1.5f)
+                .AsyncWaitForCompletion();
         }
     }
 }

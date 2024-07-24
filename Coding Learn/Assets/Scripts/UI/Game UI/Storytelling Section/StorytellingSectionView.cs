@@ -30,7 +30,7 @@ namespace Scripts
                     break;
                 }
                 storyTextArea.text += storyText[i];
-                await UniTask.Delay(TimeSpan.FromSeconds(latency));
+                await UniTask.WaitForSeconds(latency);
             }
             skipStoryPartButton.gameObject.SetActive(false);
             SetNextStoryPartButtonActive(true);

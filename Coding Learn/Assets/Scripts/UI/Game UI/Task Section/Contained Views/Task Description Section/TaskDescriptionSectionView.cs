@@ -6,18 +6,14 @@ namespace Scripts
 {
     public class TaskDescriptionSectionView : MonoBehaviour
     {
-        [SerializeField]
-        private TMP_Text taskTitleText;
-        [SerializeField]
-        private TMP_Text taskDescriptionText;
-        [SerializeField]
-        private Scrollbar scrollbar;
+        [SerializeField] private TMP_Text _taskTitleText;
+        [SerializeField] private TMP_Text _taskDescriptionText;
+        [SerializeField] private Scrollbar _scrollbar;
 
-        public void SetContent(string taskTitle, string taskDesription)
-        {
-            taskTitleText.text = taskTitle;
-            taskDescriptionText.text = taskDesription;
-            scrollbar.value = 1;
-        }
+        public void SetTaskTitleText(string text) => _taskTitleText.text = text;
+
+        public void SetTaskDescriptionText(string text) => _taskDescriptionText.text = text;
+
+        public void SetScrollbarValue(float value) => _scrollbar.value = value;
     }
 }
