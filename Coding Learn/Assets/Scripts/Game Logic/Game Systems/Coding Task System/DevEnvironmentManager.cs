@@ -10,45 +10,45 @@ namespace Scripts
     {
         public event Action OnTaskCompleted;
 
-        private PadDevEnvironmentView padDevEnvironmentView;
-        private string currentTaskStartCode;
-        private TaskTestData currentTaskTestInfo;
+        private DevEnvironmentSectionController _devEnvironmentSectionController;
+        private string _currentTaskStartCode;
+        private TaskTestData _currentTaskTestInfo;
 
-        public DevEnvironmentManager(PadDevEnvironmentView padDevEnvironmentView)
+        public DevEnvironmentManager(DevEnvironmentSectionController devEnvironmentSectionController)
         {
-            this.padDevEnvironmentView = padDevEnvironmentView;
+            _devEnvironmentSectionController = devEnvironmentSectionController;
             InitializeCompiler();
         }
 
         public void SetCurrentTaskInfo(string startCode, TaskTestData testInfo)
         {
-            currentTaskStartCode = startCode;
-            currentTaskTestInfo = testInfo;
-            padDevEnvironmentView.SetDefaultCode(currentTaskStartCode);
+            _currentTaskStartCode = startCode;
+            _currentTaskTestInfo = testInfo;
+            _devEnvironmentSectionController.SetDefaultCode(_currentTaskStartCode);
         }
 
         public void ShowStartCode()
         {
-            if (currentTaskStartCode != null)
+            if (_currentTaskStartCode != null)
             {
-                padDevEnvironmentView.SetDefaultCode(currentTaskStartCode);
+                _devEnvironmentSectionController.SetDefaultCode(_currentTaskStartCode);
             } 
         }
 
         public void ExecuteCode()
         {
-            var playerCodeStartRowNumber = currentTaskTestInfo.TestCode
+            var playerCodeStartRowNumber = _currentTaskTestInfo.TestCode
                 .Split("\n")
                 .ToList()
-                .FindIndex(line => line.Contains(currentTaskTestInfo.TestSettings.PlayerCodePlaceholder));
+                .FindIndex(line => line.Contains(_currentTaskTestInfo.TestSettings.PlayerCodePlaceholder));
             var domain = ScriptDomain.CreateDomain("MyDomain", true);
             try
             {
-                var testingCode = currentTaskTestInfo.TestCode.Replace(currentTaskTestInfo.TestSettings.PlayerCodePlaceholder, padDevEnvironmentView.CodeFieldContent);
+                var testingCode = _currentTaskTestInfo.TestCode.Replace(_currentTaskTestInfo.TestSettings.PlayerCodePlaceholder, _devEnvironmentSectionController.CodeFieldContent);
                 var compiledCode = domain.CompileAndLoadMainSource(testingCode);
                 var proxy = compiledCode.CreateInstance();
-                var isTaskCompleted = (bool)proxy.Call(currentTaskTestInfo.TestSettings.StartMethodName);
-                _ = ShowExecutingProcessAsync(isTaskCompleted);
+                var isTaskCompleted = (bool)proxy.Call(_currentTaskTestInfo.TestSettings.StartMethodName);
+                ShowExecutingProcessAsync(isTaskCompleted).Forget();
             }
             catch
             {
@@ -56,7 +56,7 @@ namespace Scripts
                 var errorMessages = domain.CompileResult.Errors
                     .Select(error => (error.SourceLine - (playerCodeStartRowNumber - 1), error.SourceColumn, error.Message))
                     .ToList();
-                padDevEnvironmentView.SetAndShowCompilationErrorsInfo(errorMessages);
+                _devEnvironmentSectionController.SetAndShowCompilationErrorsInfo(errorMessages);
             }
         }
 
@@ -73,13 +73,13 @@ public class InitializingClass : MonoBehaviour
     public void InitializeCompiler() => Debug.Log(""Compiler was initialized!"");
 }");
             compiledCode
-                .CreateInstance(padDevEnvironmentView.gameObject)
+                .CreateInstance(_devEnvironmentSectionController.gameObject)
                 .Call("InitializeCompiler");
         }
 
         private async UniTask ShowExecutingProcessAsync(bool isTaskCompleted)
         {
-            await padDevEnvironmentView.ShowExecutingProcessAsync(isTaskCompleted);
+            await _devEnvironmentSectionController.ShowExecutingProcessAsync(isTaskCompleted);
             if (isTaskCompleted)
             {
                 OnTaskCompleted?.Invoke();

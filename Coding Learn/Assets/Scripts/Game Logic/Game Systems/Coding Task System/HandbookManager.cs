@@ -5,16 +5,16 @@ namespace Scripts
 {
     public class HandbookManager : IPadSecondaryFunction
     {
-        public event Action<CodingTrainingData[]> OnSubThemeButtonPressed;
+        public event Action<CodingTrainingData[]> SubThemeButtonPressed;
 
-        private PadHandbookView padHandbookView;
+        private HandbookSectionController _handbookSectionController;
         private TrainingTheme currentTrainingTheme;
         private TrainingSubTheme currentTrainingSubTheme;
         private bool areMainThemeButtonsCreated = false;
 
-        public HandbookManager(PadHandbookView padHandbookView)
+        public HandbookManager(HandbookSectionController handbookSectionController)
         {
-            this.padHandbookView = padHandbookView;
+            _handbookSectionController = handbookSectionController;
         }
 
         public void SetNewTrainingContent(TrainingTheme currentTrainingTheme, TrainingSubTheme currentTrainingSubTheme)
@@ -28,13 +28,13 @@ namespace Scripts
             }
         }
 
-        public void ShowModalWindow() => padHandbookView.SetVisibility(true);
+        public void ShowModalSection() => _handbookSectionController.SetVisibility(true);
 
-        public void HideModalWindow() => padHandbookView.SetVisibility(false);
+        public void HideModalSection() => _handbookSectionController.SetVisibility(false);
 
-        private void CreateMainThemeButtons(TrainingTheme[] trainingThemes) => padHandbookView.CreateThemeButtons(trainingThemes, GoToSubThemeButtons);
+        private void CreateMainThemeButtons(TrainingTheme[] trainingThemes) => _handbookSectionController.CreateThemeButtons(trainingThemes, GoToSubThemeButtons);
 
-        public void ReturnToMainThemeButtons() => _ = padHandbookView.ReturnToMainThemeButtonsAsync();
+        public void ReturnToMainThemeButtons() => _ = _handbookSectionController.ReturnToMainThemeButtonsAsync();
 
         private void GoToSubThemeButtons(TrainingTheme trainingMainTheme)
         {
@@ -42,8 +42,8 @@ namespace Scripts
                 ? trainingMainTheme.SubThemes.ToList().IndexOf(currentTrainingSubTheme) + 1
                 : null;
             var subThemes = FilterHandbookTrainingSubThemes(trainingMainTheme, subThemesLimit);
-            padHandbookView.CreateThemeButtons(subThemes, ShowSubThemeContent);
-            _ = padHandbookView.ShowSubThemeButtonsAsync();
+            _handbookSectionController.CreateThemeButtons(subThemes, ShowSubThemeContent);
+            _ = _handbookSectionController.ShowSubThemeButtonsAsync();
         }
 
         private void ShowSubThemeContent(TrainingSubTheme trainingSubTheme)
@@ -51,7 +51,7 @@ namespace Scripts
             var codingTrainingDatas = trainingSubTheme.TrainingDatas
                 .Where(trainingData => trainingData.WillAddToHandbook)
                 .ToArray();
-            OnSubThemeButtonPressed?.Invoke(codingTrainingDatas);
+            SubThemeButtonPressed?.Invoke(codingTrainingDatas);
         }
 
         private TrainingSubTheme[] FilterHandbookTrainingSubThemes(TrainingTheme mainTheme, int? lastAvailableSubThemeNumber = null)

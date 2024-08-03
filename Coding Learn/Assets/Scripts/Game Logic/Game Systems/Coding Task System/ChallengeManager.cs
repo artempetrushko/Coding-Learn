@@ -6,34 +6,34 @@ namespace Scripts
 {
     public class ChallengeManager : IPadSecondaryFunction
     {
-        public event Action OnChallengesCompletingChecked;
+        public event Action ChallengesCompletingChecked;
 
-        private PadChallengesScreenView padChallengesScreenView;
+        private ChallengesSectionController _challengesSectionController;
         private ChallengesData currentChallengesData;
         private TaskChallengesResults currentTaskChallengesResults;
         private bool isTimerStopped;
         private int challengeCompletingTime;
         private int usedTipsCount;
 
-        public ChallengeManager(PadChallengesScreenView padChallengesScreenView)
+        public ChallengeManager(ChallengesSectionController challengesSectionController)
         {
-            this.padChallengesScreenView = padChallengesScreenView;
+            _challengesSectionController = challengesSectionController;
         }
 
         public void SetChallengeData(ChallengesData challengesData)
         {
             currentChallengesData = challengesData;
-            var challengeDescriptions = currentChallengesData.Challenges.Select(challenge => challenge.Description).ToList();
-            //padChallengesScreenView.CreateNewChallengeViews(challengeDescriptions);
+            var challengeDescriptions = currentChallengesData.Challenges.Select(challenge => challenge.Description.GetLocalizedString()).ToList();
+            _challengesSectionController.CreateNewChallengeViews(challengeDescriptions);
 
             //currentTaskChallengesResults = GameSaveManager.GetCurrentTaskChallengesResults(currentTaskNumber);
             currentTaskChallengesResults.ChallengeCompletingStatuses ??= new bool[currentChallengesData.Challenges.Length].ToList();
             usedTipsCount = 0;
         }
 
-        public void ShowModalWindow() => padChallengesScreenView.SetVisibility(true);
+        public void ShowModalSection() => _challengesSectionController.SetVisibility(true);
 
-        public void HideModalWindow() => padChallengesScreenView.SetVisibility(false);
+        public void HideModalSection() => _challengesSectionController.SetVisibility(false);
 
         public void CheckCurrentChallengesCompleting(bool isTaskSkipped)
         {

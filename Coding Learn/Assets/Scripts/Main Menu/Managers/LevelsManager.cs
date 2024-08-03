@@ -5,7 +5,7 @@ namespace Scripts
 {
     public class LevelsManager : IMainMenuSectionManager
     {
-        private LevelsSectionView levelsSectionView;
+        private LevelsSectionController _levelsSectionController;
         private LevelData selectedLevelData;
 
         private LevelData SelectedLevelData
@@ -24,32 +24,32 @@ namespace Scripts
             }
         }
 
-        public LevelsManager(LevelsSectionView levelsSectionView)
+        public LevelsManager(LevelsSectionController levelsSectionController)
         {
-            this.levelsSectionView = levelsSectionView;
+            _levelsSectionController = levelsSectionController;
         }
 
         public async UniTask ShowSectionAsync()
         {
-            levelsSectionView.gameObject.SetActive(true);
-            await levelsSectionView.ChangeVisibilityAsync(true);
+            _levelsSectionController.gameObject.SetActive(true);
+            await _levelsSectionController.SetVisibilityAsync(true);
         }
 
         public async UniTask HideSectionAsync()
         {
-            await levelsSectionView.ChangeVisibilityAsync(false);
-            levelsSectionView.gameObject.SetActive(false);
+            await _levelsSectionController.SetVisibilityAsync(false);
+            _levelsSectionController.gameObject.SetActive(false);
         }
 
-        public void CreateLevelButtons(int totalLevelsCount) => levelsSectionView.CreateLevelButtons(totalLevelsCount);
+        public void CreateLevelButtons(int totalLevelsCount) => _levelsSectionController.CreateLevelButtons(totalLevelsCount);
 
         public void InitializeLevelsSection(LevelData[] levelDatas, int lastAvailableLevelNumber)
         {
             var availableLevelsDatas = levelDatas
                 .Take(lastAvailableLevelNumber)
                 .ToArray();
-            levelsSectionView.SetActiveLevelButtonsParams(availableLevelsDatas, SetLevelData);
-            levelsSectionView.MakeLevelButtonSelected(lastAvailableLevelNumber);
+            _levelsSectionController.SetActiveLevelButtonsParams(availableLevelsDatas, SetLevelData);
+            _levelsSectionController.MakeLevelButtonSelected(lastAvailableLevelNumber);
             if (SelectedLevelData != levelDatas[lastAvailableLevelNumber - 1])
             {
                 SelectedLevelData = levelDatas[lastAvailableLevelNumber - 1];
@@ -64,7 +64,7 @@ namespace Scripts
 
         private void ShowLevelData(LevelData levelData)
         {
-            levelsSectionView.SetLevelInfo(levelData.Title.GetLocalizedString());
+            _levelsSectionController.SetLevelInfo(levelData.Title.GetLocalizedString());
             //levelsSectionView.SetLevelThumbnail(levelData.LoadingScreen);
         }
     }

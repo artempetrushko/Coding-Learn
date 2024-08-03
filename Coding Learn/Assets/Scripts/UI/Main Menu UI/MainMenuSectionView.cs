@@ -1,8 +1,5 @@
-using Cysharp.Threading.Tasks;
-using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Localization.Components;
 using UnityEngine.UI;
 
 namespace Scripts
@@ -12,76 +9,13 @@ namespace Scripts
         [SerializeField] private GameObject _content;
         [SerializeField] private GameObject _buttonsContainer;
 
-        public void SetContentLocalPosition(Vector3 localPosition) => _content.transform.localPosition = localPosition;
-
-        public void CreateButtons(List<MainMenuButtonData> buttonDatas)
-        {
-            for (var i = 0; i < buttonDatas.Count; i++)
-            {
-                var newButton = Instantiate(mainMenuButtonPrefab, _buttonsContainer.transform);
-                var currentIndex = i;
-                var buttonLocalizedString = buttonDatas[currentIndex].LocalizedString;
-                newButton.GetComponentInChildren<LocalizeStringEvent>().StringReference.SetReference(buttonLocalizedString.TableReference, buttonLocalizedString.TableEntryReference);
-                newButton.onClick.AddListener(buttonDatas[currentIndex].onButtonPressed.Invoke);
-            }
-        }
-
-        public async UniTask ShowContentAsync() => await ChangeMainMenuVisibilityAsync(true);
-
-        public async UniTask HideContentAsync() => await ChangeMainMenuVisibilityAsync(false);
-
-        public async UniTask PlayStartAnimationAsync()
-        {
-            await HideBlackScreenAsync();
-            await ChangeMainMenuVisibilityAsync(true);
-        }
-
-
-
-        
         [SerializeField]
         private List<Image> backgroundParts = new();
         [SerializeField]
         private Image blackScreen;
 
-        private Sequence mainMenuShowingTween;
+        public void SetContentLocalPosition(Vector3 localPosition) => _content.transform.localPosition = localPosition;
 
-        public async UniTask HideBlackScreenAsync()
-        {
-            blackScreen.gameObject.SetActive(true);
-            await blackScreen
-                .DOColor(new Color(0, 0, 0, 0), 2f)
-                .AsyncWaitForCompletion();
-            blackScreen.gameObject.SetActive(false);
-        }
-
-        public async UniTask ChangeMainMenuVisibilityAsync(bool isVisible)
-        {
-            mainMenuShowingTween ??= CreateMainMenuShowingTween();
-            if (isVisible)
-            {
-                _content.transform.localPosition = new Vector3(0, _content.GetComponent<RectTransform>().rect.height, 0);
-                mainMenuShowingTween.PlayForward();
-            }
-            else
-            {
-                mainMenuShowingTween.PlayBackwards();
-            }
-            await mainMenuShowingTween.AsyncWaitForRewind();
-        }
-
-        private Sequence CreateMainMenuShowingTween()
-        {
-            var backgroundFillingTotalDuration = 1.5f;
-            var backgroundPartFillingDuration = backgroundFillingTotalDuration / backgroundParts.Count;
-            _content.transform.localPosition = new Vector3(0, _content.GetComponent<RectTransform>().rect.height, 0);
-
-            var tweenSequence = DOTween.Sequence();
-            tweenSequence.Pause();
-            backgroundParts.ForEach(part => tweenSequence.Append(DOTween.To(x => part.fillAmount = x, 0f, 1f, backgroundPartFillingDuration)));
-            tweenSequence.Append(_content.transform.DOLocalMoveY(0f, 0.5f));
-            tweenSequence.SetAutoKill(false);
-            return tweenSequence;
-        }
+        
     }
 }

@@ -4,29 +4,39 @@ namespace Scripts
 {
     public class StorytellingSectionController
     {
+        private StorytellingSectionView _storytellingSectionView;
+        private bool isSkipButtonPressed = false;
+
+        public StorytellingSectionController(StorytellingSectionView storytellingSectionView)
+        {
+            _storytellingSectionView = storytellingSectionView;
+        }
+
         public async UniTask ShowStoryTextAsync(string storyText, float textShowingTime)
         {
-            skipStoryPartButton.gameObject.SetActive(true);
+            _storytellingSectionView.SetSkipStoryPartButtonActive(true);
             var latency = textShowingTime / storyText.Length;
             for (var i = 0; i < storyText.Length; i++)
             {
                 if (isSkipButtonPressed)
                 {
                     isSkipButtonPressed = false;
-                    storyTextArea.text = storyText;
+                    _storytellingSectionView.SetStoryText(storyText);
                     break;
                 }
-                storyTextArea.text += storyText[i];
+                _storytellingSectionView.AddStoryTextFragment(storyText[i].ToString());
                 await UniTask.WaitForSeconds(latency);
             }
-            skipStoryPartButton.gameObject.SetActive(false);
-            SetNextStoryPartButtonActive(true);
+            _storytellingSectionView.SetSkipStoryPartButtonActive(false);
+            _storytellingSectionView.SetNextStoryPartButtonActive(true);
         }
 
         public void SkipStoryTextShowing() => isSkipButtonPressed = true;
 
-        public void ClearStoryTextArea() => storyTextArea.text = "";
-
-        public void SetNextStoryPartButtonActive(bool isActive) => nextStoryPartButton.gameObject.SetActive(isActive);
+        public void ClearSection()
+        {
+            _storytellingSectionView.SetStoryText("");
+            _storytellingSectionView.SetNextStoryPartButtonActive(false);
+        }
     }
 }

@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,8 +29,7 @@ namespace Scripts
         public void ResumeCutscene()
         {
             _playableDirector.Resume();
-            _storytellingSectionController.ClearStoryTextArea();
-            _storytellingSectionController.SetNextStoryPartButtonActive(false);
+            _storytellingSectionController.ClearSection();
         }
 
         public void FinishCutscene() => CutsceneFinished?.Invoke();
@@ -46,7 +46,7 @@ namespace Scripts
         {
             _currentStoryPartArticleNumber = storyPartArticleNumber;
             var totalTextAppearingTime = (float)(GetCurrentClipStopTime() - _playableDirector.time);
-            _ = _storytellingSectionController.ShowStoryTextAsync(_currentStoryContent.CutsceneScenarioParts[_currentStoryPartArticleNumber - 1].GetLocalizedString(), totalTextAppearingTime);
+            _storytellingSectionController.ShowStoryTextAsync(_currentStoryContent.CutsceneScenarioParts[_currentStoryPartArticleNumber - 1].GetLocalizedString(), totalTextAppearingTime).Forget();
         }
 
         private double GetCurrentClipStopTime()

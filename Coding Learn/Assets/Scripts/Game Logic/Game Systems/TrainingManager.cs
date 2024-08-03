@@ -7,7 +7,7 @@ namespace Scripts
     {
         public event Action CodingTrainingDisabled;
 
-        private CodingTrainingSectionView codingTrainingSectionView;
+        private CodingTrainingSectionController _codingTrainingSectionController;
         private CodingTrainingData[] currentCodingTrainingDatas;
         private int currentCodingTrainingDataNumber;
 
@@ -24,23 +24,23 @@ namespace Scripts
             }
         }
 
-        public TrainingManager(CodingTrainingSectionView codingTrainingSectionView)
+        public TrainingManager(CodingTrainingSectionController codingTrainingSectionController)
         {
-            this.codingTrainingSectionView = codingTrainingSectionView;
+            _codingTrainingSectionController = codingTrainingSectionController;
         }
 
         public void ShowTrainingContent(CodingTrainingData[] codingTrainingDatas)
         {
             currentCodingTrainingDatas = codingTrainingDatas;
             CurrentCodingTrainingDataNumber = 1;
-            codingTrainingSectionView.Show();
+            _codingTrainingSectionController.Show();
         }
 
         public void HideTrainingContent()
         {
             UniTask.Void(async () =>
             {
-                await codingTrainingSectionView.HideAsync();
+                await _codingTrainingSectionController.HideAsync();
                 CodingTrainingDisabled?.Invoke();
             });
         }
@@ -55,7 +55,7 @@ namespace Scripts
                 : trainingPartNumber == currentCodingTrainingDatas.Length
                     ? TrainingShowingMode.LastPart 
                     : TrainingShowingMode.Normal;
-            codingTrainingSectionView.CreateTrainingPage(selectedCodingTrainingPart, trainingShowingMode);
+            _codingTrainingSectionController.CreateTrainingPage(selectedCodingTrainingPart, trainingShowingMode);
         }
     }
 }

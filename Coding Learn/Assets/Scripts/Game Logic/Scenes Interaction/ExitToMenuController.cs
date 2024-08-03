@@ -18,15 +18,15 @@ namespace Scripts
             this.exitToMenuSectionView = exitToMenuSectionView;
         }
 
-        public void HideExitToMenuView() => _ = HideExitToMenuViewAsync();
+        public void HideExitToMenuView() => HideExitToMenuViewAsync().Forget();
 
-        public void ExitToMenu() => _ = ExitToMenuAsync();
+        public void ExitToMenu() => ExitToMenuAsync().Forget();
 
         public void Tick()
         {
             if (Input.GetKeyDown(KeyCode.Escape) && !isMenuAnimationPlaying)
             {
-                _ = PlayMenuAnimationAsync(isMenuEnabled ? HideExitToMenuViewAsync : ShowExitToMenuViewAsync);
+                PlayMenuAnimationAsync(isMenuEnabled ? HideExitToMenuViewAsync : ShowExitToMenuViewAsync).Forget();
             }
         }
 

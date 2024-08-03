@@ -7,10 +7,10 @@ namespace Scripts
     {
         private GameData gameData;
         private QuestManager questsController;
-        private LevelLoadingController levelLoadingController;        
+        private LevelLoadingManager levelLoadingController;        
 
         [Inject]
-        public void Construct(GameData gameData, QuestManager questsController, LevelLoadingController levelLoadingController)
+        public void Construct(GameData gameData, QuestManager questsController, LevelLoadingManager levelLoadingController)
         {
             this.gameData = gameData;
             this.questsController = questsController;

@@ -1,29 +1,30 @@
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
+using UnityEngine;
 
 namespace Scripts
 {
     public class GameTaskManager
     {
-        private ChallengeManager challengesController;
-        private TaskSectionView taskSectionView;
-        private TaskDescriptionSectionView taskDescriptionSectionView;
+        private ChallengeManager _challengeManager;
+        private DevEnvironmentSectionController _devEnvironmentSectionController;
+        private RewardingSectionController _rewardingSectionController;
+        private TaskDescriptionSectionController _taskDescriptionSectionController;
 
-        public GameTaskManager(ChallengeManager challengesController, TaskSectionView taskSectionView, TaskDescriptionSectionView taskDescriptionSectionView)
+        public GameTaskManager(ChallengeManager challengesManager, TaskDescriptionSectionController taskDescriptionSectionController)
         {
-            this.challengesController = challengesController;
-            this.taskSectionView = taskSectionView;
-            this.taskDescriptionSectionView = taskDescriptionSectionView;
+            _challengeManager = challengesManager;
+            _taskDescriptionSectionController = taskDescriptionSectionController;
         }
 
         public void LoadNewTask(TaskContent taskContent)
         {
-            SetCurrentTaskContent(taskContent);
-            taskDescriptionSectionView.SetContent(taskContent.Title.GetLocalizedString(), taskContent.Description.GetLocalizedString());
+            _taskDescriptionSectionController.SetContent(taskContent.Title.GetLocalizedString(), taskContent.Description.GetLocalizedString());
         }
 
-        public async UniTask ShowTaskContent() => await taskSectionView.ChangeMainContentVisibilityAsync(true);
+        public async UniTask ShowTaskContent() { } //await _taskSectionController.ChangeMainContentVisibilityAsync(true);
 
-        public async UniTask HideTaskContent() => await taskSectionView.ChangeMainContentVisibilityAsync(false);
+        public async UniTask HideTaskContent() { } //await _taskSectionController.ChangeMainContentVisibilityAsync(false);
 
         public void FinishTask() => _ = ProcessTaskResultsAsync(false);
 
@@ -32,22 +33,31 @@ namespace Scripts
         private async UniTask ProcessTaskResultsAsync(bool isTaskSkipped)
         {
             await HideTaskContent();
-            challengesController.CheckCurrentChallengesCompleting(isTaskSkipped);
+            _challengeManager.CheckCurrentChallengesCompleting(isTaskSkipped);
         }
 
 
-
-        private RewardingSectionView rewardingSectionView;
-
-        public async UniTask ShowChallengesResults((string description, bool isCompleted)[] challengeResults) => await rewardingSectionView.ShowChallengesResultsAsync(challengeResults);
+        public async UniTask ShowChallengesResults((string description, bool isCompleted)[] challengeResults) => await _rewardingSectionController.ShowChallengesResultsAsync(challengeResults);
 
         public void HideChallengesResults()
         {
             UniTask.Void(async () =>
             {
-                await rewardingSectionView.HideChallengesResultsAsync();
+                await _rewardingSectionController.HideChallengesResultsAsync();
                 //OnChallengesCompletingChecked?.Invoke();
             });
+        }
+
+
+        public async UniTask ChangeMainContentVisibilityAsync(bool isVisible)
+        {
+            var movementOffsetXSign = isVisible ? 1f : -1f;
+            var padViewRightMargin = 20;
+
+            await _taskDescriptionSectionController.SetVisibilityAsync(isVisible);
+
+            //padSectionView.transform.DOLocalMoveX(padSectionView.transform.localPosition.x - (padSectionView.GetComponent<RectTransform>().sizeDelta.x + padViewRightMargin) * movementOffsetXSign, 1f);
+            await UniTask.WaitForSeconds(1);
         }
     }
 }

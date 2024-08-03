@@ -7,80 +7,74 @@ namespace Scripts
     {
         public event Action NewTipShowed;
 
-        private PadTipsScreenView padTipsScreenView;
-        private TipSectionLabelsData tipStatusLabelsData;
-        private TipSectionLabelsData taskSkippingStatusLabelsData;
-        private int timeToNextTipInSeconds;
-        private int timeToSkipTaskInSeconds;
-        private string[] currentTaskTips;
-        private int currentTipIndex;
+        private TipsSectionController _tipsSectionController;
+        private TaskTipsConfig _taskTipsConfig;
+        private string[] _currentTaskTips;
+        private int _currentTipIndex;
 
-        public TaskTipManager(PadTipsScreenView padTipsScreenView, TipSectionLabelsData tipStatusLabelsData, TipSectionLabelsData taskSkippingStatusLabelsData, int timeToNextTipInSeconds, int timeToSkipTaskInSeconds)
+        public TaskTipManager(TipsSectionController tipsSectionController, TaskTipsConfig taskTipsConfig)
         {
-            this.padTipsScreenView = padTipsScreenView;
-            this.tipStatusLabelsData = tipStatusLabelsData;
-            this.taskSkippingStatusLabelsData = taskSkippingStatusLabelsData;
-            this.timeToNextTipInSeconds = timeToNextTipInSeconds;
-            this.timeToSkipTaskInSeconds = timeToSkipTaskInSeconds;
+            _tipsSectionController = tipsSectionController;
+            _taskTipsConfig = taskTipsConfig;
         }
 
         public void SetNewTips(string[] tips)
         {
-            currentTaskTips = tips;
-            currentTipIndex = 0;
-            padTipsScreenView.ClearTipText();
+            _currentTaskTips = tips;
+            _currentTipIndex = 0;
+            _tipsSectionController.ClearTipText();
             WaitUntilNextTip();
             WaitUntilTaskSkipping();
         }
 
-        public void ShowModalWindow() => padTipsScreenView.SetVisibility(true);
+        public void ShowModalSection() => _tipsSectionController.SetVisibility(true);
 
-        public void HideModalWindow() => padTipsScreenView.SetVisibility(false);
+        public void HideModalSection() => _tipsSectionController.SetVisibility(false);
 
         public void ShowTip()
         {
-            if (currentTipIndex < currentTaskTips.Length)
+            if (_currentTipIndex < _currentTaskTips.Length)
             {
-                padTipsScreenView.AddNewTipText(currentTaskTips[currentTipIndex]);
-                currentTipIndex++;
+                _tipsSectionController.AddNewTipText(_currentTaskTips[_currentTipIndex]);
+                _currentTipIndex++;
                 NewTipShowed.Invoke();
                 WaitUntilNextTip();
             }
             else
             {
-                padTipsScreenView.SetShowTipButtonState(false);
-                padTipsScreenView.SetTipStatusText(tipStatusLabelsData.ActionUnavailableText.GetLocalizedString());
+                _tipsSectionController.SetShowTipButtonInteractable(false);
+                _tipsSectionController.SetTipStatusText(_taskTipsConfig.TipStatusLabelsData.ActionUnavailableText.GetLocalizedString());
             }
         }
 
-        public void WaitUntilNextTip() => _ = WaitActionButtonUnlockingAsync(timeToNextTipInSeconds, 
+        public void WaitUntilNextTip() => _ = WaitActionButtonUnlockingAsync(_taskTipsConfig.TimeToNextTipInSeconds, 
         () =>
         {
-            padTipsScreenView.SetShowTipButtonState(false);
+            _tipsSectionController.SetShowTipButtonInteractable(false);
         },
         ((int minutes, int seconds) countdownCurrentTime) =>
         {
-            padTipsScreenView.SetTipStatusText(tipStatusLabelsData.ActionWaitingText.GetLocalizedString(string.Format("{0:d2}:{1:d2}", countdownCurrentTime.minutes, countdownCurrentTime.seconds)));
+            _tipsSectionController.SetTipStatusText(_taskTipsConfig.TipStatusLabelsData.ActionWaitingText.GetLocalizedString(string.Format("{0:d2}:{1:d2}", countdownCurrentTime.minutes, countdownCurrentTime.seconds)));
         },
         () =>
         {
-            padTipsScreenView.SetTipStatusText(tipStatusLabelsData.ActionAvailableText.GetLocalizedString());
-            padTipsScreenView.SetShowTipButtonState(true);
+            _tipsSectionController.SetTipStatusText(_taskTipsConfig.TipStatusLabelsData.ActionAvailableText.GetLocalizedString());
+            _tipsSectionController.SetShowTipButtonInteractable(true);
         });
 
-        public void WaitUntilTaskSkipping() => _ = WaitActionButtonUnlockingAsync(timeToSkipTaskInSeconds,
+        public void WaitUntilTaskSkipping() => _ = WaitActionButtonUnlockingAsync(_taskTipsConfig.TimeToSkipTaskInSeconds,
         () =>
         {
-            padTipsScreenView.SetSkipTaskButtonState(false);
+            _tipsSectionController.SetSkipTaskButtonInteractable(false);
         },
         ((int minutes, int seconds) countdownCurrentTime) =>
         {
-            padTipsScreenView.SetSkipTaskButtonLabelText(taskSkippingStatusLabelsData.ActionWaitingText.GetLocalizedString(string.Format("{0:d2}:{1:d2}", countdownCurrentTime.minutes, countdownCurrentTime.seconds)));
+            _tipsSectionController.SetSkipTaskButtonLabelText(_taskTipsConfig.TaskSkippingStatusLabelsData.ActionWaitingText.GetLocalizedString(string.Format("{0:d2}:{1:d2}", countdownCurrentTime.minutes, countdownCurrentTime.seconds)));
         },
         () =>
         {
-            padTipsScreenView.SetSkipTaskButtonState(true);
-            padTipsScreenView.SetSkipTaskButtonLabelText(taskSkippingStatusLabelsData.ActionAvailableText.GetLocalizedString());
+            _tipsSectionController.SetSkipTaskButtonInteractable(true);
+            _tipsSectionController.SetSkipTaskButtonLabelText(_taskTipsConfig.TaskSkippingStatusLabelsData.ActionAvailableText.GetLocalizedString());
         });
 
         private async UniTask WaitActionButtonUnlockingAsync(int waitingTimeInSeconds, Action beforeCountdownAction, Action<(int minutes, int seconds)> duringCountdownAction, Action afterCountdownAction)

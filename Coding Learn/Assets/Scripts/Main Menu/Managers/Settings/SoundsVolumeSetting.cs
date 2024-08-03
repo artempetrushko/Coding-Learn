@@ -10,7 +10,7 @@ namespace Scripts
         public override void ApplyValue()
         {
             var soundsVolume = int.Parse(CurrentFormattedValue);
-            AudioManager.SetSoundsVolume(soundsVolume);
+            SoundsManager.SetSoundsVolume(soundsVolume);
             SaveManager.SettingsData.SoundsVolume = soundsVolume;
         }
 

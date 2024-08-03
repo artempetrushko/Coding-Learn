@@ -1,5 +1,3 @@
-using Cysharp.Threading.Tasks;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,38 +6,16 @@ namespace Scripts
 {
     public class StorytellingSectionView : MonoBehaviour
     {
-        [SerializeField] 
-        private TMP_Text storyTextArea;
-        [SerializeField] 
-        private Button nextStoryPartButton;
-        [SerializeField] 
-        private Button skipStoryPartButton;
+        [SerializeField] private TMP_Text _storyText;
+        [SerializeField] private Button _nextStoryPartButton;
+        [SerializeField] private Button _skipStoryPartButton;
 
-        private bool isSkipButtonPressed = false;
+        public void SetNextStoryPartButtonActive(bool isActive) => _nextStoryPartButton.gameObject.SetActive(isActive);
 
-        public async UniTask ShowStoryTextAsync(string storyText, float textShowingTime)
-        {
-            skipStoryPartButton.gameObject.SetActive(true);
-            var latency = textShowingTime / storyText.Length;
-            for (var i = 0; i < storyText.Length; i++)
-            {
-                if (isSkipButtonPressed)
-                {
-                    isSkipButtonPressed = false;
-                    storyTextArea.text = storyText;
-                    break;
-                }
-                storyTextArea.text += storyText[i];
-                await UniTask.WaitForSeconds(latency);
-            }
-            skipStoryPartButton.gameObject.SetActive(false);
-            SetNextStoryPartButtonActive(true);
-        }
+        public void SetSkipStoryPartButtonActive(bool isActive) => _skipStoryPartButton.gameObject.SetActive(isActive);
 
-        public void SkipStoryTextShowing() => isSkipButtonPressed = true;
+        public void SetStoryText(string text) => _storyText.text = text;
 
-        public void ClearStoryTextArea() => storyTextArea.text = "";
-
-        public void SetNextStoryPartButtonActive(bool isActive) => nextStoryPartButton.gameObject.SetActive(isActive);
+        public void AddStoryTextFragment(string textFragment) => _storyText.text += textFragment;
     }
 }

@@ -11,7 +11,7 @@ namespace Scripts
         public override void InstallBindings()
         {
             Container.Bind<LoadingScreenView>().FromInstance(loadingScreenView).AsSingle().NonLazy();
-            Container.Bind<LevelLoadingController>().ToSelf().AsSingle().NonLazy();
+            Container.Bind<LevelLoadingManager>().ToSelf().AsSingle().NonLazy();
         }
     }
 }

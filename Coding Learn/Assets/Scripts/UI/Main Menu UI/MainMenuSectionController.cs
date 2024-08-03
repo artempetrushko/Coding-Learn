@@ -14,6 +14,11 @@ namespace Scripts
         [SerializeField]
         private Button mainMenuButtonPrefab;
 
+        public MainMenuSectionController(MainMenuSectionView mainMenuSectionView)
+        {
+            _mainMenuSectionView = mainMenuSectionView;
+        }
+
         public void CreateButtons(List<MainMenuButtonData> buttonDatas)
         {
             for (var i = 0; i < buttonDatas.Count; i++)
