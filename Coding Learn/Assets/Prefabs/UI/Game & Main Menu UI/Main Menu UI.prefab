@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 400}
-  m_SizeDelta: {x: 1450, y: 0}
+  m_SizeDelta: {x: 1450, y: 810}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2127652158601331306
 MonoBehaviour:
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 2902475427790757036}
   - component: {fileID: 4760372251015437560}
   m_Layer: 5
-  m_Name: MainMenuBackground_Part_6
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -300,9 +300,9 @@ RectTransform:
   - {fileID: 9139539682987906999}
   m_Father: {fileID: 3309306813507080842}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 725, y: -470}
   m_SizeDelta: {x: 1450, y: 680}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1903557408390685335
@@ -356,138 +356,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
---- !u!1 &538181212717269647
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6613460204405222867}
-  - component: {fileID: 7749203109660054370}
-  m_Layer: 5
-  m_Name: Button Pressed Sound
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &6613460204405222867
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 538181212717269647}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1329791057317620240}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!82 &7749203109660054370
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 538181212717269647}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fdf668d164eb54949b5dcd519a74a2f1, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &778499711592104355
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,31 +476,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8913695987787888160}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Scripts.LevelsManager, Assembly-CSharp
-        m_MethodName: LoadSelectedLevel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7749203109660054370}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1305742308406343258
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,8 +597,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3267614037066648520}
-  - component: {fileID: 7782321436927771399}
-  - component: {fileID: 173914069801139795}
+  - component: {fileID: 8575968913875056250}
   m_Layer: 5
   m_Name: Levels Section
   m_TagString: Untagged
@@ -786,7 +629,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7782321436927771399
+--- !u!114 &8575968913875056250
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -795,34 +638,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1732697405752145149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31c5d3ec911cc8b48ae3dbcf31642deb, type: 3}
+  m_Script: {fileID: 11500000, guid: ad2931a6856a57843b4ab887a3450677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelTitleLabel: {fileID: 8652861051993502712}
-  loadingBar: {fileID: 7032781562204364462}
-  loadingBarText: {fileID: 652368410787903366}
-  levelButtonPrefab: {fileID: 464588599847576821, guid: c1339debdc8ea6c46b99e95b1d2a2f9c, type: 3}
-  levelButtonsContainer: {fileID: 8594472882112967146}
-  levelThumbnailPrefab: {fileID: 6258050978051482661, guid: bbea65a71a0c73b49b4cde9ab6887b3c, type: 3}
+  _header: {fileID: 3225878635252462893}
+  _levelTitle: {fileID: 8652861051993502712}
+  _levelButtonsContainer: {fileID: 8594472882112967146}
   levelThumbnailContainer: {fileID: 6020884072863122827}
-  animator: {fileID: 173914069801139795}
---- !u!114 &173914069801139795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1732697405752145149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa4b9d5212dfe8c46b5ea77cd6f2095f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  header: {fileID: 3225878635252462893}
-  levelButtonsContainer: {fileID: 8423384613118290556}
-  levelThumbnailContainer: {fileID: 5799777692607201529}
-  blackScreen: {fileID: 1223031726147912078}
-  loadingBarContainer: {fileID: 7032781561356785831}
+  _blackScreen: {fileID: 1223031726147912078}
+  _loadingBar: {fileID: 7032781561950318157}
+  _loadingBarText: {fileID: 652368410787903366}
+  _loadingBarContainer: {fileID: 7032781561356785831}
 --- !u!1 &1800979439007457348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,7 +903,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7609846846524085631}
   m_HandleRect: {fileID: 5681757398137805405}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1378,31 +1204,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4762571236592926291}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8781845779652286049}
-        m_TargetAssemblyTypeName: Scripts.LevelStatsPanelBehaviour, Assembly-CSharp
-        m_MethodName: ReturnToLevelStatsCards
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7749203109660054370}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &2073905784340422844
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,15 +1291,14 @@ GameObject:
   - component: {fileID: 3768473200600199823}
   - component: {fileID: 3882697006969883809}
   - component: {fileID: 7530223199380353871}
-  - component: {fileID: 8781845779652286049}
-  - component: {fileID: 3684358022968444153}
+  - component: {fileID: 6684643840914971128}
   m_Layer: 5
   m_Name: Stats Section
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3768473200600199823
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1557,7 +1358,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8781845779652286049
+--- !u!114 &6684643840914971128
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1566,29 +1367,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2074264845593740864}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a248243e0a63cb4b86ea138fa0f34e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2fa00efff41c5dc4ba91208bba831321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backToPreviousPageButton: {fileID: 2440617171808965782}
-  levelStatsCards: {fileID: 5218922395067848399}
-  detalizedLevelStats: {fileID: 4617230016015052967}
-  levelStatsCardPrefab: {fileID: 2298066735332693312, guid: 213a6eb09f14a8744820002814d48fb8, type: 3}
-  taskStatsPrefab: {fileID: 3819021977943199974, guid: 2b016a541602767498ed6545c09a961c, type: 3}
-  animator: {fileID: 3684358022968444153}
---- !u!114 &3684358022968444153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2074264845593740864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c2efa50499bff0498812e4d48abe34c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelCardsContainer: {fileID: 7044882807787386990}
-  detailedLevelStatsContainer: {fileID: 5869250343269518594}
+  _backToPreviousPageButton: {fileID: 0}
+  _levelStatsCardsContainer: {fileID: 0}
+  _detalizedLevelStatsContainer: {fileID: 0}
 --- !u!1 &2174373812827944167
 GameObject:
   m_ObjectHideFlags: 0
@@ -1661,9 +1445,9 @@ RectTransform:
   m_Father: {fileID: 589866944802812605}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -17, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &818183053677179532
 CanvasRenderer:
@@ -1716,42 +1500,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
---- !u!1 &3000587456088307383
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1329791057317620240}
-  m_Layer: 5
-  m_Name: Sounds
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1329791057317620240
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3000587456088307383}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6613460204405222867}
-  m_Father: {fileID: 7032781561219939391}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3225878635252462893
 GameObject:
   m_ObjectHideFlags: 0
@@ -2460,7 +2208,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6129916416875090195}
   m_HandleRect: {fileID: 4255936193003501366}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2478,7 +2226,7 @@ GameObject:
   - component: {fileID: 6453810760844293084}
   - component: {fileID: 8997591749186448920}
   m_Layer: 5
-  m_Name: MainMenuBackground_Part_5
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2662,31 +2410,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1848544919418972643}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Scripts.MenuScript, Assembly-CSharp
-        m_MethodName: ReturnToMainMenuFrom_Levels
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7749203109660054370}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &4617230016015052967
 GameObject:
   m_ObjectHideFlags: 0
@@ -2722,7 +2446,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.0000150972755}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 20}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5263612328917931951
 MonoBehaviour:
@@ -2797,7 +2521,7 @@ RectTransform:
   m_Father: {fileID: 7388179806545448226}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3245,31 +2969,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5175310128199307756}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Scripts.SettingsManager, Assembly-CSharp
-        m_MethodName: ApplySettings
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7749203109660054370}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &5175310129036649923
 GameObject:
   m_ObjectHideFlags: 0
@@ -3529,7 +3229,6 @@ GameObject:
   - component: {fileID: 5325128759844040381}
   - component: {fileID: 6382060950573588170}
   - component: {fileID: 652368410787903366}
-  - component: {fileID: 6977985490729736432}
   m_Layer: 5
   m_Name: Loading Text
   m_TagString: Untagged
@@ -3653,46 +3352,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &6977985490729736432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5626379733006550793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_StringReference:
-    m_TableReference:
-      m_TableCollectionName: GUID:02abbeed9d2c7a04f832fac58efa559e
-    m_TableEntryReference:
-      m_KeyId: 5118553519636480
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  m_FormatArguments: []
-  m_UpdateString:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 652368410787903366}
-        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
-        m_MethodName: set_text
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-  references:
-    version: 2
-    RefIds: []
 --- !u!1 &5869250343269518594
 GameObject:
   m_ObjectHideFlags: 0
@@ -4076,7 +3735,7 @@ GameObject:
   - component: {fileID: 6971943816569339562}
   - component: {fileID: 3316172993817694005}
   m_Layer: 5
-  m_Name: MainMenuBackground_Part_3
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4172,7 +3831,7 @@ RectTransform:
   m_Father: {fileID: 1880703327452473374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4226,7 +3885,7 @@ GameObject:
   - component: {fileID: 6516322206095619057}
   - component: {fileID: 1110522455537823235}
   m_Layer: 5
-  m_Name: MainMenuBackground_Part_4
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4301,7 +3960,6 @@ GameObject:
   - component: {fileID: 5035371836617948936}
   - component: {fileID: 2418524594464742053}
   - component: {fileID: 8168222511405696450}
-  - component: {fileID: 3788173956527654160}
   m_Layer: 5
   m_Name: Main Menu Section
   m_TagString: Untagged
@@ -4380,29 +4038,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d2b9185367cf94e80c82abfde9908b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonsContainer: {fileID: 7032781561633503588}
-  mainMenuButtonPrefab: {fileID: 7963960327802078141, guid: dd434eb53a3fa0a4b97756a83afdebc5, type: 3}
-  animator: {fileID: 3788173956527654160}
---- !u!114 &3788173956527654160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6947504271600097285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef863ce686502e14b98df091fe103c3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  content: {fileID: 7032781562124994803}
-  backgroundParts:
-  - {fileID: 7032781561987146846}
-  - {fileID: 7032781561475202647}
-  - {fileID: 3316172993817694005}
-  - {fileID: 1110522455537823235}
-  - {fileID: 8997591749186448920}
-  - {fileID: 4760372251015437560}
+  _content: {fileID: 7032781562124994803}
+  _buttonsContainer: {fileID: 7032781561633503588}
+  _backgroundPartsContainer: {fileID: 7032781561295015374}
   blackScreen: {fileID: 7032781562333866392}
 --- !u!1 &7032781561079700985
 GameObject:
@@ -4413,15 +4051,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7032781561079700966}
-  - component: {fileID: 5888334518069222364}
-  - component: {fileID: 8671325661822284683}
+  - component: {fileID: 8891315555947955731}
   m_Layer: 5
   m_Name: Settings Section
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7032781561079700966
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4443,7 +4080,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 1080.1}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5888334518069222364
+--- !u!114 &8891315555947955731
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4452,25 +4089,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7032781561079700985}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b88f66d8b7aeee42ae07f3e611ae844, type: 3}
+  m_Script: {fileID: 11500000, guid: 3323e6bd80712f94abccfdca1f1726cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliderOptionViewPrefab: {fileID: 5022240117730091843, guid: 49de2ea326daee44fba598819222f5f5, type: 3}
-  switchesOptionViewPrefab: {fileID: 6033452794583546593, guid: ccfb0b08f09bf6443b2bfbf02bf6566c, type: 3}
-  settingsContainer: {fileID: 5175310129036649923}
-  animator: {fileID: 8671325661822284683}
---- !u!114 &8671325661822284683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7032781561079700985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 879103aa81477ec428e226e5e4b77524, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _settingViewsContainer: {fileID: 5175310129036649923}
 --- !u!1 &7032781561219939379
 GameObject:
   m_ObjectHideFlags: 0
@@ -4502,7 +4124,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1329791057317620240}
   - {fileID: 4466342329955535997}
   - {fileID: 3267614037066648520}
   - {fileID: 3768473200600199823}
@@ -4667,7 +4288,7 @@ GameObject:
   - component: {fileID: 7032781561475202644}
   - component: {fileID: 7032781561475202647}
   m_Layer: 5
-  m_Name: MainMenuBackground_Part_2
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4971,7 +4592,7 @@ GameObject:
   - component: {fileID: 7032781561987146847}
   - component: {fileID: 7032781561987146846}
   m_Layer: 5
-  m_Name: MainMenuBackground_Part_1
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5218,31 +4839,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7032781562129279789}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
-        m_MethodName: ReturnToMainMenuFrom_Settings
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7749203109660054370}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &7032781562204364448
 GameObject:
   m_ObjectHideFlags: 0
@@ -5798,9 +5395,9 @@ RectTransform:
   m_Father: {fileID: 9139539682987906999}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -17, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &3002567384284759337
 CanvasRenderer:
@@ -5973,31 +5570,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7941296357421229086}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Scripts.MenuScript, Assembly-CSharp
-        m_MethodName: ReturnToMainMenuFrom_Stats
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7749203109660054370}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &8136514071779825038
 GameObject:
   m_ObjectHideFlags: 0
@@ -6474,8 +6047,8 @@ RectTransform:
   - {fileID: 6626736907974192768}
   m_Father: {fileID: 3309306813507080842}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 725, y: -55}
   m_SizeDelta: {x: 1450, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}

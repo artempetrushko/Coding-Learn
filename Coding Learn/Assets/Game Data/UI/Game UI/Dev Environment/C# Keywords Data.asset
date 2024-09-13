@@ -12,39 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23d80b717f404146aebfdb2c6f062c2, type: 3}
   m_Name: C# Keywords Data
   m_EditorClassIdentifier: 
-  methodNameColor: {r: 0.9882353, g: 1, b: 0.57254905, a: 1}
-  localVariablesColor: {r: 0, g: 1, b: 1, a: 1}
-  keywordColors:
-  - color: {r: 0.19607843, g: 0.6039216, b: 1, a: 1}
-    keywords:
-    - public
-    - private
-    - static
-    - var
-    - int
-    - double
-    - float
-    - void
-    - bool
-    - true
-    - false
-    - char
-    - string
-    - long
-    - new
-    - class
-    - enum
-  - color: {r: 0.7764706, g: 0.45490196, b: 0.99215686, a: 1}
-    keywords:
-    - if
-    - else
-    - for
-    - while
-    - switch
-    - case
-    - break
-    - continue
-    - yield
-    - try
-    - catch
-    - return
+  _methodNameColor: {r: 0, g: 0, b: 0, a: 0}
+  _localVariablesColor: {r: 0, g: 0, b: 0, a: 0}
+  _keywordColors:
+  - _color: {r: 0, g: 0, b: 0, a: 0}
+    _keywords: []

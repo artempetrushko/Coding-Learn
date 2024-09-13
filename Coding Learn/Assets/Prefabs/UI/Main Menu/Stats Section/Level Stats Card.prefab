@@ -388,7 +388,6 @@ GameObject:
   m_Component:
   - component: {fileID: 57164094922407950}
   - component: {fileID: 2298066735332693312}
-  - component: {fileID: 2635709008523463958}
   m_Layer: 5
   m_Name: Level Stats Card
   m_TagString: Untagged
@@ -425,26 +424,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6649131332753797870}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: affd78d5da01957468aff564dfec7a99, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f47ef0b41d79b0418570067a0433a74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showDetailedStatsButton: {fileID: 6576092415544699148}
-  levelThumbnail: {fileID: 2472848778903440841}
-  starsCounterText: {fileID: 4126240735795248125}
---- !u!114 &2635709008523463958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6649131332753797870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 411a686c770dcae40854c78dc8ea56b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  foreground: {fileID: 6471236029447890736}
-  starsCounter: {fileID: 6575596784255107294}
+  _showDetailedStatsButton: {fileID: 6576092415544699148}
+  _levelThumbnail: {fileID: 2472848778903440841}
+  _starsCounter: {fileID: 6575596784255107294}
+  _starsCounterText: {fileID: 4126240735795248125}
+  _foreground: {fileID: 6471236029447890736}
 --- !u!1 &6745751903132087495
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,7 +674,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2635709008523463958}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: Scripts.LevelStatsCardAnimator, Assembly-CSharp
           m_MethodName: ShowStarsCounter
           m_Mode: 1
@@ -703,7 +690,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2635709008523463958}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: Scripts.LevelStatsCardAnimator, Assembly-CSharp
           m_MethodName: HideStarsCounter
           m_Mode: 1

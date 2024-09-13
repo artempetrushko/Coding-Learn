@@ -1,39 +1,21 @@
 ﻿using UnityEngine;
 using Zenject;
 
-namespace Scripts
+namespace GameLogic
 {
     public class GameBootstrap : MonoBehaviour
     {
-        private GameData gameData;
-        private QuestManager questsController;
-        private LevelLoadingManager levelLoadingController;        
+        private GameManager _gameManager;
 
         [Inject]
-        public void Construct(GameData gameData, QuestManager questsController, LevelLoadingManager levelLoadingController)
+        public void Construct(GameManager gameManager)
         {
-            this.gameData = gameData;
-            this.questsController = questsController;
-            this.levelLoadingController = levelLoadingController;
+            _gameManager = gameManager;
         }
 
-        public void LoadNextScene()
-        {
-           // saveManager.SaveProgress(Mathf.Clamp(CurrentLevelNumber + 1, 1, gameData.LevelsCount));
-
-            //var nextSceneIndex = (CurrentLevelNumber + 1) % (gameData.LevelsCount + 1);
-            //_ = sceneLoadingManager.LoadNextSceneAsync(nextSceneIndex);
-        }
-
-        private void Start()
-        {
-            //saveController.LoadSaveData();
-
-            //var currentLevel = SceneManager.GetActiveScene();           
-            //var currentLevelData = gameData.LevelDatas.First(data => data.)
-
-            questsController.LoadLevelContent(gameData.LevelDatas[0].Content);
-            questsController.StartFirstQuest();
-        }
-    }
+		private void Start()
+		{
+            _gameManager.StartGame();
+		}
+	}
 }
