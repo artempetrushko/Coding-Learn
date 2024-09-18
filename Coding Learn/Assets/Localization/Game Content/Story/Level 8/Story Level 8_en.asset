@@ -1,0 +1,207 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Story Level 8_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 89e455ff1cd619d468669c8ceff2804f, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 405781929984
+    m_Localized: The robot came to a small dark crevice that goes far into the depths
+      of the mountain range. It seems that this is exactly the place that his friend
+      was talking about when he sent the SOS signal. Without thinking twice, he went
+      inside. Darkness enveloped him from all sides , only a small amount of light
+      was coming from the entrance.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405798707200
+    m_Localized: Ahead, there were barely visible outlines of some long-abandoned
+      camp. It was impossible to move further in the darkness, and therefore the
+      robot decided to look for at least something that could emit light. On the
+      ground, in addition to stones, various debris and debris, there were long-extinguished
+      torches. However, without fire, they were of no use.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405798707201
+    m_Localized: The mechanical traveler continued his search, and soon found a small
+      chest with a combination lock on his eyepieces.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405798707202
+    m_Localized: "After examining it and holding it up to the light from the crevice,
+      the robot noticed a note at the bottom: \u201D1.1^10 after the decimal point\u201D.
+      Apparently, the owner left this riddle so as not to forget the code."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405798707203
+    m_Localized: Bingo! The hint turned out to be correct, and in the chest, among
+      other things, there was a flint and a jar of resin for the torch. The robot
+      smeared the torch with a viscous substance and struck sparks over it a couple
+      of times.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405798707204
+    m_Localized: The fire broke out, and the traveler began to gradually move deep
+      into the mighty ridge.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405798707205
+    m_Localized: 'The cave turned out to be by no means small: there were many branches
+      and forks along the way, the only thing that gave confidence was that they
+      were all small and stood out against the background of the main tunnel.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405798707206
+    m_Localized: 'However, having reached the next fork, the robot could no longer
+      choose a direction: the main road became too much like secondary ones.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405798707207
+    m_Localized: 'In the light of the torch, various scribbles, some numbers and
+      crossed out words were visible on the stone walls. Someone obviously spent
+      a lot of time here trying to find the right path. The robot noticed strange
+      signs above the passages. With the help of a built-in translator, he quickly
+      managed to decipher them, it turns out that it was the numbering: 4, 231, 6,
+      8993, 720. Against the background of various inscriptions, a strange charcoal
+      poem stood out, in the language familiar to the robot: Yes, there are many
+      options! But the number 6 will be correct! so simple? If the owner of the chest
+      wrote this, then he must have resorted to mathematical tricks again.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405798707208
+    m_Localized: The factorial of six turned out to be 720, and the robot decided
+      to follow the path with that number.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405798707209
+    m_Localized: Soon, the cramped tunnel began to expand rapidly, and then gave
+      way to a spacious long corridor, at the end of which a metal grate was visible,
+      blocking the path further.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405802901504
+    m_Localized: 'Above it were the numbers: 34. Nearby, on one of the walls, there
+      was a set of levers. Moving closer, the robot noticed that the first four levers
+      were numbered: 1, 1, 2, 3 ..., and the remaining 6 were not. This sequence
+      immediately seemed familiar to the robot: Perhaps these are Fibonacci numbers
+      - he thought and decided to calculate the rest of the numbers.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405802901505
+    m_Localized: The robot did the necessary calculations and numbered the remaining
+      levers. It turned out that one of them has the same number as above the door
+      - 34. Pulling on it, the robot saw how the steel bars in the passage were lowered.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405802901506
+    m_Localized: Now the path is open and the robot has confidently moved on...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405802901507
+    m_Localized: He nearly fell into the hole right under his feet!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405802901508
+    m_Localized: "He raised the torch higher: a spacious cave opened before him with
+      a floor paved with stone slabs, but some of them were missing. Instead, there
+      was a bottomless abyss, and the light of the fire did not allow one to assess
+      what was down there. without thinking - dangerous, because it is not known
+      which plates can still collapse. The robot noticed that different numbers were
+      carved on each of them, and on the very first it was written: \u201CThe test
+      will pass the one who finds a simple way.\u201D What if you only need to step
+      on tiles containing prime numbers? The robot decided to take a chance and test
+      his hypothesis."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405802901509
+    m_Localized: 'The hypothesis turned out to be correct: the robot successfully
+      passed to the opposite end of the cave. There was a narrow slippery passage
+      ahead of it. It smelled damp from there and the robot did not really want to
+      go down there, since its parts could rust, but there was no other way.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405802901510
+    m_Localized: The robot began to gently descend, and the lower it was, the louder
+      some kind of murmur became. Apparently, it was water.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405802901511
+    m_Localized: Then he got into a room, in the center of which there were four
+      small stone pedestals with bowls. On the ceiling, right above them, words were
+      carved in a language he did not understand. Looking around, he noticed the
+      same murmuring water flowing down the wall and flooding the whole floor.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405802901512
+    m_Localized: 'Nearby lay another bowl, on the bottom of which was written: ''Pour
+      the water where the words do not lose their meaning.'' What could that mean?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405802901513
+    m_Localized: 'after a little thought, the robot realized what it could be about:
+      after all, words are carved on the ceiling, and if you pour water into one
+      of the bowls, then the corresponding word will be visible in the reflection.
+      However, it will be mirrored and therefore lose the whole point. So, you need
+      to find a bowl, over which there is a palindrome word that reads the same on
+      both sides.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405802901514
+    m_Localized: The robot determined the word, drew water, then poured it into the
+      right bowl, and under the influence of gravity, the vessel fell down.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405802901515
+    m_Localized: Next, a staircase opened in the wall opposite, leading somewhere
+      upstairs. It seems that the robot did everything right and the exit will be
+      very soon.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405802901516
+    m_Localized: As it rose, the light increased, and the familiar sounds of nature
+      began to come up.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405802901517
+    m_Localized: Finally, the robot saw the rays of the sun breaking through a small
+      archway. This is the way out! But the iron bars blocked the path again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405802901518
+    m_Localized: There was a path of pressure plates on the floor leading to it,
+      one after the other in a row.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405802901519
+    m_Localized: 'The robot couldn''t find any clues, all that was left to do was
+      to experiment. He decided to step on the first slab and saw the rods go down
+      a bit. Well, it seems simple, he thought, and stepped on the next slab, but
+      this time nothing happened. He stepped aside and stood on it again: the bars
+      again lowered a little. The next one also had to be stepped on twice.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405802901520
+    m_Localized: The robot did an analytical calculation and found the most likely
+      pattern. It remains to accurately calculate the required number of clicks on
+      each plate, because if you make a mistake, you don't know what can happen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405802901521
+    m_Localized: The robot moved on.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

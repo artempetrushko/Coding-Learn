@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 204f7232bb70d634c8c913e9d9dbea0a, type: 3}
+  m_Name: 7
+  m_EditorClassIdentifier: 
+  <Title>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <Description>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <StartCode>k__BackingField: 'private string[] FixPathMatrix(string[] matrix)
+
+    {
+
+
+    }'
+  <TestData>k__BackingField:
+    <TestCode>k__BackingField: using System;\nusing System.Text;\nusing System.Text.RegularExpressions;\n\npublic
+      class Level6Task7\n{\n//<playerCode>\n    private readonly string[] pattern=
+      new string[]\n        {\n            \"00000000000000000[F]\",\n           
+      \"00000000000000000000\",\n            \"00000000000000000000\",\n           
+      \"00000000000000000000\",\n            \"00000000000000000000\",\n           
+      \"00000000000000000000\",\n            \"00000000000000000000\",\n           
+      \"[S]00000000000000000\"\n        };\n    public bool isTaskCompleted()\n   
+      {\n        var random = new Random();\n        return Check(random)&& Check(random);\n   
+      }\n\n    private bool Check(Random random)\n    {\n        var array = CreateArray(random);\n       
+      return StringArrEquals(CommonCheck(array), FixPathMatrix(array));\n    }\n   
+      private bool StringArrEquals(string[] arr1, string[] arr2)\n    {\n       
+      if (arr1.Length != arr2.Length)\n            return false;\n        for (int
+      i = 0; i < arr1.Length; i++)\n            if (arr1[i] != arr2[i])\n               
+      return false;\n        return true;\n    }\n    string[] CommonCheck(string[]
+      arr)\n    {\n        var rgx = new Regex(\"[23456789]\");\n        var taskCorrectArray2
+      = new string[arr.Length];\n        for (int i = 0; i < arr.Length; i++)\n       
+      {\n            taskCorrectArray2[i] = rgx.Replace(arr[i], \"0\");\n       
+      }\n        return taskCorrectArray2;\n    }\n    private string[] CreateArray(Random
+      random)\n    {\n        var array = new string[pattern.Length];\n        for
+      (int i = 0; i < array.Length; i++)\n        {\n            var sb = new StringBuilder();\n           
+      for (int j = 0; j < pattern[0].Length; j++)\n            {\n               
+      if(pattern[i][j] == '0')\n                    sb.Append((char)random.Next(48,
+      57));\n                else sb.Append(pattern[i][j]);\n            }\n           
+      array[i] = sb.ToString();\n        }\n\n        return array;\n    }   \n}
+    <TestSettings>k__BackingField: {fileID: 11400000, guid: db8d7be98c2fe8d4487298176efef010, type: 2}
+  <Tips>k__BackingField: []
+  <Challenges>k__BackingField: {fileID: 11400000, guid: d743f68061c8a32419f677686c10b2e7, type: 2}
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,312 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Training Theme (Basics (Part 1)) Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Training Theme (Basics (Part 1))
+  m_TableCollectionNameGuidString: 0f617665f1ffda44a891d41af116836c
+  m_Entries:
+  - m_Id: 16311443456
+    m_Key: Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16324026368
+    m_Key: SubTheme.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16324026369
+    m_Key: SubTheme.0.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16324026370
+    m_Key: SubTheme.0.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220672
+    m_Key: SubTheme.0.TrainingData.1.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220673
+    m_Key: SubTheme.0.TrainingData.1.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220674
+    m_Key: SubTheme.0.TrainingData.2.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220675
+    m_Key: SubTheme.0.TrainingData.2.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220676
+    m_Key: SubTheme.0.TrainingData.3.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220677
+    m_Key: SubTheme.0.TrainingData.3.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220678
+    m_Key: SubTheme.0.TrainingData.4.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220679
+    m_Key: SubTheme.0.TrainingData.4.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220680
+    m_Key: SubTheme.0.TrainingData.5.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220681
+    m_Key: SubTheme.0.TrainingData.5.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220682
+    m_Key: SubTheme.0.TrainingData.6.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220683
+    m_Key: SubTheme.0.TrainingData.6.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220684
+    m_Key: SubTheme.0.TrainingData.7.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220685
+    m_Key: SubTheme.0.TrainingData.7.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220686
+    m_Key: SubTheme.0.TrainingData.8.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220687
+    m_Key: SubTheme.0.TrainingData.8.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220688
+    m_Key: SubTheme.0.TrainingData.9.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220689
+    m_Key: SubTheme.0.TrainingData.9.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220690
+    m_Key: SubTheme.1.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220691
+    m_Key: SubTheme.1.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220692
+    m_Key: SubTheme.1.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220693
+    m_Key: SubTheme.1.TrainingData.1.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220694
+    m_Key: SubTheme.1.TrainingData.1.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220695
+    m_Key: SubTheme.1.TrainingData.2.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220696
+    m_Key: SubTheme.1.TrainingData.2.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220697
+    m_Key: SubTheme.1.TrainingData.3.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220698
+    m_Key: SubTheme.1.TrainingData.3.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220699
+    m_Key: SubTheme.1.TrainingData.4.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220700
+    m_Key: SubTheme.1.TrainingData.4.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220701
+    m_Key: SubTheme.2.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220702
+    m_Key: SubTheme.2.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220703
+    m_Key: SubTheme.2.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220704
+    m_Key: SubTheme.2.TrainingData.1.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220705
+    m_Key: SubTheme.2.TrainingData.1.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220706
+    m_Key: SubTheme.2.TrainingData.2.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220707
+    m_Key: SubTheme.2.TrainingData.2.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220708
+    m_Key: SubTheme.2.TrainingData.3.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220709
+    m_Key: SubTheme.2.TrainingData.3.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220710
+    m_Key: SubTheme.2.TrainingData.4.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220711
+    m_Key: SubTheme.2.TrainingData.4.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220712
+    m_Key: SubTheme.2.TrainingData.5.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220713
+    m_Key: SubTheme.2.TrainingData.5.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220714
+    m_Key: SubTheme.3.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16328220715
+    m_Key: SubTheme.3.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16332414976
+    m_Key: SubTheme.3.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16332414977
+    m_Key: SubTheme.3.TrainingData.1.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16332414978
+    m_Key: SubTheme.3.TrainingData.1.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16332414979
+    m_Key: SubTheme.3.TrainingData.2.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16332414980
+    m_Key: SubTheme.3.TrainingData.2.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16332414981
+    m_Key: SubTheme.4.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16332414982
+    m_Key: SubTheme.4.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16332414983
+    m_Key: SubTheme.4.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16332414984
+    m_Key: SubTheme.5.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16332414985
+    m_Key: SubTheme.5.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16332414986
+    m_Key: SubTheme.5.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16332414987
+    m_Key: SubTheme.6.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16332414988
+    m_Key: SubTheme.6.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16332414989
+    m_Key: SubTheme.6.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16332414990
+    m_Key: SubTheme.6.TrainingData.1.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16332414991
+    m_Key: SubTheme.6.TrainingData.1.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16332414992
+    m_Key: SubTheme.6.TrainingData.2.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16332414993
+    m_Key: SubTheme.6.TrainingData.2.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16332414994
+    m_Key: SubTheme.6.TrainingData.3.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16332414995
+    m_Key: SubTheme.6.TrainingData.3.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16332414996
+    m_Key: SubTheme.7.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16332414997
+    m_Key: SubTheme.7.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16332414998
+    m_Key: SubTheme.7.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5744031335168081930
+  references:
+    version: 2
+    RefIds:
+    - rid: 5744031335168081930
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1714717669371

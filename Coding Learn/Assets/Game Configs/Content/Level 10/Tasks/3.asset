@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 204f7232bb70d634c8c913e9d9dbea0a, type: 3}
+  m_Name: 3
+  m_EditorClassIdentifier: 
+  <Title>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <Description>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <StartCode>k__BackingField: 'public bool CheckSituation(string[,] firstTest)
+
+    {
+
+
+    }'
+  <TestData>k__BackingField:
+    <TestCode>k__BackingField: using System;\nusing System.Collections.Generic;\n\n\npublic
+      class Level10Task3\n{\n//<playerCode>\n    public bool isTaskCompleted()\n   
+      {\n\n        return Check();\n    }\n\n    private bool Check()\n    {\n       
+      var firstTest = new string[,]\n        {\n            {\"brk\",\"bkt\",\"bbp\",\"bqn\",\"bkg\",\"bbp\",\"bkt\",\"brk\"},\n           
+      {\"bpn\",\"bpn\",\"bpn\",\"bpn\",\"bpn\",\"bpn\",\"bpn\",\"bpn\"},\n           
+      {\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"},\n            {\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"},\n           
+      {\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"},\n            {\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"},\n           
+      {\"wpn\",\"wpn\",\"wpn\",\"wpn\",\"wpn\",\"wpn\",\"wpn\",\"wpn\"},\n           
+      {\"wrk\",\"wkt\",\"wbp\",\"wqn\",\"wkg\",\"wbp\",\"wkt\",\"wrk\"}\n       
+      };\n        var secondTest = new string[,]\n        {\n            {\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"},\n           
+      {\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"},\n            {\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"},\n           
+      {\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"},\n            {\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"},\n           
+      {\"\",\"\",\"bkg\",\"\",\"\",\"\",\"\",\"\"},\n            {\"\",\"bqn\",\"\",\"\",\"\",\"\",\"\",\"\"},\n           
+      {\"\",\"wkg\",\"\",\"\",\"\",\"\",\"\",\"\"}\n        };\n        var thirdTest
+      = new string[,]\n        {\n            {\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"},\n           
+      {\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"},\n            {\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"},\n           
+      {\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"},\n            {\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"},\n           
+      {\"\",\"\",\"\",\"bkg\",\"\",\"\",\"\",\"\"},\n            {\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"},\n           
+      {\"\",\"\",\"\",\"wkg\",\"\",\"\",\"brk\",\"\"}\n        };\n        var fourthTest
+      = new string[,]\n        {\n            {\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"},\n           
+      {\"\",\"bkg\",\"\",\"\",\"\",\"\",\"\",\"\"},\n            {\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"},\n           
+      {\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"wpn\"},\n            {\"\",\"bqn\",\"\",\"\",\"\",\"wkg\",\"\",\"\"},\n           
+      {\"\",\"\",\"\",\"\",\"\",\"wqn\",\"\",\"\"},\n            {\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"},\n           
+      {\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"},\n        };\n        var fithTest
+      = new string[,]\n        {\n            {\"\",\"\",\"\",\"\",\"\",\"\",\"bkg\",\"\"},\n           
+      {\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"bpn\"},\n            {\"\",\"\",\"\",\"\",\"\",\"\",\"bpn\",\"\"},\n           
+      {\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"},\n            {\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"},\n           
+      {\"\",\"\",\"\",\"\",\"\",\"wrk\",\"\",\"\"},\n            {\"\",\"\",\"\",\"\",\"\",\"\",\"wpn\",\"wpn\"},\n           
+      {\"\",\"\",\"\",\"brk\",\"\",\"\",\"wkg\",\"\"}\n        };\n        return
+      !CheckSituation(firstTest)&&CheckSituation(secondTest)&&CheckSituation(thirdTest)&&!CheckSituation(fourthTest)&&!CheckSituation(fithTest);\n   
+      }\n}
+    <TestSettings>k__BackingField: {fileID: 11400000, guid: db8d7be98c2fe8d4487298176efef010, type: 2}
+  <Tips>k__BackingField: []
+  <Challenges>k__BackingField: {fileID: 11400000, guid: d743f68061c8a32419f677686c10b2e7, type: 2}
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Tasks Level 8_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: d7407ab2e450dbc458550b4cd0393dce, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 14566612992
+    m_Localized: Raise to Power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14583390208
+    m_Localized: You need to recursively raise a number to a power and take 4 digits
+      after the decimal point and return them in a list
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14583390209
+    m_Localized: Factorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14583390210
+    m_Localized: We need to return the factorial of the number n
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14583390211
+    m_Localized: Fibonacci
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14583390212
+    m_Localized: Need to return the nth Fibonacci number
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14583390213
+    m_Localized: Prime Numbers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14583390214
+    m_Localized: Need to check if number is prime
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14583390215
+    m_Localized: Palindrome
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14583390216
+    m_Localized: Need to check if the string is a palindrome
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14583390217
+    m_Localized: Sequence
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14583390218
+    m_Localized: You need to return a sequence where n occurs n times
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,238 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Training Theme (Sorting Algorithms)_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 59c3c1ae2db30ec4a8336b826f3f5542, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 458953121792
+    m_Localized: Sorting algorithms
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899008
+    m_Localized: Introduction to algorithms
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899009
+    m_Localized: Algorithms and their efficiency
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899010
+    m_Localized: "In programming, we often have to work with a set of data, such
+      as searching for elements in it or sorting it. For such purposes, we use algorithms,
+      and in general, we can say that the whole program is one continuous algorithm.\n
+      An algorithm represents is a sequence of steps that is designed to solve a
+      specific problem.In other words, an algorithm is a way to solve this problem.\n
+      \n An important criterion for an algorithm is efficiency.An algorithm can perfectly
+      solve a given problem, but be inefficient.As a rule, the efficiency of an algorithm
+      means time for which this algorithm should be executed.You can also look at
+      the efficiency of the algorithm in terms of the memory required for the operation,
+      but we will not touch on this."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899011
+    m_Localized: Basic types of algorithm complexity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899012
+    m_Localized: "The complexity of an algorithm indicates how many operations the
+      algorithm will, in the worst case, perform before returning the correct answer.
+      Depending on the efficiency, there are many types of algorithms, among which
+      the following can be distinguished (listed in order of decreasing efficiency):\n
+      \n 1 .Const\n Performs a fixed number of operations, which usually take constant
+      time.For example, imagine an algorithm that prints the first 5 elements from
+      an array to the screen.Then in the worst case, it will have to perform 5 iterations,
+      and if the array is short, length is only 3, then the algorithm performs only
+      3 iterations."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899013
+    m_Localized: 2. Logarithmic (logN)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899014
+    m_Localized: "Hereinafter, N is the size of the input data to the algorithm.\n
+      The logarithmic algorithm runs slower than programs with constant time. The
+      increase in execution time as N grows will increase by some constant amount."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899015
+    m_Localized: 3. Linear (N)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899016
+    m_Localized: Here, the execution of the method depends on n. What value for n
+      will be passed to the method, the number of times the loop will be executed.
+      That is, the increase in the complexity of the algorithm for this method is
+      proportional to the value of n, which is why it is called linear.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899017
+    m_Localized: 4. Quadratic (N^2)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899018
+    m_Localized: "As a rule, the methods that correspond to this algorithm contain
+      two loops - an outer and a nested one, which are executed for all values \u200B\u200Bup
+      to N.\n \n There are other variations, and we will touch on one of them a little
+      later. Worth also note that complexity is usually denoted by the letter \u201CO.\u201D
+      For example, for a quadratic algorithm, the complexity will be O(N^2).This
+      letter has a certain meaning, but for now we will not go deep into it and we
+      will assume that it is simply indicates difficulty."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899019
+    m_Localized: Bubble Sort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899020
+    m_Localized: "Bubble sort is one of the most well-known sorting algorithms. Here
+      you need to sequentially compare the values of adjacent elements and swap numbers
+      if the previous one is greater than the next one. This way, elements with larger
+      values end up at the end of the list, while those with smaller values remain
+      at the beginning .\n \n This algorithm is considered educational and almost
+      never used in practice due to low efficiency: it is slow on tests in which
+      small elements (called turtles) are at the end of the array.However, many other
+      methods are based on it, for example, shaker sort and comb sort.The complexity
+      of such an algorithm is quite large - O(N^2)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899021
+    m_Localized: Bubble Sort Algorithm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899022
+    m_Localized: Video demo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899023
+    m_Localized: Comb Sorting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899024
+    m_Localized: Comb Sorting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899025
+    m_Localized: "Comb sort is an improvement on bubble sort. Its idea is toeliminate
+      elements with small values at the end of the array, which slow down the algorithm.
+      If bubble sort compares adjacent elements when iterating over an array, then
+      when combing, a sufficiently large distance between the compared values is
+      taken first, and then it narrows down to the minimum.\n \n The initial gap
+      should not be chosen randomly, but taking into account a special value - a
+      reduction factor, the optimal value of which is 1.247. elements will be equal
+      to the size of the array divided by 1.247, at each subsequent step the distance
+      will again be divided by the reduction factor - and so on until the end of
+      the algorithm."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899026
+    m_Localized: Comb Sorting Algorithm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899027
+    m_Localized: "This is only a partial implementation of the algorithm. Here you
+      need to add the CombSort method in the ellipsis to make it work. \n \u2013IMAGE\u2013"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899028
+    m_Localized: Quick Sort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899029
+    m_Localized: Quick Sort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899030
+    m_Localized: "This algorithm is one of the most efficient.\n It consists of three
+      steps. First, one element must be selected from the array - it is usually called
+      the pivot. Then the other elements in the array are redistributed so that elements
+      less than the pivot are before it , and greater or equal - after. And then
+      recursively apply the first two steps to the subarrays to the right and left
+      of the reference value.\n \u2013GIF\u2013"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899031
+    m_Localized: Quick Sort Implementation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899032
+    m_Localized: Shown in video clip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899033
+    m_Localized: Merge Sort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899034
+    m_Localized: Merge Sort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899035
+    m_Localized: "Merge sort is useful for data structures where elements are accessed
+      sequentially (for example, for streams). Here, the array is split into two
+      approximately equal parts and each of them is sorted separately. Then the two
+      sorted subarrays are merged into one .\n -GIF-"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899036
+    m_Localized: Merge Sort Implementation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899037
+    m_Localized: Video clip demonstration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899038
+    m_Localized: Binary Search
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458969899039
+    m_Localized: Binary Search
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458974093312
+    m_Localized: "If you are given a random array of elements and you need to find
+      one of them in it, then you have no choice but to simply iterate one element
+      after another until the desired one is found. This algorithm is called linear
+      search, and unfortunately, it's impossible to do some clever trick here and
+      significantly speed up the search.\n \n However, if you know something about
+      the data array, for example, that it is sorted, then the situation changes
+      dramatically. look at its middle element, then you will be able to determine
+      exactly which half your desired number lies in. Because, it is either greater
+      than the middle element, in which case you need to continue searching on the
+      right side of the array, or it is less, in which case you need to look on the
+      left. Or if you're lucky, the middle element will be the one you're looking
+      for, in which case you don't need to keep searching. i binary"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458974093313
+    m_Localized: Binary Search Implementation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458974093314
+    m_Localized: "The binary search algorithm looks like this:\n  1. \u201CDivide\u201D
+      the array in half and find the middle.\n  2. Compare the middle element with
+      the given desired element.\n  3. If the desired number is greater than the
+      average, continue searching in the right parts of the array (if it is sorted
+      in ascending order): divide it in half, repeating step 2. If the specified
+      number is less, the algorithm will continue searching in the left side of the
+      array, again returning to step 2.\n \u2013IMAGE\u2013"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

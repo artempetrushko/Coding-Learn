@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Training Theme (Recursion) Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Training Theme (Recursion)
+  m_TableCollectionNameGuidString: eb06968af2d675340a56274d772be0a2
+  m_Entries:
+  - m_Id: 477718437888
+    m_Key: Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477731020800
+    m_Key: SubTheme.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477731020801
+    m_Key: SubTheme.0.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477739409408
+    m_Key: SubTheme.0.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477739409409
+    m_Key: SubTheme.1.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477739409410
+    m_Key: SubTheme.1.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477739409411
+    m_Key: SubTheme.1.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477739409412
+    m_Key: SubTheme.2.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477739409413
+    m_Key: SubTheme.2.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477743603712
+    m_Key: SubTheme.2.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477743603713
+    m_Key: SubTheme.3.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477743603714
+    m_Key: SubTheme.3.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477743603715
+    m_Key: SubTheme.3.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5744031335168081937
+  references:
+    version: 2
+    RefIds:
+    - rid: 5744031335168081937
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1714719468866

@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Tasks Level 5 Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Tasks Level 5
+  m_TableCollectionNameGuidString: 69dc89b00f52a434288b13aa80382be3
+  m_Entries:
+  - m_Id: 18500870144
+    m_Key: 0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18513453056
+    m_Key: 0.Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18513453057
+    m_Key: 0.Tips.0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18513453058
+    m_Key: 0.Tips.1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18513453059
+    m_Key: 1.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18513453060
+    m_Key: 1.Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18513453061
+    m_Key: 1.Tips.0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18517647360
+    m_Key: 1.Tips.1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18517647361
+    m_Key: 2.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18517647362
+    m_Key: 2.Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18517647363
+    m_Key: 2.Tips.0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18517647364
+    m_Key: 3.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18517647365
+    m_Key: 3.Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18517647366
+    m_Key: 3.Tips.0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18517647367
+    m_Key: 4.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18517647368
+    m_Key: 4.Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18517647369
+    m_Key: 4.Tips.0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18517647370
+    m_Key: 5.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18517647371
+    m_Key: 5.Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18517647372
+    m_Key: 5.Tips.0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18517647373
+    m_Key: 6.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18517647374
+    m_Key: 6.Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18517647375
+    m_Key: 6.Tips.0
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5744031335168081924
+  references:
+    version: 2
+    RefIds:
+    - rid: 5744031335168081924
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1714713644641

@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Training Theme (Final) Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Training Theme (Final)
+  m_TableCollectionNameGuidString: 82514d066c64a3e49bf3b33c656da2de
+  m_Entries:
+  - m_Id: 15065735168
+    m_Key: Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15082512384
+    m_Key: SubTheme.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15082512385
+    m_Key: SubTheme.0.TrainingData.0.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15082512386
+    m_Key: SubTheme.0.TrainingData.0.Info
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5744031335168081939
+  references:
+    version: 2
+    RefIds:
+    - rid: 5744031335168081939
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1714720265329

@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Tasks Level 2_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 37ce45105b35eaf4fb0a493b43c71e78, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 16793788416
+    m_Localized: Flower counting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16810565632
+    m_Localized: "- You need to implement a method for counting the number of colors.\n 
+      The number of colors is passed as input - the result of previous calculations.
+      You need to return this value increased by one."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16810565633
+    m_Localized: Just increase oldCount by 1 and bring it back! :)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16810565634
+    m_Localized: Correct title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16810565635
+    m_Localized: '- You are given 4 variables with different names. You must select
+      and return the value of the variable with the most correct (in terms of C#
+      code-style) name.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16810565636
+    m_Localized: If you need to, read in the reference book about the best way to
+      name variables.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16810565637
+    m_Localized: Round
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16810565638
+    m_Localized: "- You need to count the number of apples in the baskets.\n  There
+      are very small fruits among the fruits that would be correctly counted as part
+      of an apple, but unfortunately, the module you use for calculations only accepts
+      whole numbers. Round up the value to an integer with Math.Round() and cast
+      it to an integer using (int).\n  Use CountModule.Count(int count) to populate
+      the results."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16810565639
+    m_Localized: Declare a new variable and assign a value to it Math.Round(...).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16810565640
+    m_Localized: Instead of ellipses write the argument of the current method.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16810565641
+    m_Localized: Use an explicit ghost so that the value of your variable is of int
+      type.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16810565642
+    m_Localized: At the end, call the CountModule.Count method and pass it your variable
+      as argument.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16810565643
+    m_Localized: Binary to decimal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16810565644
+    m_Localized: '- You need to implement a method that processes the current digit
+      of a binary number to convert it to decimal. You are given a digit of a binary
+      number (digit) and its ordinal number (number).'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16810565645
+    m_Localized: The reference book has an algorithm for converting a number to another
+      number system. You only need to translate one digit.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16810565646
+    m_Localized: Get rid of the log
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16810565647
+    m_Localized: "- You have to implement a method that removes an obstacle in the
+      form of a log. You can do this using the methods of sequential use of the TakeLog,
+      MoveLog, PutLog methods.\n  Each of them accepts an object (log) that needs
+      to be manipulated."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16810565648
+    m_Localized: Call each method in turn.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16810565649
+    m_Localized: Pass log as an argument to each.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

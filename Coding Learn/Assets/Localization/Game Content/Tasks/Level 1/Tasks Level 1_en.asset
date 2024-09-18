@@ -1,0 +1,167 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Tasks Level 1_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 7e0dec96937356b47a6c14dc2ee2b7d8, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 19872407552
+    m_Localized: MoveCube
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767680
+    m_Localized: '- Write MoveCube(); (with a semicolon, this is important!).'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767681
+    m_Localized: Just write MoveCube(); between the curly brackets, it's easy! :)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767682
+    m_Localized: Write Hello World!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767683
+    m_Localized: '- You need to call the WriteLine() method of the Console(Console.WriteLine)
+      class and pass the Hello World!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767684
+    m_Localized: 'The print method is called like this: Console.WriteLine(...);'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767685
+    m_Localized: Instead of a ellipsis, write "Hello, World!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767686
+    m_Localized: Opening the door
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767687
+    m_Localized: "- Declare a keyNumber variable of type int with value 55. The variable
+      is declared like this:\n  type name = value;"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767688
+    m_Localized: To declare a variable, specify its type - int...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767689
+    m_Localized: Then write her name - keyNumber
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767690
+    m_Localized: To set a value, write = after the name and the desired value.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767691
+    m_Localized: Take Feed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767692
+    m_Localized: "- Correct a typo in the code to take a package of food by weight
+      in kilograms.\n You need to take a box weighing 0.5 kg.\n When a variable is
+      declared with the var keyword, its type is determined automatically, based
+      on the data assigned during initialization. \n When an integer is divided by
+      an integer, the result is an integer without a remainder\n 5-integer\n 5.0f,float
+      (float)\n 5.0 fraction(double)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767693
+    m_Localized: Recall the result of dividing a whole number by another number.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767694
+    m_Localized: How many days will the food last
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767695
+    m_Localized: "- In this task, you have to calculate how many days (not counting
+      today) you will have enough food, provided that you feed the fish today.\n
+      The method is passed the number of 2 types of fish, the daily norm for them
+      and the amount of food. You need to return the number of days the food will
+      last (excluding today's feeding).\n  To convert a double to an int when assigning
+      or passing to a method, precede the value with (int)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767696
+    m_Localized: Find out how much food the first kind of fish need - multiply their
+      number by the daily rate and write it in a new variable.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767697
+    m_Localized: Do this for two kinds of fish.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767698
+    m_Localized: To get the remainder, subtract from the total amount of feed what
+      you counted before
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767699
+    m_Localized: Count the number of glasses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767700
+    m_Localized: "- You need to calculate the number of glasses needed to cook the
+      dish.\n  You are given the required volumes of flour and water, as well as
+      the volume of the glass.\n To round up, use the Math.Ceiling() method."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767701
+    m_Localized: Number of glasses = Product volume / Cup volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767702
+    m_Localized: Task_L1_T7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767703
+    m_Localized: Add/Reduce Temperature
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767704
+    m_Localized: "- You need to implement two methods to add and subtract the temperature.\n 
+      You can do this by manipulating the variable T.\n  Consider that the variable
+      is already declared outside of the method (we'll discuss how to do this later)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767705
+    m_Localized: In the AddT method, add a deltaT value to T
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767706
+    m_Localized: In the SubstractT method, subtract the deltaT value from T
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901767707
+    m_Localized: Shared or not
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19905961984
+    m_Localized: "- You need to determine whether the transferred amount is divisible
+      by 4 and return the remainder of the division (if the remainder is 0).\n  Remainder
+      of the division: divisible%quotient"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19905961985
+    m_Localized: Perform division with a remainder and return what you got
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

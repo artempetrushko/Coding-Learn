@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Tasks Level 6_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 2fc0b565b18467144b0d9bbf520c8c85, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 15904595968
+    m_Localized: Fix pointer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15921373184
+    m_Localized: You need to declare a string type variable with the value left and
+      return this variable
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15921373185
+    m_Localized: Line length
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15921373186
+    m_Localized: A string is passed to the input, you need to return its length
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15921373187
+    m_Localized: Uppercase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15921373188
+    m_Localized: You need to return a string containing only uppercase characters
+      from the original string
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15921373189
+    m_Localized: Reliable Path
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15921373190
+    m_Localized: Need to find a trusted path. Paths are represented as strings passed
+      in an array. A trusted path is one in which all characters are in uppercase.
+      The index of the trusted path must be returned.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15921373191
+    m_Localized: Decode Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15921373192
+    m_Localized: You need to decode the text. To do this, you need to take all the
+      words starting with a capital letter from the source text and put them in the
+      resulting array in reverse order.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15921373193
+    m_Localized: Crooked division
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15921373194
+    m_Localized: 'The program split the text incorrectly. You have to fix it. To
+      do this, you need to put the text together and separate it using delimiters:
+      +, -, *, /'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15921373195
+    m_Localized: Clear Path Matrix
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15921373196
+    m_Localized: You need to fix the path matrices that were corrupted during a program
+      failure. It is known that in the maritza the path is indicated by binary characters,
+      as well as the start and end points of the path ([S], [F]), therefore all other
+      characters are needed replace with 0.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

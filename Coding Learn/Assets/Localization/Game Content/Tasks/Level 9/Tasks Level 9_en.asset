@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Tasks Level 9_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: ef4b586d279980f408e49847342cf88c, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 375520026624
+    m_Localized: Bubble Sort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375532609536
+    m_Localized: Need to sort the array using bubble sort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375532609537
+    m_Localized: Comb sort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375532609538
+    m_Localized: Need to sort array using comb sort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375532609539
+    m_Localized: Quick Sort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375532609540
+    m_Localized: Need to sort the array using quick sort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375532609541
+    m_Localized: Merge Sort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375532609542
+    m_Localized: The array needs to be sorted using merge sort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375532609543
+    m_Localized: Binary Search
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375532609544
+    m_Localized: It is necessary to find the index of the required element using
+      binary search. An array of strings sorted in lexicographic order is passed
+      as input.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

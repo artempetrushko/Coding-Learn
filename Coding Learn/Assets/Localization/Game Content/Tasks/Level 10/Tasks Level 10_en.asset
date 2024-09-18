@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Tasks Level 10_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 35edff7abc906664182a3319633b1f9c, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 816089718784
+    m_Localized: Balistic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816106496000
+    m_Localized: It is necessary to implement a method that calculates what initial
+      velocity a stone needs to give in order for it to hit the target. The target's
+      coordinates and throw angle are passed to the method. The constant g (gravitational
+      acceleration) has already been declared.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816106496001
+    m_Localized: Do parentheses close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816106496002
+    m_Localized: Need to check if parentheses are closed in a string. Each type of
+      parenthesis must be closed with a pair of the same type. The parentheses can
+      be:(){}[]<>.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816106496003
+    m_Localized: Chess game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816106496004
+    m_Localized: "It is necessary to check if the white king is checkmated. Pieces
+      are designated: <first letter of the color><first letter of the name><last
+      letter of the name>.\n  Names: White - white Black - black King - king Queen
+      (queen) - queen rook - rook bishop - bishop knight - knight pawn - pawn"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816106496005
+    m_Localized: Deathmatch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816106496006
+    m_Localized: "Need to find the most probable direction of attack. The input is
+      the last direction of attack (Direction -- enum, can be Up,Down,Right,Left)
+      , as well as a list of previous enemy attacks in the form of a tuple<last hit,
+      current hit,number of similar sequences>\n  To get an element of a tuple, you
+      need to refer to the field Item<element number> for example Item1."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816106496007
+    m_Localized: Merge Sort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816106496008
+    m_Localized: You need to sort disk and ring arrays by doing a recursive merge
+      sort.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

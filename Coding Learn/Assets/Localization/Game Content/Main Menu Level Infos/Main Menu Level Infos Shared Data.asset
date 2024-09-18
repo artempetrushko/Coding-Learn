@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Main Menu Level Infos Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Main Menu Level Infos
+  m_TableCollectionNameGuidString: 9f3773bc7c6b1ed42a56f650eed01002
+  m_Entries:
+  - m_Id: 12486238208
+    m_Key: Level 1 Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55775649792
+    m_Key: Level 1 Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90378657792
+    m_Key: Level 2 Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103938842624
+    m_Key: Level 2 Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 144015417344
+    m_Key: Level 3 Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 200353308672
+    m_Key: Level 3 Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 225233920000
+    m_Key: Level 4 Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 250244554752
+    m_Key: Level 4 Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 263515332608
+    m_Key: Level 5 Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 288404332544
+    m_Key: Level 5 Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 318192279552
+    m_Key: Level 6 Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328417992704
+    m_Key: Level 6 Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 374941212672
+    m_Key: Level 7 Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 378648977408
+    m_Key: Level 7 Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 418129960960
+    m_Key: Level 8 Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 419761545216
+    m_Key: Level 8 Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 464028229632
+    m_Key: Level 9 Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 465664008192
+    m_Key: Level 9 Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 498698346496
+    m_Key: Level 10 Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 500233461760
+    m_Key: Level 10 Description
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 2450813202030133267
+  references:
+    version: 2
+    RefIds:
+    - rid: 2450813202030133267
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1714473136269
