@@ -7,10 +7,10 @@ namespace MainMenu
     {
         [SerializeField] private GameObject _settingViewsContainer;
         [SerializeField] private Button _applySettingsButton;
-        [SerializeField] private Button _backToMenuButton;
+        [SerializeField] private Button _closeViewButton;
 
         public Button ApplySettingsButton => _applySettingsButton;
-        public Button BackToMenuButton => _backToMenuButton;
+        public Button CloseViewButton => _closeViewButton;
 
         public GameObject SettingViewsContainer => _settingViewsContainer;
 

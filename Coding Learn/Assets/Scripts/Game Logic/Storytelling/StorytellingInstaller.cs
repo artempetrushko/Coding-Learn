@@ -1,9 +1,8 @@
-﻿using GameLogic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Playables;
 using Zenject;
 
-namespace UI.Game
+namespace GameLogic
 {
     public class StorytellingInstaller : MonoInstaller
     {

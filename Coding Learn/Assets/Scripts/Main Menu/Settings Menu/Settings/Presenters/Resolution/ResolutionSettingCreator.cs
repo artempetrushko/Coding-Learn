@@ -5,9 +5,12 @@ namespace MainMenu
     [CreateAssetMenu(fileName = "Resolution Setting Creator", menuName = "Game Configs/Settings/Resolution")]
     public class ResolutionSettingCreator : SwitchesSettingCreator
     {
-        public override SettingPresenter CreateSetting(SettingView settingView)
+        private ResolutionSettingPresenter _resolutionSettingPresenter;
+
+        public override SettingPresenter CreateSwitchesSetting(SwitchesSettingView settingView)
         {
-            throw new System.NotImplementedException();
+            _resolutionSettingPresenter ??= new ResolutionSettingPresenter(_name, _saveKey, settingView);
+            return _resolutionSettingPresenter;
         }
     }
 }

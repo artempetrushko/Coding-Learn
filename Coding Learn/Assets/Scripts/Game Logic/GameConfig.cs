@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GameLogic
 {
-    [CreateAssetMenu(fileName = "Game Data", menuName = "Game Data/Game/General/Game Config")]
+    [CreateAssetMenu(fileName = "Game Config", menuName = "Game Configs/Game Config")]
     public class GameConfig : ScriptableObject
     {
         [SerializeField] private string _gameProgressSaveKey;

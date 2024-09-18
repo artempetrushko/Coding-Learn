@@ -6,31 +6,31 @@ namespace MainMenu
 {
     public class LanguageSettingPresenter : SwitchesSettingPresenter
     {
-        private Locale[] _settingValues;
-        private int _currentValueOrderNumber;
+        protected override int SettingValuesCount => LocalizationSettings.AvailableLocales.Locales.Count;
 
-        public LanguageSettingPresenter(string saveKey, SwitchesSettingView view) : base(saveKey, view)
+        public LanguageSettingPresenter(LocalizedString settingName, string saveKey, SwitchesSettingView view) : base(settingName, saveKey, view)
         {
+            var startValue = ES3.Load<string>(_saveKey, LocalizationSettings.SelectedLocale.LocaleName);
+            var startValueOrderNumber = LocalizationSettings.AvailableLocales.Locales
+                .Select(locale => locale.LocaleName)
+                .ToList()
+                .IndexOf(startValue) + 1;
+            SetValue(startValueOrderNumber);
         }
 
         public override void ApplyValue()
         {
-            var selectedLocale = _settingValues[_currentValueOrderNumber - 1];
-            LocalizationSettings.SelectedLocale = selectedLocale;
+            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[_currentValueOrderNumber - 1];
 
-            ES3.Save(_saveKey, selectedLocale.LocaleName.Split()[0]);
+            ES3.Save(_saveKey, LocalizationSettings.SelectedLocale.LocaleName);
         }
 
-        protected override void SetNeighbouringValue(int orderNumberOffset)
+        protected override void SetValue(int valueOrderNumber)
         {
-            throw new System.NotImplementedException();
-        }
+            _currentValueOrderNumber = valueOrderNumber;
 
-        private string[] GetLanguageNames()
-        {
-            return LocalizationSettings.AvailableLocales.Locales
-                    .Select(locale => locale.LocaleName.Split()[0])
-                    .ToArray();
+            var languageName = LocalizationSettings.AvailableLocales.Locales[_currentValueOrderNumber - 1].LocaleName.Split()[0];
+            _settingView.SetOptionValueText(languageName);
         }
     }
 }

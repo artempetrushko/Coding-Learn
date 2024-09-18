@@ -5,44 +5,29 @@ namespace MainMenu
 {
     public class GraphicsQualitySettingPresenter : SwitchesSettingPresenter
     {
-        private (string qualityLevelName, LocalizedString localizedQualityLevelName)[] _settingValues;
-        private int _currentValueOrderNumber;
+        private LocalizedString[] _settingValues;
 
-        public GraphicsQualitySettingPresenter(string saveKey, SwitchesSettingView view, (string qualityLevelName, LocalizedString localizedQualityLevelName)[] settingValues) : base(saveKey, view)
+        protected override int SettingValuesCount => _settingValues.Length;
+
+        public GraphicsQualitySettingPresenter(LocalizedString settingName, string saveKey, SwitchesSettingView view, LocalizedString[] settingValues) : base(settingName, saveKey, view)
         {
             _settingValues = settingValues;
 
-            var startValue = ES3.Load(_saveKey, _settingValues[^1].qualityLevelName);
-            ES3.Load(_saveKey).ToString();
+            var startValueOrderNumber = ES3.Load(_saveKey, QualitySettings.GetQualityLevel());
+            SetValue(startValueOrderNumber);
         }
 
         public override void ApplyValue()
         {
-            QualitySettings.SetQualityLevel(_currentValueOrderNumber);
+            QualitySettings.SetQualityLevel(_currentValueOrderNumber - 1);
 
             ES3.Save(_saveKey, _currentValueOrderNumber);
         }
 
-        protected override void SetNeighbouringValue(int orderNumberOffset)
-        {
-            if (_currentValueOrderNumber + orderNumberOffset > _settingValues.Length)
-            {
-                SetNewValue(1);
-            }
-            else if (_currentValueOrderNumber + orderNumberOffset <= 0)
-            {
-                SetNewValue(_settingValues.Length);
-            }
-            else
-            {
-                SetNewValue(_currentValueOrderNumber + orderNumberOffset);
-            }
-        }
-
-        private void SetNewValue(int valueOrderNumber)
+        protected override void SetValue(int valueOrderNumber)
         {
             _currentValueOrderNumber = valueOrderNumber;
-            //_optionView.SetOptionValue(formattedSettingValues[_currentValueOrderNumber - 1]);
+            _settingView.SetOptionValueText(_settingValues[_currentValueOrderNumber - 1].GetLocalizedString());
         }
     }
 }

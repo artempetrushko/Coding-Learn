@@ -22,7 +22,7 @@ namespace MainMenu
             _gameSettingsConfig = settingsConfig;
 
             _settingsMenuView.ApplySettingsButton.onClick.AddListener(OnApplySettingsButtonPressed);
-            _settingsMenuView.BackToMenuButton.onClick.AddListener(OnBackToMenuButtonPressed);
+            _settingsMenuView.CloseViewButton.onClick.AddListener(OnCloseViewButtonPressed);
         }
 
         public async UniTask ShowSectionAsync()
@@ -69,6 +69,6 @@ namespace MainMenu
 
         private void OnApplySettingsButtonPressed() => ApplySettings();
 
-        private void OnBackToMenuButtonPressed() => HideSectionAsync().Forget();
+        private void OnCloseViewButtonPressed() => HideSectionAsync().Forget();
     }
 }

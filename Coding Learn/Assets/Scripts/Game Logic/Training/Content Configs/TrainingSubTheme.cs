@@ -3,7 +3,7 @@ using UnityEngine.Localization;
 
 namespace GameLogic
 {
-    [CreateAssetMenu(fileName = "Training Sub Theme", menuName = "Game Content/Training/Training Sub Theme", order = 10)]
+    [CreateAssetMenu(fileName = "Training Sub Theme", menuName = "Game Configs/Training/Training Sub Theme")]
     public class TrainingSubTheme : ScriptableObject
     {
         [SerializeField] private LocalizedString _title;

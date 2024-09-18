@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-namespace UI.Game
+namespace GameLogic
 {
     public class ExitMenuInstaller : MonoInstaller
     {

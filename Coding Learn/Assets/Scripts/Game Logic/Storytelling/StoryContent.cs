@@ -4,7 +4,7 @@ using UnityEngine.Timeline;
 
 namespace GameLogic
 {
-    [CreateAssetMenu(fileName = "Story Content", menuName = "Game Content/Story Content", order = 10)]
+    [CreateAssetMenu(fileName = "Story Content", menuName = "Game Configs/Story Content")]
     public class StoryContent : ScriptableObject
     {
         [SerializeField] private TimelineAsset _cutscene;

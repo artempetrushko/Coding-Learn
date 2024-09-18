@@ -5,7 +5,7 @@ namespace MainMenu
 {
     public abstract class SettingCreator : ScriptableObject
     {
-        [SerializeField] protected LocalizedString _title;
+        [SerializeField] protected LocalizedString _name;
         [SerializeField] protected string _saveKey;
 
         public abstract SettingView SettingViewPrefab { get; }

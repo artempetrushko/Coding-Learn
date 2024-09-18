@@ -1,4 +1,6 @@
-﻿namespace MainMenu
+﻿using UnityEngine.Localization;
+
+namespace MainMenu
 {
     public abstract class SliderSettingPresenter : SettingPresenter
     {
@@ -8,7 +10,7 @@
 
         protected int _currentSettingValue;
 
-        public SliderSettingPresenter(string saveKey, SliderSettingView view, int minSettingValue, int maxSettingValue) : base(saveKey)
+        public SliderSettingPresenter(LocalizedString settingName, string saveKey, SliderSettingView view, int minSettingValue, int maxSettingValue) : base(settingName, saveKey)
         {
             _settingView = view;
             _minSettingValue = minSettingValue;
@@ -16,6 +18,7 @@
 
             _currentSettingValue = ES3.Load(_saveKey, _maxSettingValue);
 
+            _settingView.SetOptionTitleText(_settingName.GetLocalizedString());
             _settingView.Slider.minValue = _minSettingValue;
             _settingView.Slider.maxValue = _maxSettingValue;
             _settingView.Slider.onValueChanged.AddListener(OnSliderValueChanged);

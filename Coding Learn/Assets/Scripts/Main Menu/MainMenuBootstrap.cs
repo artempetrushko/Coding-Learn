@@ -1,5 +1,4 @@
-﻿using Cysharp.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
 namespace MainMenu
@@ -16,7 +15,7 @@ namespace MainMenu
 
         private void Start()
         {
-            _mainMenuPresenter.StartAsync().Forget();
+            _mainMenuPresenter.Start();
         }
     }
 }

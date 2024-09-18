@@ -2,7 +2,7 @@
 
 namespace MainMenu
 {
-    [CreateAssetMenu(fileName = "Settings Config", menuName = "Game Data/Settings/Settings Config")]
+    [CreateAssetMenu(fileName = "Settings Config", menuName = "Game Configs/Settings/Settings Config")]
     public class GameSettingsConfig : ScriptableObject
     {
         [SerializeField] private SettingCreator[] _settingCreators;

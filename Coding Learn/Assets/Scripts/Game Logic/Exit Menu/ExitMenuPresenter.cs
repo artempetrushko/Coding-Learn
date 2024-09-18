@@ -1,94 +1,92 @@
+using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using System;
 using UnityEngine;
 using Zenject;
 
-namespace UI.Game
+namespace GameLogic
 {
     public class ExitMenuPresenter : ITickable
     {
         public event Action ExitToMenuSelected;
 
+        private const float VISIBILITY_CHANGING_DURATION = 1f;
+
         private ExitMenuView _exitMenuView;
-        private bool isMenuEnabled;
-        private bool isMenuAnimationPlaying;
+        private bool _isMenuAnimationPlaying = false;
 
         public ExitMenuPresenter(ExitMenuView exitMenuView)
         {
             _exitMenuView = exitMenuView;
+
+            _exitMenuView.ConfirmButton.onClick.AddListener(OnConfirmButtonPressed);
+            _exitMenuView.CancelButton.onClick.AddListener(OnCancelButtonPressed);
         }
-
-        public void HideExitToMenuView() => HideExitToMenuViewAsync().Forget();
-
-        public void ExitToMenu() => ExitToMenuAsync().Forget();
 
         public void Tick()
         {
-            if (Input.GetKeyDown(KeyCode.Escape) && !isMenuAnimationPlaying)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                PlayMenuAnimationAsync(isMenuEnabled ? HideExitToMenuViewAsync : ShowExitToMenuViewAsync).Forget();
+                ToggleMenuVisibilityAsync().Forget();
             }
         }
 
-        private async UniTask ShowExitToMenuViewAsync()
+        private async UniTask ToggleMenuVisibilityAsync()
         {
-            Time.timeScale = 0f;
-            _exitMenuView.gameObject.SetActive(true);
-            //await exitToMenuSectionView.ChangeVisibilityAsync(true);
+            if (!_isMenuAnimationPlaying)
+            {
+                _isMenuAnimationPlaying = true;
+
+                if (_exitMenuView.isActiveAndEnabled)
+                {
+                    await HideMenuAsync();
+                }
+                else
+                {
+                    await ShowMenuAsync();
+                }
+
+                _isMenuAnimationPlaying = false;
+            }
+            
         }
 
-        private async UniTask HideExitToMenuViewAsync()
+        private async UniTask ShowMenuAsync()
         {
-            //await exitToMenuSectionView.ChangeVisibilityAsync(false);
-            _exitMenuView.gameObject.SetActive(false);
+            Time.timeScale = 0f;
+
+            _exitMenuView.SetActive(true);
+            await SetMenuVisiblityAsync(true);
+        }
+
+        private async UniTask HideMenuAsync()
+        {
+            await SetMenuVisiblityAsync(false);
+            _exitMenuView.SetActive(false);
+
             Time.timeScale = 1f;
         }
 
-        private async UniTask PlayMenuAnimationAsync(Func<UniTask> animation)
+        private async UniTask SetMenuVisiblityAsync(bool isVisible)
         {
-            isMenuAnimationPlaying = true;
-            await animation();
-            isMenuAnimationPlaying = false;
+            await _exitMenuView.CanvasGroup
+                .DOFade(isVisible ? 1f : 0f, VISIBILITY_CHANGING_DURATION)
+                .SetUpdate(true)
+                .AsyncWaitForCompletion();
         }
 
         private async UniTask ExitToMenuAsync()
         {
-            //await exitToMenuSectionView.ShowBlackScreenAsync();
+            await _exitMenuView.BlackScreen
+                .DOFade(1f, VISIBILITY_CHANGING_DURATION)
+                .SetUpdate(true)
+                .AsyncWaitForCompletion();
+
             ExitToMenuSelected?.Invoke();
         }
 
+        private void OnConfirmButtonPressed() => ExitToMenuAsync().Forget();
 
-
-
-        public async UniTask ChangeContentVisibilityAsync(bool isVisible)
-        {
-            var backgroundEndOpacity = isVisible ? 0.9f : 0;
-            var contentOpacity = isVisible ? 1 : 0;
-
-            var tweenSequence = DOTween.Sequence();
-            tweenSequence.Pause();
-            tweenSequence
-                .Append(_exitMenuView.Background.DOFade(backgroundEndOpacity, 1f))
-                .Append(_exitMenuView.ContentCanvasGroup.DOFade(contentOpacity, 0.75f));
-            tweenSequence.SetUpdate(true);
-            if (isVisible)
-            {
-                tweenSequence.Play();
-            }
-            else
-            {
-                tweenSequence.PlayBackwards();
-            }
-            await tweenSequence.AsyncWaitForCompletion();
-        }
-
-        public async UniTask ShowBlackScreenAsync()
-        {
-            await _exitMenuView.BlackScreen
-                .DOFade(1f, 2f)
-                .SetUpdate(true)
-                .AsyncWaitForCompletion();
-        }
+        private void OnCancelButtonPressed() => ToggleMenuVisibilityAsync().Forget();
     }
 }

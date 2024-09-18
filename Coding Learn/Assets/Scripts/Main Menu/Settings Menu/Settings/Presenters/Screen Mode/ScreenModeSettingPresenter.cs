@@ -1,32 +1,36 @@
 ﻿using System;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Localization;
 
 namespace MainMenu
 {
+
     public class ScreenModeSettingPresenter : SwitchesSettingPresenter
     {
-        private (FullScreenMode screenMode, LocalizedString localizedScreenMode)[] _settingValues;
-        private int _currentValueOrderNumber;
+        private ScreenModeData[] _settingValues;
 
-        public ScreenModeSettingPresenter(string saveKey, SwitchesSettingView view, (FullScreenMode screenMode, LocalizedString localizedScreenMode)[] settingValues) : base(saveKey, view)
+        protected override int SettingValuesCount => _settingValues.Length;
+
+        public ScreenModeSettingPresenter(LocalizedString settingName, string saveKey, SwitchesSettingView view, ScreenModeData[] settingValues) : base(settingName, saveKey, view)
         {
             _settingValues = settingValues;
 
-            Enum.GetNames(typeof(FullScreenMode)).ToArray();
+            var startScreenMode = ES3.Load(_saveKey, FullScreenMode.ExclusiveFullScreen);
+            var startValueOrderNumber = Array.IndexOf(_settingValues, startScreenMode) + 1;
+            SetValue(startValueOrderNumber);
         }
 
         public override void ApplyValue()
         {
-            Screen.fullScreenMode = _settingValues[_currentValueOrderNumber - 1].screenMode;
+            Screen.fullScreenMode = _settingValues[_currentValueOrderNumber - 1].ScreenMode;
 
             ES3.Save(_saveKey, Screen.fullScreenMode);
         }
 
-        protected override void SetNeighbouringValue(int orderNumberOffset)
+        protected override void SetValue(int valueOrderNumber)
         {
-            throw new NotImplementedException();
+            _currentValueOrderNumber = valueOrderNumber;
+            _settingView.SetOptionValueText(_settingValues[_currentValueOrderNumber - 1].LocalizedName.GetLocalizedString());
         }
     }
 }

@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI.MainMenu
 {
@@ -11,12 +12,16 @@ namespace UI.MainMenu
         [SerializeField] private LevelThumbnailView _transitionThumbnailView;
         [SerializeField] private GameObject _levelButtonsContainer;       
         [SerializeField] private LevelDescriptionView _levelDescriptionView;
+        [SerializeField] private Button _playButton;
+        [SerializeField] private Button _closeViewButton;
 
         public GameObject Header => _header;
         public LevelThumbnailView LevelThumbnailView => _levelThumbnailView;
         public LevelThumbnailView TransitionThumbnailView => _transitionThumbnailView;
         public GameObject LevelButtonsContainer => _levelButtonsContainer;
         public LevelDescriptionView LevelDescriptionView => _levelDescriptionView;
+        public Button PlayButton => _playButton;
+        public Button CloseViewButton => _closeViewButton;
 
         public void SetActive(bool isActive) => gameObject.SetActive(isActive);
 

@@ -13,6 +13,7 @@ namespace MainMenu
     public class LevelsMenuPresenter : IMainMenuSectionPresenter, IDisposable
     {
         public event Action SectionDisabled;
+        public event Action<LevelConfig> LevelSelected;
 
         private const float SECTION_VISIBILITY_CHANGING_DURATION = 1f;
 
@@ -26,6 +27,9 @@ namespace MainMenu
             _levelsMenuView = levelsMenuView;
             _levelsSectionConfig = levelsSectionConfig;
             _levelButtonPrefab = levelButtonPrefab;
+
+            _levelsMenuView.PlayButton.onClick.AddListener(OnPlayButtonPressed);
+            _levelsMenuView.CloseViewButton.onClick.AddListener(OnCloseViewButtonPressed);
         }
 
         public void Dispose()
@@ -83,7 +87,7 @@ namespace MainMenu
         private async UniTask ShowLevelInfoAsync(LevelConfig levelConfig)
         {
             _levelsMenuView.SetLevelTitleText(levelConfig.Title.GetLocalizedString());
-            await ChangeLevelThumbnailAsync(levelConfig.LoadingScreenReference);
+            await ChangeLevelThumbnailAsync(levelConfig.ThumbnailReference);
         }
 
         private void CreateLevelButtons(int lastAvailableLevelNumber)
@@ -154,6 +158,10 @@ namespace MainMenu
 
             _levelsMenuView.LevelDescriptionView.SetActive(false);
         }
+
+        private void OnPlayButtonPressed() => LevelSelected?.Invoke(_levelsMenuModel.SelectedLevelConfig);
+
+        private void OnCloseViewButtonPressed() => HideSectionAsync().Forget();
 
         private void OnLevelButtonPressed(LevelButton levelButton)
         {

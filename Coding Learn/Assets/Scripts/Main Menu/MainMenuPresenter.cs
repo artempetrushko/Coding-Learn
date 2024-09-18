@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using GameLogic;
@@ -12,16 +13,17 @@ namespace MainMenu
     public class MainMenuPresenter : IDisposable
     {
         private GameConfig _gameConfig;
-
         private MainMenuView _mainMenuView;
         private LevelsMenuPresenter _levelsMenuPresenter;
         private StatisticsMenuPresenter _statisticsMenuPresenter;
-        private SettingsMenuPresenter _settingsMenuPresenter;   
+        private SettingsMenuPresenter _settingsMenuPresenter;
 
+        private GameProgress _gameProgress;
         private Sequence _mainMenuShowingTween;
 
-        public MainMenuPresenter(MainMenuView mainMenuView, LevelsMenuPresenter levelsMenuPresenter, StatisticsMenuPresenter statisticsMenuPresenter, SettingsMenuPresenter settingsMenuPresenter)
+        public MainMenuPresenter(GameConfig gameConfig, MainMenuView mainMenuView, LevelsMenuPresenter levelsMenuPresenter, StatisticsMenuPresenter statisticsMenuPresenter, SettingsMenuPresenter settingsMenuPresenter)
         {
+            _gameConfig = gameConfig;
             _mainMenuView = mainMenuView;
             _levelsMenuPresenter = levelsMenuPresenter;
             _statisticsMenuPresenter = statisticsMenuPresenter;
@@ -41,23 +43,33 @@ namespace MainMenu
             _settingsMenuPresenter.SectionDisabled -= OnMainMenuSectionDisabled;
         }
 
-        public async UniTask StartAsync()
+        public void Start()
         {
-            new GameProgress()
-            {
-                LastAvailableLevelNumber = 1,
-                //LevelsChallengesResults = new LevelChallengesResults[levelsCount].Select(item => item = new LevelChallengesResults()).ToArray()
-            };
-
-            var gameProgress = ES3.Load<GameProgress>(_gameConfig.GameProgressSaveKey);
-
+            LoadGameProgress();
 
 			_settingsMenuPresenter.Initialize();
+			_levelsMenuPresenter.Initialize(_gameConfig.LevelConfigs, _gameProgress.LastAvailableLevelNumber);
 
-			//_levelsMenuPresenter.Initialize(_gameConfig.LevelConfigs, SaveManager.GameProgressData.LastAvailableLevelNumber);
-            //_statisticsMenuPresenter.Initialize(_gameConfig.LevelConfigs);
+            var levelStatisticsInfos = _gameProgress.LevelsChallengesResults
+                .GroupJoin(_gameConfig.LevelConfigs, challengesResults => challengesResults.LevelId, levelConfig => levelConfig.Id, (challengesResults, levelConfigs) => (levelConfigs.First(), challengesResults))
+                .ToArray();
+            _statisticsMenuPresenter.Initialize(levelStatisticsInfos);
 
-            await PlayStartAnimationAsync();
+            PlayStartAnimationAsync().Forget();
+        }
+
+        private void LoadGameProgress()
+        {
+            _gameProgress = ES3.Load<GameProgress>(_gameConfig.GameProgressSaveKey);
+            if (_gameProgress == null)
+            {
+                _gameProgress = new GameProgress()
+                {
+                    LastAvailableLevelNumber = 1,
+                    LevelsChallengesResults = new LevelChallengesResults[_gameConfig.LevelConfigs.Length].Select(item => item = new LevelChallengesResults()).ToArray()
+                };
+                ES3.Save(_gameConfig.GameProgressSaveKey, _gameProgress);
+            }
         }
 
         private void BindMainMenuSectionWithButton(IMainMenuSectionPresenter mainMenuSection, Button showSectionButton)

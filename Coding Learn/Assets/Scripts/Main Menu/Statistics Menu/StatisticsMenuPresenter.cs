@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
@@ -11,17 +12,14 @@ using Object = UnityEngine.Object;
 
 namespace MainMenu
 {
-    public class StatisticsMenuModel
-    {
-
-    }
-
     public class StatisticsMenuPresenter : IMainMenuSectionPresenter
     {
         public event Action SectionDisabled;
 
-        private const float SECTION_VISIBILITY_CHANGING_DURATION = 0.75f;
+        private const float MENU_VISIBILITY_CHANGING_DURATION = 0.75f;
+        private const float LEVEL_STATS_CARD_VISIBILITY_CHANGE_DURATION = 0.2f;
 
+        private StatisticsMenuModel _statisticsMenuModel;
         private StatisticsMenuView _statisticsMenuView;
         private LevelStatisticsCardView _levelStatsCardPrefab;
         private TaskStatisticsPageView _taskStatisticsPageViewPrefab;
@@ -33,6 +31,9 @@ namespace MainMenu
             _levelStatsCardPrefab = levelStatsCardViewPrefab;
             _taskStatisticsPageViewPrefab = taskStatisticsPageViewPrefab;
             _taskStatisticsViewPrefab = taskStatsViewPrefab;
+
+            _statisticsMenuView.CloseViewButton.onClick.AddListener(OnCloseViewButtonPressed);
+            _statisticsMenuView.BackToPreviousPageButton.onClick.AddListener(OnBackToPreviousPageButtonPressed);
         }
 
         public async UniTask ShowSectionAsync()
@@ -62,12 +63,14 @@ namespace MainMenu
                 _statisticsMenuView.DetailedLevelStatisticsPagesContainer.transform.localPosition = new Vector3(_statisticsMenuView.DetailedLevelStatisticsPagesContainer.GetComponent<RectTransform>().rect.width, 0, 0);
             }
             await _statisticsMenuView.transform
-                .DOLocalMoveY(isVisible ? 0 : _statisticsMenuView.GetSectionHeight(), SECTION_VISIBILITY_CHANGING_DURATION)
+                .DOLocalMoveY(isVisible ? 0 : _statisticsMenuView.GetSectionHeight(), MENU_VISIBILITY_CHANGING_DURATION)
                 .AsyncWaitForCompletion();
         }
 
         private async UniTask CreateStatisticsViewsAsync((LevelConfig levelConfig, LevelChallengesResults levelChallengesResults)[] levelStatisticsInfos)
         {
+            var levelStatisticsCardDatas = new List<(LevelStatisticsCardView levelStatisticsCard, TaskStatisticsPageView linkedStatisticsPage)>();
+
             foreach (var levelStatisticsInfo in levelStatisticsInfos)
             {
                 var totalChallengesCount = levelStatisticsInfo.levelConfig.Content.Quests.Sum(quest => quest.Task.ChallengesConfig.Challenges.Length);
@@ -75,20 +78,14 @@ namespace MainMenu
                     ? levelStatisticsInfo.levelChallengesResults.TasksChallengesResults.Sum(taskChallengesResults => taskChallengesResults.ChallengeResults.Count(challengeResult => challengeResult.IsCompleted))
                     : 0;
 
-                var levelCard = Object.Instantiate(_levelStatsCardPrefab, _statisticsMenuView.LevelStatisticsCardsContainer.transform);
+                var levelStatisticsCard = Object.Instantiate(_levelStatsCardPrefab, _statisticsMenuView.LevelStatisticsCardsContainer.transform);
 
-                var levelThumbnail = await Addressables.LoadAssetAsync<Sprite>(levelStatisticsInfo.levelConfig.LoadingScreenReference);
-                levelCard.SetLevelThumbnail(levelThumbnail);
-
-
-                levelCard.SetStarsCounterText($"{completedChallengesCount}/{totalChallengesCount}");
-
-                levelCard.ShowDetailedStatisticsButton.onClick.AddListener(OnShowDetailedStatisticsButtonPressed);
-                levelCard.PointerEnter += OnLevelCardPointerEnter;
-                levelCard.PointerExit += OnLevelCardPointerExit;
-
-
-
+                var levelThumbnail = await Addressables.LoadAssetAsync<Sprite>(levelStatisticsInfo.levelConfig.ThumbnailReference);
+                levelStatisticsCard.SetLevelThumbnail(levelThumbnail);
+                levelStatisticsCard.SetStarsCounterText($"{completedChallengesCount}/{totalChallengesCount}");
+                levelStatisticsCard.ShowDetailedStatisticsButton.onClick.AddListener(() => OnShowDetailedStatisticsButtonPressed(levelStatisticsCard));
+                levelStatisticsCard.PointerEnter += OnLevelCardPointerEnter;
+                levelStatisticsCard.PointerExit += OnLevelCardPointerExit;
 
                 var taskStatisticsPage = Object.Instantiate(_taskStatisticsPageViewPrefab, _statisticsMenuView.DetailedLevelStatisticsPagesContainer.transform);
                 foreach (var taskChallengesResults in levelStatisticsInfo.levelChallengesResults.TasksChallengesResults)
@@ -104,18 +101,29 @@ namespace MainMenu
                     taskStatisticsView.SetStarsCounterText($"{completedTaskChallengesCount}/{totalTaskChallengesCount}");
                 }
 
-
+                levelStatisticsCardDatas.Add((levelStatisticsCard, taskStatisticsPage));
             }
+
+            _statisticsMenuModel = new StatisticsMenuModel(levelStatisticsCardDatas.ToArray());
         }
 
+        private async UniTask ShowDetailedLevelStatsAsync(LevelStatisticsCardView selectedLevelStatisticsCardView)
+        {
+            _statisticsMenuModel.SelectedStatisticsPage = _statisticsMenuModel.LevelStatisticsCardDatas.First(data => data.levelStatisticsCard == selectedLevelStatisticsCardView).linkedStatisticsPage;
+            _statisticsMenuModel.SelectedStatisticsPage.SetActive(true);
 
+            _statisticsMenuView.SetBackToPreviousPageButtonActive(true);
+            await ShowNewStatsContentAsync(_statisticsMenuView.LevelStatisticsCardsContainer, _statisticsMenuView.DetailedLevelStatisticsPagesContainer, -1);
+        }
 
+        private async UniTask ReturnToLevelCardsAsync()
+        {
+            _statisticsMenuView.SetBackToPreviousPageButtonActive(false);
+            await ShowNewStatsContentAsync(_statisticsMenuView.DetailedLevelStatisticsPagesContainer, _statisticsMenuView.LevelStatisticsCardsContainer, 1);
 
-        
-
-        public async UniTask ShowDetailedLevelStatsAsync() => await ShowNewStatsContentAsync(_statisticsMenuView.LevelStatisticsCardsContainer, _statisticsMenuView.DetailedLevelStatisticsPagesContainer, -1);
-
-        public async UniTask ReturnToLevelCardsAsync() => await ShowNewStatsContentAsync(_statisticsMenuView.DetailedLevelStatisticsPagesContainer, _statisticsMenuView.LevelStatisticsCardsContainer, 1);
+            _statisticsMenuModel.SelectedStatisticsPage.SetActive(false);
+            _statisticsMenuModel.SelectedStatisticsPage = null;
+        }
 
         private async UniTask ShowNewStatsContentAsync(GameObject previousStatsContent, GameObject newStatsContent, int movementSign)
         {
@@ -123,32 +131,20 @@ namespace MainMenu
             await newStatsContent.transform.DOLocalMoveX(0, 0.75f).AsyncWaitForCompletion();
         }
 
-
-
-        private const float FOREGROUND_END_ALPHA = 0.8f;
-        private const float VISIBILITY_CHANGE_DURATION = 0.2f;
-
         private async UniTask SetLevelStatsCardStarsCounterVisibilityAsync(LevelStatisticsCardView levelStatsCardView, float counterEndPositionY, float foregroundEndAlpha)
         {
-            levelStatsCardView.Foreground.DOFade(foregroundEndAlpha, VISIBILITY_CHANGE_DURATION).ToUniTask().Forget();
-            levelStatsCardView.StarsCounter.transform.DOLocalMoveY(counterEndPositionY, VISIBILITY_CHANGE_DURATION).ToUniTask().Forget();
-            await UniTask.WaitForSeconds(VISIBILITY_CHANGE_DURATION);
+            levelStatsCardView.Foreground.DOFade(foregroundEndAlpha, LEVEL_STATS_CARD_VISIBILITY_CHANGE_DURATION).ToUniTask().Forget();
+            levelStatsCardView.StarsCounter.transform.DOLocalMoveY(counterEndPositionY, LEVEL_STATS_CARD_VISIBILITY_CHANGE_DURATION).ToUniTask().Forget();
+            await UniTask.WaitForSeconds(LEVEL_STATS_CARD_VISIBILITY_CHANGE_DURATION);
         }
 
-        private void OnShowDetailedStatisticsButtonPressed()
-        {
-            //CreateDetalizedLevelStats(taskStatsDatas);
-            _statisticsMenuView.SetBackToPreviousPageButtonActive(true);
-            ShowDetailedLevelStatsAsync().Forget();
-        }
+        private void OnCloseViewButtonPressed() => HideSectionAsync().Forget();
 
-        private void OnBackToPreviousPageButtonPressed()
-        {
-            _statisticsMenuView.SetBackToPreviousPageButtonActive(false);
-            ReturnToLevelCardsAsync().Forget();
-        }
+        private void OnShowDetailedStatisticsButtonPressed(LevelStatisticsCardView levelStatisticsCardView) => ShowDetailedLevelStatsAsync(levelStatisticsCardView).Forget();
 
-        private void OnLevelCardPointerEnter(LevelStatisticsCardView levelStatsCardView) => SetLevelStatsCardStarsCounterVisibilityAsync(levelStatsCardView, 0f, FOREGROUND_END_ALPHA).Forget();
+        private void OnBackToPreviousPageButtonPressed() => ReturnToLevelCardsAsync().Forget();
+
+        private void OnLevelCardPointerEnter(LevelStatisticsCardView levelStatsCardView) => SetLevelStatsCardStarsCounterVisibilityAsync(levelStatsCardView, 0f, 0.8f).Forget();
 
         private void OnLevelCardPointerExit(LevelStatisticsCardView levelStatsCardView) => SetLevelStatsCardStarsCounterVisibilityAsync(levelStatsCardView, levelStatsCardView.StarsCounter.transform.localPosition.y, 0f).Forget();
     }

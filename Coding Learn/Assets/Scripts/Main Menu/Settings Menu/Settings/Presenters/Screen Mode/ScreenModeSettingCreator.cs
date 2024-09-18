@@ -5,9 +5,14 @@ namespace MainMenu
     [CreateAssetMenu(fileName = "Screen Mode Setting Creator", menuName = "Game Configs/Settings/Screen Mode")]
     public class ScreenModeSettingCreator : SwitchesSettingCreator
     {
-        public override SettingPresenter CreateSetting(SettingView settingView)
+        [SerializeField] private ScreenModeData[] _screenModeDatas;
+
+        private ScreenModeSettingPresenter _screenModeSettingPresenter;
+
+        public override SettingPresenter CreateSwitchesSetting(SwitchesSettingView settingView)
         {
-            throw new System.NotImplementedException();
+            _screenModeSettingPresenter ??= new ScreenModeSettingPresenter(_name, _saveKey, settingView, _screenModeDatas);
+            return _screenModeSettingPresenter;
         }
     }
 }

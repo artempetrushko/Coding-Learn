@@ -11,13 +11,13 @@ namespace UI.MainMenu
         public event Action<LevelStatisticsCardView> PointerEnter;
         public event Action<LevelStatisticsCardView> PointerExit;
 
-        [SerializeField] private Button _showDetailedStatisticssButton;
+        [SerializeField] private Button _showDetailedStatisticsButton;
         [SerializeField] private Image _levelThumbnail;
         [SerializeField] private GameObject _starsCounter;
         [SerializeField] private TMP_Text _starsCounterText;
         [SerializeField] private Image _foreground;
 
-        public Button ShowDetailedStatisticsButton => _showDetailedStatisticssButton;
+        public Button ShowDetailedStatisticsButton => _showDetailedStatisticsButton;
         public GameObject StarsCounter => _starsCounter;
         public Image Foreground => _foreground;
 

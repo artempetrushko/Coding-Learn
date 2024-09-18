@@ -6,10 +6,12 @@ namespace UI.MainMenu
     public class StatisticsMenuView : MonoBehaviour
     {
         [SerializeField] private Button _backToPreviousPageButton;
+        [SerializeField] private Button _closeViewButton;
         [SerializeField] private GameObject _levelStatisticsCardsContainer;
         [SerializeField] private GameObject _detailedLevelStatisticsPagesContainer;
 
         public Button BackToPreviousPageButton => _backToPreviousPageButton;
+        public Button CloseViewButton => _closeViewButton;
         public GameObject LevelStatisticsCardsContainer => _levelStatisticsCardsContainer;
         public GameObject DetailedLevelStatisticsPagesContainer => _detailedLevelStatisticsPagesContainer;
 

@@ -5,11 +5,12 @@ namespace MainMenu
     [CreateAssetMenu(fileName = "Music Volume Setting Creator", menuName = "Game Configs/Settings/Music Volume")]
     public class MusicVolumeSettingCreator : SliderSettingCreator
     {
-        public override SettingPresenter CreateSetting(SettingView settingView)
+        private MusicVolumeSettingPresenter _musicVolumeSettingPresenter;
+
+        public override SettingPresenter CreateSliderSetting(SliderSettingView sliderSettingView)
         {
-            return settingView is SliderSettingView sliderSettingView
-                ? new MusicVolumeSettingPresenter(_saveKey, sliderSettingView, _minSettingValue, _maxSettingValue)
-                : null;
+            _musicVolumeSettingPresenter ??= new MusicVolumeSettingPresenter(_name, _saveKey, sliderSettingView, _minSettingValue, _maxSettingValue);
+            return _musicVolumeSettingPresenter;
         }
     }
 }

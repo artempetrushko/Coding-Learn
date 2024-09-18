@@ -10,5 +10,14 @@ namespace MainMenu
         [SerializeField] protected int _maxSettingValue;
 
         public override SettingView SettingViewPrefab => _settingViewPrefab;
+
+        public abstract SettingPresenter CreateSliderSetting(SliderSettingView sliderSettingView);
+
+        public sealed override SettingPresenter CreateSetting(SettingView settingView)
+        {
+            return settingView is SliderSettingView sliderSettingView
+                ? CreateSliderSetting(sliderSettingView) 
+                : null;
+        }
     }
 }

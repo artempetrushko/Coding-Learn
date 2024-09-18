@@ -1,7 +1,6 @@
+using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using System;
-using UI.Game;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.Video;
@@ -16,7 +15,7 @@ namespace GameLogic
         private TrainingView _trainingView;
         private TrainingData[] _currentTrainingDatas;    
         private TrainingTextPageView _trainingTextPageViewPrefab;
-        private CodingTrainingTextVideoPageView _trainingTextVideoPageViewPrefab;
+        private TrainingTextVideoPageView _trainingTextVideoPageViewPrefab;
 
         private Sequence _visibilityChangeTween;   
         private int _currentTrainingPageNumber;

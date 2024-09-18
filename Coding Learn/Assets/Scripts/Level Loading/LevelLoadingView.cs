@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.LoadingScreen
+namespace LevelLoading
 {
     public class LevelLoadingView : MonoBehaviour
     {
@@ -13,6 +13,8 @@ namespace UI.LoadingScreen
         [SerializeField] private TMP_Text _loadingBarText;
 
         public Image Background => _background;
+
+        public void SetActive(bool isActive) => gameObject.SetActive(isActive);
 
         public void SetLoadingBarActive(bool isActive) => _loadingBar.SetActive(isActive);
 

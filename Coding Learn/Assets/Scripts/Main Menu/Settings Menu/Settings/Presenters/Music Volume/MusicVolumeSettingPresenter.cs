@@ -1,10 +1,11 @@
 ﻿using Sounds;
+using UnityEngine.Localization;
 
 namespace MainMenu
 {
     public class MusicVolumeSettingPresenter : SliderSettingPresenter
     {
-        public MusicVolumeSettingPresenter(string saveKey, SliderSettingView view, int minSettingValue, int maxSettingValue) : base(saveKey, view, minSettingValue, maxSettingValue) { }
+        public MusicVolumeSettingPresenter(LocalizedString settingName, string saveKey, SliderSettingView view, int minSettingValue, int maxSettingValue) : base(settingName, saveKey, view, minSettingValue, maxSettingValue) { }
 
         public override void ApplyValue()
         {

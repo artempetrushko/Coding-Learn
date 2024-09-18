@@ -2,7 +2,7 @@
 
 namespace UI.MainMenu
 {
-    [CreateAssetMenu(fileName = "Level Section Config", menuName = "Game Data/UI/Main Menu/Level Section Config")]
+    [CreateAssetMenu(fileName = "Level Section Config", menuName = "Game Configs/Level Section Config")]
     public class LevelsMenuConfig : ScriptableObject
     {
         [SerializeField] private float _thumbnailChangingDuration = 1f;
