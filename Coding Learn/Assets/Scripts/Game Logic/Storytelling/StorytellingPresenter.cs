@@ -13,8 +13,6 @@ namespace GameLogic
         public event Action CutsceneFinished;
 
         private const int CAMERAS_CUTSCENE_TRACK_INDEX = 1;
-        private const int BLACK_SCREEN_CUTSCENE_TRACK_INDEX = 2;
-        private const float CORRECTIVE_TIME_OFFSET = 0.2f;
 
         private StorytellingView _storytellingView;    
         private StoryContent _currentStoryContent;
@@ -62,7 +60,7 @@ namespace GameLogic
         private async UniTask ShowStoryPartTextAsync(int storyPartArticleNumber)
         {
             var storyText = _currentStoryContent.CutsceneScenarioParts[storyPartArticleNumber - 1].GetLocalizedString();
-            var totalTextShowingTime = (float)(GetCurrentClipStopTime() - _playableDirector.time);
+            var totalTextShowingTime = (float)(GetCurrentFrameStopTime() - _playableDirector.time);
 
             _storytellingView.SetStoryTextSectionActive(true);
             _storytellingView.SkipStoryPartButton.gameObject.SetActive(true);
@@ -86,19 +84,11 @@ namespace GameLogic
             _storytellingView.SkipStoryPartButton.gameObject.SetActive(false);
         }
 
-        private double GetCurrentClipStopTime()
+        private double GetCurrentFrameStopTime()
         {
-            var currentCameraClip = GetCurrentCutsceneTrackClips(CAMERAS_CUTSCENE_TRACK_INDEX)[_currentStoryPartArticleNumber - 1];
-            var blackScreenClips = GetCurrentCutsceneTrackClips(BLACK_SCREEN_CUTSCENE_TRACK_INDEX);
-            if (_currentStoryPartArticleNumber * 2 < blackScreenClips.Length)
-            {
-                var blackScreenShowDuration = blackScreenClips[_currentStoryPartArticleNumber * 2 - 1].duration;
-                return currentCameraClip.end - blackScreenShowDuration - CORRECTIVE_TIME_OFFSET;
-            }
-            return currentCameraClip.end - currentCameraClip.blendOutDuration - CORRECTIVE_TIME_OFFSET;
+            var currentCameraClip = _currentStoryContent.Cutscene.GetOutputTrack(CAMERAS_CUTSCENE_TRACK_INDEX).GetClips().ToArray()[_currentStoryPartArticleNumber - 1];
+            return currentCameraClip.end - currentCameraClip.blendOutDuration;
         }
-
-        private TimelineClip[] GetCurrentCutsceneTrackClips(int trackIndex) => _currentStoryContent.Cutscene.GetOutputTrack(trackIndex).GetClips().ToArray();
 
         private async UniTask PlayNextCutsceneFrameTransitionAsync()
         {
@@ -128,7 +118,7 @@ namespace GameLogic
 
         private void OnSkipStoryPartButtonPressed()
         {
-            _playableDirector.time = GetCurrentClipStopTime();
+            _playableDirector.time = GetCurrentFrameStopTime();
             _wasStoryTextSkipped = true;
         }
 
