@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 204f7232bb70d634c8c913e9d9dbea0a, type: 3}
+  m_Name: 4
+  m_EditorClassIdentifier: 
+  <Title>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <Description>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <StartCode>k__BackingField: 'public Direction FindNextAttack(List<Tuple<Direction,
+    Direction, int>> attacks, Direction attack)
+
+    {
+
+
+    }'
+  <TestData>k__BackingField:
+    <TestCode>k__BackingField: using System;\nusing System.Collections.Generic;\nusing
+      System.Linq;\n\npublic class Level10Task4\n{\n//<playerCode>\n    public enum
+      Direction\n    {\n        Up,Down,Left,Right\n    }\n    public bool isTaskCompleted()\n   
+      {\n        var random = new Random();\n        var maxCount = 1000;\n       
+      var maxSize = 10000;\n        return Check(random, maxCount, maxSize)&& Check(random,
+      maxCount, maxSize);\n    }\n\n    private bool Check(Random random, int maxCount,
+      int maxSize)\n    {\n        var attacks = new List<Tuple<Direction, Direction,
+      int>>()\n        {\n            Tuple.Create(Direction.Up,Direction.Down,random.Next(maxCount)),\n           
+      Tuple.Create(Direction.Up,Direction.Left,random.Next(maxCount)),\n           
+      Tuple.Create(Direction.Up,Direction.Right,random.Next(maxCount)),\n           
+      Tuple.Create(Direction.Up,Direction.Up,random.Next(maxCount)),\n           
+      Tuple.Create(Direction.Down,Direction.Down,random.Next(maxCount)),\n           
+      Tuple.Create(Direction.Down,Direction.Left,random.Next(maxCount)),\n           
+      Tuple.Create(Direction.Down,Direction.Right,random.Next(maxCount)),\n           
+      Tuple.Create(Direction.Down,Direction.Up,random.Next(maxCount)),\n           
+      Tuple.Create(Direction.Right,Direction.Down,random.Next(maxCount)),\n           
+      Tuple.Create(Direction.Right,Direction.Left,random.Next(maxCount)),\n           
+      Tuple.Create(Direction.Right,Direction.Right,random.Next(maxCount)),\n           
+      Tuple.Create(Direction.Right,Direction.Up,random.Next(maxCount)),\n           
+      Tuple.Create(Direction.Left,Direction.Down,random.Next(maxCount)),\n           
+      Tuple.Create(Direction.Left,Direction.Left,random.Next(maxCount)),\n           
+      Tuple.Create(Direction.Left,Direction.Right,random.Next(maxCount)),\n           
+      Tuple.Create(Direction.Left,Direction.Up,random.Next(maxCount)),\n        };\n       
+      var attack = (Direction)random.Next(3);\n        var correct=attacks.Where(x=>x.Item1==attack).OrderByDescending(x=>x.Item3).First().Item2;\n       
+      return FindNextAttack(attacks,attack)==correct;\n    }\n\n    private static
+      void ReplaceCharInString(ref String str, int index, Char newSymb)\n    {\n       
+      str = str.Remove(index, 1).Insert(index, newSymb.ToString());\n    }\n    \n   
+      private static string[] CreateArray(Random random, int maxCount, int maxSize,out
+      int resultIndex)\n    {\n        var array = new string[random.Next(maxCount)];\n       
+      for (int i = 0; i < array.Length; i++)\n        {\n            array[i] = new
+      string('a',random.Next(maxSize));\n            if (random.Next(2) == 1)\n           
+      {\n                var j=random.Next(array[i].Length);\n                var
+      str = array[i].ToUpper();\n                ReplaceCharInString(ref str, j,
+      char.ToLower(str[j]));\n            }\n        }\n        resultIndex=random.Next(array.Length);\n       
+      array[resultIndex]=array[resultIndex].ToUpper();\n        return array;\n   
+      }   \n}
+    <TestSettings>k__BackingField: {fileID: 11400000, guid: db8d7be98c2fe8d4487298176efef010, type: 2}
+  <Tips>k__BackingField: []
+  <Challenges>k__BackingField: {fileID: 11400000, guid: d743f68061c8a32419f677686c10b2e7, type: 2}
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 204f7232bb70d634c8c913e9d9dbea0a, type: 3}
+  m_Name: 5
+  m_EditorClassIdentifier: 
+  <Title>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <Description>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <StartCode>k__BackingField: 'public void RepairBrige(int partsCount)
+
+    {
+
+
+    }'
+  <TestData>k__BackingField:
+    <TestCode>k__BackingField: using System;\nusing System.Collections.Generic;\nusing
+      System.Linq;\n\npublic class Level3Task5\n{\n//<playerCode>\n    private List<bool>
+      _isPartsBroken;\n    public bool IsBroken(int partNumber)\n    {\n        return
+      _isPartsBroken[partNumber];\n    }\n    public void SetUpBoard(int pantNumber)\n   
+      {\n        _isPartsBroken[pantNumber] = !_isPartsBroken[pantNumber];\n    }\n   
+      public bool isTaskCompleted()\n    {\n        var maxCount = 500;\n       
+      var random=new Random();\n        FillData(maxCount, random);\n        RepairBrige(_isPartsBroken.Count);\n       
+      var firstCheck = !_isPartsBroken.Any(x=>x);\n        FillData(maxCount, random);\n       
+      RepairBrige(_isPartsBroken.Count);\n        var secondCheck = !_isPartsBroken.Any(x=>x);\n       
+      FillData(maxCount, random);\n        RepairBrige(_isPartsBroken.Count);\n       
+      var thirdCheck = !_isPartsBroken.Any(x=>x);\n        FillData(maxCount, random);\n       
+      RepairBrige(_isPartsBroken.Count);\n        var fourthCheck = !_isPartsBroken.Any(x=>x);\n       
+      return true;\n    }\n    private void FillData(int maxCount, Random random)\n   
+      {\n        _isPartsBroken = new List<bool>();\n        for (var i = 0; i <
+      random.Next(1, maxCount); i++)\n        {\n            var total = random.Next(2)
+      == 1;\n            _isPartsBroken.Add(total);\n        }\n        _isPartsBroken[_isPartsBroken.Count
+      - 1] = true;\n    }   \n}
+    <TestSettings>k__BackingField: {fileID: 11400000, guid: db8d7be98c2fe8d4487298176efef010, type: 2}
+  <Tips>k__BackingField: []
+  <Challenges>k__BackingField: {fileID: 11400000, guid: d743f68061c8a32419f677686c10b2e7, type: 2}
+  references:
+    version: 2
+    RefIds: []

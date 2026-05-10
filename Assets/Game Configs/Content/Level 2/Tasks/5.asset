@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 204f7232bb70d634c8c913e9d9dbea0a, type: 3}
+  m_Name: 5
+  m_EditorClassIdentifier: 
+  <Title>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <Description>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <StartCode>k__BackingField: 'public void RemoveLog(object log)
+
+    {
+
+
+    }'
+  <TestData>k__BackingField:
+    <TestCode>k__BackingField: using System;\nusing System.Collections.Generic;\n\n\npublic
+      class Level1Task5\n{\n//<playerCode>   \n    public readonly Log Log = new
+      Log();\n    public void TakeLog(object log)\n    {\n        if(Log.Equals(log))\n           
+      ((Log)log).TakeLog();\n    }\n    public void MoveLog(object log)\n    {\n       
+      if (Log.Equals(log))\n            ((Log)log).MoveLog();\n    }\n    public
+      void PutLog(object log)\n    {\n        if (Log.Equals(log))\n            ((Log)log).PutLog();\n   
+      }\n    public bool isTaskCompleted()\n    {\n        RemoveLog(Log);\n       
+      return Log.IsRemoved();\n    }\n    \n}\npublic class Log\n{\n    private bool
+      _isLogTaken;\n    private bool _isLogMoved;\n    private bool _isLogPut;\n   
+      public void TakeLog()\n    {\n        if (!_isLogTaken && !_isLogMoved && !_isLogPut)\n       
+      {\n            _isLogTaken = true;\n        }\n    }\n    public void MoveLog()\n   
+      {\n        if (_isLogTaken && !_isLogMoved && !_isLogPut)\n        {\n           
+      _isLogMoved = true;\n        }\n    }\n    public void PutLog()\n    {\n       
+      if (_isLogTaken && _isLogMoved && !_isLogPut)\n        {\n            _isLogPut
+      = true;\n        }\n    }\n    public bool IsRemoved() => _isLogTaken && _isLogMoved
+      && _isLogPut;\n}
+    <TestSettings>k__BackingField: {fileID: 11400000, guid: db8d7be98c2fe8d4487298176efef010, type: 2}
+  <Tips>k__BackingField: []
+  <Challenges>k__BackingField: {fileID: 11400000, guid: d743f68061c8a32419f677686c10b2e7, type: 2}
+  references:
+    version: 2
+    RefIds: []

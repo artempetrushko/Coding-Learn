@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 204f7232bb70d634c8c913e9d9dbea0a, type: 3}
+  m_Name: 6
+  m_EditorClassIdentifier: 
+  <Title>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <Description>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <StartCode>k__BackingField: 'public void FoundKey(int plasesCount)
+
+    {
+
+
+    }'
+  <TestData>k__BackingField:
+    <TestCode>k__BackingField: using System;\nusing System.Collections.Generic;\n\n\npublic
+      class Level3Task6\n{\n//<playerCode>\n    private bool[] _places;\n    private
+      int _keyIndex=-1;\n    public bool TryFoundKey(int placeNumber)\n    {   if(_places[placeNumber])\n           
+      _keyIndex = placeNumber;\n        return _places[placeNumber];\n    }\n   
+      public bool isTaskCompleted()\n    {   var random = new Random();\n       
+      var maxCount = 50;\n        FillData(maxCount, random);\n        FoundKey(_places.Length);\n       
+      var firstCheck = _places[_keyIndex];\n        _keyIndex = -1;\n        FillData(maxCount,
+      random);\n        FoundKey(_places.Length);\n        var secondCheck = _places[_keyIndex];\n       
+      _keyIndex = -1;\n        FillData(maxCount, random);\n        FoundKey(_places.Length);\n       
+      var thirdCheck = _places[_keyIndex];\n        _keyIndex = -1;\n        FillData(maxCount,
+      random);\n        FoundKey(_places.Length);\n        var fourthCheck = _places[_keyIndex];\n       
+      _keyIndex = -1;\n        return firstCheck && secondCheck && thirdCheck &&
+      fourthCheck;\n    }\n    private void FillData(int maxCount, Random random)\n   
+      {\n        _places = new bool[random.Next(1,maxCount)];\n        var index
+      = random.Next(0, _places.Length);\n        _places[random.Next(0,_places.Length)]
+      = true;\n        if(index < _places.Length - 1)\n        {\n            _places[random.Next(index,
+      _places.Length)] = true;\n        }\n    }   \n}
+    <TestSettings>k__BackingField: {fileID: 11400000, guid: db8d7be98c2fe8d4487298176efef010, type: 2}
+  <Tips>k__BackingField: []
+  <Challenges>k__BackingField: {fileID: 11400000, guid: d743f68061c8a32419f677686c10b2e7, type: 2}
+  references:
+    version: 2
+    RefIds: []

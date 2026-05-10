@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 204f7232bb70d634c8c913e9d9dbea0a, type: 3}
+  m_Name: 8
+  m_EditorClassIdentifier: 
+  <Title>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <Description>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <StartCode>k__BackingField: 'public void FoundKeyInSand(int placesCount)
+
+    {
+
+
+    }'
+  <TestData>k__BackingField:
+    <TestCode>k__BackingField: using System;\nusing System.Collections.Generic;\n\n\npublic
+      class Level3Task8\n{\n//<playerCode>\n    private List<bool> _plases;\n   
+      private int _index=-1;\n    private int _digCount;\n    public void Dig(int
+      repeatCount)\n    {\n        _index= repeatCount-1;\n        _digCount+=repeatCount;\n   
+      }\n    public bool IsKeyFound()\n    {\n        return _plases[_index];\n   
+      }\n    public bool isTaskCompleted()\n    {\n        var random=new Random();\n       
+      var maxCount = 100;\n        var testRes = 0;\n        FillData(maxCount, random);\n       
+      FoundKeyInSand(_plases.Count);\n        for (int i = 1; i <= _index; i++)\n           
+      testRes += i+1;\n        var firstCheck = testRes == _digCount;\n        testRes
+      = 0;\n        _index = -1;\n        _digCount = 0;FillData(maxCount, random);\n       
+      FoundKeyInSand(_plases.Count);\n        for (int i = 1; i <= _index; i++)\n           
+      testRes += i+1;\n        var secondCheck = testRes == _digCount;\n        testRes
+      = 0;\n        _index = -1;\n        _digCount = 0;\n        FillData(maxCount,
+      random);\n        FoundKeyInSand(_plases.Count);\n        for (int i = 1; i
+      <= _index; i++)\n            testRes += i+1;\n        var thirdCheck = testRes
+      == _digCount;\n        testRes = 0;\n        _index = -1;\n        _digCount
+      = 0;\n        FillData(maxCount, random);\n        FoundKeyInSand(_plases.Count);\n       
+      for (int i = 1; i <= _index; i++)\n            testRes += i+1;\n        var
+      fourthCheck = testRes == _digCount;\n        return firstCheck && secondCheck
+      && thirdCheck && fourthCheck;\n    }\n    private int FillData(int maxCount,
+      Random random)\n    {\n        _plases = new List<bool>();\n        var result
+      = 0;\n        for (var i = 0; i < random.Next(1, maxCount); i++)\n        {\n           
+      var total = random.Next(2) == 1;\n            if (total)\n                result++;\n           
+      _plases.Add(total);\n        }\n        _plases[_plases.Count - 1] = true;\n       
+      return result;\n    }   \n}
+    <TestSettings>k__BackingField: {fileID: 11400000, guid: db8d7be98c2fe8d4487298176efef010, type: 2}
+  <Tips>k__BackingField: []
+  <Challenges>k__BackingField: {fileID: 11400000, guid: d743f68061c8a32419f677686c10b2e7, type: 2}
+  references:
+    version: 2
+    RefIds: []

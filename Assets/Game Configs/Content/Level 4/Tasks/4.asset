@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 204f7232bb70d634c8c913e9d9dbea0a, type: 3}
+  m_Name: 4
+  m_EditorClassIdentifier: 
+  <Title>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <Description>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <StartCode>k__BackingField: 'public int GetNeededTree(int neededLogsCount)
+
+    {
+
+
+    }'
+  <TestData>k__BackingField:
+    <TestCode>k__BackingField: using System;\nusing System.Collections.Generic;\n\n\npublic
+      class Level3Task4\n{\n//<playerCode>\n    private int _usesCount;\n    private
+      int _tallTreeCount;\n    private readonly Random _random=new Random();\n   
+      private bool _isTall = false;\n    private void UseTool()\n    {\n        var
+      isTall = _random.Next(2) == 0;\n        if (isTall)\n            _tallTreeCount++;\n       
+      _isTall = isTall;\n        _usesCount++;\n    }\n    public bool IsTreeTall()
+      => _isTall;\n    public bool isTaskCompleted()\n    {\n        var maxCount
+      = 20;\n        var logCount = _random.Next(maxCount);\n        var playerResult=
+      GetNeededTreeCount(logCount);\n        var result = _tallTreeCount+logCount/2;\n       
+      var firstTest = result == playerResult && playerResult == _usesCount;\n       
+      _usesCount = 0;\n        _tallTreeCount = 0;\n        logCount = _random.Next(maxCount);\n       
+      playerResult= GetNeededTreeCount(logCount);\n        result = _tallTreeCount+logCount/2;\n       
+      var secondTest = result == playerResult && playerResult == _usesCount;\n       
+      _usesCount = 0;\n        _tallTreeCount = 0;\n        logCount = _random.Next(maxCount);\n       
+      playerResult= GetNeededTreeCount(logCount);\n        result = _tallTreeCount+logCount/2;\n       
+      var thirdTest = result == playerResult && playerResult == _usesCount;\n       
+      _usesCount = 0;\n        _tallTreeCount = 0;\n        logCount = _random.Next(maxCount);\n       
+      playerResult= GetNeededTreeCount(logCount);\n        result = _tallTreeCount+logCount/2;\n       
+      var fourthTest = result == playerResult && playerResult == _usesCount;\n       
+      _usesCount = 0;\n        _tallTreeCount = 0;\n        return firstTest && secondTest
+      && thirdTest && fourthTest;\n    }   \n}
+    <TestSettings>k__BackingField: {fileID: 11400000, guid: db8d7be98c2fe8d4487298176efef010, type: 2}
+  <Tips>k__BackingField: []
+  <Challenges>k__BackingField: {fileID: 11400000, guid: d743f68061c8a32419f677686c10b2e7, type: 2}
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 204f7232bb70d634c8c913e9d9dbea0a, type: 3}
+  m_Name: 3
+  m_EditorClassIdentifier: 
+  <Title>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <Description>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <StartCode>k__BackingField: 'public void CopyAndAdd(List<Point> list, List<Point>
+    newList, Point addedPoint)
+
+    {
+
+
+    }'
+  <TestData>k__BackingField:
+    <TestCode>k__BackingField: using System;\nusing System.Collections.Generic;\n\n\npublic
+      class Level7Task3\n{\n//<playerCode>\n    public class Point\n    {\n       
+      public int X;\n        public int Y;\n\n        public Point(int x, int y)\n       
+      {\n            X = x;\n            Y = y;\n        }\n\n        public override
+      bool Equals(object obj)\n        {\n            var point=obj as Point;\n           
+      return X==point.X&&Y==point.Y;\n        }\n    }\n    public bool isTaskCompleted()\n   
+      {\n        var random = new Random();\n        var maxCount = 100;\n       
+      var maxSize = 100;\n        return Check(random, maxCount, maxSize)&& Check(random,
+      maxCount, maxSize);\n    }\n\n    private bool Check(Random random, int maxCount,
+      int maxSize)\n    {\n        var list=new List<Point>();\n        for (int
+      i = 0; i < random.Next(10,maxCount); i++)\n        {\n            list.Add(new
+      Point(random.Next(maxSize), random.Next(maxSize)));\n        }\n        var
+      addedPoint=new Point(random.Next(maxSize,2*maxSize), random.Next(maxSize, 2
+      * maxSize));\n        var newList=new List<Point>();\n        CopyAndAdd(list,
+      newList, addedPoint);\n        return newList.Count==list.Count+1&&ContainsRange(newList,list)&&newList.Contains(addedPoint);\n   
+      }\n    public bool ContainsRange(List<Point> list,IEnumerable<Point> range)\n   
+      {\n        foreach(var point in range)\n        {\n            if(!list.Contains(point))\n               
+      return false;\n        }\n        return true;\n    }\n}
+    <TestSettings>k__BackingField: {fileID: 11400000, guid: db8d7be98c2fe8d4487298176efef010, type: 2}
+  <Tips>k__BackingField: []
+  <Challenges>k__BackingField: {fileID: 11400000, guid: d743f68061c8a32419f677686c10b2e7, type: 2}
+  references:
+    version: 2
+    RefIds: []

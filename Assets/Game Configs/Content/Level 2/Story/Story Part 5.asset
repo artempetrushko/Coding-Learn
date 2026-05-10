@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb5bd1df2ac6c24fbc255349d486d3d, type: 3}
+  m_Name: Story Part 5
+  m_EditorClassIdentifier: 
+  <Cutscene>k__BackingField: {fileID: 11400000, guid: 608c6bb0b36c6c940841f4a84f1c6387, type: 2}
+  <CutsceneScenarioParts>k__BackingField:
+  - m_TableReference:
+      m_TableCollectionName: GUID:8b214748f24745f4ebda8287020aeaff
+    m_TableEntryReference:
+      m_KeyId: 1029583986697
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:8b214748f24745f4ebda8287020aeaff
+    m_TableEntryReference:
+      m_KeyId: 1029583986698
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:8b214748f24745f4ebda8287020aeaff
+    m_TableEntryReference:
+      m_KeyId: 1029583986699
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:8b214748f24745f4ebda8287020aeaff
+    m_TableEntryReference:
+      m_KeyId: 1029583986700
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
