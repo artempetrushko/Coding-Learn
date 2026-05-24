@@ -1,3 +1,4 @@
+using Scripts.Assets.Scripts.Core.Features.Game.Storytelling;
 using UnityEngine;
 
 namespace GameLogic

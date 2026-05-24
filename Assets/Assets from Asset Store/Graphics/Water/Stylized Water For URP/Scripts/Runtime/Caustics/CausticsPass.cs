@@ -25,7 +25,7 @@ namespace StylizedWater
             this.waterLevel = waterLevel;
         }
 
-        public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
+        public void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
             var cam = renderingData.cameraData.camera;
 

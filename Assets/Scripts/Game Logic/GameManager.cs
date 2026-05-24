@@ -2,46 +2,32 @@
 using System.Linq;
 using Cysharp.Threading.Tasks;
 using LevelLoading;
+using R3;
 using SaveSystem;
+using Scripts.Assets.Scripts.Core.Features.Game.Storytelling;
 
 namespace GameLogic
 {
     public class GameManager : IDisposable
     {
         private GameConfig _gameConfig;
-        private LevelLoadingPresenter _levelLoadingPresenter;
-        private StorytellingPresenter _storytellingPresenter;
-        private TrainingPresenter _trainingPresenter;
-        private CodingTaskPresenter _codingTaskPresenter;
-        private ExitMenuPresenter _exitMenuPresenter;
 
         private GameProgress _gameProgress;
         private LevelContent _levelContent;
         private QuestConfig _currentQuest;
         private int _currentQuestNumber;
 
-        public GameManager(GameConfig gameConfig, LevelLoadingPresenter levelLoadingPresenter, StorytellingPresenter storytellingPresenter, 
-            TrainingPresenter trainingPresenter, CodingTaskPresenter codingTaskPresenter, ExitMenuPresenter exitMenuPresenter)
+        public ReadOnlyReactiveProperty<TrainingSubTheme> CurrentTrainingSubTheme => _currentQuest.TrainingSubTheme;
+        public ReadOnlyReactiveProperty<StoryContent> CurrentStory;
+
+        public GameManager(GameConfig gameConfig)
         {
             _gameConfig = gameConfig;
-            _levelLoadingPresenter = levelLoadingPresenter;
-            _storytellingPresenter = storytellingPresenter;
-            _trainingPresenter = trainingPresenter;
-            _codingTaskPresenter = codingTaskPresenter;
-            _exitMenuPresenter = exitMenuPresenter;
-
-            _storytellingPresenter.CutsceneFinished += OnCutsceneFinished;
-            _trainingPresenter.TrainingDisabled += OnCodingTrainingDisabled;
-            _codingTaskPresenter.CodingTaskCompleted += OnCodingTaskCompleted;
-            _exitMenuPresenter.ExitToMenuSelected += OnExitToMenuSelected;
         }
 
         public void Dispose()
         {
-            _storytellingPresenter.CutsceneFinished -= OnCutsceneFinished;
-            _trainingPresenter.TrainingDisabled -= OnCodingTrainingDisabled;
-            _codingTaskPresenter.CodingTaskCompleted -= OnCodingTaskCompleted;
-            _exitMenuPresenter.ExitToMenuSelected -= OnExitToMenuSelected;
+
         }
 
         public void StartGame()
@@ -57,6 +43,11 @@ namespace GameLogic
         {
             _currentQuest = quest;
             _storytellingPresenter.ShowNewStoryContent(quest.Story);
+        }
+
+        public void FinishCutscene()
+        {
+
         }
 
         private void FinishLevel()

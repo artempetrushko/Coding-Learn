@@ -1,4 +1,4 @@
-﻿using Sounds;
+﻿using Scripts.Assets.Scripts.Core.Sounds;
 using UnityEngine.Localization;
 
 namespace MainMenu
